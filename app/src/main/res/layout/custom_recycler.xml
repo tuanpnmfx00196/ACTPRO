@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:weightSum="12"
+        android:layout_weight="1.9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <TextView
+            android:background="#3603A9F4"
+            android:id="@+id/txtLocal"
+            android:layout_weight="2.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </TextView>
+        <TextView
+            android:background="#7A03A9F4"
+            android:id="@+id/idRoute"
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </TextView>
+        <ImageButton
+            android:background="#3603A9F4"
+            android:src="@drawable/more"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </ImageButton>
+    </LinearLayout>
+</LinearLayout>
