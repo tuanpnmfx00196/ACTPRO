@@ -27,6 +27,7 @@
             android:layout_height="match_parent">
         </TextView>
         <ImageButton
+            android:id="@+id/btnMore"
             android:background="#3603A9F4"
             android:src="@drawable/more"
             android:layout_weight="1.5"
