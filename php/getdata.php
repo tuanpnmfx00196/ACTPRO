@@ -1,6 +1,6 @@
 <?php
 require "connect.php";
-$query = "SELECT * FROM management";
+$query = "SELECT * FROM opticalcableact";
 $data = mysqli_query($connect,$query);
 class Cable{
   function Cable($id, $cableid, $province){

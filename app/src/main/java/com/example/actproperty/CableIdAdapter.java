@@ -43,12 +43,10 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
 
     public class ViewHolder extends  RecyclerView.ViewHolder {
         TextView txtLocal, idRoute;
-        ImageButton btnMore;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
             idRoute = (TextView)itemView.findViewById(R.id.idRoute);
-            btnMore = (ImageButton)itemView.findViewById(R.id.btnMore);
         }
     }
 }

@@ -56,7 +56,7 @@
         android:textSize="22sp"
         android:textColorHint="#FF5722"
         android:hint="Username"
-        android:background="#8021671F"
+        android:background="#6621671F"
         android:layout_marginTop="400dp"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -70,7 +70,7 @@
     android:textSize="22sp"
     android:textColorHint="#FF5722"
     android:hint="Password"
-    android:background="#8021671F"
+    android:background="#6621671F"
     android:layout_marginTop="460dp"
     android:layout_width="match_parent"
     android:layout_height="50dp">
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content">
     </TextView>
     <TextView
-        android:layout_marginLeft="270dp"
+        android:layout_marginLeft="158dp"
         android:layout_marginTop="290dp"
         android:textColor="#128EEC"
         android:textStyle="bold"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content">
     </TextView>
     <TextView
-        android:layout_marginLeft="165dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="290dp"
         android:textColor="#EA0808"
         android:textStyle="bold"
@@ -129,7 +129,7 @@
     <TextView
         android:textStyle="italic"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="708dp"
+        android:layout_marginTop="700dp"
         android:textSize="10sp"
         android:textColor="#FFF"
         android:text="Copyright © 2020 tuanpnm@vienthongact.vn"

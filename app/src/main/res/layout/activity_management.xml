@@ -6,12 +6,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
     </LinearLayout>
     <FrameLayout
-        android:layout_weight="8"
+        android:layout_weight="9"
         android:id="@+id/frameContain"
         android:layout_width="match_parent"
         android:layout_height="0dp">
