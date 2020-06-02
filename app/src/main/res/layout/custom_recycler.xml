@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
-            android:layout_marginLeft="5dp"
-            android:padding="5dp"
             android:textColor="#FF0900"
             android:textSize="15sp"
             android:textAlignment="center"
@@ -25,8 +23,6 @@
             android:layout_height="match_parent">
         </TextView>
         <TextView
-            android:layout_marginRight="5dp"
-            android:padding="5dp"
             android:textColor="#FF9100"
             android:textSize="15sp"
             android:textAlignment="center"
@@ -39,8 +35,6 @@
         </TextView>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
         android:background="#062DF1"
         android:layout_weight="0.1"
         android:layout_width="match_parent"
