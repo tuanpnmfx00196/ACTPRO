@@ -32,6 +32,7 @@ public class Management extends AppCompatActivity {
     ArrayList<CableId> listCable;
     ArrayList<CableId> listSearch;
     CableIdAdapter adapter;
+    FrameLayout frameContain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +40,25 @@ public class Management extends AppCompatActivity {
         adapter = new CableIdAdapter(listCable,Management.this);
         listCable = new ArrayList<>();
         listSearch = new ArrayList<>();
+        frameContain = (FrameLayout) findViewById(R.id.frameContain);
         ReadJson("https://sqlandroid2812.000webhostapp.com/getdata.php");
+        /*====================== Fragment =========================*/
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        FragmentRecycler fragmentRecycler = new FragmentRecycler();
+        fragmentTransaction.add(R.id.frameContain,fragmentRecycler);
+        fragmentTransaction.commit();
+
+        /*====================== Click Btn Search============================*/
         btnSearch = (Button)findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Search();
+                FragmentSearch fragmentSearch = new FragmentSearch();
+                fragmentTransaction.replace(R.id.frameContain,fragmentSearch);
+                fragmentTransaction.commit();
+                //Search();
             }
         });
     }
@@ -103,7 +117,6 @@ public class Management extends AppCompatActivity {
     public void Search(){
         searchLocal = (EditText)findViewById(R.id.searchLocal);
         searchCableId = (EditText)findViewById(R.id.searchCableId);
-
         initViewFragment();
     }
 }
