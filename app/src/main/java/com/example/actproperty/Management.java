@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -27,7 +28,9 @@ import java.util.ArrayList;
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
 public class Management extends AppCompatActivity {
     Button btnSearch;
+    EditText searchLocal, searchCableId;
     ArrayList<CableId> listCable;
+    ArrayList<CableId> listSearch;
     CableIdAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,15 @@ public class Management extends AppCompatActivity {
         setContentView(R.layout.activity_management);
         adapter = new CableIdAdapter(listCable,Management.this);
         listCable = new ArrayList<>();
+        listSearch = new ArrayList<>();
         ReadJson("https://sqlandroid2812.000webhostapp.com/getdata.php");
+        btnSearch = (Button)findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Search();
+            }
+        });
     }
     public void ReadJson(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -68,6 +79,8 @@ public class Management extends AppCompatActivity {
      );
         requestQueue.add(jsonArrayRequest);
     }
+
+    /*=========================== INIT RecyclerView Manager ==========================*/
     public void initView(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -75,5 +88,22 @@ public class Management extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         CableIdAdapter cableIdAdapter = new CableIdAdapter(listCable, getApplicationContext());
         recyclerView.setAdapter(cableIdAdapter);
+    }
+    /*======================= INIT RecyclerView Fragment search ====================*/
+    public void initViewFragment(){
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        CableIdAdapter cableIdAdapter = new CableIdAdapter(listSearch, getApplicationContext());
+        recyclerView.setAdapter(cableIdAdapter);
+    }
+
+    /*============================== Search =================================*/
+    public void Search(){
+        searchLocal = (EditText)findViewById(R.id.searchLocal);
+        searchCableId = (EditText)findViewById(R.id.searchCableId);
+
+        initViewFragment();
     }
 }
