@@ -24,6 +24,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
 public class Management extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class Management extends AppCompatActivity {
     ArrayList<CableId> listSearch;
     CableIdAdapter adapter;
     FrameLayout frameContain;
+    FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +44,16 @@ public class Management extends AppCompatActivity {
         listCable = new ArrayList<>();
         listSearch = new ArrayList<>();
         frameContain = (FrameLayout) findViewById(R.id.frameContain);
-        ReadJson("https://sqlandroid2812.000webhostapp.com/getdata.php");
         /*====================== Fragment =========================*/
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        FragmentRecycler fragmentRecycler = new FragmentRecycler();
-        fragmentTransaction.add(R.id.frameContain,fragmentRecycler);
-        fragmentTransaction.commit();
-
+        Show();
         /*====================== Click Btn Search============================*/
         btnSearch = (Button)findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ReadJsonSeach("https://sqlandroid2812.000webhostapp.com/getdata.php");
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
                 FragmentSearch fragmentSearch = new FragmentSearch();
                 fragmentTransaction.replace(R.id.frameContain,fragmentSearch);
                 fragmentTransaction.commit();
@@ -62,7 +61,8 @@ public class Management extends AppCompatActivity {
             }
         });
     }
-    public void ReadJson(String url){
+    /*=========================== Read Json ===============================*/
+        public void ReadJson(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -87,13 +87,58 @@ public class Management extends AppCompatActivity {
                 new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                 Toast.makeText(Management.this, "?????", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(Management.this, "Connection error", Toast.LENGTH_SHORT).show();
                             }
                         }
      );
         requestQueue.add(jsonArrayRequest);
     }
 
+    /*============================Read Json search=====================================*/
+    public void ReadJsonSeach(String url){
+        listSearch.clear();
+        searchLocal = (EditText)findViewById(R.id.searchLocal);
+        searchCableId = (EditText)findViewById(R.id.searchCableId);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for (int i=0; i<response.length(); i++){
+                            try{
+                                JSONObject jsonObject = response.getJSONObject(i);
+                                listCable.add(new CableId(
+                                        jsonObject.getInt("ID"),
+                                        jsonObject.getString("Province"),
+                                        jsonObject.getString("CableId")
+                                ));
+                            }catch(Exception e){
+                                Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        for(int i=0; i<listCable.size(); i++){
+                            if(listCable.get(i).getProvince().toLowerCase().
+                                    contains(searchLocal.getText().toString().toLowerCase())){
+                                listSearch.add(listCable.get(i));
+                            }
+                            else{
+
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                        initViewSearch();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Management.this, "Connection error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
     /*=========================== INIT RecyclerView Manager ==========================*/
     public void initView(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
@@ -104,8 +149,8 @@ public class Management extends AppCompatActivity {
         recyclerView.setAdapter(cableIdAdapter);
     }
     /*======================= INIT RecyclerView Fragment search ====================*/
-    public void initViewFragment(){
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+    public void initViewSearch(){
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -114,9 +159,19 @@ public class Management extends AppCompatActivity {
     }
 
     /*============================== Search =================================*/
-    public void Search(){
-        searchLocal = (EditText)findViewById(R.id.searchLocal);
-        searchCableId = (EditText)findViewById(R.id.searchCableId);
-        initViewFragment();
+//    public void Search(){
+//        searchLocal = (EditText)findViewById(R.id.searchLocal);
+//        searchCableId = (EditText)findViewById(R.id.searchCableId);
+//        String provinde = searchLocal.getText().toString();
+//        String CableId = searchCableId.getText().toString();
+//        initViewSearch();
+//    }
+    public void Show(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        ReadJson("https://sqlandroid2812.000webhostapp.com/getdata.php");
+        FragmentRecycler fragmentRecycler = new FragmentRecycler();
+        fragmentTransaction.add(R.id.frameContain,fragmentRecycler);
+        fragmentTransaction.commit();
     }
 }

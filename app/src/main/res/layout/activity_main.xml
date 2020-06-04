@@ -137,7 +137,7 @@
         android:layout_height="wrap_content">
     </TextView>
     <TextView
-        android:id="@+id/fogotPass"
+        android:id="@+id/forgotPass"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="580dp"
         android:textSize="15sp"
