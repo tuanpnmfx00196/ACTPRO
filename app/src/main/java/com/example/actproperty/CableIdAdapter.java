@@ -21,6 +21,9 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
         List = list;
         this.context = context;
     }
+    public interface onItemLongClickListener{
+        public boolean onItemLongClicked(int position);
+    }
 
     @NonNull
     @Override

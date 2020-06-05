@@ -14,24 +14,24 @@
         <TextView
             android:layout_margin="3dp"
             android:textColor="#FF0900"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:textAlignment="center"
             android:gravity="center"
             android:background="#000000"
             android:id="@+id/txtLocal"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </TextView>
         <TextView
             android:layout_margin="3dp"
             android:textColor="#FF9100"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textAlignment="center"
             android:gravity="center"
             android:background="#4303A9F4"
             android:id="@+id/idRoute"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </TextView>

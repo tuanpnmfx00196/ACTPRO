@@ -32,6 +32,7 @@ public class Management extends AppCompatActivity {
     Button btnSearch;
     EditText searchLocal, searchCableId;
     ArrayList<CableId> listCable;
+    ArrayList<CableId> list;
     ArrayList<CableId> listSearch;
     CableIdAdapter adapter;
     FrameLayout frameContain;
@@ -42,6 +43,7 @@ public class Management extends AppCompatActivity {
         setContentView(R.layout.activity_management);
         adapter = new CableIdAdapter(listCable,Management.this);
         listCable = new ArrayList<>();
+        list = new ArrayList<>();
         listSearch = new ArrayList<>();
         frameContain = (FrameLayout) findViewById(R.id.frameContain);
         /*====================== Fragment =========================*/
@@ -96,6 +98,7 @@ public class Management extends AppCompatActivity {
 
     /*============================Read Json search=====================================*/
     public void ReadJsonSeach(String url){
+        list.clear();
         listSearch.clear();
         searchLocal = (EditText)findViewById(R.id.searchLocal);
         searchCableId = (EditText)findViewById(R.id.searchCableId);
@@ -107,7 +110,7 @@ public class Management extends AppCompatActivity {
                         for (int i=0; i<response.length(); i++){
                             try{
                                 JSONObject jsonObject = response.getJSONObject(i);
-                                listCable.add(new CableId(
+                                list.add(new CableId(
                                         jsonObject.getInt("ID"),
                                         jsonObject.getString("Province"),
                                         jsonObject.getString("CableId")
@@ -116,18 +119,39 @@ public class Management extends AppCompatActivity {
                                 Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
+                        //Module Search ================================>>>>>>>>>>>>>>>>>
+                        for(int i=0; i<list.size();i++){
+                          if(searchLocal.getText().toString().trim() !=""){
+                              if(list.get(i).getProvince().toLowerCase().contains(
+                                      searchLocal.getText().toString().trim().toLowerCase()
+                              )){
+                                  if(searchCableId.getText().toString().trim()==""){
+                                      listSearch.add(list.get(i));
+                                  } else{
+                                      if(list.get(i).getCableId().trim().toLowerCase().contains(
+                                              searchCableId.getText().toString().trim().toLowerCase()
+                                      )){
+                                          listSearch.add(list.get(i));
+                                      }
+                                  }
+                              }
+                          } else{
+                              if(searchCableId.getText().toString().trim()!=""){
+                                  if(list.get(i).getCableId().trim().toLowerCase().contains(
+                                     searchCableId.getText().toString().trim().toLowerCase())){
+                                      listSearch.add(list.get(i));
+                                  }else{
+                                      Toast.makeText(Management.this, "No found", Toast.LENGTH_SHORT).show();
+                                  }
+                              }
+                          }
 
-                        for(int i=0; i<listCable.size(); i++){
-                            if(listCable.get(i).getProvince().toLowerCase().
-                                    contains(searchLocal.getText().toString().toLowerCase())){
-                                listSearch.add(listCable.get(i));
-                            }
-                            else{
-
-                            }
                         }
+                        //End search ================================>>>>>>>>>>>>>>
                         adapter.notifyDataSetChanged();
                         initViewSearch();
+                        searchLocal.setText("");
+                        searchCableId.setText("");
                     }
                 },
                 new Response.ErrorListener() {
@@ -158,14 +182,6 @@ public class Management extends AppCompatActivity {
         recyclerView.setAdapter(cableIdAdapter);
     }
 
-    /*============================== Search =================================*/
-//    public void Search(){
-//        searchLocal = (EditText)findViewById(R.id.searchLocal);
-//        searchCableId = (EditText)findViewById(R.id.searchCableId);
-//        String provinde = searchLocal.getText().toString();
-//        String CableId = searchCableId.getText().toString();
-//        initViewSearch();
-//    }
     public void Show(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
