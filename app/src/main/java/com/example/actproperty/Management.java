@@ -1,5 +1,6 @@
 package com.example.actproperty;
 
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -42,6 +43,8 @@ public class Management extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_management);
         adapter = new CableIdAdapter(listCable,Management.this);
+        searchLocal = (EditText) findViewById(R.id.searchLocal);
+        searchCableId = (EditText) findViewById(R.id.searchCableId);
         listCable = new ArrayList<>();
         list = new ArrayList<>();
         listSearch = new ArrayList<>();
@@ -53,6 +56,7 @@ public class Management extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                frameContain.setVisibility(View.VISIBLE);
                 ReadJsonSeach("https://sqlandroid2812.000webhostapp.com/getdata.php");
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
@@ -60,6 +64,14 @@ public class Management extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.frameContain,fragmentSearch);
                 fragmentTransaction.commit();
                 //Search();
+            }
+        });
+        searchLocal.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    frameContain.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }

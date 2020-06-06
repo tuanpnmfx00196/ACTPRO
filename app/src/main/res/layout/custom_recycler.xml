@@ -17,7 +17,7 @@
             android:textSize="12sp"
             android:textAlignment="center"
             android:gravity="center"
-            android:background="#000000"
+            android:background="#4303A9F4"
             android:id="@+id/txtLocal"
             android:layout_weight="4"
             android:layout_width="0dp"
