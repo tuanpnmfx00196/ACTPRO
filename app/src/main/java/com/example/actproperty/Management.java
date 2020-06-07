@@ -1,5 +1,6 @@
 package com.example.actproperty;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,6 +34,7 @@ import java.util.Set;
 public class Management extends AppCompatActivity {
     Button btnSearch;
     EditText searchLocal, searchCableId;
+    ArrayList<Passport>listUser;
     ArrayList<CableId> listCable;
     ArrayList<CableId> list;
     ArrayList<CableId> listSearch;
@@ -46,6 +49,8 @@ public class Management extends AppCompatActivity {
         searchLocal = (EditText) findViewById(R.id.searchLocal);
         searchCableId = (EditText) findViewById(R.id.searchCableId);
         listCable = new ArrayList<>();
+        listUser = new ArrayList<>();
+        GetAccount();
         list = new ArrayList<>();
         listSearch = new ArrayList<>();
         frameContain = (FrameLayout) findViewById(R.id.frameContain);
@@ -201,5 +206,9 @@ public class Management extends AppCompatActivity {
         FragmentRecycler fragmentRecycler = new FragmentRecycler();
         fragmentTransaction.add(R.id.frameContain,fragmentRecycler);
         fragmentTransaction.commit();
+    }
+    public void GetAccount(){
+        Intent intent = getIntent();
+        listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
 }

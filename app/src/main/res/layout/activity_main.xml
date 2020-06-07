@@ -11,7 +11,7 @@
     <TextView
         android:background="#FFF"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="73dp"
         android:textColor="#040D3A"
         android:textSize="30sp"
         android:fontFamily="sans-serif-condensed"
@@ -22,7 +22,7 @@
     <TextView
         android:background="#FFF"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="180dp"
         android:textColor="#EF1909"
         android:textSize="30sp"
         android:fontFamily="sans-serif-condensed"
@@ -42,7 +42,7 @@
         android:layout_height="50dp">
     </LinearLayout>
     <ImageView
-        android:layout_marginLeft="136dp"
+        android:layout_marginLeft="146dp"
         android:layout_marginTop="110dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,15 +136,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </TextView>
+
     <TextView
-        android:id="@+id/forgotPass"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="580dp"
-        android:textSize="15sp"
-        android:textColor="#FFF"
-        android:text="If you forgot your password, click here!"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </TextView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:layout_marginStart="95dp"
+        android:textStyle="italic"
+        android:text="Property management version 1.0"
+        android:textColor="#FFF"
+        android:textSize="15sp"></TextView>
 
 </RelativeLayout>
