@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         listUser = new ArrayList<>();
         btnLogin = (Button)findViewById(R.id.btnLogin);
         CheckPassport();
+        //Toast.makeText(this, "Size "+listPassport.size()+"--"+listPassport.get(0).getUser(), Toast.LENGTH_SHORT).show();
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private boolean CheckPassport(){
-        listUser.clear();
+        //listUser.clear();
         boolean check = false;
         String user = edtUser.getText().toString();
         String pass = edtPass.getText().toString();
@@ -120,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         requestQueue.add(jsonArrayRequest);
-
         return check;
     }
 }

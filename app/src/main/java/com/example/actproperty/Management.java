@@ -38,6 +38,7 @@ public class Management extends AppCompatActivity {
     ArrayList<CableId> listCable;
     ArrayList<CableId> list;
     ArrayList<CableId> listSearch;
+    ArrayList<CableId> listShow;
     CableIdAdapter adapter;
     FrameLayout frameContain;
     FragmentTransaction fragmentTransaction;
@@ -49,6 +50,7 @@ public class Management extends AppCompatActivity {
         searchLocal = (EditText) findViewById(R.id.searchLocal);
         searchCableId = (EditText) findViewById(R.id.searchCableId);
         listCable = new ArrayList<>();
+        listShow = new ArrayList<>();
         listUser = new ArrayList<>();
         GetAccount();
         list = new ArrayList<>();
@@ -99,6 +101,7 @@ public class Management extends AppCompatActivity {
                         Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
+                Permission();
                     adapter.notifyDataSetChanged();
                     initView();
             }
@@ -186,7 +189,7 @@ public class Management extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        CableIdAdapter cableIdAdapter = new CableIdAdapter(listCable, getApplicationContext());
+        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext());
         recyclerView.setAdapter(cableIdAdapter);
     }
     /*======================= INIT RecyclerView Fragment search ====================*/
@@ -210,5 +213,33 @@ public class Management extends AppCompatActivity {
     public void GetAccount(){
         Intent intent = getIntent();
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
+    }
+    public void Permission(){
+        if(listUser.get(0).getAdmin()==1){
+            for(int i=0;i<listCable.size();i++){
+                listShow.add(listCable.get(i));
+            }
+        }
+        if(listUser.get(0).getHcm_bch()==1){
+            for(int i=0;i<listCable.size();i++){
+                if(listCable.get(i).getProvince().equals("HCM_Bình Chánh")){
+                    listShow.add(listCable.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getBdg()==1){
+            for(int i=0;i<listCable.size();i++){
+                if(listCable.get(i).getProvince().equals("Bình Dương")){
+                    listShow.add(listCable.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getKgg()==1|| listUser.get(0).getKgg()==2){
+            for(int i=0;i<listCable.size();i++){
+                if(listCable.get(i).getProvince().equals("Kiên Giang")){
+                    listShow.add(listCable.get(i));
+                }
+            }
+        }
     }
 }
