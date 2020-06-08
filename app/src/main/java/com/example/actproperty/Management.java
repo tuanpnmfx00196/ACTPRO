@@ -70,7 +70,6 @@ public class Management extends AppCompatActivity {
                 FragmentSearch fragmentSearch = new FragmentSearch();
                 fragmentTransaction.replace(R.id.frameContain,fragmentSearch);
                 fragmentTransaction.commit();
-                //Search();
             }
         });
         searchLocal.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -166,6 +165,7 @@ public class Management extends AppCompatActivity {
                               }
                           }
 
+                            GetSearch(listSearch);
                         }
                         //End search ================================>>>>>>>>>>>>>>
                         adapter.notifyDataSetChanged();
@@ -194,11 +194,11 @@ public class Management extends AppCompatActivity {
     }
     /*======================= INIT RecyclerView Fragment search ====================*/
     public void initViewSearch(){
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView1);
+       RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        CableIdAdapter cableIdAdapter = new CableIdAdapter(listSearch, getApplicationContext());
+        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext());
         recyclerView.setAdapter(cableIdAdapter);
     }
 
@@ -238,6 +238,34 @@ public class Management extends AppCompatActivity {
             for(int i=0;i<listCable.size();i++){
                 if(listCable.get(i).getProvince().equals("Kiên Giang")){
                     listShow.add(listCable.get(i));
+                }
+            }
+        }
+    }
+    private void GetSearch(ArrayList<CableId> arrayList){
+        if(listUser.get(0).getAdmin()==1){
+            for(int i=0;i<arrayList.size();i++){
+                listShow.add(arrayList.get(i));
+            }
+        }
+        if(listUser.get(0).getHcm_bch()==1){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("HCM_Bình Chánh")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getBdg()==1){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Bình Dương")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getKgg()==1|| listUser.get(0).getKgg()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Kiên Giang")){
+                    listShow.add(arrayList.get(i));
                 }
             }
         }
