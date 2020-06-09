@@ -7,16 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 
 import java.util.ArrayList;
 
 public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHolder> {
     ArrayList<CableId> List;
     Context context;
-    public CableIdAdapter(ArrayList<CableId> list, Context context) {
+    private OnItemClickRecyclerView clickRecyclerView;
+    public CableIdAdapter(ArrayList<CableId> list, Context context, OnItemClickRecyclerView clickRecyclerView) {
         List = list;
         this.context = context;
+        this.clickRecyclerView = clickRecyclerView;
     }
 
     @NonNull
@@ -26,9 +29,8 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
         View itemView = layoutInflater.inflate(R.layout.custom_recycler,viewGroup,false);
         return new ViewHolder(itemView);
     }
-
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.txtLocal.setText(List.get(i).getProvince());
         viewHolder.idRoute.setText(List.get(i).getCableId());
     }
@@ -44,6 +46,12 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
             idRoute = (TextView)itemView.findViewById(R.id.idRoute);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickRecyclerView.onClick(getLayoutPosition());
+                }
+            });
         }
     }
 

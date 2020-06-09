@@ -1,8 +1,6 @@
 package com.example.actproperty;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -21,17 +19,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
-public class Management extends AppCompatActivity {
+public class Management extends AppCompatActivity implements OnItemClickRecyclerView {
     Button btnSearch;
     EditText searchLocal, searchCableId;
     ArrayList<Passport>listUser;
@@ -46,7 +43,7 @@ public class Management extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_management);
-        adapter = new CableIdAdapter(listCable,Management.this);
+        adapter = new CableIdAdapter(listCable,Management.this,this);
         searchLocal = (EditText) findViewById(R.id.searchLocal);
         searchCableId = (EditText) findViewById(R.id.searchCableId);
         listCable = new ArrayList<>();
@@ -195,7 +192,7 @@ public class Management extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext());
+        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext(),this);
         recyclerView.setAdapter(cableIdAdapter);
     }
     /*======================= INIT RecyclerView Fragment search ====================*/
@@ -204,7 +201,7 @@ public class Management extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext());
+        CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext(),this);
         recyclerView.setAdapter(cableIdAdapter);
     }
 
@@ -276,5 +273,10 @@ public class Management extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onClick(int position) {
+        Toast.makeText(this, listCable.get(position).getId()+"---"+listCable.get(position).getCableId(), Toast.LENGTH_SHORT).show();
     }
 }
