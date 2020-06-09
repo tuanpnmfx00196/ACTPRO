@@ -1,28 +1,22 @@
 package com.example.actproperty;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHolder> {
     ArrayList<CableId> List;
     Context context;
-    private ItemClickListener itemClickListener;
-
     public CableIdAdapter(ArrayList<CableId> list, Context context) {
         List = list;
         this.context = context;
-    }
-    public interface onItemLongClickListener{
-        public boolean onItemLongClicked(int position);
     }
 
     @NonNull
@@ -46,10 +40,11 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
 
     public class ViewHolder extends  RecyclerView.ViewHolder {
         TextView txtLocal, idRoute;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
             idRoute = (TextView)itemView.findViewById(R.id.idRoute);
         }
     }
+
 }

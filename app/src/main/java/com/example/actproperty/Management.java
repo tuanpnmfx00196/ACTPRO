@@ -139,34 +139,40 @@ public class Management extends AppCompatActivity {
                             }
                         }
                         //Module Search ================================>>>>>>>>>>>>>>>>>
-                        for(int i=0; i<list.size();i++){
-                          if(searchLocal.getText().toString().trim() !=""){
-                              if(list.get(i).getProvince().toLowerCase().contains(
-                                      searchLocal.getText().toString().trim().toLowerCase()
-                              )){
-                                  if(searchCableId.getText().toString().trim()==""){
-                                      listSearch.add(list.get(i));
-                                  } else{
-                                      if(list.get(i).getCableId().trim().toLowerCase().contains(
-                                              searchCableId.getText().toString().trim().toLowerCase()
-                                      )){
-                                          listSearch.add(list.get(i));
-                                      }
-                                  }
-                              }
-                          } else{
-                              if(searchCableId.getText().toString().trim()!=""){
-                                  if(list.get(i).getCableId().trim().toLowerCase().contains(
-                                     searchCableId.getText().toString().trim().toLowerCase())){
-                                      listSearch.add(list.get(i));
-                                  }else{
-                                      Toast.makeText(Management.this, "No found", Toast.LENGTH_SHORT).show();
-                                  }
-                              }
-                          }
+                            if(searchLocal.getText().toString().trim().length()>0){
+                                if(searchCableId.getText().toString().trim().length()>0){
+                                    for(int i=0; i<list.size();i++){
+                                        if(list.get(i).getProvince().toLowerCase().contains(
+                                                searchLocal.getText().toString().trim().toLowerCase()
+                                        )){
+                                            if(list.get(i).getCableId().toLowerCase().contains(
+                                                    searchCableId.getText().toString().trim().toLowerCase()
+                                            )){
+                                                listSearch.add(list.get(i));
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    for(int i=0;i<list.size();i++){
+                                        if(list.get(i).getProvince().toLowerCase().contains(
+                                                searchLocal.getText().toString().trim().toLowerCase()
+                                        )){
+                                            listSearch.add(list.get(i));
+                                        }
+                                    }
+                                }
+                            }else{
+                                for (int i=0; i<list.size(); i++){
+                                    if(list.get(i).getCableId().toLowerCase().contains(
+                                            searchCableId.getText().toString().trim().toLowerCase()
+                                    )){
+                                        listSearch.add(list.get(i));
+                                    }
+                                }
+                            }
 
                             GetSearch(listSearch);
-                        }
+
                         //End search ================================>>>>>>>>>>>>>>
                         adapter.notifyDataSetChanged();
                         initViewSearch();
@@ -243,6 +249,7 @@ public class Management extends AppCompatActivity {
         }
     }
     private void GetSearch(ArrayList<CableId> arrayList){
+        listShow.clear();
         if(listUser.get(0).getAdmin()==1){
             for(int i=0;i<arrayList.size();i++){
                 listShow.add(arrayList.get(i));
