@@ -1,5 +1,6 @@
 package com.example.actproperty;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -277,6 +279,34 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick(int position) {
-        Toast.makeText(this, listCable.get(position).getId()+"---"+listCable.get(position).getCableId(), Toast.LENGTH_SHORT).show();
+        ShowMoreDetail(listShow.get(position).getCableId());
+    }
+    private void ShowMoreDetail(String title){
+        final Dialog dialog = new Dialog(this);
+        dialog.setTitle(title);
+        dialog.setContentView(R.layout.show_more);
+        final TextView cable4fo, cable6fo, cable12fo, cable24fo, cable12du, cable24du, odf6, odf12, odf24, odf96,
+                mx6, mx12, mx24, buloongti300, buloongti400, clamp, sc_lc5m, sc_lc10m;
+        cable4fo = (TextView)dialog.findViewById(R.id.cable4fo);
+        cable6fo = (TextView)dialog.findViewById(R.id.cable6fo);
+        cable12fo = (TextView)dialog.findViewById(R.id.cable12fo);
+        cable24fo = (TextView)dialog.findViewById(R.id.cable24fo);
+        cable12du = (TextView)dialog.findViewById(R.id.cable12du);
+        cable24du = (TextView)dialog.findViewById(R.id.cable24du);
+        odf6 = (TextView)dialog.findViewById(R.id.odf6);
+        odf12 = (TextView)dialog.findViewById(R.id.odf12);
+        odf24 = (TextView)dialog.findViewById(R.id.odf24);
+        odf96 = (TextView)dialog.findViewById(R.id.odf96);
+        mx6 = (TextView)dialog.findViewById(R.id.mx6);
+        mx12 = (TextView)dialog.findViewById(R.id.mx12);
+        mx24 = (TextView)dialog.findViewById(R.id.mx24);
+        buloongti300 = (TextView)dialog.findViewById(R.id.buloongti300);
+        buloongti400 = (TextView)dialog.findViewById(R.id.buloongti400);
+        clamp = (TextView)dialog.findViewById(R.id.clamp);
+        sc_lc5m = (TextView)dialog.findViewById(R.id.sc_lc5m);
+        sc_lc10m = (TextView)dialog.findViewById(R.id.sc_lc10m);
+        final Button btnUpdate = (Button)dialog.findViewById(R.id.btnUpdate);
+        final Button btnBack = (Button)dialog.findViewById(R.id.btnBack);
+        dialog.show();
     }
 }

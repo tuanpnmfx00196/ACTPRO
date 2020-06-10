@@ -33,6 +33,12 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.txtLocal.setText(List.get(i).getProvince());
         viewHolder.idRoute.setText(List.get(i).getCableId());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickRecyclerView.onClick(viewHolder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -46,12 +52,6 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
             idRoute = (TextView)itemView.findViewById(R.id.idRoute);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickRecyclerView.onClick(getLayoutPosition());
-                }
-            });
         }
     }
 
