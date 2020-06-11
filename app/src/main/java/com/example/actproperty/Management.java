@@ -93,7 +93,28 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         listCable.add(new CableId(
                                 jsonObject.getInt("ID"),
                                 jsonObject.getString("Province"),
-                                jsonObject.getString("CableId")
+                                jsonObject.getString("CableId"),
+                                jsonObject.getInt("Hanging4fo"),
+                                jsonObject.getInt("Hanging6fo"),
+                                jsonObject.getInt("Hanging12fo"),
+                                jsonObject.getInt("Hanging24fo"),
+                                jsonObject.getInt("Du6fo"),
+                                jsonObject.getInt("Odf6fo"),
+                                jsonObject.getInt("Odf12fo"),
+                                jsonObject.getInt("Odf24fo"),
+                                jsonObject.getInt("Odf96fo"),
+                                jsonObject.getInt("Closure6fo"),
+                                jsonObject.getInt("Closure12fo"),
+                                jsonObject.getInt("Closure24fo"),
+                                jsonObject.getInt("Buloong300"),
+                                jsonObject.getInt("Buloong400"),
+                                jsonObject.getInt("Clamp"),
+                                jsonObject.getInt("Poleu8"),
+                                jsonObject.getInt("Ironpole6"),
+                                jsonObject.getInt("Sc_lc5"),
+                                jsonObject.getInt("Sc_lc10"),
+                                jsonObject.getInt("Sc_sc5")
+
                         ));
                     }catch(Exception e){
                         Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -131,7 +152,27 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 list.add(new CableId(
                                         jsonObject.getInt("ID"),
                                         jsonObject.getString("Province"),
-                                        jsonObject.getString("CableId")
+                                        jsonObject.getString("CableId"),
+                                        jsonObject.getInt("Hanging4fo"),
+                                        jsonObject.getInt("Hanging6fo"),
+                                        jsonObject.getInt("Hanging12fo"),
+                                        jsonObject.getInt("Hanging24fo"),
+                                        jsonObject.getInt("Du6fo"),
+                                        jsonObject.getInt("Odf6fo"),
+                                        jsonObject.getInt("Odf12fo"),
+                                        jsonObject.getInt("Odf24fo"),
+                                        jsonObject.getInt("Odf96fo"),
+                                        jsonObject.getInt("Closure6fo"),
+                                        jsonObject.getInt("Closure12fo"),
+                                        jsonObject.getInt("Closure24fo"),
+                                        jsonObject.getInt("Buloong300"),
+                                        jsonObject.getInt("Buloong400"),
+                                        jsonObject.getInt("Clamp"),
+                                        jsonObject.getInt("Poleu8"),
+                                        jsonObject.getInt("Ironpole6"),
+                                        jsonObject.getInt("Sc_lc5"),
+                                        jsonObject.getInt("Sc_lc10"),
+                                        jsonObject.getInt("Sc_sc5")
                                 ));
                             }catch(Exception e){
                                 Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -279,11 +320,11 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick(int position) {
-        ShowMoreDetail(listShow.get(position).getCableId());
+        ShowMoreDetail(position);
     }
-    private void ShowMoreDetail(String title){
+    private void ShowMoreDetail(int position){
         final Dialog dialog = new Dialog(this);
-        dialog.setTitle(title);
+        dialog.setTitle(listShow.get(position).getCableId());
         dialog.setContentView(R.layout.show_more);
         final TextView cable4fo, cable6fo, cable12fo, cable24fo, cable12du, cable24du, odf6, odf12, odf24, odf96,
                 mx6, mx12, mx24, buloongti300, buloongti400, clamp, sc_lc5m, sc_lc10m;
@@ -307,6 +348,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         sc_lc10m = (TextView)dialog.findViewById(R.id.sc_lc10m);
         final Button btnUpdate = (Button)dialog.findViewById(R.id.btnUpdate);
         final Button btnBack = (Button)dialog.findViewById(R.id.btnBack);
+
+        /*======================Get Data Dialog======================*/
+
         dialog.show();
     }
 }
