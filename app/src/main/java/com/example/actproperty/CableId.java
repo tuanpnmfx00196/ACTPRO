@@ -4,18 +4,19 @@ public class CableId {
     private int id;
     private String province;
     private String cableId;
-    private int hanging4fo, hanging6fo, hanging12fo, hanging24, du12fo, odf6fo, odf12fo, odf24fo, odf96fo,
+    private Double hanging12fo;
+    private int hanging4fo, hanging6fo, hanging24fo, du12fo, odf6fo, odf12fo, odf24fo, odf96fo,
     closure6fo, closure12fo, closure24fo, buloong300, buloong400, clamp, poleu8, ironpole6, sc_lc5, sc_lc10,
     sc_sc5;
 
-    public CableId(int id, String province, String cableId, int hanging4fo, int hanging6fo, int hanging12fo, int hanging24, int du12fo, int odf6fo, int odf12fo, int odf24fo, int odf96fo, int closure6fo, int closure12fo, int closure24fo, int buloong300, int buloong400, int clamp, int poleu8, int ironpole6, int sc_lc5, int sc_lc10, int sc_sc5) {
+    public CableId(int id, String province, String cableId, int hanging4fo, int hanging6fo, Double hanging12fo, int hanging24fo, int du12fo, int odf6fo, int odf12fo, int odf24fo, int odf96fo, int closure6fo, int closure12fo, int closure24fo, int buloong300, int buloong400, int clamp, int poleu8, int ironpole6, int sc_lc5, int sc_lc10, int sc_sc5) {
         this.id = id;
         this.province = province;
         this.cableId = cableId;
         this.hanging4fo = hanging4fo;
         this.hanging6fo = hanging6fo;
         this.hanging12fo = hanging12fo;
-        this.hanging24 = hanging24;
+        this.hanging24fo = hanging24fo;
         this.du12fo = du12fo;
         this.odf6fo = odf6fo;
         this.odf12fo = odf12fo;
@@ -74,20 +75,20 @@ public class CableId {
         this.hanging6fo = hanging6fo;
     }
 
-    public int getHanging12fo() {
+    public Double getHanging12fo() {
         return hanging12fo;
     }
 
-    public void setHanging12fo(int hanging12fo) {
+    public void setHanging12fo(Double hanging12fo) {
         this.hanging12fo = hanging12fo;
     }
 
-    public int getHanging24() {
-        return hanging24;
+    public int getHanging24fo() {
+        return hanging24fo;
     }
 
-    public void setHanging24(int hanging24) {
-        this.hanging24 = hanging24;
+    public void setHanging24fo(int hanging24) {
+        this.hanging24fo = hanging24;
     }
 
     public int getDu12fo() {

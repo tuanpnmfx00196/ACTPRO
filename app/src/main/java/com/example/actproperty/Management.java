@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,9 +97,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 jsonObject.getString("CableId"),
                                 jsonObject.getInt("Hanging4fo"),
                                 jsonObject.getInt("Hanging6fo"),
-                                jsonObject.getInt("Hanging12fo"),
+                                jsonObject.getDouble("Hanging12fo"),
                                 jsonObject.getInt("Hanging24fo"),
-                                jsonObject.getInt("Du6fo"),
+                                jsonObject.getInt("Du12fo"),
                                 jsonObject.getInt("Odf6fo"),
                                 jsonObject.getInt("Odf12fo"),
                                 jsonObject.getInt("Odf24fo"),
@@ -155,9 +156,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                         jsonObject.getString("CableId"),
                                         jsonObject.getInt("Hanging4fo"),
                                         jsonObject.getInt("Hanging6fo"),
-                                        jsonObject.getInt("Hanging12fo"),
+                                        jsonObject.getDouble("Hanging12fo"),
                                         jsonObject.getInt("Hanging24fo"),
-                                        jsonObject.getInt("Du6fo"),
+                                        jsonObject.getInt("Du12fo"),
                                         jsonObject.getInt("Odf6fo"),
                                         jsonObject.getInt("Odf12fo"),
                                         jsonObject.getInt("Odf24fo"),
@@ -176,6 +177,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 ));
                             }catch(Exception e){
                                 Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
+
                             }
                         }
                         //Module Search ================================>>>>>>>>>>>>>>>>>
@@ -326,14 +328,16 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         final Dialog dialog = new Dialog(this);
         dialog.setTitle(listShow.get(position).getCableId());
         dialog.setContentView(R.layout.show_more);
-        final TextView cable4fo, cable6fo, cable12fo, cable24fo, cable12du, cable24du, odf6, odf12, odf24, odf96,
+        final TextView cable4fo, cable6fo, cable12fo, cable24fo, cable12du, odf6, odf12, odf24, odf96,
                 mx6, mx12, mx24, buloongti300, buloongti400, clamp, sc_lc5m, sc_lc10m;
+        LinearLayout row4fo, row6fo, row12fo, row24fo, rowdu12fo, rowodf6fo, rowodf12fo, rowodf24fo, rowodf96fo,
+                rowmx6, rowmx12, rowmx24,rowbuloongti300, rowbuloongti400, rowpoleu8, rowironpole6, rowclamp,
+                rowsc_lc5m, rowsc_lc10m,rowsc_sc5m;
         cable4fo = (TextView)dialog.findViewById(R.id.cable4fo);
         cable6fo = (TextView)dialog.findViewById(R.id.cable6fo);
         cable12fo = (TextView)dialog.findViewById(R.id.cable12fo);
         cable24fo = (TextView)dialog.findViewById(R.id.cable24fo);
         cable12du = (TextView)dialog.findViewById(R.id.cable12du);
-        cable24du = (TextView)dialog.findViewById(R.id.cable24du);
         odf6 = (TextView)dialog.findViewById(R.id.odf6);
         odf12 = (TextView)dialog.findViewById(R.id.odf12);
         odf24 = (TextView)dialog.findViewById(R.id.odf24);
@@ -349,8 +353,107 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         final Button btnUpdate = (Button)dialog.findViewById(R.id.btnUpdate);
         final Button btnBack = (Button)dialog.findViewById(R.id.btnBack);
 
-        /*======================Get Data Dialog======================*/
+        //ROW INVISIBLE
+        row4fo = (LinearLayout)dialog.findViewById(R.id.row4fo);
+        row6fo = (LinearLayout)dialog.findViewById(R.id.row6fo);
+        row12fo = (LinearLayout)dialog.findViewById(R.id.row12fo);
+        row24fo = (LinearLayout)dialog.findViewById(R.id.row24fo);
+        rowdu12fo = (LinearLayout)dialog.findViewById(R.id.rowdu12fo);
+        rowodf6fo = (LinearLayout)dialog.findViewById(R.id.rowodf6fo);
+        rowodf12fo = (LinearLayout)dialog.findViewById(R.id.rowodf12fo);
+        rowodf24fo = (LinearLayout)dialog.findViewById(R.id.rowodf24fo);
+        rowodf96fo = (LinearLayout)dialog.findViewById(R.id.rowodf96fo);
+        rowmx6 = (LinearLayout)dialog.findViewById(R.id.rowmx6);
+        rowmx12 = (LinearLayout)dialog.findViewById(R.id.rowmx12);
+        rowmx24 = (LinearLayout)dialog.findViewById(R.id.rowmx24);
+        rowbuloongti300 = (LinearLayout)dialog.findViewById(R.id.rowbuloongti300);
+        rowbuloongti400 = (LinearLayout)dialog.findViewById(R.id.rowbuloongti400);
+        rowpoleu8 = (LinearLayout)dialog.findViewById(R.id.rowpoleu8);
+        rowironpole6 = (LinearLayout)dialog.findViewById(R.id.rowironpole6);
+        rowclamp = (LinearLayout)dialog.findViewById(R.id.rowclamp);
+        rowsc_lc5m = (LinearLayout)dialog.findViewById(R.id.rowsc_lc5m);
+        rowsc_lc10m = (LinearLayout)dialog.findViewById(R.id.rowsc_lc10m);
+        rowsc_sc5m = (LinearLayout)dialog.findViewById(R.id.rowsc_sc5m);
 
+        /*======================Get Data Dialog======================*/
+            if(listShow.get(position).getHanging4fo()!=0){
+                cable4fo.setText(listShow.get(position).getHanging4fo()+"");
+                row4fo.setVisibility(View.VISIBLE);
+            } else{
+                row4fo.setVisibility(View.GONE);
+            }
+            if(listShow.get(position).getHanging6fo()!=0){
+                cable6fo.setText(listShow.get(position).getHanging6fo()+"");
+                row6fo.setVisibility(View.VISIBLE);
+            } else{
+                row6fo.setVisibility(View.GONE);
+            }
+        if(listShow.get(position).getHanging12fo()!=0){
+            cable12fo.setText(listShow.get(position).getHanging12fo()+"");
+            row12fo.setVisibility(View.VISIBLE);
+        } else{
+            row12fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getHanging24fo()!=0){
+            cable24fo.setText(listShow.get(position).getHanging24fo()+"");
+            row24fo.setVisibility(View.VISIBLE);
+        } else{
+            row24fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getDu12fo()!=0){
+            cable12du.setText(listShow.get(position).getDu12fo()+"");
+            rowdu12fo.setVisibility(View.VISIBLE);
+        } else{
+            rowdu12fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf6fo()!=0){
+            odf6.setText(listShow.get(position).getOdf6fo()+"");
+            rowodf6fo.setVisibility(View.VISIBLE);
+        } else{
+            rowodf6fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf12fo()!=0){
+            odf12.setText(listShow.get(position).getOdf12fo()+"");
+            rowodf12fo.setVisibility(View.VISIBLE);
+        } else{
+            rowodf12fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf24fo()!=0){
+            odf24.setText(listShow.get(position).getOdf24fo()+"");
+            rowodf24fo.setVisibility(View.VISIBLE);
+        } else{
+            rowodf24fo.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure6fo()!=0){
+            mx6.setText(listShow.get(position).getClosure6fo()+"");
+            rowmx6.setVisibility(View.VISIBLE);
+        } else{
+            rowmx6.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure12fo()!=0){
+            mx12.setText(listShow.get(position).getClosure12fo()+"");
+            rowmx12.setVisibility(View.VISIBLE);
+        } else{
+            rowmx12.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure24fo()!=0){
+            mx24.setText(listShow.get(position).getClosure24fo()+"");
+            rowmx24.setVisibility(View.VISIBLE);
+        } else{
+            rowmx24.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getBuloong300()!=0){
+            buloongti300.setText(listShow.get(position).getBuloong300()+"");
+            rowbuloongti300.setVisibility(View.VISIBLE);
+        } else{
+            rowbuloongti300.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getBuloong400()!=0){
+            buloongti400.setText(listShow.get(position).getBuloong400()+"");
+            rowbuloongti400.setVisibility(View.VISIBLE);
+        } else{
+            rowbuloongti400.setVisibility(View.GONE);
+        }
         dialog.show();
     }
 }
