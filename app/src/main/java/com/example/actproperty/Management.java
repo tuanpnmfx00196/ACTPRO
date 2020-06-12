@@ -324,58 +324,115 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     public void onClick(int position) {
         ShowMoreDetail(position);
     }
-    private void ShowMoreDetail(int position){
+    private void ShowMoreDetail(final int position){
         final Dialog dialog = new Dialog(this);
         dialog.setTitle(listShow.get(position).getCableId());
         dialog.setContentView(R.layout.show_more);
-        final TextView cable4fo, cable6fo, cable12fo, cable24fo, cable12du, odf6, odf12, odf24, odf96,
-                mx6, mx12, mx24, buloongti300, buloongti400, clamp, sc_lc5m, sc_lc10m;
-        LinearLayout row4fo, row6fo, row12fo, row24fo, rowdu12fo, rowodf6fo, rowodf12fo, rowodf24fo, rowodf96fo,
-                rowmx6, rowmx12, rowmx24,rowbuloongti300, rowbuloongti400, rowpoleu8, rowironpole6, rowclamp,
-                rowsc_lc5m, rowsc_lc10m,rowsc_sc5m;
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
+        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final TextView cable4fo,cable4fo_update, cable6fo,cable6fo_update, cable12fo,cable12fo_update, cable24fo,cable24fo_update,
+                cable12du, cable12du_update, odf6, odf6_update, odf12,odf12_update, odf24, odf24_update, odf96, odf96_update,
+                mx6,mx6_update, mx12,mx12_update, mx24,mx24_update, buloongti300, buloongti300_update, buloongti400, buloongti400_update,
+                poleu8, poleu8_update,  ironpole6, ironpole6_update, clamp, clamp_update, sc_lc5m,sc_lc5m_update,
+                sc_lc10m, sc_lc10m_update, sc_sc5m, sc_sc5m_update, dialogTitle, dialogTitle_update;
+        LinearLayout row4fo, row4fo_update, row6fo, row6fo_update, row12fo, row12fo_update, row24fo, row24fo_update,
+                rowdu12fo,rowdu12fo_update, rowodf6fo, rowodf6fo_update, rowodf12fo, rowodf12fo_update, rowodf24fo, rowodf24fo_update,
+                rowodf96fo, rowodf96fo_update, rowmx6, rowmx6_update, rowmx12,rowmx12_update, rowmx24,rowmx24_update, rowbuloongti300,
+                rowbuloongti300_update, rowbuloongti400, rowbuloongti400_update, rowpoleu8, rowpoleu8_update, rowironpole6, rowironpole6_update,
+                rowclamp,rowclamp_update, rowsc_lc5m, rowsc_lc5m_update, rowsc_lc10m, rowsc_lc10m_update, rowsc_sc5m, rowsc_sc5m_update;
+        dialogTitle= (TextView)dialog.findViewById(R.id.dialogTitle);
+        dialogTitle_update= (TextView)dialog.findViewById(R.id.dialogTitle_update);
         cable4fo = (TextView)dialog.findViewById(R.id.cable4fo);
+        cable4fo_update = (TextView)dialog.findViewById(R.id.cable4fo_update);
         cable6fo = (TextView)dialog.findViewById(R.id.cable6fo);
+        cable6fo_update = (TextView)dialog.findViewById(R.id.cable6fo_update);
         cable12fo = (TextView)dialog.findViewById(R.id.cable12fo);
+        cable12fo_update = (TextView)dialog.findViewById(R.id.cable12fo_update);
         cable24fo = (TextView)dialog.findViewById(R.id.cable24fo);
+        cable24fo_update = (TextView)dialog.findViewById(R.id.cable24fo_update);
         cable12du = (TextView)dialog.findViewById(R.id.cable12du);
+        cable12du_update = (TextView)dialog.findViewById(R.id.cable12du_update);
         odf6 = (TextView)dialog.findViewById(R.id.odf6);
+        odf6_update = (TextView)dialog.findViewById(R.id.odf6_update);
         odf12 = (TextView)dialog.findViewById(R.id.odf12);
+        odf12_update = (TextView)dialog.findViewById(R.id.odf12_update);
         odf24 = (TextView)dialog.findViewById(R.id.odf24);
+        odf24_update = (TextView)dialog.findViewById(R.id.odf24_update);
         odf96 = (TextView)dialog.findViewById(R.id.odf96);
+        odf96_update = (TextView)dialog.findViewById(R.id.odf96_update);
         mx6 = (TextView)dialog.findViewById(R.id.mx6);
+        mx6_update = (TextView)dialog.findViewById(R.id.mx6_update);
         mx12 = (TextView)dialog.findViewById(R.id.mx12);
+        mx12_update = (TextView)dialog.findViewById(R.id.mx12_update);
         mx24 = (TextView)dialog.findViewById(R.id.mx24);
+        mx24_update = (TextView)dialog.findViewById(R.id.mx24_update);
         buloongti300 = (TextView)dialog.findViewById(R.id.buloongti300);
+        buloongti300_update = (TextView)dialog.findViewById(R.id.buloongti300_update);
         buloongti400 = (TextView)dialog.findViewById(R.id.buloongti400);
+        buloongti400_update = (TextView)dialog.findViewById(R.id.buloongti400_update);
+        poleu8 = (TextView) dialog.findViewById(R.id.poleu8);
+        poleu8_update = (TextView) dialog.findViewById(R.id.poleu8_update);
+        ironpole6 = (TextView) dialog.findViewById(R.id.ironpole6);
+        ironpole6_update = (TextView) dialog.findViewById(R.id.ironpole6_update);
         clamp = (TextView)dialog.findViewById(R.id.clamp);
+        clamp_update = (TextView)dialog.findViewById(R.id.clamp_update);
         sc_lc5m = (TextView)dialog.findViewById(R.id.sc_lc5m);
+        sc_lc5m_update = (TextView)dialog.findViewById(R.id.sc_lc5m_update);
         sc_lc10m = (TextView)dialog.findViewById(R.id.sc_lc10m);
+        sc_lc10m_update = (TextView)dialog.findViewById(R.id.sc_lc10m_update);
+        sc_sc5m = (TextView)dialog.findViewById(R.id.sc_sc5m);
+        sc_sc5m_update = (TextView)dialog.findViewById(R.id.sc_sc5m_update);
         final Button btnUpdate = (Button)dialog.findViewById(R.id.btnUpdate);
         final Button btnBack = (Button)dialog.findViewById(R.id.btnBack);
+        final Button btnSaveUpdate = (Button)dialog.findViewById(R.id.btnSaveUpdate);
+        final Button btnCancelUpdate = (Button)dialog.findViewById(R.id.btnCancelUpdate);
+        final LinearLayout showmore = (LinearLayout) dialog.findViewById(R.id.showmore);
+        final LinearLayout showUpdate = (LinearLayout) dialog.findViewById(R.id.showUpdate);
 
         //ROW INVISIBLE
         row4fo = (LinearLayout)dialog.findViewById(R.id.row4fo);
+        row4fo_update = (LinearLayout)dialog.findViewById(R.id.row4fo_update);
         row6fo = (LinearLayout)dialog.findViewById(R.id.row6fo);
+        row6fo_update = (LinearLayout)dialog.findViewById(R.id.row6fo_update);
         row12fo = (LinearLayout)dialog.findViewById(R.id.row12fo);
+        row12fo_update = (LinearLayout)dialog.findViewById(R.id.row12fo_update);
         row24fo = (LinearLayout)dialog.findViewById(R.id.row24fo);
+        row24fo_update = (LinearLayout)dialog.findViewById(R.id.row24fo_update);
         rowdu12fo = (LinearLayout)dialog.findViewById(R.id.rowdu12fo);
+        rowdu12fo_update = (LinearLayout)dialog.findViewById(R.id.rowdu12fo_update);
         rowodf6fo = (LinearLayout)dialog.findViewById(R.id.rowodf6fo);
+        rowodf6fo_update = (LinearLayout)dialog.findViewById(R.id.rowodf6fo_update);
         rowodf12fo = (LinearLayout)dialog.findViewById(R.id.rowodf12fo);
+        rowodf12fo_update = (LinearLayout)dialog.findViewById(R.id.rowodf12fo_update);
         rowodf24fo = (LinearLayout)dialog.findViewById(R.id.rowodf24fo);
+        rowodf24fo_update = (LinearLayout)dialog.findViewById(R.id.rowodf24fo_update);
         rowodf96fo = (LinearLayout)dialog.findViewById(R.id.rowodf96fo);
+        rowodf96fo_update = (LinearLayout)dialog.findViewById(R.id.rowodf96fo_update);
         rowmx6 = (LinearLayout)dialog.findViewById(R.id.rowmx6);
+        rowmx6_update = (LinearLayout)dialog.findViewById(R.id.rowmx6_update);
         rowmx12 = (LinearLayout)dialog.findViewById(R.id.rowmx12);
+        rowmx12_update = (LinearLayout)dialog.findViewById(R.id.rowmx12_update);
         rowmx24 = (LinearLayout)dialog.findViewById(R.id.rowmx24);
+        rowmx24_update = (LinearLayout)dialog.findViewById(R.id.rowmx24_update);
         rowbuloongti300 = (LinearLayout)dialog.findViewById(R.id.rowbuloongti300);
+        rowbuloongti300_update = (LinearLayout)dialog.findViewById(R.id.rowbuloongti300_update);
         rowbuloongti400 = (LinearLayout)dialog.findViewById(R.id.rowbuloongti400);
+        rowbuloongti400_update = (LinearLayout)dialog.findViewById(R.id.rowbuloongti400_update);
         rowpoleu8 = (LinearLayout)dialog.findViewById(R.id.rowpoleu8);
+        rowpoleu8_update = (LinearLayout)dialog.findViewById(R.id.rowpoleu8_update);
         rowironpole6 = (LinearLayout)dialog.findViewById(R.id.rowironpole6);
+        rowironpole6_update = (LinearLayout)dialog.findViewById(R.id.rowironpole6_update);
         rowclamp = (LinearLayout)dialog.findViewById(R.id.rowclamp);
+        rowclamp_update = (LinearLayout)dialog.findViewById(R.id.rowclamp_update);
         rowsc_lc5m = (LinearLayout)dialog.findViewById(R.id.rowsc_lc5m);
+        rowsc_lc5m_update = (LinearLayout)dialog.findViewById(R.id.rowsc_lc5m_update);
         rowsc_lc10m = (LinearLayout)dialog.findViewById(R.id.rowsc_lc10m);
+        rowsc_lc10m_update = (LinearLayout)dialog.findViewById(R.id.rowsc_lc10m_update);
         rowsc_sc5m = (LinearLayout)dialog.findViewById(R.id.rowsc_sc5m);
+        rowsc_sc5m_update = (LinearLayout)dialog.findViewById(R.id.rowsc_sc5m_update);
 
         /*======================Get Data Dialog======================*/
+            dialogTitle.setText(listShow.get(position).getCableId());
             if(listShow.get(position).getHanging4fo()!=0){
                 cable4fo.setText(listShow.get(position).getHanging4fo()+"");
                 row4fo.setVisibility(View.VISIBLE);
@@ -424,6 +481,12 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         } else{
             rowodf24fo.setVisibility(View.GONE);
         }
+        if(listShow.get(position).getOdf96fo()!=0){
+            odf96.setText(listShow.get(position).getOdf96fo()+"");
+            rowodf96fo.setVisibility(View.VISIBLE);
+        } else{
+            rowodf24fo.setVisibility(View.GONE);
+        }
         if(listShow.get(position).getClosure6fo()!=0){
             mx6.setText(listShow.get(position).getClosure6fo()+"");
             rowmx6.setVisibility(View.VISIBLE);
@@ -454,6 +517,194 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         } else{
             rowbuloongti400.setVisibility(View.GONE);
         }
+        if(listShow.get(position).getClamp()!=0){
+            clamp.setText(listShow.get(position).getClamp()+"");
+            rowclamp.setVisibility(View.VISIBLE);
+        } else{
+            rowclamp.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getPoleu8()!=0){
+            poleu8.setText(listShow.get(position).getPoleu8()+"");
+            rowpoleu8.setVisibility(View.VISIBLE);
+        } else{
+            rowpoleu8.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getIronpole6()!=0){
+            ironpole6.setText(listShow.get(position).getIronpole6()+"");
+            rowironpole6.setVisibility(View.VISIBLE);
+        } else{
+            rowironpole6.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_lc5()!=0){
+            sc_lc5m.setText(listShow.get(position).getSc_lc5()+"");
+            rowsc_lc5m.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_lc5m.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_lc10()!=0){
+            sc_lc10m.setText(listShow.get(position).getSc_lc5()+"");
+            rowsc_lc10m.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_lc10m.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_sc5()!=0){
+            sc_sc5m.setText(listShow.get(position).getSc_sc5()+"");
+            rowsc_sc5m.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_sc5m.setVisibility(View.GONE);
+        }
+
+        /*====================== DIALOG UPDATE ========================*/
+
+        if(listShow.get(position).getHanging4fo()!=0){
+            cable4fo_update.setText(listShow.get(position).getHanging4fo()+"");
+            row4fo_update.setVisibility(View.VISIBLE);
+        } else{
+            row4fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getHanging6fo()!=0){
+            cable6fo_update.setText(listShow.get(position).getHanging6fo()+"");
+            row6fo_update.setVisibility(View.VISIBLE);
+        } else{
+            row6fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getHanging12fo()!=0){
+            cable12fo_update.setText(listShow.get(position).getHanging12fo()+"");
+            row12fo_update.setVisibility(View.VISIBLE);
+        } else{
+            row12fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getHanging24fo()!=0){
+            cable24fo_update.setText(listShow.get(position).getHanging24fo()+"");
+            row24fo_update.setVisibility(View.VISIBLE);
+        } else{
+            row24fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getDu12fo()!=0){
+            cable12du_update.setText(listShow.get(position).getDu12fo()+"");
+            rowdu12fo_update.setVisibility(View.VISIBLE);
+        } else{
+            rowdu12fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf6fo()!=0){
+            odf6_update.setText(listShow.get(position).getOdf6fo()+"");
+            rowodf6fo_update.setVisibility(View.VISIBLE);
+        } else{
+            rowodf6fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf12fo()!=0){
+            odf12_update.setText(listShow.get(position).getOdf12fo()+"");
+            rowodf12fo_update.setVisibility(View.VISIBLE);
+        } else{
+            rowodf12fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf24fo()!=0){
+            odf24_update.setText(listShow.get(position).getOdf24fo()+"");
+            rowodf24fo_update.setVisibility(View.VISIBLE);
+        } else{
+            rowodf24fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getOdf96fo()!=0){
+            odf96_update.setText(listShow.get(position).getOdf96fo()+"");
+            rowodf96fo_update.setVisibility(View.VISIBLE);
+        } else{
+            rowodf24fo_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure6fo()!=0){
+            mx6_update.setText(listShow.get(position).getClosure6fo()+"");
+            rowmx6_update.setVisibility(View.VISIBLE);
+        } else{
+            rowmx6_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure12fo()!=0){
+            mx12_update.setText(listShow.get(position).getClosure12fo()+"");
+            rowmx12_update.setVisibility(View.VISIBLE);
+        } else{
+            rowmx12_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClosure24fo()!=0){
+            mx24_update.setText(listShow.get(position).getClosure24fo()+"");
+            rowmx24_update.setVisibility(View.VISIBLE);
+        } else{
+            rowmx24_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getBuloong300()!=0){
+            buloongti300_update.setText(listShow.get(position).getBuloong300()+"");
+            rowbuloongti300_update.setVisibility(View.VISIBLE);
+        } else{
+            rowbuloongti300_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getBuloong400()!=0){
+            buloongti400_update.setText(listShow.get(position).getBuloong400()+"");
+            rowbuloongti400_update.setVisibility(View.VISIBLE);
+        } else{
+            rowbuloongti400_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getClamp()!=0){
+            clamp_update.setText(listShow.get(position).getClamp()+"");
+            rowclamp_update.setVisibility(View.VISIBLE);
+        } else{
+            rowclamp_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getPoleu8()!=0){
+            poleu8_update.setText(listShow.get(position).getPoleu8()+"");
+            rowpoleu8_update.setVisibility(View.VISIBLE);
+        } else{
+            rowpoleu8_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getIronpole6()!=0){
+            ironpole6_update.setText(listShow.get(position).getIronpole6()+"");
+            rowironpole6_update.setVisibility(View.VISIBLE);
+        } else{
+            rowironpole6_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_lc5()!=0){
+            sc_lc5m_update.setText(listShow.get(position).getSc_lc5()+"");
+            rowsc_lc5m_update.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_lc5m_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_lc10()!=0){
+            sc_lc10m_update.setText(listShow.get(position).getSc_lc5()+"");
+            rowsc_lc10m_update.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_lc10m_update.setVisibility(View.GONE);
+        }
+        if(listShow.get(position).getSc_sc5()!=0){
+            sc_sc5m_update.setText(listShow.get(position).getSc_sc5()+"");
+            rowsc_sc5m_update.setVisibility(View.VISIBLE);
+        } else{
+            rowsc_sc5m_update.setVisibility(View.GONE);
+        }
+
         dialog.show();
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showmore.setVisibility(View.GONE);
+                dialogTitle_update.setText(listShow.get(position).getCableId());
+                showUpdate.setVisibility(View.VISIBLE);
+            }
+        });
+        btnSaveUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btnCancelUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showUpdate.setVisibility(View.GONE);
+                showmore.setVisibility(View.VISIBLE);
+            }
+        });
     }
+
 }
