@@ -16,11 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
@@ -29,6 +31,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
 public class Management extends AppCompatActivity implements OnItemClickRecyclerView {
@@ -335,6 +339,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 mx6,mx6_update, mx12,mx12_update, mx24,mx24_update, buloongti300, buloongti300_update, buloongti400, buloongti400_update,
                 poleu8, poleu8_update,  ironpole6, ironpole6_update, clamp, clamp_update, sc_lc5m,sc_lc5m_update,
                 sc_lc10m, sc_lc10m_update, sc_sc5m, sc_sc5m_update, dialogTitle, dialogTitle_update;
+        final EditText cable4fo_edit, cable6fo_edit, cable12fo_edit, cable24fo_edit, cable12du_edit, odf6fo_edit,
+                odf12fo_edit, odf24fo_edit, odf96fo_edit, mx6_edit, mx12_edit, mx24_edit, buloong300_edit, buloong400_edit,
+                clamp_edit, poleu8_edit, ironpole6_edit, sc_lc5_edit, sc_lc10_edit, sc_sc5_edit;
         LinearLayout row4fo, row4fo_update, row6fo, row6fo_update, row12fo, row12fo_update, row24fo, row24fo_update,
                 rowdu12fo,rowdu12fo_update, rowodf6fo, rowodf6fo_update, rowodf12fo, rowodf12fo_update, rowodf24fo, rowodf24fo_update,
                 rowodf96fo, rowodf96fo_update, rowmx6, rowmx6_update, rowmx12,rowmx12_update, rowmx24,rowmx24_update, rowbuloongti300,
@@ -431,6 +438,28 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         rowsc_sc5m = (LinearLayout)dialog.findViewById(R.id.rowsc_sc5m);
         rowsc_sc5m_update = (LinearLayout)dialog.findViewById(R.id.rowsc_sc5m_update);
 
+        /*======================EDIT CABLE============================*/
+
+        cable4fo_edit = (EditText) dialog.findViewById(R.id.cable4fo_edit);
+        cable6fo_edit = (EditText) dialog.findViewById(R.id.cable6fo_edit);
+        cable12fo_edit = (EditText) dialog.findViewById(R.id.cable12fo_edit);
+        cable24fo_edit = (EditText) dialog.findViewById(R.id.cable24fo_edit);
+        cable12du_edit = (EditText) dialog.findViewById(R.id.cable12du_edit);
+        odf6fo_edit = (EditText)dialog.findViewById(R.id.odf6_edit);
+        odf12fo_edit = (EditText)dialog.findViewById(R.id.odf12_edit);
+        odf24fo_edit = (EditText)dialog.findViewById(R.id.cable24fo_edit);
+        odf96fo_edit = (EditText) dialog.findViewById(R.id.odf96_edit);
+        mx6_edit = (EditText) dialog.findViewById(R.id.mx6_edit);
+        mx12_edit = (EditText) dialog.findViewById(R.id.mx12_edit);
+        mx24_edit = (EditText) dialog.findViewById(R.id.mx24_edit);
+        clamp_edit = (EditText) dialog.findViewById(R.id.clamp_edit);
+        poleu8_edit = (EditText) dialog.findViewById(R.id.poleu8_edit);
+        ironpole6_edit = (EditText) dialog.findViewById(R.id.ironpole6_edit);
+        buloong300_edit = (EditText) dialog.findViewById(R.id.buloongti300_edit);
+        buloong400_edit = (EditText) dialog.findViewById(R.id.buloongti400_edit);
+        sc_lc5_edit = (EditText) dialog.findViewById(R.id.sc_lc5m_edit);
+        sc_lc10_edit = (EditText) dialog.findViewById(R.id.sc_lc10m_edit);
+        sc_sc5_edit = (EditText) dialog.findViewById(R.id.sc_sc5m_edit);
         /*======================Get Data Dialog======================*/
             dialogTitle.setText(listShow.get(position).getCableId());
             if(listShow.get(position).getHanging4fo()!=0){
@@ -695,7 +724,11 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         btnSaveUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UpdateSQL("https://sqlandroid2812.000webhostapp.com/update.php", position,0,0,372, 0,
+                        0,0,2,0,0,0,0,0,0,0,
+                        5,0,0,0,0,0
 
+                       );
             }
         });
         btnCancelUpdate.setOnClickListener(new View.OnClickListener() {
@@ -705,6 +738,154 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 showmore.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void UpdateSQL(String url, final int position, final int hanging4fo, final int hanging6fo,
+                           final int hanging12fo, final int hanging24fo, final int du12fo, final int odf6fo, final int odf12fo,
+                           final int odf24fo, final int odf96fo, final int closure6fo, final int closure12fo, final int closure24fo,
+                           final int buloong300, final int buloong400, final int clamp, final int poleu8, final int ironpole6,
+                           final int sc_lc5, final int sc_lc10, final int sc_sc5
+                           ){
+         final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        )
+        {
+            @Override
+            protected Map <String, String> getParams() throws AuthFailureError{
+               Map <String, String> params = new HashMap<>();
+               params.put("ID",String.valueOf(listShow.get(position).getId()));
+               if (hanging4fo !=0){
+                   params.put("Hanging4fo", String.valueOf(hanging4fo));
+               }else{
+                   params.put("Hanging4fo", String.valueOf(0));
+               }
+
+               if(hanging6fo !=0){
+                   params.put("Hanging6fo", String.valueOf(hanging6fo));
+               }else{
+                   params.put("Hanging6fo", String.valueOf(0));
+               }
+
+                if(hanging12fo !=0){
+                    params.put("Hanging12fo", String.valueOf(hanging12fo));
+                }else{
+                    params.put("Hanging12fo", String.valueOf(0));
+                }
+
+                if(hanging24fo !=0){
+                    params.put("Hanging24fo", String.valueOf(hanging24fo));
+                }else{
+                    params.put("Hanging24fo", String.valueOf(0));
+                }
+                if(du12fo !=0){
+                    params.put("Du12fo", String.valueOf(du12fo));
+                }else{
+                    params.put("Du12fo", String.valueOf(0));
+                }
+
+                if(odf6fo !=0){
+                    params.put("Odf6fo", String.valueOf(odf6fo));
+                }else{
+                    params.put("Odf6fo", String.valueOf(0));
+                }
+
+                if(odf12fo !=0){
+                    params.put("Odf12fo", String.valueOf(odf12fo));
+                }else{
+                    params.put("Odf12fo", String.valueOf(0));
+                }
+
+                if(odf24fo !=0){
+                    params.put("Odf24fo", String.valueOf(odf24fo));
+                }else{
+                    params.put("Odf24fo", String.valueOf(0));
+                }
+
+                if(odf96fo !=0){
+                    params.put("Odf96fo", String.valueOf(odf96fo));
+                }else{
+                    params.put("Odf96fo", String.valueOf(0));
+                }
+
+                if(closure6fo !=0){
+                    params.put("Closure6fo", String.valueOf(closure6fo));
+                }else{
+                    params.put("Closure6fo", String.valueOf(0));
+                }
+
+                if(closure12fo !=0){
+                    params.put("Closure12fo", String.valueOf(closure12fo));
+                }else{
+                    params.put("Closure12fo", String.valueOf(0));
+                }
+
+                if(closure24fo !=0){
+                    params.put("Closure24fo", String.valueOf(closure24fo));
+                }else{
+                    params.put("Closure24fo", String.valueOf(0));
+                }
+
+                if(buloong300 !=0){
+                    params.put("Buloong300", String.valueOf(buloong300));
+                }else{
+                    params.put("Buloong300", String.valueOf(0));
+                }
+
+                if(buloong400 !=0){
+                    params.put("Buloong400", String.valueOf(buloong400));
+                }else{
+                    params.put("Buloong400", String.valueOf(0));
+                }
+
+                if(clamp !=0){
+                    params.put("Clamp", String.valueOf(clamp));
+                }else{
+                    params.put("Clamp", String.valueOf(0));
+                }
+
+                if(poleu8 !=0){
+                    params.put("Poleu8", String.valueOf(poleu8));
+                }else{
+                    params.put("Poleu8", String.valueOf(0));
+                }
+
+                if(ironpole6 !=0){
+                    params.put("Ironpole6", String.valueOf(ironpole6));
+                }else{
+                    params.put("Ironpole6", String.valueOf(0));
+                }
+
+                if(sc_lc5 !=0){
+                    params.put("Sc_lc5", String.valueOf(sc_lc5));
+                }else{
+                    params.put("Sc_lc5", String.valueOf(0));
+                }
+
+                if(sc_lc10 !=0){
+                    params.put("Sc_lc10", String.valueOf(sc_lc10));
+                }else{
+                    params.put("Sc_lc10", String.valueOf(0));
+                }
+
+                if(sc_sc5 !=0){
+                    params.put("Sc_sc5", String.valueOf(sc_sc5));
+                }else{
+                    params.put("Sc_sc5", String.valueOf(0));
+                }
+               return params;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
 }
