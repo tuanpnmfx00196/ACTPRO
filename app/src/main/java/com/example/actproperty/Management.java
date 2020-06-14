@@ -587,120 +587,140 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
         if(listShow.get(position).getHanging4fo()!=0){
             cable4fo_update.setText(listShow.get(position).getHanging4fo()+"");
+            cable4fo_edit.setText(listShow.get(position).getHanging4fo()+"");
             row4fo_update.setVisibility(View.VISIBLE);
         } else{
             row4fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging6fo()!=0){
             cable6fo_update.setText(listShow.get(position).getHanging6fo()+"");
+            cable6fo_edit.setText(listShow.get(position).getHanging6fo()+"");
             row6fo_update.setVisibility(View.VISIBLE);
         } else{
             row6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging12fo()!=0){
             cable12fo_update.setText(listShow.get(position).getHanging12fo()+"");
+            cable12fo_edit.setText(listShow.get(position).getHanging12fo()+"");
             row12fo_update.setVisibility(View.VISIBLE);
         } else{
             row12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging24fo()!=0){
             cable24fo_update.setText(listShow.get(position).getHanging24fo()+"");
+            cable24fo_edit.setText(listShow.get(position).getHanging24fo()+"");
             row24fo_update.setVisibility(View.VISIBLE);
         } else{
             row24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getDu12fo()!=0){
             cable12du_update.setText(listShow.get(position).getDu12fo()+"");
+            cable12du_edit.setText(listShow.get(position).getDu12fo()+"");
             rowdu12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowdu12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf6fo()!=0){
             odf6_update.setText(listShow.get(position).getOdf6fo()+"");
+            odf6fo_edit.setText(listShow.get(position).getOdf6fo()+"");
             rowodf6fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf12fo()!=0){
             odf12_update.setText(listShow.get(position).getOdf12fo()+"");
+            odf12fo_edit.setText(listShow.get(position).getOdf12fo()+"");
             rowodf12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf24fo()!=0){
             odf24_update.setText(listShow.get(position).getOdf24fo()+"");
+            odf24fo_edit.setText(listShow.get(position).getOdf24fo()+"");
             rowodf24fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf96fo()!=0){
             odf96_update.setText(listShow.get(position).getOdf96fo()+"");
+            odf96fo_edit.setText(listShow.get(position).getOdf96fo()+"");
             rowodf96fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure6fo()!=0){
             mx6_update.setText(listShow.get(position).getClosure6fo()+"");
+            mx6_edit.setText(listShow.get(position).getClosure6fo()+"");
             rowmx6_update.setVisibility(View.VISIBLE);
         } else{
             rowmx6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure12fo()!=0){
             mx12_update.setText(listShow.get(position).getClosure12fo()+"");
+            mx12_edit.setText(listShow.get(position).getClosure12fo()+"");
             rowmx12_update.setVisibility(View.VISIBLE);
         } else{
             rowmx12_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure24fo()!=0){
             mx24_update.setText(listShow.get(position).getClosure24fo()+"");
+            mx24_edit.setText(listShow.get(position).getClosure24fo()+"");
             rowmx24_update.setVisibility(View.VISIBLE);
         } else{
             rowmx24_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong300()!=0){
             buloongti300_update.setText(listShow.get(position).getBuloong300()+"");
+            buloong300_edit.setText(listShow.get(position).getBuloong300()+"");
             rowbuloongti300_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti300_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong400()!=0){
             buloongti400_update.setText(listShow.get(position).getBuloong400()+"");
+            buloong400_edit.setText(listShow.get(position).getBuloong400()+"");
             rowbuloongti400_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti400_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClamp()!=0){
             clamp_update.setText(listShow.get(position).getClamp()+"");
+            clamp_edit.setText(listShow.get(position).getClamp()+"");
             rowclamp_update.setVisibility(View.VISIBLE);
         } else{
             rowclamp_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getPoleu8()!=0){
             poleu8_update.setText(listShow.get(position).getPoleu8()+"");
+            poleu8_edit.setText(listShow.get(position).getPoleu8()+"");
             rowpoleu8_update.setVisibility(View.VISIBLE);
         } else{
             rowpoleu8_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getIronpole6()!=0){
             ironpole6_update.setText(listShow.get(position).getIronpole6()+"");
+            ironpole6_edit.setText(listShow.get(position).getIronpole6()+"");
             rowironpole6_update.setVisibility(View.VISIBLE);
         } else{
             rowironpole6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc5()!=0){
             sc_lc5m_update.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc5_edit.setText(listShow.get(position).getSc_lc5()+"");
             rowsc_lc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc5m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc10()!=0){
             sc_lc10m_update.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc10_edit.setText(listShow.get(position).getSc_lc5()+"");
             rowsc_lc10m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc10m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_sc5()!=0){
             sc_sc5m_update.setText(listShow.get(position).getSc_sc5()+"");
+            sc_sc5_edit.setText(listShow.get(position).getSc_sc5()+"");
             rowsc_sc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_sc5m_update.setVisibility(View.GONE);
@@ -724,11 +744,118 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         btnSaveUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateSQL("https://sqlandroid2812.000webhostapp.com/update.php", position,0,0,372, 0,
-                        0,0,2,0,0,0,0,0,0,0,
-                        5,0,0,0,0,0
-
+                int edt4fo, edt6fo, edt12fo, edt24fo, edt12du, edtodf6fo, edtodf12fo, edtodf24fo, edtodf96fo,
+                        edtmx6, edtmx12, edtmx24, edtbl300, edtbl400, edtclamp,edtpoleu8, edtironpole6, edtsclc5, edtsclc10, edtscsc5;
+                if(listShow.get(position).getHanging4fo()!=0){
+                    edt4fo = Integer.parseInt(cable4fo_edit.getText().toString());
+                } else{
+                    edt4fo =0;
+                }
+                if(listShow.get(position).getHanging6fo()!=0){
+                    edt6fo = Integer.parseInt(cable6fo_edit.getText().toString());
+                } else{
+                    edt6fo=0;
+                }
+                if(listShow.get(position).getHanging12fo()!=0){
+                    edt12fo = Integer.parseInt(cable12fo_edit.getText().toString());
+                } else{
+                    edt12fo=0;
+                }
+                if(listShow.get(position).getHanging24fo()!=0){
+                    edt24fo = Integer.parseInt(cable24fo_edit.getText().toString());
+                } else{
+                    edt24fo=0;
+                }
+                if(listShow.get(position).getDu12fo()!=0){
+                    edt12du = Integer.parseInt(cable12du_edit.getText().toString());
+                } else{
+                    edt12du=0;
+                }
+                if(listShow.get(position).getOdf6fo()!=0){
+                    edtodf6fo = Integer.parseInt(odf6fo_edit.getText().toString());
+                } else{
+                    edtodf6fo=0;
+                }
+                if(listShow.get(position).getOdf12fo()!=0){
+                    edtodf12fo = Integer.parseInt(odf12fo_edit.getText().toString());
+                } else{
+                    edtodf12fo=0;
+                }
+                if(listShow.get(position).getOdf24fo()!=0){
+                    edtodf24fo = Integer.parseInt(odf24fo_edit.getText().toString());
+                } else{
+                    edtodf24fo=0;
+                }
+                if(listShow.get(position).getOdf96fo()!=0){
+                    edtodf96fo = Integer.parseInt(odf96fo_edit.getText().toString());
+                } else{
+                    edtodf96fo=0;
+                }
+                if(listShow.get(position).getClosure6fo()!=0){
+                    edtmx6 = Integer.parseInt(mx6_edit.getText().toString());
+                } else{
+                    edtmx6=0;
+                }
+                if(listShow.get(position).getClosure12fo()!=0){
+                    edtmx12 = Integer.parseInt(mx12_edit.getText().toString());
+                } else{
+                    edtmx12=0;
+                }
+                if(listShow.get(position).getClosure24fo()!=0){
+                    edtmx24 = Integer.parseInt(mx24_edit.getText().toString());
+                } else{
+                    edtmx24=0;
+                }
+                if(listShow.get(position).getBuloong300()!=0){
+                    edtbl300 = Integer.parseInt(buloong300_edit.getText().toString());
+                } else{
+                    edtbl300=0;
+                }
+                if(listShow.get(position).getBuloong400()!=0){
+                    edtbl400 = Integer.parseInt(buloong400_edit.getText().toString());
+                } else{
+                    edtbl400=0;
+                }
+                if(listShow.get(position).getClamp()!=0){
+                    edtclamp = Integer.parseInt(clamp_edit.getText().toString());
+                } else{
+                    edtclamp=0;
+                }
+                if(listShow.get(position).getPoleu8()!=0){
+                    edtpoleu8 = Integer.parseInt(poleu8_edit.getText().toString());
+                } else{
+                    edtpoleu8=0;
+                }
+                if(listShow.get(position).getIronpole6()!=0){
+                    edtironpole6 = Integer.parseInt(ironpole6_edit.getText().toString());
+                } else{
+                    edtironpole6=0;
+                }
+                if(listShow.get(position).getSc_lc5()!=0){
+                    edtsclc5 = Integer.parseInt(sc_lc5_edit.getText().toString());
+                } else{
+                    edtsclc5=0;
+                }
+                if(listShow.get(position).getSc_lc10()!=0){
+                    edtsclc10 = Integer.parseInt(sc_lc10_edit.getText().toString());
+                } else{
+                    edtsclc10=0;
+                }
+                if(listShow.get(position).getSc_sc5()!=0){
+                    edtscsc5 = Integer.parseInt(sc_sc5_edit.getText().toString());
+                } else{
+                    edtscsc5=0;
+                }
+                UpdateSQL("https://sqlandroid2812.000webhostapp.com/update.php", position,
+                        edt4fo,edt6fo,edt12fo,edt24fo,edt12du,edtodf6fo,edtodf12fo,edtodf24fo,
+                        edtodf96fo,edtmx6,edtmx12,edtmx24,
+                        edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
+                        edtsclc10, edtscsc5
                        );
+                adapter.notifyDataSetChanged();
+                Intent intent = new Intent(Management.this, DashBoard.class);
+                intent.putExtra("Account", listUser);
+                startActivity(intent);
             }
         });
         btnCancelUpdate.setOnClickListener(new View.OnClickListener() {
@@ -741,7 +868,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     }
 
     private void UpdateSQL(String url, final int position, final int hanging4fo, final int hanging6fo,
-                           final int hanging12fo, final int hanging24fo, final int du12fo, final int odf6fo, final int odf12fo,
+                           final int hanging12fo , final int hanging24fo, final int du12fo, final int odf6fo, final int odf12fo,
                            final int odf24fo, final int odf96fo, final int closure6fo, final int closure12fo, final int closure24fo,
                            final int buloong300, final int buloong400, final int clamp, final int poleu8, final int ironpole6,
                            final int sc_lc5, final int sc_lc10, final int sc_sc5
@@ -755,7 +882,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         )
@@ -764,120 +891,120 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             protected Map <String, String> getParams() throws AuthFailureError{
                Map <String, String> params = new HashMap<>();
                params.put("ID",String.valueOf(listShow.get(position).getId()));
-               if (hanging4fo !=0){
+               if (hanging4fo > 0){
                    params.put("Hanging4fo", String.valueOf(hanging4fo));
                }else{
                    params.put("Hanging4fo", String.valueOf(0));
                }
 
-               if(hanging6fo !=0){
+               if(hanging6fo > 0){
                    params.put("Hanging6fo", String.valueOf(hanging6fo));
                }else{
                    params.put("Hanging6fo", String.valueOf(0));
                }
 
-                if(hanging12fo !=0){
+                if(hanging12fo > 0){
                     params.put("Hanging12fo", String.valueOf(hanging12fo));
                 }else{
                     params.put("Hanging12fo", String.valueOf(0));
                 }
 
-                if(hanging24fo !=0){
+                if(hanging24fo > 0){
                     params.put("Hanging24fo", String.valueOf(hanging24fo));
                 }else{
                     params.put("Hanging24fo", String.valueOf(0));
                 }
-                if(du12fo !=0){
+                if(du12fo > 0){
                     params.put("Du12fo", String.valueOf(du12fo));
                 }else{
                     params.put("Du12fo", String.valueOf(0));
                 }
 
-                if(odf6fo !=0){
+                if(odf6fo > 0){
                     params.put("Odf6fo", String.valueOf(odf6fo));
                 }else{
                     params.put("Odf6fo", String.valueOf(0));
                 }
 
-                if(odf12fo !=0){
+                if(odf12fo > 0){
                     params.put("Odf12fo", String.valueOf(odf12fo));
                 }else{
                     params.put("Odf12fo", String.valueOf(0));
                 }
 
-                if(odf24fo !=0){
+                if(odf24fo > 0){
                     params.put("Odf24fo", String.valueOf(odf24fo));
                 }else{
                     params.put("Odf24fo", String.valueOf(0));
                 }
 
-                if(odf96fo !=0){
+                if(odf96fo > 0){
                     params.put("Odf96fo", String.valueOf(odf96fo));
                 }else{
                     params.put("Odf96fo", String.valueOf(0));
                 }
 
-                if(closure6fo !=0){
+                if(closure6fo > 0){
                     params.put("Closure6fo", String.valueOf(closure6fo));
                 }else{
                     params.put("Closure6fo", String.valueOf(0));
                 }
 
-                if(closure12fo !=0){
+                if(closure12fo > 0){
                     params.put("Closure12fo", String.valueOf(closure12fo));
                 }else{
                     params.put("Closure12fo", String.valueOf(0));
                 }
 
-                if(closure24fo !=0){
+                if(closure24fo > 0){
                     params.put("Closure24fo", String.valueOf(closure24fo));
                 }else{
                     params.put("Closure24fo", String.valueOf(0));
                 }
 
-                if(buloong300 !=0){
+                if(buloong300 > 0){
                     params.put("Buloong300", String.valueOf(buloong300));
                 }else{
                     params.put("Buloong300", String.valueOf(0));
                 }
 
-                if(buloong400 !=0){
+                if(buloong400 > 0){
                     params.put("Buloong400", String.valueOf(buloong400));
                 }else{
                     params.put("Buloong400", String.valueOf(0));
                 }
 
-                if(clamp !=0){
+                if(clamp > 0){
                     params.put("Clamp", String.valueOf(clamp));
                 }else{
                     params.put("Clamp", String.valueOf(0));
                 }
 
-                if(poleu8 !=0){
+                if(poleu8 > 0){
                     params.put("Poleu8", String.valueOf(poleu8));
                 }else{
                     params.put("Poleu8", String.valueOf(0));
                 }
 
-                if(ironpole6 !=0){
+                if(ironpole6 > 0){
                     params.put("Ironpole6", String.valueOf(ironpole6));
                 }else{
                     params.put("Ironpole6", String.valueOf(0));
                 }
 
-                if(sc_lc5 !=0){
+                if(sc_lc5 > 0){
                     params.put("Sc_lc5", String.valueOf(sc_lc5));
                 }else{
                     params.put("Sc_lc5", String.valueOf(0));
                 }
 
-                if(sc_lc10 !=0){
+                if(sc_lc10 > 0){
                     params.put("Sc_lc10", String.valueOf(sc_lc10));
                 }else{
                     params.put("Sc_lc10", String.valueOf(0));
                 }
 
-                if(sc_sc5 !=0){
+                if(sc_sc5 >0){
                     params.put("Sc_sc5", String.valueOf(sc_sc5));
                 }else{
                     params.put("Sc_sc5", String.valueOf(0));
