@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -68,6 +69,11 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             public void onClick(View v) {
                 frameContain.setVisibility(View.VISIBLE);
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(frameContain.getApplicationWindowToken(), 0);
+                searchCableId.clearFocus();
+                searchLocal.clearFocus();
                 ReadJsonSeach("https://sqlandroid2812.000webhostapp.com/getdata.php");
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
@@ -80,7 +86,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    frameContain.setVisibility(View.INVISIBLE);
+                    frameContain.setVisibility(View.GONE);
+                }
+            }
+        });
+        searchCableId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    frameContain.setVisibility(View.GONE);
                 }
             }
         });
@@ -101,7 +115,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 jsonObject.getString("CableId"),
                                 jsonObject.getInt("Hanging4fo"),
                                 jsonObject.getInt("Hanging6fo"),
-                                jsonObject.getDouble("Hanging12fo"),
+                                jsonObject.getInt("Hanging12fo"),
                                 jsonObject.getInt("Hanging24fo"),
                                 jsonObject.getInt("Du12fo"),
                                 jsonObject.getInt("Odf6fo"),
@@ -160,7 +174,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                         jsonObject.getString("CableId"),
                                         jsonObject.getInt("Hanging4fo"),
                                         jsonObject.getInt("Hanging6fo"),
-                                        jsonObject.getDouble("Hanging12fo"),
+                                        jsonObject.getInt("Hanging12fo"),
                                         jsonObject.getInt("Hanging24fo"),
                                         jsonObject.getInt("Du12fo"),
                                         jsonObject.getInt("Odf6fo"),

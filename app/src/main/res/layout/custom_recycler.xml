@@ -13,11 +13,11 @@
         android:layout_height="0dp">
         <TextView
             android:layout_margin="3dp"
-            android:textColor="#FF9100"
+            android:textColor="#FFF"
             android:textSize="12sp"
             android:textAlignment="center"
             android:gravity="center"
-            android:background="#4303A9F4"
+            android:background="#CE0323F4"
             android:id="@+id/txtLocal"
             android:layout_weight="4"
             android:layout_width="0dp"
@@ -25,11 +25,11 @@
         </TextView>
         <TextView
             android:layout_margin="3dp"
-            android:textColor="#FF9100"
+            android:textColor="#FFF"
             android:textSize="14sp"
             android:textAlignment="center"
             android:gravity="center"
-            android:background="#4303A9F4"
+            android:background="#CE0323F4"
             android:id="@+id/idRoute"
             android:layout_weight="8"
             android:layout_width="0dp"
