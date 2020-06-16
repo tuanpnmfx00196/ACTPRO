@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".inventory.Inventory"></activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".DashBoard"
-            ></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Management" />
         <activity android:name=".MainActivity">
             <intent-filter>

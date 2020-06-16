@@ -15,11 +15,13 @@
 <LinearLayout
     android:layout_marginBottom="3dp"
     android:gravity="center"
-    android:backgroundTint="#C35504"
+    android:backgroundTint="#0091EA"
     android:background="@drawable/radius1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
+        android:textColor="#FFF"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:id="@+id/dialogTitle"
         android:padding="3dp"
@@ -909,20 +911,27 @@
         android:layout_height="match_parent"/>
 </LinearLayout>
 <LinearLayout
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal"
+    android:weightSum="12"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
     <Button
         android:backgroundTint="@color/colorAccent"
         android:background="@drawable/radius1"
         android:id="@+id/btnUpdate"
         android:textAllCaps="false"
         android:text="Update"
-        android:layout_weight="4.2"
+        android:layout_weight="3"
         android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </Button>
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <Button
@@ -931,7 +940,7 @@
         android:id="@+id/btnBack"
         android:textAllCaps="false"
         android:text="Back"
-        android:layout_weight="4.2"
+        android:layout_weight="3"
         android:layout_width="0dp"
         android:layout_height="match_parent">
     </Button>
@@ -939,7 +948,7 @@
 </LinearLayout>
 <!--ROW UPDATE, DISPLAY WHEN CLICK BTN UPDATE-->
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/showUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -947,11 +956,13 @@
         <LinearLayout
             android:layout_marginBottom="3dp"
             android:gravity="center"
-            android:backgroundTint="#C35504"
+            android:backgroundTint="#0091EA"
             android:background="@drawable/radius1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="#FFF"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:id="@+id/dialogTitle_update"
                 android:padding="3dp"
@@ -2166,20 +2177,24 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
-        <TextView
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textColor="#000DFF"
-            android:text="Lý do cập nhật"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <EditText
-            android:textColor="#000DFF"
-            android:backgroundTint="#C6C6C6"
-            android:background="@drawable/radius1"
-            android:id="@+id/commentUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:textColor="#1707FA"
+                android:text="Lý do thay đổi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+            <EditText
+                android:id="@+id/commentEdit"
+                android:backgroundTint="#DADADA"
+                android:background="@drawable/radius1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+            </EditText>
         <LinearLayout
             android:padding="10dp"
             android:orientation="horizontal"

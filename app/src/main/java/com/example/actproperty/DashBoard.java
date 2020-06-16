@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
 
 import java.util.ArrayList;
@@ -31,8 +32,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DashBoard extends AppCompatActivity {
-    Button btnCableId;
-    ImageButton btnImgCableId;
+    Button btnCableId, btnInventory;
+    ImageButton btnImgCableId, imgBtnInventory;
     ArrayList<Passport> listUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class DashBoard extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello "+listUser.get(0).getUser());
         btnCableId = (Button)findViewById(R.id.btnCableId);
+        btnInventory = (Button)findViewById(R.id.btnInventory);
+        imgBtnInventory = (ImageButton)findViewById(R.id.imgBtnInventory);
         btnImgCableId = (ImageButton)findViewById(R.id.imgBtnCableId);
         btnCableId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,12 +59,30 @@ public class DashBoard extends AppCompatActivity {
                 toManagement();
             }
         });
+        btnInventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory();
+            }
+        });
+        imgBtnInventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory();
+            }
+        });
     }
     public void toManagement(){
         Intent intent = new Intent(DashBoard.this, Management.class);
         intent.putExtra("Account",listUser);
         startActivity(intent);
     }
+    public void toInventory(){
+        Intent intent = new Intent(DashBoard.this, Inventory.class);
+        intent.putExtra("Account",listUser);
+        startActivity(intent);
+    }
+
     public void getUser(){
         Intent intent = getIntent();
 //        username = intent.getStringExtra("USERNAME");
