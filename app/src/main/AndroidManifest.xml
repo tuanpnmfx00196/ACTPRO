@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".inventory.Inventory"></activity>
+        <activity android:name=".inventory.DashboardInventory"></activity>
+        <activity android:name=".inventory.Inventory" />
         <activity
             android:name=".DashBoard"
             android:windowSoftInputMode="adjustPan" />
