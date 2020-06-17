@@ -582,7 +582,86 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
-
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/rowsclc5_inventory"
+            android:orientation="horizontal"
+            android:weightSum="12"
+            android:layout_marginTop="1dp"
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:text="Dây nhảy quang Sc_lc 5m"
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_weight="7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:text="sợi"
+                android:layout_margin="1dp"
+                android:layout_weight="1.6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/inventorysclc5"
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_weight="3.4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/rowsclc10_inventory"
+            android:orientation="horizontal"
+            android:weightSum="12"
+            android:layout_marginTop="1dp"
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:text="Dây nhảy quang Sc_lc 10m"
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_weight="7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:text="sợi"
+                android:layout_margin="1dp"
+                android:layout_weight="1.6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/inventorysclc10"
+                android:textColor="#1704C6"
+                android:textSize="15sp"
+                android:background="#94FFFFFF"
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:layout_weight="3.4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

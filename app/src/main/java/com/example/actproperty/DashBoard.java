@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
 
@@ -32,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DashBoard extends AppCompatActivity {
-    Button btnCableId, btnInventory;
+    Button btnCableId, btnInventory, btnAdmin;
     ImageButton btnImgCableId, imgBtnInventory;
     ArrayList<Passport> listUser;
     @Override
@@ -43,6 +44,10 @@ public class DashBoard extends AppCompatActivity {
         getUser();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello "+listUser.get(0).getUser());
+        btnAdmin = (Button)findViewById(R.id.btnAdmin);
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
+            btnAdmin.setVisibility(View.VISIBLE);
+        }
         btnCableId = (Button)findViewById(R.id.btnCableId);
         btnInventory = (Button)findViewById(R.id.btnInventory);
         imgBtnInventory = (ImageButton)findViewById(R.id.imgBtnInventory);
@@ -78,19 +83,15 @@ public class DashBoard extends AppCompatActivity {
         startActivity(intent);
     }
     public void toInventory(){
-        Intent intent = new Intent(DashBoard.this, Inventory.class);
+        Intent intent = new Intent(DashBoard.this, DashboardInventory.class);
         intent.putExtra("Account",listUser);
         startActivity(intent);
     }
 
     public void getUser(){
         Intent intent = getIntent();
-//        username = intent.getStringExtra("USERNAME");
-//        password = intent.getStringExtra("PASSWORD");
-//        id = intent.getIntExtra("ID",0);
         listUser= (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu,menu);
@@ -170,5 +171,9 @@ public class DashBoard extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);
+    }
+    private void Admin(){
+        final Dialog dialog = new Dialog(this);
+
     }
 }

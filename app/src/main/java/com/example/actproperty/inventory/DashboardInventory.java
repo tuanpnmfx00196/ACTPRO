@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -27,7 +28,79 @@ public class DashboardInventory extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello "+listUser.get(0).getUser());
         MapButtonDashInventory();
-
+        checkPermision(listUser);
+        btnACT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"ACT");
+            }
+        });
+        btnBCH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"BCH");
+            }
+        });
+        btnBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"BTN");
+            }
+        });
+        btnCCI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"CCI");
+            }
+        });
+        btnTCH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"TCH");
+            }
+        });
+        btnGDH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"GDH");
+            }
+        });
+        btnBDG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"BDG");
+            }
+        });
+        btnKGG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"KGG");
+            }
+        });
+        btnBTE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"BTE");
+            }
+        });
+        btnTVH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"TVH");
+            }
+        });
+        btnDNI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"DNI");
+            }
+        });
+        btnLAN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInventory(listUser,"LAN");
+            }
+        });
     }
     private void MapButtonDashInventory(){
         btnACT = (Button)findViewById(R.id.btnACT);
@@ -72,5 +145,65 @@ public class DashboardInventory extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void checkPermision(ArrayList<Passport> listUser){
+        if(listUser.get(0).getAdmin()==1|| listUser.get(0).getAdmin()==2){
+            btnACT.setVisibility(View.VISIBLE);
+            btnBCH.setVisibility(View.VISIBLE);
+            btnBTN.setVisibility(View.VISIBLE);
+            btnCCI.setVisibility(View.VISIBLE);
+            btnTCH.setVisibility(View.VISIBLE);
+            btnGDH.setVisibility(View.VISIBLE);
+            btnLAN.setVisibility(View.VISIBLE);
+            btnDNI.setVisibility(View.VISIBLE);
+            btnBDG.setVisibility(View.VISIBLE);
+            btnKGG.setVisibility(View.VISIBLE);
+            btnBTE.setVisibility(View.VISIBLE);
+            btnTVH.setVisibility(View.VISIBLE);
+        } else{
+            if(listUser.get(0).getBdg()==1||listUser.get(0).getBdg()==2){
+                btnBDG.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getBte()==1||listUser.get(0).getBte()==2){
+                btnBTE.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getKgg()==1||listUser.get(0).getKgg()==2){
+                btnKGG.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getTvh()==1||listUser.get(0).getTvh()==2){
+                btnTVH.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getLan()==1||listUser.get(0).getLan()==2){
+                btnLAN.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getDni()==1||listUser.get(0).getDni()==2){
+                btnDNI.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_bch()==1||listUser.get(0).getHcm_bch()==2){
+                btnBCH.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_btn()==1||listUser.get(0).getHcm_btn()==2){
+                btnBTN.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_cci()==1||listUser.get(0).getHcm_cci()==2){
+                btnCCI.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_hmn()==1||listUser.get(0).getHcm_hmn()==2){
+                btnTCH.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_q12()==1||listUser.get(0).getHcm_q12()==2){
+                btnTCH.setVisibility(View.VISIBLE);
+            }
+            if(listUser.get(0).getHcm_gvp()==1||listUser.get(0).getHcm_gvp()==2){
+                btnGDH.setVisibility(View.VISIBLE);
+            }
+
+        }
+    }
+    private void toInventory(ArrayList<Passport>listUser, String storecode){
+        Intent intent = new Intent(DashboardInventory.this, Inventory.class);
+        intent.putExtra("Account",listUser);
+        intent.putExtra("Storecode",storecode);
+        startActivity(intent);
     }
 }

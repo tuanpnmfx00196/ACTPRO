@@ -109,4 +109,17 @@
             android:layout_height="match_parent">
         </ImageButton>
     </LinearLayout>
+        <Button
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@drawable/radius1"
+            android:textSize="24sp"
+            android:textColor="#032EAE"
+            android:id="@+id/btnAdmin"
+            android:textAllCaps="false"
+            android:text="Database Administrator"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        </Button>
 </LinearLayout>

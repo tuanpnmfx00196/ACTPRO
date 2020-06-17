@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
+            android:visibility="gone"
             android:id="@+id/btnACT"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnBTN"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -50,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnBCH"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -64,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnCCI"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -78,6 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnGDH"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -92,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnTCH"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -106,6 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnBDG"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -120,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnDNI"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -134,6 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnKGG"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -148,6 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnLAN"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -162,6 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnBTE"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
@@ -176,6 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <Button
+            android:visibility="gone"
             android:id="@+id/btnTVH"
             android:layout_marginTop="1dp"
             android:textSize="20sp"
