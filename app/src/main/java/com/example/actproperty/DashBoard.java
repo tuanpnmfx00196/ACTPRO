@@ -174,6 +174,11 @@ public class DashBoard extends AppCompatActivity {
     }
     private void Admin(){
         final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.admin);
+        final Button btnHistory = (Button)dialog.findViewById(R.id.btnHistory);
+        final Button btnCR = (Button)dialog.findViewById(R.id.btnCR);
+        final Button btnExitAdmin = (Button)dialog.findViewById(R.id.btnExitAdmin);
 
+        dialog.show();
     }
 }

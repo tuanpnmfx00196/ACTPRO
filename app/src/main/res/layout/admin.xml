@@ -14,7 +14,7 @@
         android:weightSum="12"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="50dp">
         <LinearLayout
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -39,11 +39,19 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    </LinearLayout>
+    <LinearLayout
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_width="match_parent"
         android:layout_height="60dp">
         <Button
+            android:id="@+id/btnExitAdmin"
             android:text="Back"
             android:layout_margin="10dp"
             android:background="@drawable/radius1"
