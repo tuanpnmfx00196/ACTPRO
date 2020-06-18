@@ -178,7 +178,12 @@ public class DashBoard extends AppCompatActivity {
         final Button btnHistory = (Button)dialog.findViewById(R.id.btnHistory);
         final Button btnCR = (Button)dialog.findViewById(R.id.btnCR);
         final Button btnExitAdmin = (Button)dialog.findViewById(R.id.btnExitAdmin);
-
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DashBoard.this, "Xem lịch sử chỉnh sửa", Toast.LENGTH_SHORT).show();
+            }
+        });
         dialog.show();
     }
 }

@@ -40,11 +40,8 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <DatePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-    </LinearLayout>
+        android:layout_height="30dp"/>
+
     <LinearLayout
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"

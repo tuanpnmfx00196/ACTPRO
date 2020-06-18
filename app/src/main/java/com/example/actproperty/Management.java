@@ -31,8 +31,11 @@ import com.example.actproperty.passport.Passport;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
@@ -355,7 +358,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 sc_lc10m, sc_lc10m_update, sc_sc5m, sc_sc5m_update, dialogTitle, dialogTitle_update;
         final EditText cable4fo_edit, cable6fo_edit, cable12fo_edit, cable24fo_edit, cable12du_edit, odf6fo_edit,
                 odf12fo_edit, odf24fo_edit, odf96fo_edit, mx6_edit, mx12_edit, mx24_edit, buloong300_edit, buloong400_edit,
-                clamp_edit, poleu8_edit, ironpole6_edit, sc_lc5_edit, sc_lc10_edit, sc_sc5_edit;
+                clamp_edit, poleu8_edit, ironpole6_edit, sc_lc5_edit, sc_lc10_edit, sc_sc5_edit, commentEdit;
         LinearLayout row4fo, row4fo_update, row6fo, row6fo_update, row12fo, row12fo_update, row24fo, row24fo_update,
                 rowdu12fo,rowdu12fo_update, rowodf6fo, rowodf6fo_update, rowodf12fo, rowodf12fo_update, rowodf24fo, rowodf24fo_update,
                 rowodf96fo, rowodf96fo_update, rowmx6, rowmx6_update, rowmx12,rowmx12_update, rowmx24,rowmx24_update, rowbuloongti300,
@@ -474,6 +477,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         sc_lc5_edit = (EditText) dialog.findViewById(R.id.sc_lc5m_edit);
         sc_lc10_edit = (EditText) dialog.findViewById(R.id.sc_lc10m_edit);
         sc_sc5_edit = (EditText) dialog.findViewById(R.id.sc_sc5m_edit);
+        commentEdit = (EditText)dialog.findViewById(R.id.commentEdit);
         /*======================Get Data Dialog======================*/
             dialogTitle.setText(listShow.get(position).getCableId());
             if(listShow.get(position).getHanging4fo()!=0){
@@ -760,6 +764,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             public void onClick(View v) {
                 int edt4fo, edt6fo, edt12fo, edt24fo, edt12du, edtodf6fo, edtodf12fo, edtodf24fo, edtodf96fo,
                         edtmx6, edtmx12, edtmx24, edtbl300, edtbl400, edtclamp,edtpoleu8, edtironpole6, edtsclc5, edtsclc10, edtscsc5;
+                int add4fo, add6fo, add12fo, add24fo, adddu12, addodf6fo, addodf12fo, addodf24fo, addodf96fo, addclosure6fo, addclosure12fo,
+                        addclosure24fo, addbuloong300, addbuloong400, addclamp, addpoleu8, addironpole6, addsc_lc5, addsc_lc10, addsc_sc5;
+                String datechange, comment, userchange;
                 if(listShow.get(position).getHanging4fo()!=0){
                     edt4fo = Integer.parseInt(cable4fo_edit.getText().toString());
                 } else{
@@ -860,6 +867,38 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 } else{
                     edtscsc5=0;
                 }
+
+                add4fo = listShow.get(position).getHanging4fo();
+                add6fo = listShow.get(position).getHanging6fo();
+                add12fo = listShow.get(position).getHanging12fo();
+                add24fo = listShow.get(position).getHanging24fo();
+                adddu12 = listShow.get(position).getDu12fo();
+                addodf6fo = listShow.get(position).getOdf6fo();
+                addodf12fo = listShow.get(position).getOdf12fo();
+                addodf24fo = listShow.get(position).getOdf24fo();
+                addodf96fo = listShow.get(position).getOdf96fo();
+                addclosure6fo = listShow.get(position).getClosure6fo();
+                addclosure12fo = listShow.get(position).getClosure12fo();
+                addclosure24fo = listShow.get(position).getClosure24fo();
+                addbuloong300 = listShow.get(position).getBuloong300();
+                addbuloong400 = listShow.get(position).getBuloong400();
+                addclamp = listShow.get(position).getClamp();
+                addpoleu8 = listShow.get(position).getPoleu8();
+                addironpole6 = listShow.get(position).getIronpole6();
+                addsc_lc5 = listShow.get(position).getSc_lc5();
+                addsc_lc10 = listShow.get(position).getSc_lc10();
+                addsc_sc5 = listShow.get(position).getSc_sc5();
+                comment = commentEdit.getText().toString();
+                //DATE CHANGE
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                datechange = sdf.format(new Date());
+                userchange = listUser.get(0).getUser().toString();
+
+                InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
+                        add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
+                        addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
+                        datechange,comment,userchange
+                        );
                 UpdateSQL("https://sqlandroid2812.000webhostapp.com/update.php", position,
                         edt4fo,edt6fo,edt12fo,edt24fo,edt12du,edtodf6fo,edtodf12fo,edtodf24fo,
                         edtodf96fo,edtmx6,edtmx12,edtmx24,
@@ -910,19 +949,16 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                }else{
                    params.put("Hanging4fo", String.valueOf(0));
                }
-
                if(hanging6fo > 0){
                    params.put("Hanging6fo", String.valueOf(hanging6fo));
                }else{
                    params.put("Hanging6fo", String.valueOf(0));
                }
-
                 if(hanging12fo > 0){
                     params.put("Hanging12fo", String.valueOf(hanging12fo));
                 }else{
                     params.put("Hanging12fo", String.valueOf(0));
                 }
-
                 if(hanging24fo > 0){
                     params.put("Hanging24fo", String.valueOf(hanging24fo));
                 }else{
@@ -933,91 +969,76 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 }else{
                     params.put("Du12fo", String.valueOf(0));
                 }
-
                 if(odf6fo > 0){
                     params.put("Odf6fo", String.valueOf(odf6fo));
                 }else{
                     params.put("Odf6fo", String.valueOf(0));
                 }
-
                 if(odf12fo > 0){
                     params.put("Odf12fo", String.valueOf(odf12fo));
                 }else{
                     params.put("Odf12fo", String.valueOf(0));
                 }
-
                 if(odf24fo > 0){
                     params.put("Odf24fo", String.valueOf(odf24fo));
                 }else{
                     params.put("Odf24fo", String.valueOf(0));
                 }
-
                 if(odf96fo > 0){
                     params.put("Odf96fo", String.valueOf(odf96fo));
                 }else{
                     params.put("Odf96fo", String.valueOf(0));
                 }
-
                 if(closure6fo > 0){
                     params.put("Closure6fo", String.valueOf(closure6fo));
                 }else{
                     params.put("Closure6fo", String.valueOf(0));
                 }
-
                 if(closure12fo > 0){
                     params.put("Closure12fo", String.valueOf(closure12fo));
                 }else{
                     params.put("Closure12fo", String.valueOf(0));
                 }
-
                 if(closure24fo > 0){
                     params.put("Closure24fo", String.valueOf(closure24fo));
                 }else{
                     params.put("Closure24fo", String.valueOf(0));
                 }
-
                 if(buloong300 > 0){
                     params.put("Buloong300", String.valueOf(buloong300));
                 }else{
                     params.put("Buloong300", String.valueOf(0));
                 }
-
                 if(buloong400 > 0){
                     params.put("Buloong400", String.valueOf(buloong400));
                 }else{
                     params.put("Buloong400", String.valueOf(0));
                 }
-
                 if(clamp > 0){
                     params.put("Clamp", String.valueOf(clamp));
                 }else{
                     params.put("Clamp", String.valueOf(0));
                 }
-
                 if(poleu8 > 0){
                     params.put("Poleu8", String.valueOf(poleu8));
                 }else{
                     params.put("Poleu8", String.valueOf(0));
                 }
-
                 if(ironpole6 > 0){
                     params.put("Ironpole6", String.valueOf(ironpole6));
                 }else{
                     params.put("Ironpole6", String.valueOf(0));
                 }
-
                 if(sc_lc5 > 0){
                     params.put("Sc_lc5", String.valueOf(sc_lc5));
                 }else{
                     params.put("Sc_lc5", String.valueOf(0));
                 }
-
                 if(sc_lc10 > 0){
                     params.put("Sc_lc10", String.valueOf(sc_lc10));
                 }else{
                     params.put("Sc_lc10", String.valueOf(0));
                 }
-
                 if(sc_sc5 >0){
                     params.put("Sc_sc5", String.valueOf(sc_sc5));
                 }else{
@@ -1028,5 +1049,157 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
+    private void InsertHistory(String url, final int position, final int add4fo, final int add6fo,
+                               final int add12fo , final int add24fo, final int adddu12, final int addodf6fo, final int addodf12fo,
+                               final int addodf24fo, final int addodf96fo, final int addclosure6fo, final int addclosure12fo, final int addclosure24fo,
+                               final int addbuloong300, final int addbuloong400, final int addclamp, final int addpoleu8, final int addironpole6,
+                               final int addsc_lc5, final int addsc_lc10, final int addsc_sc5, final String datechange, final String comment,
+                               final String userchange
+                               ){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("Addoldid",String.valueOf(listShow.get(position).getId()));
+                params.put("Addcableid",String.valueOf(listShow.get(position).getCableId()));
+                params.put("Addprovince",String.valueOf(listShow.get(position).getProvince()));
+                if (add4fo > 0){
+                    params.put("Addhanging4fo", String.valueOf(add4fo));
+                }else{
+                    params.put("Addhanging4fo", String.valueOf(0));
+                }
+
+                if(add6fo > 0){
+                    params.put("Addhanging6fo", String.valueOf(add6fo));
+                }else{
+                    params.put("Addhanging6fo", String.valueOf(0));
+                }
+
+                if(add12fo > 0){
+                    params.put("Addhanging12fo", String.valueOf(add12fo));
+                }else{
+                    params.put("Addhanging12fo", String.valueOf(0));
+                }
+
+                if(add24fo > 0){
+                    params.put("Addhanging24fo", String.valueOf(add24fo));
+                }else{
+                    params.put("Addhanging24fo", String.valueOf(0));
+                }
+                if(adddu12 > 0){
+                    params.put("Adddu12fo", String.valueOf(adddu12));
+                }else{
+                    params.put("Adddu12fo", String.valueOf(0));
+                }
+
+                if(addodf6fo > 0){
+                    params.put("Addodf6fo", String.valueOf(addodf6fo));
+                }else{
+                    params.put("Addodf6fo", String.valueOf(0));
+                }
+
+                if(addodf12fo > 0){
+                    params.put("Addodf12fo", String.valueOf(addodf12fo));
+                }else{
+                    params.put("Addodf12fo", String.valueOf(0));
+                }
+
+                if(addodf24fo > 0){
+                    params.put("Addodf24fo", String.valueOf(addodf24fo));
+                }else{
+                    params.put("Addodf24fo", String.valueOf(0));
+                }
+
+                if(addodf96fo > 0){
+                    params.put("Addodf96fo", String.valueOf(addodf96fo));
+                }else{
+                    params.put("Addodf96fo", String.valueOf(0));
+                }
+
+                if(addclosure6fo > 0){
+                    params.put("Addclosure6fo", String.valueOf(addclosure6fo));
+                }else{
+                    params.put("Addclosure6fo", String.valueOf(0));
+                }
+
+                if(addclosure12fo > 0){
+                    params.put("Addclosure12fo", String.valueOf(addclosure12fo));
+                }else{
+                    params.put("Addclosure12fo", String.valueOf(0));
+                }
+
+                if(addclosure24fo > 0){
+                    params.put("Addclosure24fo", String.valueOf(addclosure24fo));
+                }else{
+                    params.put("Addclosure24fo", String.valueOf(0));
+                }
+
+                if(addbuloong300 > 0){
+                    params.put("Addbuloongti300", String.valueOf(addbuloong300));
+                }else{
+                    params.put("Addbuloongti300", String.valueOf(0));
+                }
+
+                if(addbuloong400 > 0){
+                    params.put("Addbuloongti400", String.valueOf(addbuloong400));
+                }else{
+                    params.put("Addbuloongti400", String.valueOf(0));
+                }
+
+                if(addclamp > 0){
+                    params.put("Addclamp", String.valueOf(addclamp));
+                }else{
+                    params.put("Addclamp", String.valueOf(0));
+                }
+
+                if(addpoleu8 > 0){
+                    params.put("Addpoleu8", String.valueOf(addpoleu8));
+                }else{
+                    params.put("Addpoleu8", String.valueOf(0));
+                }
+
+                if(addironpole6 > 0){
+                    params.put("Addironpole6", String.valueOf(addironpole6));
+                }else{
+                    params.put("Addironpole6", String.valueOf(0));
+                }
+
+                if(addsc_lc5 > 0){
+                    params.put("Addsc_lc5", String.valueOf(addsc_lc5));
+                }else{
+                    params.put("Addsc_lc5", String.valueOf(0));
+                }
+
+                if(addsc_lc10 > 0){
+                    params.put("Addsc_lc10", String.valueOf(addsc_lc10));
+                }else{
+                    params.put("Addsc_lc10", String.valueOf(0));
+                }
+
+                if(addsc_sc5 >0){
+                    params.put("Addsc_sc5", String.valueOf(addsc_sc5));
+                }else{
+                    params.put("Addsc_sc5", String.valueOf(0));
+                }
+                params.put("Adddatechange",datechange);
+                params.put("Addcomment",comment);
+                params.put("Adduserchange",userchange);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
 }
