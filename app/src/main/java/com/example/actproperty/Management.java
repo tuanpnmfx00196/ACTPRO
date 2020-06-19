@@ -256,7 +256,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     public void initView(){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         CableIdAdapter cableIdAdapter = new CableIdAdapter(listShow, getApplicationContext(),this);
         recyclerView.setAdapter(cableIdAdapter);
