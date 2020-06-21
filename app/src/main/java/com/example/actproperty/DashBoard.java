@@ -76,6 +76,12 @@ public class DashBoard extends AppCompatActivity {
                 toInventory();
             }
         });
+        btnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Admin();
+            }
+        });
     }
     public void toManagement(){
         Intent intent = new Intent(DashBoard.this, Management.class);
@@ -186,4 +192,5 @@ public class DashBoard extends AppCompatActivity {
         });
         dialog.show();
     }
+
 }
