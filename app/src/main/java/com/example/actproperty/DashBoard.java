@@ -1,7 +1,9 @@
 package com.example.actproperty;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,9 +32,22 @@ import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class DashBoard extends AppCompatActivity {
     Button btnCableId, btnInventory, btnAdmin;
@@ -186,6 +201,7 @@ public class DashBoard extends AppCompatActivity {
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
         final Button btnHistory = (Button)dialog.findViewById(R.id.btnHistory);
+        final Button exportxls = (Button)dialog.findViewById(R.id.exportxls);
         final Button btnCR = (Button)dialog.findViewById(R.id.btnCR);
         final Button btnExitAdmin = (Button)dialog.findViewById(R.id.btnExitAdmin);
         btnHistory.setOnClickListener(new View.OnClickListener() {
@@ -195,7 +211,40 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        exportxls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveFilexxls();
+            }
+        });
         dialog.show();
+    }
+    private void saveFilexxls(){
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Sheet 1");
+        HSSFRow rowA = sheet.createRow(0);
+        HSSFCell cellA = rowA.createCell(0);
+        cellA.setCellValue(new HSSFRichTextString("Sheet1"));
+        FileOutputStream fos = null;
+        try{
+            String str_path = Environment.getExternalStorageDirectory().getAbsolutePath().toString();
+            File file;
+            file = new File(str_path, getString(R.string.app_name)+".xls");
+            fos = new FileOutputStream(file);
+            workbook.write(fos);
+        }catch(IOException e){
+            Toast.makeText(this, "try 1"+e.toString(), Toast.LENGTH_SHORT).show();
+        }
+        finally {
+            if(fos !=null){
+                try{
+                    fos.flush();
+                    fos.close();
+                }catch(IOException e){
+                    Toast.makeText(this,"Finally"+ e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
 
 }
