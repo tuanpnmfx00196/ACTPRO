@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.admin.Admin;
 import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
@@ -181,13 +183,16 @@ public class DashBoard extends AppCompatActivity {
     private void Admin(){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.admin);
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
+        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
         final Button btnHistory = (Button)dialog.findViewById(R.id.btnHistory);
         final Button btnCR = (Button)dialog.findViewById(R.id.btnCR);
         final Button btnExitAdmin = (Button)dialog.findViewById(R.id.btnExitAdmin);
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashBoard.this, "Xem lịch sử chỉnh sửa", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DashBoard.this, Admin.class);
+                startActivity(intent);
             }
         });
         dialog.show();
