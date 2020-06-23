@@ -1,10 +1,16 @@
 package com.example.actproperty;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,22 +59,24 @@ public class DashBoard extends AppCompatActivity {
     Button btnCableId, btnInventory, btnAdmin;
     ImageButton btnImgCableId, imgBtnInventory;
     ArrayList<Passport> listUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         listUser = new ArrayList<>();
+        checkPermision();
         getUser();
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Hello "+listUser.get(0).getUser());
-        btnAdmin = (Button)findViewById(R.id.btnAdmin);
-        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
+        actionBar.setTitle("Hello " + listUser.get(0).getUser());
+        btnAdmin = (Button) findViewById(R.id.btnAdmin);
+        if (listUser.get(0).getAdmin() == 1 || listUser.get(0).getAdmin() == 2) {
             btnAdmin.setVisibility(View.VISIBLE);
         }
-        btnCableId = (Button)findViewById(R.id.btnCableId);
-        btnInventory = (Button)findViewById(R.id.btnInventory);
-        imgBtnInventory = (ImageButton)findViewById(R.id.imgBtnInventory);
-        btnImgCableId = (ImageButton)findViewById(R.id.imgBtnCableId);
+        btnCableId = (Button) findViewById(R.id.btnCableId);
+        btnInventory = (Button) findViewById(R.id.btnInventory);
+        imgBtnInventory = (ImageButton) findViewById(R.id.imgBtnInventory);
+        btnImgCableId = (ImageButton) findViewById(R.id.imgBtnCableId);
         btnCableId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,31 +107,35 @@ public class DashBoard extends AppCompatActivity {
                 Admin();
             }
         });
+
     }
-    public void toManagement(){
+
+    public void toManagement() {
         Intent intent = new Intent(DashBoard.this, Management.class);
-        intent.putExtra("Account",listUser);
-        startActivity(intent);
-    }
-    public void toInventory(){
-        Intent intent = new Intent(DashBoard.this, DashboardInventory.class);
-        intent.putExtra("Account",listUser);
+        intent.putExtra("Account", listUser);
         startActivity(intent);
     }
 
-    public void getUser(){
-        Intent intent = getIntent();
-        listUser= (ArrayList<Passport>) intent.getSerializableExtra("Account");
+    public void toInventory() {
+        Intent intent = new Intent(DashBoard.this, DashboardInventory.class);
+        intent.putExtra("Account", listUser);
+        startActivity(intent);
     }
+
+    public void getUser() {
+        Intent intent = getIntent();
+        listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_menu,menu);
+        getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.actJSC:
                 Toast.makeText(this, "ACT JSC", Toast.LENGTH_SHORT).show();
                 break;
@@ -139,7 +151,8 @@ public class DashBoard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private void ChangePassword(){
+
+    private void ChangePassword() {
         final Dialog dialog = new Dialog(this);
         dialog.setTitle("Change your password!");
         dialog.setContentView(R.layout.change_password);
@@ -147,12 +160,12 @@ public class DashBoard extends AppCompatActivity {
         final EditText newPassword = (EditText) dialog.findViewById(R.id.newPassword);
         final EditText confirmPassword = (EditText) dialog.findViewById(R.id.confirmPassword);
         Button btnChange = (Button) dialog.findViewById(R.id.btnChange);
-        Button btnCancel = (Button)dialog.findViewById(R.id.btnCancel);
+        Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
         btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listUser.get(0).getPassword().equals(currentPassword.getText().toString())){
-                    if(newPassword.getText().toString().equals(confirmPassword.getText().toString())){
+                if (listUser.get(0).getPassword().equals(currentPassword.getText().toString())) {
+                    if (newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                         currentPassword.setText("");
                         newPassword.setText("");
                         confirmPassword.setText("");
@@ -162,15 +175,15 @@ public class DashBoard extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(DashBoard.this, "Try again, check data input", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         dialog.show();
     }
-    private void UpdatePassword(String url, final String newPassword){
+
+    private void UpdatePassword(String url, final String newPassword) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -183,27 +196,27 @@ public class DashBoard extends AppCompatActivity {
 
             }
         }
-        )
-        {
+        ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ID",String.valueOf(listUser.get(0).getId()));
-                params.put("NEWPASSWORD",newPassword);
+                params.put("ID", String.valueOf(listUser.get(0).getId()));
+                params.put("NEWPASSWORD", newPassword);
                 return params;
             }
         };
         requestQueue.add(stringRequest);
     }
-    private void Admin(){
+
+    private void Admin() {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.admin);
-        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.97);
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final Button btnHistory = (Button)dialog.findViewById(R.id.btnHistory);
-        final Button exportxls = (Button)dialog.findViewById(R.id.exportxls);
-        final Button btnCR = (Button)dialog.findViewById(R.id.btnCR);
-        final Button btnExitAdmin = (Button)dialog.findViewById(R.id.btnExitAdmin);
+        final Button btnHistory = (Button) dialog.findViewById(R.id.btnHistory);
+        final Button exportxls = (Button) dialog.findViewById(R.id.exportxls);
+        final Button btnCR = (Button) dialog.findViewById(R.id.btnCR);
+        final Button btnExitAdmin = (Button) dialog.findViewById(R.id.btnExitAdmin);
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,32 +232,44 @@ public class DashBoard extends AppCompatActivity {
         });
         dialog.show();
     }
-    private void saveFilexxls(){
+
+    private void saveFilexxls() {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Sheet 1");
         HSSFRow rowA = sheet.createRow(0);
         HSSFCell cellA = rowA.createCell(0);
         cellA.setCellValue(new HSSFRichTextString("Sheet1"));
         FileOutputStream fos = null;
-        try{
+        try {
             String str_path = Environment.getExternalStorageDirectory().getAbsolutePath().toString();
             File file;
-            file = new File(str_path, getString(R.string.app_name)+".xls");
+            file = new File(str_path, getString(R.string.app_name) + ".xls");
             fos = new FileOutputStream(file);
             workbook.write(fos);
-        }catch(IOException e){
-            Toast.makeText(this, "try 1"+e.toString(), Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            if(fos !=null){
-                try{
+            workbook.close();
+            fos.close();
+        } catch (IOException e) {
+            Toast.makeText(this, "try 1" + e.toString(), Toast.LENGTH_SHORT).show();
+        } finally {
+            if (fos != null) {
+                try {
                     fos.flush();
                     fos.close();
-                }catch(IOException e){
-                    Toast.makeText(this,"Finally"+ e.toString(), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    Toast.makeText(this, "Finally" + e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
 
+    private void checkPermision() {
+        if (ContextCompat.checkSelfPermission(DashBoard.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(DashBoard.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1);
+        }
+    }
 }
