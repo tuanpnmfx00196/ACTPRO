@@ -65,7 +65,7 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         listUser = new ArrayList<>();
-        checkPermision();
+//        checkPermision();
         getUser();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello " + listUser.get(0).getUser());
@@ -227,49 +227,49 @@ public class DashBoard extends AppCompatActivity {
         exportxls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveFilexxls();
+//                saveFilexxls();
             }
         });
         dialog.show();
     }
 
-    private void saveFilexxls() {
-        HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Sheet 1");
-        HSSFRow rowA = sheet.createRow(0);
-        HSSFCell cellA = rowA.createCell(0);
-        cellA.setCellValue(new HSSFRichTextString("Sheet1"));
-        FileOutputStream fos = null;
-        try {
-            String str_path = Environment.getExternalStorageDirectory().getAbsolutePath().toString();
-            File file;
-            file = new File(str_path, getString(R.string.app_name) + ".xls");
-            fos = new FileOutputStream(file);
-            workbook.write(fos);
-            workbook.close();
-            fos.close();
-        } catch (IOException e) {
-            Toast.makeText(this, "try 1" + e.toString(), Toast.LENGTH_SHORT).show();
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.flush();
-                    fos.close();
-                } catch (IOException e) {
-                    Toast.makeText(this, "Finally" + e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
+//    private void saveFilexxls() {
+//        HSSFWorkbook workbook = new HSSFWorkbook();
+//        HSSFSheet sheet = workbook.createSheet("Sheet 1");
+//        HSSFRow rowA = sheet.createRow(0);
+//        HSSFCell cellA = rowA.createCell(0);
+//        cellA.setCellValue(new HSSFRichTextString("Sheet1"));
+//        FileOutputStream fos = null;
+//        try {
+//            String str_path = Environment.getExternalStorageDirectory().getAbsolutePath().toString();
+//            File file;
+//            file = new File(str_path, getString(R.string.app_name) + ".xls");
+//            fos = new FileOutputStream(file);
+//            workbook.write(fos);
+//            workbook.close();
+//            fos.close();
+//        } catch (IOException e) {
+//            Toast.makeText(this, "try 1" + e.toString(), Toast.LENGTH_SHORT).show();
+//        } finally {
+//            if (fos != null) {
+//                try {
+//                    fos.flush();
+//                    fos.close();
+//                } catch (IOException e) {
+//                    Toast.makeText(this, "Finally" + e.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
+//    }
+
+//    private void checkPermision() {
+//        if (ContextCompat.checkSelfPermission(DashBoard.this,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                != PackageManager.PERMISSION_GRANTED) {
+//
+//            ActivityCompat.requestPermissions(DashBoard.this,
+//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                    1);
+//        }
     }
 
-    private void checkPermision() {
-        if (ContextCompat.checkSelfPermission(DashBoard.this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(DashBoard.this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    1);
-        }
-    }
-}

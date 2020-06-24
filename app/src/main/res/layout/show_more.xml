@@ -984,7 +984,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Tên tài sản"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1003,12 +1003,12 @@
             <TextView
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Số lượng"
+                android:text="Trước UCTT"
                 android:background="#0091EA"
                 android:layout_margin="1dp"
                 android:padding="2dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1017,11 +1017,23 @@
                 android:padding="3dp"
                 android:textStyle="bold"
                 android:textColor="#FFF"
-                android:text="Sửa"
+                android:text="Sử dụng UCTT"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3.0"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:text="Sau UCTT"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1035,16 +1047,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:text="Cáp quang treo 4fo"
                 android:textSize="13sp"
                 android:gravity="center"
                 android:background="#0091EA"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <TextView
+                android:text="mét"
                 android:textSize="13sp"
                 android:gravity="center"
                 android:background="#0091EA"
@@ -1062,9 +1076,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/cable4fo_update"
+                android:id="@+id/cable4fo_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1072,12 +1086,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/cable4fo_edit"
+                android:id="@+id/cable4fo_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/cable4fo_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1097,7 +1124,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cáp quang treo 6Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1120,9 +1147,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/cable6fo_update"
+                android:id="@+id/cable6fo_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1130,12 +1157,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/cable6fo_edit"
+                android:id="@+id/cable6fo_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/cable6fo_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1155,7 +1195,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cáp quang treo 12Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1178,9 +1218,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/cable12fo_update"
+                android:id="@+id/cable12fo_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1188,12 +1228,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/cable12fo_edit"
+                android:id="@+id/cable12fo_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/cable12fo_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1212,7 +1265,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cáp quang treo 24Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1235,9 +1288,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/cable24fo_update"
+                android:id="@+id/cable24fo_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1245,12 +1298,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/cable24fo_edit"
+                android:id="@+id/cable24fo_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/cable24fo_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1270,7 +1336,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cáp quang ngầm hóa 12Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1293,9 +1359,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/cable12du_update"
+                android:id="@+id/cable12du_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1303,12 +1369,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/cable12du_edit"
+                android:id="@+id/cable12du_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/cable12du_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1327,7 +1406,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="ODF 6Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1350,9 +1429,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/odf6_update"
+                android:id="@+id/odf6_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1360,12 +1439,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/odf6_edit"
+                android:id="@+id/odf6_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/odf6_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1384,7 +1476,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="ODF 12Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1407,9 +1499,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/odf12_update"
+                android:id="@+id/odf12_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1417,12 +1509,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/odf12_edit"
+                android:id="@+id/odf12_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/odf12_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
          </LinearLayout>
@@ -1442,7 +1547,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="ODF 24Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1464,9 +1569,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/odf24_update"
+                android:id="@+id/odf24_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1474,12 +1579,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/odf24_edit"
+                android:id="@+id/odf24_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/odf24_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1498,7 +1616,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="ODF 96Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1521,9 +1639,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/odf96_update"
+                android:id="@+id/odf96_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1531,12 +1649,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/odf96_edit"
+                android:id="@+id/odf96_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/odf96_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1556,7 +1687,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Măng xông 6Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1579,22 +1710,35 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/mx6_update"
+                android:id="@+id/mx6_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
+            <EditText
+            android:textSize="13sp"
+            android:inputType="number"
+            android:layout_margin="1dp"
+            android:padding="3dp"
+            android:id="@+id/mx6_used"
+            android:textColor="#FFF"
+            android:background="#0091EA"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
             <EditText
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/mx6_edit"
+                android:id="@+id/mx6_update"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1614,7 +1758,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Măng xông 12Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1637,9 +1781,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/mx12_update"
+                android:id="@+id/mx12_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1647,12 +1791,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/mx12_edit"
+                android:id="@+id/mx12_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/mx12_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1672,7 +1829,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Măng xông 24Fo"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1695,9 +1852,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/mx24_update"
+                android:id="@+id/mx24_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1705,12 +1862,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/mx24_edit"
+                android:id="@+id/mx24_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/mx24_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1729,7 +1899,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Buloong ti 300"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1752,9 +1922,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/buloongti300_update"
+                android:id="@+id/buloongti300_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1762,12 +1932,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/buloongti300_edit"
+                android:id="@+id/buloongti300_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/buloongti300_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1787,7 +1970,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Buloong ti 400"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1810,9 +1993,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/buloongti400_update"
+                android:id="@+id/buloongti400_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1820,12 +2003,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/buloongti400_edit"
+                android:id="@+id/buloongti400_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/buloongti400_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1845,7 +2041,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cột điện dưới 8m"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1868,9 +2064,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/poleu8_update"
+                android:id="@+id/poleu8_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1878,12 +2074,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/poleu8_edit"
+                android:id="@+id/poleu8_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/poleu8_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1903,7 +2112,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Cột sắt 6m"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1926,9 +2135,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/ironpole6_update"
+                android:id="@+id/ironpole6_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1936,12 +2145,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/ironpole6_edit"
+                android:id="@+id/ironpole6_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/ironpole6_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -1961,7 +2183,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Kẹp cáp 2 rãnh 3 lỗ"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -1984,9 +2206,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/clamp_update"
+                android:id="@+id/clamp_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -1994,12 +2216,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/clamp_edit"
+                android:id="@+id/clamp_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/clamp_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -2019,7 +2254,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Dây nhảy quang SC-LC 5m"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -2042,9 +2277,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/sc_lc5m_update"
+                android:id="@+id/sc_lc5m_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -2052,12 +2287,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/sc_lc5m_edit"
+                android:id="@+id/sc_lc5m_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/sc_lc5m_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -2076,7 +2324,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Dây nhảy quang SC-LC 10m"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -2099,9 +2347,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/sc_lc10m_update"
+                android:id="@+id/sc_lc10m_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -2109,12 +2357,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/sc_lc10m_edit"
+                android:id="@+id/sc_lc10m_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/sc_lc10m_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -2135,7 +2396,7 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:text="Dây nhảy quang SC-SC 5m"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textColor="#FFF"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -2158,9 +2419,9 @@
                 android:layout_margin="1dp"
                 android:padding="3dp"
                 android:textAlignment="center"
-                android:layout_weight="2.5"
+                android:layout_weight="2"
                 android:textColor="#FFF"
-                android:id="@+id/sc_sc5m_update"
+                android:id="@+id/sc_sc5m_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
@@ -2168,12 +2429,25 @@
                 android:inputType="number"
                 android:layout_margin="1dp"
                 android:padding="3dp"
-                android:id="@+id/sc_sc5m_edit"
+                android:id="@+id/sc_sc5m_used"
                 android:textColor="#FFF"
                 android:background="#0091EA"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/sc_sc5m_update"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
