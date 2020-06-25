@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -352,14 +353,17 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         dialog.setContentView(R.layout.show_more);
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final TextView cable4fo,cable4fo_update, cable6fo,cable6fo_update, cable12fo,cable12fo_update, cable24fo,cable24fo_update,
-                cable12du, cable12du_update, odf6, odf6_update, odf12,odf12_update, odf24, odf24_update, odf96, odf96_update,
-                mx6,mx6_update, mx12,mx12_update, mx24,mx24_update, buloongti300, buloongti300_update, buloongti400, buloongti400_update,
-                poleu8, poleu8_update,  ironpole6, ironpole6_update, clamp, clamp_update, sc_lc5m,sc_lc5m_update,
-                sc_lc10m, sc_lc10m_update, sc_sc5m, sc_sc5m_update, dialogTitle, dialogTitle_update;
-        final EditText cable4fo_edit, cable6fo_edit, cable12fo_edit, cable24fo_edit, cable12du_edit, odf6fo_edit,
-                odf12fo_edit, odf24fo_edit, odf96fo_edit, mx6_edit, mx12_edit, mx24_edit, buloong300_edit, buloong400_edit,
-                clamp_edit, poleu8_edit, ironpole6_edit, sc_lc5_edit, sc_lc10_edit, sc_sc5_edit, commentEdit;
+        final TextView cable4fo,cable4fo_origin, cable6fo,cable6fo_origin, cable12fo,cable12fo_origin, cable24fo,cable24fo_origin,
+                cable12du, cable12du_origin, odf6, odf6_origin, odf12,odf12_origin, odf24, odf24_origin, odf96, odf96_origin,
+                mx6,mx6_origin, mx12,mx12_origin, mx24,mx24_origin, buloongti300, buloongti300_origin, buloongti400, buloongti400_origin,
+                poleu8, poleu8_origin,  ironpole6, ironpole6_origin, clamp, clamp_origin, sc_lc5m,sc_lc5m_origin,
+                sc_lc10m, sc_lc10m_origin, sc_sc5m, sc_sc5m_origin, dialogTitle, dialogTitle_update;
+        final EditText cable4fo_used, cable6fo_used, cable12fo_used, cable24fo_used, cable12du_used, odf6fo_used,
+                odf12fo_used, odf24fo_used, odf96fo_used, mx6_used, mx12_used, mx24_used, buloong300_used, buloong400_used,
+                clamp_used, poleu8_used, ironpole6_used, sc_lc5_used, sc_lc10_used, sc_sc5_used, commentEdit,
+                cable4fo_update, cable6fo_update, cable12fo_update, cable24fo_update, cable12du_update, odf6fo_update,
+                odf12fo_update, odf24fo_update, odf96fo_update, mx6_update, mx12_update, mx24_update, buloong300_update, buloong400_update,
+                clamp_update, poleu8_update, ironpole6_update, sc_lc5_update, sc_lc10_update, sc_sc5_update;
         LinearLayout row4fo, row4fo_update, row6fo, row6fo_update, row12fo, row12fo_update, row24fo, row24fo_update,
                 rowdu12fo,rowdu12fo_update, rowodf6fo, rowodf6fo_update, rowodf12fo, rowodf12fo_update, rowodf24fo, rowodf24fo_update,
                 rowodf96fo, rowodf96fo_update, rowmx6, rowmx6_update, rowmx12,rowmx12_update, rowmx24,rowmx24_update, rowbuloongti300,
@@ -368,45 +372,45 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         dialogTitle= (TextView)dialog.findViewById(R.id.dialogTitle);
         dialogTitle_update= (TextView)dialog.findViewById(R.id.dialogTitle_update);
         cable4fo = (TextView)dialog.findViewById(R.id.cable4fo);
-        cable4fo_update = (TextView)dialog.findViewById(R.id.cable4fo_update);
+        cable4fo_origin = (TextView)dialog.findViewById(R.id.cable4fo_origin);
         cable6fo = (TextView)dialog.findViewById(R.id.cable6fo);
-        cable6fo_update = (TextView)dialog.findViewById(R.id.cable6fo_update);
+        cable6fo_origin = (TextView)dialog.findViewById(R.id.cable6fo_origin);
         cable12fo = (TextView)dialog.findViewById(R.id.cable12fo);
-        cable12fo_update = (TextView)dialog.findViewById(R.id.cable12fo_update);
+        cable12fo_origin = (TextView)dialog.findViewById(R.id.cable12fo_origin);
         cable24fo = (TextView)dialog.findViewById(R.id.cable24fo);
-        cable24fo_update = (TextView)dialog.findViewById(R.id.cable24fo_update);
+        cable24fo_origin = (TextView)dialog.findViewById(R.id.cable24fo_origin);
         cable12du = (TextView)dialog.findViewById(R.id.cable12du);
-        cable12du_update = (TextView)dialog.findViewById(R.id.cable12du_update);
+        cable12du_origin = (TextView)dialog.findViewById(R.id.cable12du_origin);
         odf6 = (TextView)dialog.findViewById(R.id.odf6);
-        odf6_update = (TextView)dialog.findViewById(R.id.odf6_update);
+        odf6_origin = (TextView)dialog.findViewById(R.id.odf6_origin);
         odf12 = (TextView)dialog.findViewById(R.id.odf12);
-        odf12_update = (TextView)dialog.findViewById(R.id.odf12_update);
+        odf12_origin = (TextView)dialog.findViewById(R.id.odf12_origin);
         odf24 = (TextView)dialog.findViewById(R.id.odf24);
-        odf24_update = (TextView)dialog.findViewById(R.id.odf24_update);
+        odf24_origin = (TextView)dialog.findViewById(R.id.odf24_origin);
         odf96 = (TextView)dialog.findViewById(R.id.odf96);
-        odf96_update = (TextView)dialog.findViewById(R.id.odf96_update);
+        odf96_origin = (TextView)dialog.findViewById(R.id.odf96_origin);
         mx6 = (TextView)dialog.findViewById(R.id.mx6);
-        mx6_update = (TextView)dialog.findViewById(R.id.mx6_update);
+        mx6_origin = (TextView)dialog.findViewById(R.id.mx6_origin);
         mx12 = (TextView)dialog.findViewById(R.id.mx12);
-        mx12_update = (TextView)dialog.findViewById(R.id.mx12_update);
+        mx12_origin = (TextView)dialog.findViewById(R.id.mx12_origin);
         mx24 = (TextView)dialog.findViewById(R.id.mx24);
-        mx24_update = (TextView)dialog.findViewById(R.id.mx24_update);
+        mx24_origin = (TextView)dialog.findViewById(R.id.mx24_origin);
         buloongti300 = (TextView)dialog.findViewById(R.id.buloongti300);
-        buloongti300_update = (TextView)dialog.findViewById(R.id.buloongti300_update);
+        buloongti300_origin = (TextView)dialog.findViewById(R.id.buloongti300_origin);
         buloongti400 = (TextView)dialog.findViewById(R.id.buloongti400);
-        buloongti400_update = (TextView)dialog.findViewById(R.id.buloongti400_update);
+        buloongti400_origin = (TextView)dialog.findViewById(R.id.buloongti400_origin);
         poleu8 = (TextView) dialog.findViewById(R.id.poleu8);
-        poleu8_update = (TextView) dialog.findViewById(R.id.poleu8_update);
+        poleu8_origin = (TextView) dialog.findViewById(R.id.poleu8_origin);
         ironpole6 = (TextView) dialog.findViewById(R.id.ironpole6);
-        ironpole6_update = (TextView) dialog.findViewById(R.id.ironpole6_update);
+        ironpole6_origin = (TextView) dialog.findViewById(R.id.ironpole6_origin);
         clamp = (TextView)dialog.findViewById(R.id.clamp);
-        clamp_update = (TextView)dialog.findViewById(R.id.clamp_update);
+        clamp_origin = (TextView)dialog.findViewById(R.id.clamp_origin);
         sc_lc5m = (TextView)dialog.findViewById(R.id.sc_lc5m);
-        sc_lc5m_update = (TextView)dialog.findViewById(R.id.sc_lc5m_update);
+        sc_lc5m_origin = (TextView)dialog.findViewById(R.id.sc_lc5m_origin);
         sc_lc10m = (TextView)dialog.findViewById(R.id.sc_lc10m);
-        sc_lc10m_update = (TextView)dialog.findViewById(R.id.sc_lc10m_update);
+        sc_lc10m_origin = (TextView)dialog.findViewById(R.id.sc_lc10m_origin);
         sc_sc5m = (TextView)dialog.findViewById(R.id.sc_sc5m);
-        sc_sc5m_update = (TextView)dialog.findViewById(R.id.sc_sc5m_update);
+        sc_sc5m_origin = (TextView)dialog.findViewById(R.id.sc_sc5m_origin);
         final Button btnUpdate = (Button)dialog.findViewById(R.id.btnUpdate);
         final Button btnBack = (Button)dialog.findViewById(R.id.btnBack);
         final Button btnSaveUpdate = (Button)dialog.findViewById(R.id.btnSaveUpdate);
@@ -458,27 +462,50 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
         /*======================EDIT CABLE============================*/
 
-        cable4fo_edit = (EditText) dialog.findViewById(R.id.cable4fo_edit);
-        cable6fo_edit = (EditText) dialog.findViewById(R.id.cable6fo_edit);
-        cable12fo_edit = (EditText) dialog.findViewById(R.id.cable12fo_edit);
-        cable24fo_edit = (EditText) dialog.findViewById(R.id.cable24fo_edit);
-        cable12du_edit = (EditText) dialog.findViewById(R.id.cable12du_edit);
-        odf6fo_edit = (EditText)dialog.findViewById(R.id.odf6_edit);
-        odf12fo_edit = (EditText)dialog.findViewById(R.id.odf12_edit);
-        odf24fo_edit = (EditText)dialog.findViewById(R.id.cable24fo_edit);
-        odf96fo_edit = (EditText) dialog.findViewById(R.id.odf96_edit);
-        mx6_edit = (EditText) dialog.findViewById(R.id.mx6_edit);
-        mx12_edit = (EditText) dialog.findViewById(R.id.mx12_edit);
-        mx24_edit = (EditText) dialog.findViewById(R.id.mx24_edit);
-        clamp_edit = (EditText) dialog.findViewById(R.id.clamp_edit);
-        poleu8_edit = (EditText) dialog.findViewById(R.id.poleu8_edit);
-        ironpole6_edit = (EditText) dialog.findViewById(R.id.ironpole6_edit);
-        buloong300_edit = (EditText) dialog.findViewById(R.id.buloongti300_edit);
-        buloong400_edit = (EditText) dialog.findViewById(R.id.buloongti400_edit);
-        sc_lc5_edit = (EditText) dialog.findViewById(R.id.sc_lc5m_edit);
-        sc_lc10_edit = (EditText) dialog.findViewById(R.id.sc_lc10m_edit);
-        sc_sc5_edit = (EditText) dialog.findViewById(R.id.sc_sc5m_edit);
+        cable4fo_used = (EditText) dialog.findViewById(R.id.cable4fo_used);
+        cable6fo_used = (EditText) dialog.findViewById(R.id.cable6fo_used);
+        cable12fo_used = (EditText) dialog.findViewById(R.id.cable12fo_used);
+        cable24fo_used = (EditText) dialog.findViewById(R.id.cable24fo_used);
+        cable12du_used = (EditText) dialog.findViewById(R.id.cable12du_used);
+        odf6fo_used = (EditText)dialog.findViewById(R.id.odf6_used);
+        odf12fo_used = (EditText)dialog.findViewById(R.id.odf12_used);
+        odf24fo_used = (EditText)dialog.findViewById(R.id.cable24fo_used);
+        odf96fo_used = (EditText) dialog.findViewById(R.id.odf96_used);
+        mx6_used = (EditText) dialog.findViewById(R.id.mx6_used);
+        mx12_used = (EditText) dialog.findViewById(R.id.mx12_used);
+        mx24_used = (EditText) dialog.findViewById(R.id.mx24_used);
+        clamp_used = (EditText) dialog.findViewById(R.id.clamp_used);
+        poleu8_used = (EditText) dialog.findViewById(R.id.poleu8_used);
+        ironpole6_used = (EditText) dialog.findViewById(R.id.ironpole6_used);
+        buloong300_used = (EditText) dialog.findViewById(R.id.buloongti300_used);
+        buloong400_used = (EditText) dialog.findViewById(R.id.buloongti400_used);
+        sc_lc5_used = (EditText) dialog.findViewById(R.id.sc_lc5m_used);
+        sc_lc10_used = (EditText) dialog.findViewById(R.id.sc_lc10m_used);
+        sc_sc5_used = (EditText) dialog.findViewById(R.id.sc_sc5m_used);
         commentEdit = (EditText)dialog.findViewById(R.id.commentEdit);
+
+        /*======================EDIT CABLE============================*/
+
+        cable4fo_update = (EditText) dialog.findViewById(R.id.cable4fo_update);
+        cable6fo_update = (EditText) dialog.findViewById(R.id.cable6fo_update);
+        cable12fo_update = (EditText) dialog.findViewById(R.id.cable12fo_update);
+        cable24fo_update = (EditText) dialog.findViewById(R.id.cable24fo_update);
+        cable12du_update = (EditText) dialog.findViewById(R.id.cable12du_update);
+        odf6fo_update = (EditText)dialog.findViewById(R.id.odf6_update);
+        odf12fo_update = (EditText)dialog.findViewById(R.id.odf12_update);
+        odf24fo_update = (EditText)dialog.findViewById(R.id.cable24fo_update);
+        odf96fo_update = (EditText) dialog.findViewById(R.id.odf96_update);
+        mx6_update = (EditText) dialog.findViewById(R.id.mx6_update);
+        mx12_update = (EditText) dialog.findViewById(R.id.mx12_update);
+        mx24_update = (EditText) dialog.findViewById(R.id.mx24_update);
+        clamp_update = (EditText) dialog.findViewById(R.id.clamp_update);
+        poleu8_update = (EditText) dialog.findViewById(R.id.poleu8_update);
+        ironpole6_update = (EditText) dialog.findViewById(R.id.ironpole6_update);
+        buloong300_update = (EditText) dialog.findViewById(R.id.buloongti300_update);
+        buloong400_update = (EditText) dialog.findViewById(R.id.buloongti400_update);
+        sc_lc5_update = (EditText) dialog.findViewById(R.id.sc_lc5m_update);
+        sc_lc10_update = (EditText) dialog.findViewById(R.id.sc_lc10m_update);
+        sc_sc5_update = (EditText) dialog.findViewById(R.id.sc_sc5m_update);
         /*======================Get Data Dialog======================*/
             dialogTitle.setText(listShow.get(position).getCableId());
             if(listShow.get(position).getHanging4fo()!=0){
@@ -605,141 +632,121 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         /*====================== DIALOG UPDATE ========================*/
 
         if(listShow.get(position).getHanging4fo()!=0){
-            cable4fo_update.setText(listShow.get(position).getHanging4fo()+"");
-            cable4fo_edit.setText(listShow.get(position).getHanging4fo()+"");
+            cable4fo_origin.setText(listShow.get(position).getHanging4fo()+"");
             row4fo_update.setVisibility(View.VISIBLE);
         } else{
             row4fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging6fo()!=0){
-            cable6fo_update.setText(listShow.get(position).getHanging6fo()+"");
-            cable6fo_edit.setText(listShow.get(position).getHanging6fo()+"");
+            cable6fo_origin.setText(listShow.get(position).getHanging6fo()+"");
             row6fo_update.setVisibility(View.VISIBLE);
         } else{
             row6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging12fo()!=0){
-            cable12fo_update.setText(listShow.get(position).getHanging12fo()+"");
-            cable12fo_edit.setText(listShow.get(position).getHanging12fo()+"");
+            cable12fo_origin.setText(listShow.get(position).getHanging12fo()+"");
             row12fo_update.setVisibility(View.VISIBLE);
         } else{
             row12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging24fo()!=0){
-            cable24fo_update.setText(listShow.get(position).getHanging24fo()+"");
-            cable24fo_edit.setText(listShow.get(position).getHanging24fo()+"");
+            cable24fo_origin.setText(listShow.get(position).getHanging24fo()+"");
             row24fo_update.setVisibility(View.VISIBLE);
         } else{
             row24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getDu12fo()!=0){
-            cable12du_update.setText(listShow.get(position).getDu12fo()+"");
-            cable12du_edit.setText(listShow.get(position).getDu12fo()+"");
+            cable12du_origin.setText(listShow.get(position).getDu12fo()+"");
             rowdu12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowdu12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf6fo()!=0){
-            odf6_update.setText(listShow.get(position).getOdf6fo()+"");
-            odf6fo_edit.setText(listShow.get(position).getOdf6fo()+"");
+            odf6_origin.setText(listShow.get(position).getOdf6fo()+"");
             rowodf6fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf12fo()!=0){
-            odf12_update.setText(listShow.get(position).getOdf12fo()+"");
-            odf12fo_edit.setText(listShow.get(position).getOdf12fo()+"");
+            odf12_origin.setText(listShow.get(position).getOdf12fo()+"");
             rowodf12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf24fo()!=0){
-            odf24_update.setText(listShow.get(position).getOdf24fo()+"");
-            odf24fo_edit.setText(listShow.get(position).getOdf24fo()+"");
+            odf24_origin.setText(listShow.get(position).getOdf24fo()+"");
             rowodf24fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf96fo()!=0){
-            odf96_update.setText(listShow.get(position).getOdf96fo()+"");
-            odf96fo_edit.setText(listShow.get(position).getOdf96fo()+"");
+            odf96_origin.setText(listShow.get(position).getOdf96fo()+"");
             rowodf96fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure6fo()!=0){
-            mx6_update.setText(listShow.get(position).getClosure6fo()+"");
-            mx6_edit.setText(listShow.get(position).getClosure6fo()+"");
+            mx6_origin.setText(listShow.get(position).getClosure6fo()+"");
             rowmx6_update.setVisibility(View.VISIBLE);
         } else{
             rowmx6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure12fo()!=0){
-            mx12_update.setText(listShow.get(position).getClosure12fo()+"");
-            mx12_edit.setText(listShow.get(position).getClosure12fo()+"");
+            mx12_origin.setText(listShow.get(position).getClosure12fo()+"");
             rowmx12_update.setVisibility(View.VISIBLE);
         } else{
             rowmx12_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure24fo()!=0){
-            mx24_update.setText(listShow.get(position).getClosure24fo()+"");
-            mx24_edit.setText(listShow.get(position).getClosure24fo()+"");
+            mx24_origin.setText(listShow.get(position).getClosure24fo()+"");
             rowmx24_update.setVisibility(View.VISIBLE);
         } else{
             rowmx24_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong300()!=0){
-            buloongti300_update.setText(listShow.get(position).getBuloong300()+"");
-            buloong300_edit.setText(listShow.get(position).getBuloong300()+"");
+            buloongti300_origin.setText(listShow.get(position).getBuloong300()+"");
             rowbuloongti300_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti300_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong400()!=0){
-            buloongti400_update.setText(listShow.get(position).getBuloong400()+"");
-            buloong400_edit.setText(listShow.get(position).getBuloong400()+"");
+            buloongti400_origin.setText(listShow.get(position).getBuloong400()+"");
             rowbuloongti400_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti400_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClamp()!=0){
-            clamp_update.setText(listShow.get(position).getClamp()+"");
-            clamp_edit.setText(listShow.get(position).getClamp()+"");
+            clamp_origin.setText(listShow.get(position).getClamp()+"");
             rowclamp_update.setVisibility(View.VISIBLE);
         } else{
             rowclamp_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getPoleu8()!=0){
-            poleu8_update.setText(listShow.get(position).getPoleu8()+"");
-            poleu8_edit.setText(listShow.get(position).getPoleu8()+"");
+            poleu8_origin.setText(listShow.get(position).getPoleu8()+"");
             rowpoleu8_update.setVisibility(View.VISIBLE);
         } else{
             rowpoleu8_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getIronpole6()!=0){
-            ironpole6_update.setText(listShow.get(position).getIronpole6()+"");
-            ironpole6_edit.setText(listShow.get(position).getIronpole6()+"");
+            ironpole6_origin.setText(listShow.get(position).getIronpole6()+"");
             rowironpole6_update.setVisibility(View.VISIBLE);
         } else{
             rowironpole6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc5()!=0){
-            sc_lc5m_update.setText(listShow.get(position).getSc_lc5()+"");
-            sc_lc5_edit.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc5m_origin.setText(listShow.get(position).getSc_lc5()+"");
             rowsc_lc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc5m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc10()!=0){
-            sc_lc10m_update.setText(listShow.get(position).getSc_lc5()+"");
-            sc_lc10_edit.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc10m_origin.setText(listShow.get(position).getSc_lc5()+"");
             rowsc_lc10m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc10m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_sc5()!=0){
-            sc_sc5m_update.setText(listShow.get(position).getSc_sc5()+"");
-            sc_sc5_edit.setText(listShow.get(position).getSc_sc5()+"");
+            sc_sc5m_origin.setText(listShow.get(position).getSc_sc5()+"");
             rowsc_sc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_sc5m_update.setVisibility(View.GONE);
@@ -767,108 +774,109 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtmx6, edtmx12, edtmx24, edtbl300, edtbl400, edtclamp,edtpoleu8, edtironpole6, edtsclc5, edtsclc10, edtscsc5;
                 int add4fo, add6fo, add12fo, add24fo, adddu12, addodf6fo, addodf12fo, addodf24fo, addodf96fo, addclosure6fo, addclosure12fo,
                         addclosure24fo, addbuloong300, addbuloong400, addclamp, addpoleu8, addironpole6, addsc_lc5, addsc_lc10, addsc_sc5;
+                int used4fo, used6fo, used12fo, used24fo, useddu12, usedodf6fo, usedodf12fo, usedodf24fo, usedodf96fo, usedclosure6fo, usedclosure12fo,
+                        usedclosure24fo, usedbuloong300, usedbuloong400, usedclamp, usedpoleu8, usedironpole6, usedsc_lc5, usedsc_lc10, usedsc_sc5;
                 String datechange, comment, userchange;
                 if(listShow.get(position).getHanging4fo()!=0){
-                    edt4fo = Integer.parseInt(cable4fo_edit.getText().toString());
+                    edt4fo = Integer.parseInt(cable4fo_update.getText().toString());
                 } else{
                     edt4fo =0;
                 }
                 if(listShow.get(position).getHanging6fo()!=0){
-                    edt6fo = Integer.parseInt(cable6fo_edit.getText().toString());
+                    edt6fo = Integer.parseInt(cable6fo_update.getText().toString());
                 } else{
                     edt6fo=0;
                 }
                 if(listShow.get(position).getHanging12fo()!=0){
-                    edt12fo = Integer.parseInt(cable12fo_edit.getText().toString());
+                    edt12fo = Integer.parseInt(cable12fo_update.getText().toString());
                 } else{
                     edt12fo=0;
                 }
                 if(listShow.get(position).getHanging24fo()!=0){
-                    edt24fo = Integer.parseInt(cable24fo_edit.getText().toString());
+                    edt24fo = Integer.parseInt(cable24fo_update.getText().toString());
                 } else{
                     edt24fo=0;
                 }
                 if(listShow.get(position).getDu12fo()!=0){
-                    edt12du = Integer.parseInt(cable12du_edit.getText().toString());
+                    edt12du = Integer.parseInt(cable12du_update.getText().toString());
                 } else{
                     edt12du=0;
                 }
                 if(listShow.get(position).getOdf6fo()!=0){
-                    edtodf6fo = Integer.parseInt(odf6fo_edit.getText().toString());
+                    edtodf6fo = Integer.parseInt(odf6fo_update.getText().toString());
                 } else{
                     edtodf6fo=0;
                 }
                 if(listShow.get(position).getOdf12fo()!=0){
-                    edtodf12fo = Integer.parseInt(odf12fo_edit.getText().toString());
+                    edtodf12fo = Integer.parseInt(odf12fo_update.getText().toString());
                 } else{
                     edtodf12fo=0;
                 }
                 if(listShow.get(position).getOdf24fo()!=0){
-                    edtodf24fo = Integer.parseInt(odf24fo_edit.getText().toString());
+                    edtodf24fo = Integer.parseInt(odf24fo_update.getText().toString());
                 } else{
                     edtodf24fo=0;
                 }
                 if(listShow.get(position).getOdf96fo()!=0){
-                    edtodf96fo = Integer.parseInt(odf96fo_edit.getText().toString());
+                    edtodf96fo = Integer.parseInt(odf96fo_update.getText().toString());
                 } else{
                     edtodf96fo=0;
                 }
                 if(listShow.get(position).getClosure6fo()!=0){
-                    edtmx6 = Integer.parseInt(mx6_edit.getText().toString());
+                    edtmx6 = Integer.parseInt(mx6_update.getText().toString());
                 } else{
                     edtmx6=0;
                 }
                 if(listShow.get(position).getClosure12fo()!=0){
-                    edtmx12 = Integer.parseInt(mx12_edit.getText().toString());
+                    edtmx12 = Integer.parseInt(mx12_update.getText().toString());
                 } else{
                     edtmx12=0;
                 }
                 if(listShow.get(position).getClosure24fo()!=0){
-                    edtmx24 = Integer.parseInt(mx24_edit.getText().toString());
+                    edtmx24 = Integer.parseInt(mx24_update.getText().toString());
                 } else{
                     edtmx24=0;
                 }
                 if(listShow.get(position).getBuloong300()!=0){
-                    edtbl300 = Integer.parseInt(buloong300_edit.getText().toString());
+                    edtbl300 = Integer.parseInt(buloong300_update.getText().toString());
                 } else{
                     edtbl300=0;
                 }
                 if(listShow.get(position).getBuloong400()!=0){
-                    edtbl400 = Integer.parseInt(buloong400_edit.getText().toString());
+                    edtbl400 = Integer.parseInt(buloong400_update.getText().toString());
                 } else{
                     edtbl400=0;
                 }
                 if(listShow.get(position).getClamp()!=0){
-                    edtclamp = Integer.parseInt(clamp_edit.getText().toString());
+                    edtclamp = Integer.parseInt(clamp_update.getText().toString());
                 } else{
                     edtclamp=0;
                 }
                 if(listShow.get(position).getPoleu8()!=0){
-                    edtpoleu8 = Integer.parseInt(poleu8_edit.getText().toString());
+                    edtpoleu8 = Integer.parseInt(poleu8_update.getText().toString());
                 } else{
                     edtpoleu8=0;
                 }
                 if(listShow.get(position).getIronpole6()!=0){
-                    edtironpole6 = Integer.parseInt(ironpole6_edit.getText().toString());
+                    edtironpole6 = Integer.parseInt(ironpole6_update.getText().toString());
                 } else{
                     edtironpole6=0;
                 }
                 if(listShow.get(position).getSc_lc5()!=0){
-                    edtsclc5 = Integer.parseInt(sc_lc5_edit.getText().toString());
+                    edtsclc5 = Integer.parseInt(sc_lc5_update.getText().toString());
                 } else{
                     edtsclc5=0;
                 }
                 if(listShow.get(position).getSc_lc10()!=0){
-                    edtsclc10 = Integer.parseInt(sc_lc10_edit.getText().toString());
+                    edtsclc10 = Integer.parseInt(sc_lc10_update.getText().toString());
                 } else{
                     edtsclc10=0;
                 }
                 if(listShow.get(position).getSc_sc5()!=0){
-                    edtscsc5 = Integer.parseInt(sc_sc5_edit.getText().toString());
+                    edtscsc5 = Integer.parseInt(sc_sc5_update.getText().toString());
                 } else{
                     edtscsc5=0;
                 }
-
                 add4fo = listShow.get(position).getHanging4fo();
                 add6fo = listShow.get(position).getHanging6fo();
                 add12fo = listShow.get(position).getHanging12fo();
@@ -895,9 +903,136 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 datechange = sdf.format(new Date());
                 userchange = listUser.get(0).getUser().toString();
 
+                //USED MATERIALS
+                if(TextUtils.isEmpty(cable4fo_used.getText().toString())){
+                    used4fo =0;
+                } else{
+                    used4fo = Integer.parseInt(cable4fo_used.getText().toString()) ;
+                }
+
+                if(TextUtils.isEmpty(cable6fo_used.getText().toString())){
+                    used6fo =0;
+                } else{
+                    used6fo = Integer.parseInt(cable6fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(cable12fo_used.getText().toString())){
+                    used12fo =0;
+                } else{
+                    used12fo = Integer.parseInt(cable12fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(cable24fo_used.getText().toString())){
+                    used24fo =0;
+                } else{
+                    used24fo = Integer.parseInt(cable24fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(cable12du_used.getText().toString())){
+                    useddu12 =0;
+                } else{
+                    useddu12 = Integer.parseInt(cable12du_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(odf6fo_used.getText().toString())){
+                    usedodf6fo =0;
+                } else{
+                    usedodf6fo = Integer.parseInt(odf6fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(odf12fo_used.getText().toString())){
+                    usedodf12fo =0;
+                } else{
+                    usedodf12fo = Integer.parseInt(odf12fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(odf24fo_used.getText().toString())){
+                    usedodf24fo =0;
+                } else{
+                    usedodf24fo = Integer.parseInt(odf24fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(odf96fo_used.getText().toString())){
+                    usedodf96fo =0;
+                } else{
+                    usedodf96fo = Integer.parseInt(odf96fo_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(mx6_used.getText().toString())){
+                    usedclosure6fo =0;
+                } else{
+                    usedclosure6fo = Integer.parseInt(mx6_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(mx12_used.getText().toString())){
+                    usedclosure12fo =0;
+                } else{
+                    usedclosure12fo = Integer.parseInt(mx12_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(mx24_used.getText().toString())){
+                    usedclosure24fo =0;
+                } else{
+                    usedclosure24fo = Integer.parseInt(mx24_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(buloong300_used.getText().toString())){
+                    usedbuloong300 =0;
+                } else{
+                    usedbuloong300 = Integer.parseInt(buloong300_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(buloong400_used.getText().toString())){
+                    usedbuloong400 =0;
+                } else{
+                    usedbuloong400 = Integer.parseInt(buloong400_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(clamp_used.getText().toString())){
+                    usedclamp =0;
+                } else{
+                    usedclamp = Integer.parseInt(clamp_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(poleu8_used.getText().toString())){
+                    usedpoleu8 =0;
+                } else{
+                    usedpoleu8 = Integer.parseInt(poleu8_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(ironpole6_used.getText().toString())){
+                    usedironpole6 =0;
+                } else{
+                    usedironpole6 = Integer.parseInt(ironpole6_used.getText().toString());
+                }
+
+
+                if(TextUtils.isEmpty(sc_lc5_used.getText().toString())){
+                    usedsc_lc5 =0;
+                } else{
+                    usedsc_lc5 = Integer.parseInt(sc_lc5_used.getText().toString());
+                }
+                if(TextUtils.isEmpty(sc_lc10_used.getText().toString())){
+                    usedsc_lc10 =0;
+                } else{
+                    usedsc_lc10 = Integer.parseInt(sc_lc10_used.getText().toString());
+                }
+
+                if(TextUtils.isEmpty(sc_sc5_used.getText().toString())){
+                    usedsc_sc5 =0;
+                } else{
+                    usedsc_sc5 = Integer.parseInt(sc_sc5_used.getText().toString());
+                }
+
+
                 InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
                         add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
                         addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
+                        datechange,comment,userchange
+                        );
+                InsertUsedHistory("https://sqlandroid2812.000webhostapp.com/insertused.php",position,used4fo,used6fo,
+                        used12fo,used24fo,useddu12,usedodf6fo,usedodf12fo,usedodf24fo,usedodf96fo,usedclosure6fo,usedclosure12fo,
+                        usedclosure24fo,usedbuloong300,usedbuloong400,usedclamp,usedpoleu8, usedironpole6,usedsc_lc5, usedsc_lc10, usedsc_sc5,
                         datechange,comment,userchange
                         );
                 UpdateSQL("https://sqlandroid2812.000webhostapp.com/update.php", position,
@@ -1194,6 +1329,159 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     params.put("Addsc_sc5", String.valueOf(addsc_sc5));
                 }else{
                     params.put("Addsc_sc5", String.valueOf(0));
+                }
+                params.put("Adddatechange",datechange);
+                params.put("Addcomment",comment);
+                params.put("Adduserchange",userchange);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    private void InsertUsedHistory(String url, final int position, final int used4fo, final int used6fo,
+                               final int used12fo , final int used24fo, final int useddu12, final int usedodf6fo, final int usedodf12fo,
+                               final int usedodf24fo, final int usedodf96fo, final int usedclosure6fo, final int usedclosure12fo, final int usedclosure24fo,
+                               final int usedbuloong300, final int usedbuloong400, final int usedclamp, final int usedpoleu8, final int usedironpole6,
+                               final int usedsc_lc5, final int usedsc_lc10, final int usedsc_sc5, final String datechange, final String comment,
+                               final String userchange
+    ){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("Addoldid",String.valueOf(listShow.get(position).getId()));
+                params.put("Addcableid",String.valueOf(listShow.get(position).getCableId()));
+                params.put("Addprovince",String.valueOf(listShow.get(position).getProvince()));
+                if (used4fo > 0){
+                    params.put("Usedhanging4fo", String.valueOf(used4fo));
+                }else{
+                    params.put("Usedhanging4fo", String.valueOf(0));
+                }
+
+                if(used6fo > 0){
+                    params.put("Usedhanging6fo", String.valueOf(used6fo));
+                }else{
+                    params.put("Usedhanging6fo", String.valueOf(0));
+                }
+
+                if(used12fo > 0){
+                    params.put("Usedhanging12fo", String.valueOf(used12fo));
+                }else{
+                    params.put("Usedhanging12fo", String.valueOf(0));
+                }
+
+                if(used24fo > 0){
+                    params.put("Usedhanging24fo", String.valueOf(used24fo));
+                }else{
+                    params.put("Usedhanging24fo", String.valueOf(0));
+                }
+                if(useddu12 > 0){
+                    params.put("Useddu12fo", String.valueOf(useddu12));
+                }else{
+                    params.put("Useddu12fo", String.valueOf(0));
+                }
+
+                if(usedodf6fo > 0){
+                    params.put("Usedodf6fo", String.valueOf(usedodf6fo));
+                }else{
+                    params.put("Usedodf6fo", String.valueOf(0));
+                }
+
+                if(usedodf12fo > 0){
+                    params.put("Usedodf12fo", String.valueOf(usedodf12fo));
+                }else{
+                    params.put("Usedodf12fo", String.valueOf(0));
+                }
+
+                if(usedodf24fo > 0){
+                    params.put("Usedodf24fo", String.valueOf(usedodf24fo));
+                }else{
+                    params.put("Usedodf24fo", String.valueOf(0));
+                }
+
+                if(usedodf96fo > 0){
+                    params.put("Usedodf96fo", String.valueOf(usedodf96fo));
+                }else{
+                    params.put("Usedodf96fo", String.valueOf(0));
+                }
+
+                if(usedclosure6fo > 0){
+                    params.put("Usedclosure6fo", String.valueOf(usedclosure6fo));
+                }else{
+                    params.put("Usedclosure6fo", String.valueOf(0));
+                }
+
+                if(usedclosure12fo > 0){
+                    params.put("Usedclosure12fo", String.valueOf(usedclosure12fo));
+                }else{
+                    params.put("Usedclosure12fo", String.valueOf(0));
+                }
+
+                if(usedclosure24fo > 0){
+                    params.put("Usedclosure24fo", String.valueOf(usedclosure24fo));
+                }else{
+                    params.put("Usedclosure24fo", String.valueOf(0));
+                }
+
+                if(usedbuloong300 > 0){
+                    params.put("Usedbuloongti300", String.valueOf(usedbuloong300));
+                }else{
+                    params.put("Usedbuloongti300", String.valueOf(0));
+                }
+
+                if(usedbuloong400 > 0){
+                    params.put("Usedbuloongti400", String.valueOf(usedbuloong400));
+                }else{
+                    params.put("Usedbuloongti400", String.valueOf(0));
+                }
+
+                if(usedclamp > 0){
+                    params.put("Usedclamp", String.valueOf(usedclamp));
+                }else{
+                    params.put("Usedclamp", String.valueOf(0));
+                }
+
+                if(usedpoleu8 > 0){
+                    params.put("Usedpoleu8", String.valueOf(usedpoleu8));
+                }else{
+                    params.put("Usedpoleu8", String.valueOf(0));
+                }
+
+                if(usedironpole6 > 0){
+                    params.put("Usedironpole6", String.valueOf(usedironpole6));
+                }else{
+                    params.put("Usedironpole6", String.valueOf(0));
+                }
+
+                if(usedsc_lc5 > 0){
+                    params.put("Usedsc_lc5", String.valueOf(usedsc_lc5));
+                }else{
+                    params.put("Usedsc_lc5", String.valueOf(0));
+                }
+
+                if(usedsc_lc10 > 0){
+                    params.put("Usedsc_lc10", String.valueOf(usedsc_lc10));
+                }else{
+                    params.put("Usedsc_lc10", String.valueOf(0));
+                }
+
+                if(usedsc_sc5 >0){
+                    params.put("Usedsc_sc5", String.valueOf(usedsc_sc5));
+                }else{
+                    params.put("Usedsc_sc5", String.valueOf(0));
                 }
                 params.put("Adddatechange",datechange);
                 params.put("Addcomment",comment);
