@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
@@ -1024,7 +1025,6 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     usedsc_sc5 = Integer.parseInt(sc_sc5_used.getText().toString());
                 }
 
-
                 InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
                         add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
                         addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
@@ -1041,6 +1041,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
                         edtsclc10, edtscsc5
                        );
+
                 adapter.notifyDataSetChanged();
                 Intent intent = new Intent(Management.this, DashBoard.class);
                 intent.putExtra("Account", listUser);
@@ -1491,4 +1492,105 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
+
+    /*=============================== UPDATE INVENTORY ===================================*/
+    private void UpdateInventory(String url, final int id, final int hanging6fo,
+                           final int hanging12fo , final int hanging24fo, final int odf6fo, final int odf12fo,
+                           final int odf24fo, final int closure6fo, final int closure12fo, final int closure24fo,
+                           final int buloong300, final int buloong400, final int clamp, final int sc_lc5, final int sc_lc10) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map <String, String> params = new HashMap<>();
+                params.put("ID",String.valueOf(id));
+                if(hanging6fo > 0){
+                    params.put("Hanging6fo", String.valueOf(hanging6fo));
+                }else{
+                    params.put("Hanging6fo", String.valueOf(0));
+                }
+                if(hanging12fo > 0){
+                    params.put("Hanging12fo", String.valueOf(hanging12fo));
+                }else{
+                    params.put("Hanging12fo", String.valueOf(0));
+                }
+                if(hanging24fo > 0){
+                    params.put("Hanging24fo", String.valueOf(hanging24fo));
+                }else{
+                    params.put("Hanging24fo", String.valueOf(0));
+                }
+                if(odf6fo > 0){
+                    params.put("Odf6fo", String.valueOf(odf6fo));
+                }else{
+                    params.put("Odf6fo", String.valueOf(0));
+                }
+                if(odf12fo > 0){
+                    params.put("Odf12fo", String.valueOf(odf12fo));
+                }else{
+                    params.put("Odf12fo", String.valueOf(0));
+                }
+                if(odf24fo > 0){
+                    params.put("Odf24fo", String.valueOf(odf24fo));
+                }else{
+                    params.put("Odf24fo", String.valueOf(0));
+                }
+                if(closure6fo > 0){
+                    params.put("Closure6fo", String.valueOf(closure6fo));
+                }else{
+                    params.put("Closure6fo", String.valueOf(0));
+                }
+                if(closure12fo > 0){
+                    params.put("Closure12fo", String.valueOf(closure12fo));
+                }else{
+                    params.put("Closure12fo", String.valueOf(0));
+                }
+                if(closure24fo > 0){
+                    params.put("Closure24fo", String.valueOf(closure24fo));
+                }else{
+                    params.put("Closure24fo", String.valueOf(0));
+                }
+                if(buloong300 > 0){
+                    params.put("Buloong300", String.valueOf(buloong300));
+                }else{
+                    params.put("Buloong300", String.valueOf(0));
+                }
+                if(buloong400 > 0){
+                    params.put("Buloong400", String.valueOf(buloong400));
+                }else{
+                    params.put("Buloong400", String.valueOf(0));
+                }
+                if(clamp > 0){
+                    params.put("Clamp", String.valueOf(clamp));
+                }else{
+                    params.put("Clamp", String.valueOf(0));
+                }
+                if(sc_lc5 > 0){
+                    params.put("Sc_lc5", String.valueOf(sc_lc5));
+                }else{
+                    params.put("Sc_lc5", String.valueOf(0));
+                }
+                if(sc_lc10 > 0){
+                    params.put("Sc_lc10", String.valueOf(sc_lc10));
+                }else{
+                    params.put("Sc_lc10", String.valueOf(0));
+                }
+                return params;
+            }
+
+        };
+        requestQueue.add(stringRequest);
+    }
+
 }
