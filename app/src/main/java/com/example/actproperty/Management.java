@@ -27,6 +27,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.inventory.Inventory;
+import com.example.actproperty.inventory.MaterialsInventory;
 import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
@@ -44,6 +45,7 @@ import java.util.Map;
 public class Management extends AppCompatActivity implements OnItemClickRecyclerView {
     Button btnSearch;
     EditText searchLocal, searchCableId;
+    ArrayList<MaterialsInventory> listInventory;
     ArrayList<Passport>listUser;
     ArrayList<CableId> listCable;
     ArrayList<CableId> list;
@@ -62,6 +64,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listCable = new ArrayList<>();
         listShow = new ArrayList<>();
         listUser = new ArrayList<>();
+        listInventory = new ArrayList<>();
         GetAccount();
         list = new ArrayList<>();
         listSearch = new ArrayList<>();
@@ -80,6 +83,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 searchCableId.clearFocus();
                 searchLocal.clearFocus();
                 ReadJsonSeach("https://sqlandroid2812.000webhostapp.com/getdata.php");
+                getInventory("https://sqlandroid2812.000webhostapp.com/getinventory.php");
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 FragmentSearch fragmentSearch = new FragmentSearch();
@@ -1025,6 +1029,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     usedsc_sc5 = Integer.parseInt(sc_sc5_used.getText().toString());
                 }
 
+
                 InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
                         add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
                         addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
@@ -1041,6 +1046,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
                         edtsclc10, edtscsc5
                        );
+                int idInventory =0;
+                if(listShow.get(position).getProvince().equals("Bình Dương")){
+                    idInventory=4;
+                }else if(listShow.get(position).getProvince().equals("Bến Tre")){
+                    idInventory=1;
+                }
+                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",idInventory,used6fo,used12fo,used24fo,
+                usedodf6fo,usedodf12fo,usedodf24fo,usedclosure6fo,usedclosure12fo,usedclosure24fo,usedbuloong300,usedbuloong400,usedclamp,
+                        usedsc_lc5,usedsc_lc10);
 
                 adapter.notifyDataSetChanged();
                 Intent intent = new Intent(Management.this, DashBoard.class);
@@ -1498,6 +1512,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                            final int hanging12fo , final int hanging24fo, final int odf6fo, final int odf12fo,
                            final int odf24fo, final int closure6fo, final int closure12fo, final int closure24fo,
                            final int buloong300, final int buloong400, final int clamp, final int sc_lc5, final int sc_lc10) {
+
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -1515,74 +1530,89 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map <String, String> params = new HashMap<>();
+                //Get id inventory
                 params.put("ID",String.valueOf(id));
                 if(hanging6fo > 0){
-                    params.put("Hanging6fo", String.valueOf(hanging6fo));
+                    int newHanging6fo = listInventory.get(id-1).getHanging6fo()-hanging6fo;
+                    params.put("Hanging6fo", String.valueOf(newHanging6fo));
                 }else{
                     params.put("Hanging6fo", String.valueOf(0));
                 }
                 if(hanging12fo > 0){
-                    params.put("Hanging12fo", String.valueOf(hanging12fo));
+                    int newHanging12fo = listInventory.get(id-1).getHanging12fo()-hanging12fo;
+                    params.put("Hanging12fo", String.valueOf(newHanging12fo));
                 }else{
                     params.put("Hanging12fo", String.valueOf(0));
                 }
                 if(hanging24fo > 0){
-                    params.put("Hanging24fo", String.valueOf(hanging24fo));
+                    int newHanging24fo = listInventory.get(id-1).getHanging24fo()-hanging24fo;
+                    params.put("Hanging24fo", String.valueOf(newHanging24fo));
                 }else{
                     params.put("Hanging24fo", String.valueOf(0));
                 }
                 if(odf6fo > 0){
-                    params.put("Odf6fo", String.valueOf(odf6fo));
+                    int newOdf6fo = listInventory.get(id-1).getOdf6fo()-odf6fo;
+                    params.put("Odf6fo", String.valueOf(newOdf6fo));
                 }else{
                     params.put("Odf6fo", String.valueOf(0));
                 }
                 if(odf12fo > 0){
-                    params.put("Odf12fo", String.valueOf(odf12fo));
+                    int newOdf12fo = listInventory.get(id-1).getOdf12fo()-odf12fo;
+                    params.put("Odf12fo", String.valueOf(newOdf12fo));
                 }else{
                     params.put("Odf12fo", String.valueOf(0));
                 }
                 if(odf24fo > 0){
-                    params.put("Odf24fo", String.valueOf(odf24fo));
+                    int newOdf24fo = listInventory.get(id-1).getOdf24fo()-odf24fo;
+                    params.put("Odf24fo", String.valueOf(newOdf24fo));
                 }else{
                     params.put("Odf24fo", String.valueOf(0));
                 }
                 if(closure6fo > 0){
-                    params.put("Closure6fo", String.valueOf(closure6fo));
+                    int newClosure6fo = listInventory.get(id-1).getClosure6fo()-closure6fo;
+                    params.put("Closure6fo", String.valueOf(newClosure6fo));
                 }else{
                     params.put("Closure6fo", String.valueOf(0));
                 }
                 if(closure12fo > 0){
-                    params.put("Closure12fo", String.valueOf(closure12fo));
+                    int newClosure12fo = listInventory.get(id-1).getClosure12fo()-closure12fo;
+                    params.put("Closure12fo", String.valueOf(newClosure12fo));
                 }else{
                     params.put("Closure12fo", String.valueOf(0));
                 }
                 if(closure24fo > 0){
-                    params.put("Closure24fo", String.valueOf(closure24fo));
+                    int newClosure24fo = listInventory.get(id-1).getClosure24fo()-closure24fo;
+                    params.put("Closure24fo", String.valueOf(newClosure24fo));
                 }else{
                     params.put("Closure24fo", String.valueOf(0));
                 }
                 if(buloong300 > 0){
-                    params.put("Buloong300", String.valueOf(buloong300));
+                    int newBuloong300 = listInventory.get(id-1).getBl300()-buloong300;
+                    params.put("Buloong300", String.valueOf(newBuloong300));
                 }else{
                     params.put("Buloong300", String.valueOf(0));
                 }
                 if(buloong400 > 0){
-                    params.put("Buloong400", String.valueOf(buloong400));
+                    int newBuloong400 = listInventory.get(id-1).getBl400()-buloong400;
+                    params.put("Buloong400", String.valueOf(newBuloong400));
                 }else{
                     params.put("Buloong400", String.valueOf(0));
                 }
                 if(clamp > 0){
-                    params.put("Clamp", String.valueOf(clamp));
+                    int newClamp = listInventory.get(id-1).getClamp()-clamp;
+                    params.put("Clamp", String.valueOf(newClamp));
                 }else{
                     params.put("Clamp", String.valueOf(0));
                 }
                 if(sc_lc5 > 0){
-                    params.put("Sc_lc5", String.valueOf(sc_lc5));
+                    int newSc_lc5 = listInventory.get(id-1).getSc_lc5()-sc_lc5;
+                    params.put("Sc_lc5", String.valueOf(newSc_lc5));
                 }else{
                     params.put("Sc_lc5", String.valueOf(0));
                 }
                 if(sc_lc10 > 0){
-                    params.put("Sc_lc10", String.valueOf(sc_lc10));
+                    int newSc_lc10 = listInventory.get(id-1).getSc_lc10()-sc_lc10;
+                    params.put("Sc_lc10", String.valueOf(newSc_lc10));
                 }else{
                     params.put("Sc_lc10", String.valueOf(0));
                 }
@@ -1592,5 +1622,46 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
+    private void getInventory(String url){
+        listInventory = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0; i<response.length(); i++){
+                    try{
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listInventory.add(new MaterialsInventory(
+                                jsonObject.getInt("ID"),
+                                jsonObject.getString("Storecode"),
+                                jsonObject.getInt("Hanging6fo"),
+                                jsonObject.getInt("Hanging12fo"),
+                                jsonObject.getInt("Hanging24fo"),
+                                jsonObject.getInt("Odf6fo"),
+                                jsonObject.getInt("Odf12fo"),
+                                jsonObject.getInt("Odf24fo"),
+                                jsonObject.getInt("Closure6fo"),
+                                jsonObject.getInt("Closure12fo"),
+                                jsonObject.getInt("Closure24fo"),
+                                jsonObject.getInt("Buloongti300"),
+                                jsonObject.getInt("Buloongti400"),
+                                jsonObject.getInt("Clamp"),
+                                jsonObject.getInt("Sc_lc5"),
+                                jsonObject.getInt("Sc_lc10")
+                        ));
 
+                    }catch (Exception e){
+                        Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
 }
