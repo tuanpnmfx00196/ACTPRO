@@ -34,6 +34,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.admin.Admin;
+import com.example.actproperty.admin.DashboardAdmin;
 import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
@@ -104,7 +105,9 @@ public class DashBoard extends AppCompatActivity {
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Admin();
+                Intent intent = new Intent(DashBoard.this, DashboardAdmin.class);
+                intent.putExtra("Account",listUser);
+                startActivity(intent);
             }
         });
 
@@ -152,7 +155,7 @@ public class DashBoard extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void ChangePassword() {
+    public void ChangePassword() {
         final Dialog dialog = new Dialog(this);
         dialog.setTitle("Change your password!");
         dialog.setContentView(R.layout.change_password);
@@ -206,31 +209,6 @@ public class DashBoard extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);
-    }
-
-    private void Admin() {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.admin);
-        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.97);
-        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final Button btnHistory = (Button) dialog.findViewById(R.id.btnHistory);
-        final Button exportxls = (Button) dialog.findViewById(R.id.exportxls);
-        final Button btnCR = (Button) dialog.findViewById(R.id.btnCR);
-        final Button btnExitAdmin = (Button) dialog.findViewById(R.id.btnExitAdmin);
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DashBoard.this, Admin.class);
-                startActivity(intent);
-            }
-        });
-        exportxls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                saveFilexxls();
-            }
-        });
-        dialog.show();
     }
 
 //    private void saveFilexxls() {

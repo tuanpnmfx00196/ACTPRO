@@ -291,7 +291,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
     public void Permission(){
-        if(listUser.get(0).getAdmin()==1){
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
             for(int i=0;i<listCable.size();i++){
                 listShow.add(listCable.get(i));
             }
@@ -756,6 +756,22 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         } else{
             rowsc_sc5m_update.setVisibility(View.GONE);
         }
+        //Access modifier account
+        if(listUser.get(0).getAdmin()==1){
+            btnUpdate.setEnabled(true);
+        }else if(listUser.get(0).getAdmin()==2){
+
+            btnUpdate.setEnabled(false);
+        } else{
+            if(listUser.get(0).getBte()==1||listUser.get(0).getLan()==1||listUser.get(0).getBdg()==1||
+               listUser.get(0).getHcm_bch()==1||listUser.get(0).getDni()==1||listUser.get(0).getHcm_btn()==1||
+               listUser.get(0).getHcm_cci()==1||listUser.get(0).getHcm_gvp()==1||listUser.get(0).getHcm_hmn()==1||
+               listUser.get(0).getHcm_q12()==1||listUser.get(0).getKgg()==1||listUser.get(0).getTvh()==1){
+                btnUpdate.setEnabled(true);
+            }else{
+                btnUpdate.setEnabled(false);
+            }
+        }
 
         dialog.show();
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -1051,6 +1067,12 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     idInventory=4;
                 }else if(listShow.get(position).getProvince().equals("Bến Tre")){
                     idInventory=1;
+                }else if(listShow.get(position).getProvince().equals("Trà Vinh")){
+                    idInventory=3;
+                }else if(listShow.get(position).getProvince().equals("Kiên Giang")){
+                    idInventory=5;
+                }else if(listShow.get(position).getProvince().equals("Long An")){
+                    idInventory=2;
                 }
                 UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",idInventory,used6fo,used12fo,used24fo,
                 usedodf6fo,usedodf12fo,usedodf24fo,usedclosure6fo,usedclosure12fo,usedclosure24fo,usedbuloong300,usedbuloong400,usedclamp,
@@ -1369,7 +1391,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         )
@@ -1522,7 +1544,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         )
@@ -1531,94 +1553,23 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map <String, String> params = new HashMap<>();
                 //Get id inventory
-                params.put("ID",String.valueOf(id));
-                if(hanging6fo > 0){
-                    int newHanging6fo = listInventory.get(id-1).getHanging6fo()-hanging6fo;
-                    params.put("Hanging6fo", String.valueOf(newHanging6fo));
-                }else{
-                    params.put("Hanging6fo", String.valueOf(0));
-                }
-                if(hanging12fo > 0){
-                    int newHanging12fo = listInventory.get(id-1).getHanging12fo()-hanging12fo;
-                    params.put("Hanging12fo", String.valueOf(newHanging12fo));
-                }else{
-                    params.put("Hanging12fo", String.valueOf(0));
-                }
-                if(hanging24fo > 0){
-                    int newHanging24fo = listInventory.get(id-1).getHanging24fo()-hanging24fo;
-                    params.put("Hanging24fo", String.valueOf(newHanging24fo));
-                }else{
-                    params.put("Hanging24fo", String.valueOf(0));
-                }
-                if(odf6fo > 0){
-                    int newOdf6fo = listInventory.get(id-1).getOdf6fo()-odf6fo;
-                    params.put("Odf6fo", String.valueOf(newOdf6fo));
-                }else{
-                    params.put("Odf6fo", String.valueOf(0));
-                }
-                if(odf12fo > 0){
-                    int newOdf12fo = listInventory.get(id-1).getOdf12fo()-odf12fo;
-                    params.put("Odf12fo", String.valueOf(newOdf12fo));
-                }else{
-                    params.put("Odf12fo", String.valueOf(0));
-                }
-                if(odf24fo > 0){
-                    int newOdf24fo = listInventory.get(id-1).getOdf24fo()-odf24fo;
-                    params.put("Odf24fo", String.valueOf(newOdf24fo));
-                }else{
-                    params.put("Odf24fo", String.valueOf(0));
-                }
-                if(closure6fo > 0){
-                    int newClosure6fo = listInventory.get(id-1).getClosure6fo()-closure6fo;
-                    params.put("Closure6fo", String.valueOf(newClosure6fo));
-                }else{
-                    params.put("Closure6fo", String.valueOf(0));
-                }
-                if(closure12fo > 0){
-                    int newClosure12fo = listInventory.get(id-1).getClosure12fo()-closure12fo;
-                    params.put("Closure12fo", String.valueOf(newClosure12fo));
-                }else{
-                    params.put("Closure12fo", String.valueOf(0));
-                }
-                if(closure24fo > 0){
-                    int newClosure24fo = listInventory.get(id-1).getClosure24fo()-closure24fo;
-                    params.put("Closure24fo", String.valueOf(newClosure24fo));
-                }else{
-                    params.put("Closure24fo", String.valueOf(0));
-                }
-                if(buloong300 > 0){
-                    int newBuloong300 = listInventory.get(id-1).getBl300()-buloong300;
-                    params.put("Buloong300", String.valueOf(newBuloong300));
-                }else{
-                    params.put("Buloong300", String.valueOf(0));
-                }
-                if(buloong400 > 0){
-                    int newBuloong400 = listInventory.get(id-1).getBl400()-buloong400;
-                    params.put("Buloong400", String.valueOf(newBuloong400));
-                }else{
-                    params.put("Buloong400", String.valueOf(0));
-                }
-                if(clamp > 0){
-                    int newClamp = listInventory.get(id-1).getClamp()-clamp;
-                    params.put("Clamp", String.valueOf(newClamp));
-                }else{
-                    params.put("Clamp", String.valueOf(0));
-                }
-                if(sc_lc5 > 0){
-                    int newSc_lc5 = listInventory.get(id-1).getSc_lc5()-sc_lc5;
-                    params.put("Sc_lc5", String.valueOf(newSc_lc5));
-                }else{
-                    params.put("Sc_lc5", String.valueOf(0));
-                }
-                if(sc_lc10 > 0){
-                    int newSc_lc10 = listInventory.get(id-1).getSc_lc10()-sc_lc10;
-                    params.put("Sc_lc10", String.valueOf(newSc_lc10));
-                }else{
-                    params.put("Sc_lc10", String.valueOf(0));
-                }
+                    params.put("updateID",String.valueOf(id));
+                    params.put("updateHanging6fo", String.valueOf(listInventory.get(id-1).getHanging6fo()-hanging6fo));
+                    params.put("updateHanging12fo", String.valueOf(listInventory.get(id-1).getHanging12fo()-hanging12fo));
+                    params.put("updateHanging24fo", String.valueOf(listInventory.get(id-1).getHanging24fo()-hanging24fo));
+                    params.put("updateOdf6fo", String.valueOf(listInventory.get(id-1).getOdf6fo()-odf6fo));
+                    params.put("updateOdf12fo", String.valueOf(listInventory.get(id-1).getOdf12fo()-odf12fo));
+                    params.put("updateOdf24fo", String.valueOf(listInventory.get(id-1).getOdf24fo()-odf24fo));
+                    params.put("updateClosure6fo", String.valueOf(listInventory.get(id-1).getClosure6fo()-closure6fo));
+                    params.put("updateClosure12fo", String.valueOf(listInventory.get(id-1).getClosure12fo()-closure12fo));
+                    params.put("updateClosure24fo", String.valueOf(listInventory.get(id-1).getClosure24fo()-closure24fo));
+                    params.put("updateBuloong300", String.valueOf(listInventory.get(id-1).getBl300()-buloong300));
+                    params.put("updateBuloong400", String.valueOf(listInventory.get(id-1).getBl400()-buloong400));
+                    params.put("updateClamp", String.valueOf(listInventory.get(id-1).getClamp()-clamp));
+                    params.put("updateSc_lc5", String.valueOf(listInventory.get(id-1).getSc_lc5()-sc_lc5));
+                    params.put("updateSc_lc10", String.valueOf(listInventory.get(id-1).getSc_lc10()-sc_lc10));
                 return params;
             }
-
         };
         requestQueue.add(stringRequest);
     }
