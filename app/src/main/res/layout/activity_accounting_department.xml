@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:weightSum="12"
     android:orientation="vertical"
@@ -52,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <ImageButton
-            android:id="@+id/imgBtn"
+            android:id="@+id/imgBtnShowInventory"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:background="@drawable/more"
@@ -62,10 +61,36 @@
             android:textColor="#FFF"
             android:textSize="25sp"
             android:gravity="center"
-            android:text="Thống kê tồn kho"
+            android:text="Tra cứu tồn kho"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
 
 
+    <LinearLayout
+        android:backgroundTint="#E9FF6D00"
+        android:background="@drawable/radius1"
+        android:weightSum="12"
+        android:orientation="horizontal"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <ImageButton
+            android:id="@+id/imgBtnDeliver"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:text="Xuất kho"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>
