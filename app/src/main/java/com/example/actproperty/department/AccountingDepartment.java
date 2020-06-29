@@ -52,6 +52,12 @@ EditText getFromDateIO, getToDateIO;
                 GetFromDate();
             }
         });
+        getToDateIO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                GetToDate();
+            }
+        });
         dialog.show();
 
     }
@@ -66,6 +72,21 @@ EditText getFromDateIO, getToDateIO;
                 calendar.set(year,month,dayOfMonth);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 getFromDateIO.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        },_year, _month, _date);
+        datePickerDialog.show();
+    }
+    private void GetToDate(){
+        final Calendar calendar = Calendar.getInstance();
+        int _date = calendar.get(Calendar.DATE);
+        int _month = calendar.get(Calendar.MONTH);
+        int _year = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                getToDateIO.setText(simpleDateFormat.format(calendar.getTime()));
             }
         },_year, _month, _date);
         datePickerDialog.show();
