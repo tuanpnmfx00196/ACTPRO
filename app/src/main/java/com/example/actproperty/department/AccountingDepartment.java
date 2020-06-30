@@ -5,20 +5,27 @@ import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.actproperty.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AccountingDepartment extends AppCompatActivity {
 ImageButton imgBtnIO, imgBtnShowInventory, imgBtnDeliver;
 EditText getFromDateIO, getToDateIO;
+Spinner spinnerCodeStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,12 @@ EditText getFromDateIO, getToDateIO;
                 IOInventory();
             }
         });
+        imgBtnDeliver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Deliver();
+            }
+        });
     }
     private void Map(){
         imgBtnIO = (ImageButton)findViewById(R.id.imgBtnIO);
@@ -39,13 +52,41 @@ EditText getFromDateIO, getToDateIO;
     private void IOInventory(){
         final Dialog dialog = new Dialog(this);
         dialog.setTitle("Choose time!");
-        dialog.setContentView(R.layout.ioinventory);
+        dialog.setContentView(R.layout.dialog_ioinventory);
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
         getFromDateIO = (EditText)dialog.findViewById(R.id.getFromDateIO);
         getToDateIO = (EditText)dialog.findViewById(R.id.getToDateIO);
         Button btnSearchIO = (Button)dialog.findViewById(R.id.btnSearchIO);
         Button btnBackIO = (Button)dialog.findViewById(R.id.btnBackIO);
+        spinnerCodeStore = (Spinner)dialog.findViewById(R.id.spinnerCodeStore);
+        List<String> listStore = new ArrayList<>();
+        listStore.add("All");
+        listStore.add("BTE");
+        listStore.add("LAN");
+        listStore.add("TVH");
+        listStore.add("KGG");
+        listStore.add("BDG");
+        listStore.add("DNI");
+        listStore.add("HCM_BTN");
+        listStore.add("HCM_BCH");
+        listStore.add("HCM_CCI");
+        listStore.add("HCM_TCH");
+        listStore.add("HCM_GDH");
+        ArrayAdapter<String>adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listStore);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerCodeStore.setAdapter(adapter);
+        spinnerCodeStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerCodeStore.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         getFromDateIO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -56,6 +97,12 @@ EditText getFromDateIO, getToDateIO;
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 GetToDate();
+            }
+        });
+        btnSearchIO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
         dialog.show();
@@ -90,5 +137,9 @@ EditText getFromDateIO, getToDateIO;
             }
         },_year, _month, _date);
         datePickerDialog.show();
+    }
+    private void Deliver(){
+        Dialog dialog = new Dialog(this);
+        dialog.setTitle("Xuất kho");
     }
 }
