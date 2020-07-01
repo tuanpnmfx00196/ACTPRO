@@ -2,6 +2,7 @@ package com.example.actproperty.department;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.actproperty.R;
@@ -141,5 +143,167 @@ Spinner spinnerCodeStore;
     private void Deliver(){
         Dialog dialog = new Dialog(this);
         dialog.setTitle("Xuất kho");
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
+        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dialog.setContentView(R.layout.dialog_deliver);
+        final Spinner spinnerToStore = (Spinner)dialog.findViewById(R.id.spinnerToStore);
+        List<String> listToStore = new ArrayList<>();
+        listToStore.add("BTE");
+        listToStore.add("LAN");
+        listToStore.add("TVH");
+        listToStore.add("KGG");
+        listToStore.add("BDG");
+        listToStore.add("DNI");
+        listToStore.add("HCM_BTN");
+        listToStore.add("HCM_BCH");
+        listToStore.add("HCM_CCI");
+        listToStore.add("HCM_TCH");
+        listToStore.add("HCM_GDH");
+        List<String> listItem = new ArrayList<>();
+        listItem.add("Cáp quang treo 6Fo");
+        listItem.add("Cáp quang treo 12Fo");
+        listItem.add("Cáp quang treo 24Fo");
+        listItem.add("ODF 6fo");
+        listItem.add("ODF 12fo");
+        listItem.add("ODF 24fo");
+        listItem.add("Măng xông 6fo");
+        listItem.add("Măng xông 12fo");
+        listItem.add("Măng xông 24fo");
+        listItem.add("Buloong ti 300");
+        listItem.add("Buloong ti 400");
+        listItem.add("Kẹp cáp");
+        listItem.add("Dây nhảy Sc/LC 5m");
+        listItem.add("Dây nhảy Sc/LC 10m");
+        /*======================= CHOICE STORE==========================*/
+        ArrayAdapter<String> adapterToStore = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listToStore);
+        adapterToStore.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerToStore.setAdapter(adapterToStore);
+        spinnerToStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerToStore.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM1==========================*/
+        final Spinner spinnerItem1 = (Spinner)dialog.findViewById(R.id.spinnerItem1);
+        final EditText item1 = (EditText)dialog.findViewById(R.id.item1);
+        ArrayAdapter<String> adapterItem1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem1.setAdapter(adapterItem1);
+        spinnerItem1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem1.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM2==========================*/
+        final Spinner spinnerItem2 = (Spinner)dialog.findViewById(R.id.spinnerItem2);
+        final EditText item2 = (EditText)dialog.findViewById(R.id.item2);
+        ArrayAdapter<String> adapterItem2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem2.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem2.setAdapter(adapterItem1);
+        spinnerItem2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem2.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM3==========================*/
+        final Spinner spinnerItem3 = (Spinner)dialog.findViewById(R.id.spinnerItem3);
+        final EditText item3 = (EditText)dialog.findViewById(R.id.item3);
+        ArrayAdapter<String> adapterItem3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem3.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem3.setAdapter(adapterItem1);
+        spinnerItem3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem3.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM4=========================*/
+        final Spinner spinnerItem4 = (Spinner)dialog.findViewById(R.id.spinnerItem4);
+        final EditText item4 = (EditText)dialog.findViewById(R.id.item4);
+        ArrayAdapter<String> adapterItem4 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem4.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem4.setAdapter(adapterItem1);
+        spinnerItem4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem4.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM5==========================*/
+        final Spinner spinnerItem5 = (Spinner)dialog.findViewById(R.id.spinnerItem5);
+        final EditText item5 = (EditText)dialog.findViewById(R.id.item5);
+        ArrayAdapter<String> adapterItem5 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem5.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem5.setAdapter(adapterItem1);
+        spinnerItem5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem5.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*======================= ITEM6==========================*/
+        final Spinner spinnerItem6 = (Spinner)dialog.findViewById(R.id.spinnerItem6);
+        final EditText item6 = (EditText)dialog.findViewById(R.id.item6);
+        ArrayAdapter<String> adapterItem6 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
+        adapterItem6.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerItem6.setAdapter(adapterItem1);
+        spinnerItem6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(AccountingDepartment.this,spinnerItem6.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                ((TextView)parent.getChildAt(0)).setTextSize(10);
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        dialog.show();
     }
 }
