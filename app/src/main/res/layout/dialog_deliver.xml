@@ -311,8 +311,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <EditText
-            android:maxLines="1"
-            android:lines="1"
+            android:singleLine="true"
             android:id="@+id/commentDeliver"
             android:textColorHint="#B0FF0000"
             android:background="@drawable/radius1"

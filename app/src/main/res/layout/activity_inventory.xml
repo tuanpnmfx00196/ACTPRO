@@ -9,16 +9,17 @@
     <LinearLayout
         android:background="@drawable/radius1"
         android:backgroundTint="#79FFFFFF"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="0dp">
+        
     </LinearLayout>
     <LinearLayout
         android:weightSum="12"
         android:orientation="vertical"
         android:background="@drawable/radius1"
         android:backgroundTint="#79FFFFFF"
-        android:layout_weight="8"
+        android:layout_weight="7"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <LinearLayout
