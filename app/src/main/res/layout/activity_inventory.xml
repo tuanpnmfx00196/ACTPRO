@@ -9,17 +9,30 @@
     <LinearLayout
         android:background="@drawable/radius1"
         android:backgroundTint="#79FFFFFF"
-        android:layout_weight="4"
+        android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        
+        <TextView
+            android:textSize="30sp"
+            android:textColor="#DD2C00"
+            android:text="Không có PXK tồn chưa nhập"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </TextView>
+        <ListView
+            android:visibility="gone"
+            android:id="@+id/listDeliver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
         android:weightSum="12"
         android:orientation="vertical"
         android:background="@drawable/radius1"
         android:backgroundTint="#79FFFFFF"
-        android:layout_weight="7"
+        android:layout_weight="8"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <LinearLayout

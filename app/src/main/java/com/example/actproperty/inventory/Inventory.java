@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.Management;
 import com.example.actproperty.R;
 import com.example.actproperty.passport.Passport;
 
@@ -25,11 +28,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Inventory extends AppCompatActivity {
     ArrayList<Passport> listUser;
     String storecode;
     ArrayList<MaterialsInventory> listInventory;
+    ArrayList<TempDeliver>listTempDeliver;
+    ArrayList<TempDeliver>listTempDeliverPermission;
+    TextView titleDeliver;
     TextView makho,inventory6fo, inventory12fo, inventory24fo, inventoryodf6, inventoryodf12,
                 inventoryodf24, inventorymx6, inventorymx12, inventorymx24, inventorybl300,
                 inventorybl400, inventoryclamp, inventorysclc5, inventorysclc10;
@@ -37,6 +44,7 @@ public class Inventory extends AppCompatActivity {
             rowodf12fo_inventory, rowodf24fo_inventory, rowmx6fo_inventory, rowmx12fo_inventory,
             rowmx24fo_inventory, rowbl300_inventory, rowbl400_inventory, rowclamp_inventory, rowsclc5_inventory,
     rowsclc10_inventory;
+    ListView listDeliver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,9 @@ public class Inventory extends AppCompatActivity {
         setContentView(R.layout.activity_inventory);
         listUser = new ArrayList<>();
         listInventory = new ArrayList<>();
+        listTempDeliver = new ArrayList<>();
+        listTempDeliverPermission = new ArrayList<>();
+        getTempDeliver("https://sqlandroid2812.000webhostapp.com/gettempdeliver.php");
         storecode="";
         getAccount();
         ActionBar actionBar = getSupportActionBar();
@@ -138,7 +149,6 @@ public class Inventory extends AppCompatActivity {
                     rowsclc10_inventory.setVisibility(View.VISIBLE);
                     inventorysclc10.setText(listInventory.get(i).getSc_lc10()+"");
                 }
-
             }
         }
 
@@ -208,6 +218,7 @@ public class Inventory extends AppCompatActivity {
                     }
                 }
                 ShowInventory();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -217,5 +228,113 @@ public class Inventory extends AppCompatActivity {
         }
         );
         requestQueue.add(jsonArrayRequest);
+    }
+
+    /*======================== GET TEMP DELIVER ================================*/
+    public void getTempDeliver(String url){
+        listTempDeliver = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
+                null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i=0; i<response.length();i++){
+                    try{
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listTempDeliver.add(new TempDeliver(
+                                jsonObject.getInt("IDdeliver"),
+                                jsonObject.getString("Storecodedeliver"),
+                                jsonObject.getInt("Hanging6fodeliver"),
+                                jsonObject.getInt("Hanging12fodeliver"),
+                                jsonObject.getInt("Hanging24fodeliver"),
+                                jsonObject.getInt("Odf6fodeliver"),
+                                jsonObject.getInt("Odf12fodeliver"),
+                                jsonObject.getInt("Odf24fodeliver"),
+                                jsonObject.getInt("Closure6fodeliver"),
+                                jsonObject.getInt("Closure12fodeliver"),
+                                jsonObject.getInt("Closure24fodeliver"),
+                                jsonObject.getInt("Buloongti300deliver"),
+                                jsonObject.getInt("Buloongti400deliver"),
+                                jsonObject.getInt("Clampdeliver"),
+                                jsonObject.getInt("Sc_lc5deliver"),
+                                jsonObject.getInt("Sc_lc10deliver"),
+                                jsonObject.getString("Userdeliver"),
+                                jsonObject.getString("Timedeliver"),
+                                jsonObject.getString("Commentdeliver"),
+                                jsonObject.getInt("Flag")
+                        ));
+                    }catch(Exception e){
+                        Toast.makeText(Inventory.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                Toast.makeText(Inventory.this, listTempDeliver.size()+"", Toast.LENGTH_SHORT).show();
+                showTemp();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Inventory.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
+    private void showTemp(){
+        if(listUser.get(0).getAdmin()==1){
+            listTempDeliverPermission.addAll(listTempDeliver);
+        } else {
+            if (listUser.get(0).getBdg() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("BDG")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getKgg() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("KGG")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getBte() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("BTE")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getTvh() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("TVH")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getLan() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("LAN")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getDni() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("DNI")) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            /*... Add more code store*/
+        }
+        listDeliver = (ListView) findViewById(R.id.listDeliver);
+        titleDeliver = (TextView)findViewById(R.id.titleDeliver);
+        if(listTempDeliverPermission.size()==0){
+            titleDeliver.setVisibility(View.VISIBLE);
+        } else {
+            listDeliver.setVisibility(View.VISIBLE);
+            TempDeliverAdapter deliverAdapter = new TempDeliverAdapter(listTempDeliverPermission);
+            listDeliver.setAdapter(deliverAdapter);
+        }
     }
 }
