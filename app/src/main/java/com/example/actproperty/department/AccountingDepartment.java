@@ -151,6 +151,40 @@ Spinner spinnerCodeStore;
         datePickerDialog.show();
     }
     private void Deliver(){
+        final int[] waiting6fo = new int[1];
+        final int waiting12fo;
+        final int waiting24fo;
+        final int waitingodf6fo;
+        final int waitingodf12fo;
+        final int waitingodf24fo;
+        final int waitingmx6fo;
+        final int waitingmx12fo;
+        final int waitingmx24fo;
+        final int waitingbl300;
+        final int waitingbl400;
+        final int waitingclamp;
+        final int waitingsc_lc5;
+        final int waitingsc_lc10;
+        final int flag;
+        final String[] waitingstore = new String[1];
+        String waitinguser;
+        String waitingtime;
+        String waitingcomment;
+        waiting6fo[0] = 0;
+        waiting12fo = 0;
+        waiting24fo = 0;
+        waitingodf6fo = 0;
+        waitingodf12fo = 0;
+        waitingodf24fo = 0;
+        waitingmx6fo = 0;
+        waitingmx12fo = 0;
+        waitingmx24fo = 0;
+        waitingbl300 = 0;
+        waitingbl400 = 0;
+        waitingclamp = 0;
+        waitingsc_lc5 = 0;
+        waitingsc_lc10 = 0;
+        waitingstore[0] = "";
         Dialog dialog = new Dialog(this);
         dialog.setTitle("Xuất kho");
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
@@ -191,8 +225,7 @@ Spinner spinnerCodeStore;
         spinnerToStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerToStore.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-
+                waitingstore[0] = spinnerCodeStore.getSelectedItem().toString();
             }
 
             @Override
@@ -209,9 +242,12 @@ Spinner spinnerCodeStore;
         spinnerItem1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem1.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
+               ((TextView)parent.getChildAt(0)).setTextSize(10);
                 ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+                switch (spinnerItem1.getSelectedItem().toString()){
+                    case "Cáp quang treo 6Fo":
+                        waiting6fo[0] = Integer.parseInt(item1.getText().toString());
+                }
             }
 
             @Override
@@ -314,6 +350,15 @@ Spinner spinnerCodeStore;
 
             }
         });
+        Button btnDeliver = (Button)dialog.findViewById(R.id.btnDeliver);
+        btnDeliver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<TempDeliver>listWaiting = new ArrayList<>();
+
+            }
+        });
         dialog.show();
     }
+
 }

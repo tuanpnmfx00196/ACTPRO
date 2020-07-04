@@ -45,7 +45,6 @@ public class Inventory extends AppCompatActivity {
             rowmx24fo_inventory, rowbl300_inventory, rowbl400_inventory, rowclamp_inventory, rowsclc5_inventory,
     rowsclc10_inventory;
     ListView listDeliver;
-    TextView titleDeliver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
