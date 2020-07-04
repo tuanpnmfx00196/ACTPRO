@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("PASSWORD",edtPass.getText().toString());
                     intent.putExtra("ID",listUser.get(0).getId());
                     intent.putExtra("Account",listUser);
+                    edtUser.setText("");
+                    edtPass.setText("");
                     startActivity(intent);
                 }
                 else{

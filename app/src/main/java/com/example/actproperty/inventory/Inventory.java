@@ -36,7 +36,7 @@ public class Inventory extends AppCompatActivity {
     ArrayList<MaterialsInventory> listInventory;
     ArrayList<TempDeliver>listTempDeliver;
     ArrayList<TempDeliver>listTempDeliverPermission;
-    TextView titleDeliver;
+    LinearLayout deliver;
     TextView makho,inventory6fo, inventory12fo, inventory24fo, inventoryodf6, inventoryodf12,
                 inventoryodf24, inventorymx6, inventorymx12, inventorymx24, inventorybl300,
                 inventorybl400, inventoryclamp, inventorysclc5, inventorysclc10;
@@ -45,7 +45,7 @@ public class Inventory extends AppCompatActivity {
             rowmx24fo_inventory, rowbl300_inventory, rowbl400_inventory, rowclamp_inventory, rowsclc5_inventory,
     rowsclc10_inventory;
     ListView listDeliver;
-
+    TextView titleDeliver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -281,46 +281,51 @@ public class Inventory extends AppCompatActivity {
     }
     private void showTemp(){
         if(listUser.get(0).getAdmin()==1){
-            listTempDeliverPermission.addAll(listTempDeliver);
+            for(int i=0;i<listTempDeliver.size();i++){
+                if(listTempDeliver.get(i).getFlag()==1){
+                    listTempDeliverPermission.add(listTempDeliver.get(i));
+                }
+            }
+
         } else {
             if (listUser.get(0).getBdg() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("BDG")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("BDG")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getKgg() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("KGG")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("KGG")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getBte() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("BTE")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("BTE")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getTvh() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("TVH")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("TVH")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getLan() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("LAN")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("LAN")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getDni() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("DNI")) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("DNI")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
@@ -328,9 +333,9 @@ public class Inventory extends AppCompatActivity {
             /*... Add more code store*/
         }
         listDeliver = (ListView) findViewById(R.id.listDeliver);
-        titleDeliver = (TextView)findViewById(R.id.titleDeliver);
+        deliver = (LinearLayout)findViewById(R.id.deliver);
         if(listTempDeliverPermission.size()==0){
-            titleDeliver.setVisibility(View.VISIBLE);
+            deliver.setVisibility(View.GONE);
         } else {
             listDeliver.setVisibility(View.VISIBLE);
             TempDeliverAdapter deliverAdapter = new TempDeliverAdapter(listTempDeliverPermission);
