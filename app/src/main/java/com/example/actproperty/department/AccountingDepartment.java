@@ -151,47 +151,23 @@ Spinner spinnerCodeStore;
         datePickerDialog.show();
     }
     private void Deliver(){
-        final int[] waiting6fo = new int[1];
-        final int waiting12fo;
-        final int waiting24fo;
-        final int waitingodf6fo;
-        final int waitingodf12fo;
-        final int waitingodf24fo;
-        final int waitingmx6fo;
-        final int waitingmx12fo;
-        final int waitingmx24fo;
-        final int waitingbl300;
-        final int waitingbl400;
-        final int waitingclamp;
-        final int waitingsc_lc5;
-        final int waitingsc_lc10;
-        final int flag;
-        final String[] waitingstore = new String[1];
-        String waitinguser;
-        String waitingtime;
-        String waitingcomment;
-        waiting6fo[0] = 0;
-        waiting12fo = 0;
-        waiting24fo = 0;
-        waitingodf6fo = 0;
-        waitingodf12fo = 0;
-        waitingodf24fo = 0;
-        waitingmx6fo = 0;
-        waitingmx12fo = 0;
-        waitingmx24fo = 0;
-        waitingbl300 = 0;
-        waitingbl400 = 0;
-        waitingclamp = 0;
-        waitingsc_lc5 = 0;
-        waitingsc_lc10 = 0;
-        waitingstore[0] = "";
-        Dialog dialog = new Dialog(this);
-        dialog.setTitle("Xuất kho");
-        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
-        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final Dialog dialog = new Dialog(this,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+ //       dialog.setTitle("Xuất kho");
+//        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
+//        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.97);
+//        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.MATCH_PARENT);
+//        dialog.getWindow().setLayout(height, LinearLayout.LayoutParams.MATCH_PARENT);
         dialog.setContentView(R.layout.dialog_deliver);
+        final Button btnLock = (Button)dialog.findViewById(R.id.btnLock);
+        final EditText commentDeliver = (EditText) dialog.findViewById(R.id.commentDeliver);
+        final LinearLayout rowLock = (LinearLayout)dialog.findViewById(R.id.rowLock);
+        final LinearLayout rowChosen = (LinearLayout)dialog.findViewById(R.id.rowChosen);
+        final String[] codeStore = {""};
+        final String[] comment ={""};
+        final ArrayList<TempItem>listTempItem = new ArrayList<>();
         final Spinner spinnerToStore = (Spinner)dialog.findViewById(R.id.spinnerToStore);
         List<String> listToStore = new ArrayList<>();
+        listToStore.add("Mã kho nhận");
         listToStore.add("BTE");
         listToStore.add("LAN");
         listToStore.add("TVH");
@@ -204,6 +180,7 @@ Spinner spinnerCodeStore;
         listToStore.add("HCM_TCH");
         listToStore.add("HCM_GDH");
         List<String> listItem = new ArrayList<>();
+        listItem.add("Vật tư xuất kho");
         listItem.add("Cáp quang treo 6Fo");
         listItem.add("Cáp quang treo 12Fo");
         listItem.add("Cáp quang treo 24Fo");
@@ -225,7 +202,14 @@ Spinner spinnerCodeStore;
         spinnerToStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                waitingstore[0] = spinnerCodeStore.getSelectedItem().toString();
+
+                btnLock.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rowLock.setVisibility(View.GONE);
+                        rowChosen.setVisibility(View.VISIBLE);
+                    }
+                });
             }
 
             @Override
@@ -233,9 +217,10 @@ Spinner spinnerCodeStore;
 
             }
         });
-        /*======================= ITEM1==========================*/
+        /*======================= GET ITEM==========================*/
         final Spinner spinnerItem1 = (Spinner)dialog.findViewById(R.id.spinnerItem1);
         final EditText item1 = (EditText)dialog.findViewById(R.id.item1);
+        final Button btnAddItem = (Button)dialog.findViewById(R.id.btnAddItem);
         ArrayAdapter<String> adapterItem1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
         adapterItem1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinnerItem1.setAdapter(adapterItem1);
@@ -244,105 +229,24 @@ Spinner spinnerCodeStore;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                ((TextView)parent.getChildAt(0)).setTextSize(10);
                 ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
-                switch (spinnerItem1.getSelectedItem().toString()){
-                    case "Cáp quang treo 6Fo":
-                        waiting6fo[0] = Integer.parseInt(item1.getText().toString());
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        /*======================= ITEM2==========================*/
-        final Spinner spinnerItem2 = (Spinner)dialog.findViewById(R.id.spinnerItem2);
-        final EditText item2 = (EditText)dialog.findViewById(R.id.item2);
-        ArrayAdapter<String> adapterItem2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
-        adapterItem2.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerItem2.setAdapter(adapterItem1);
-        spinnerItem2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem2.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        /*======================= ITEM3==========================*/
-        final Spinner spinnerItem3 = (Spinner)dialog.findViewById(R.id.spinnerItem3);
-        final EditText item3 = (EditText)dialog.findViewById(R.id.item3);
-        ArrayAdapter<String> adapterItem3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
-        adapterItem3.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerItem3.setAdapter(adapterItem1);
-        spinnerItem3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem3.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        /*======================= ITEM4=========================*/
-        final Spinner spinnerItem4 = (Spinner)dialog.findViewById(R.id.spinnerItem4);
-        final EditText item4 = (EditText)dialog.findViewById(R.id.item4);
-        ArrayAdapter<String> adapterItem4 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
-        adapterItem4.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerItem4.setAdapter(adapterItem1);
-        spinnerItem4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem4.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        /*======================= ITEM5==========================*/
-        final Spinner spinnerItem5 = (Spinner)dialog.findViewById(R.id.spinnerItem5);
-        final EditText item5 = (EditText)dialog.findViewById(R.id.item5);
-        ArrayAdapter<String> adapterItem5 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
-        adapterItem5.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerItem5.setAdapter(adapterItem1);
-        spinnerItem5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem5.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        /*======================= ITEM6==========================*/
-        final Spinner spinnerItem6 = (Spinner)dialog.findViewById(R.id.spinnerItem6);
-        final EditText item6 = (EditText)dialog.findViewById(R.id.item6);
-        ArrayAdapter<String> adapterItem6 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listItem);
-        adapterItem6.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerItem6.setAdapter(adapterItem1);
-        spinnerItem6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerItem6.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                ((TextView)parent.getChildAt(0)).setTextSize(10);
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.BLUE);
+                btnAddItem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int status = 0;
+                        for(int i=0;i<listTempItem.size();i++) {
+                            if(listTempItem.get(i).getNameItem().equals(spinnerItem1.getSelectedItem().toString())){
+                                status++;
+                            }
+                        }
+                        if(status==0) {
+                            listTempItem.add(new TempItem(spinnerItem1.getSelectedItem().toString(),
+                                    Integer.parseInt(item1.getText().toString())));
+                        }else{
+                            Toast.makeText(AccountingDepartment.this, "Đã có vật tư này, kiểm tra lại",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
             @Override
@@ -354,7 +258,7 @@ Spinner spinnerCodeStore;
         btnDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<TempDeliver>listWaiting = new ArrayList<>();
+
 
             }
         });
