@@ -11,10 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.actproperty.DashBoard;
-import com.example.actproperty.Management;
 import com.example.actproperty.R;
-import com.example.actproperty.department.AccountingDepartment;
+import com.example.actproperty.department.accounting.AccountingDepartment;
 import com.example.actproperty.passport.Passport;
 
 import java.util.ArrayList;

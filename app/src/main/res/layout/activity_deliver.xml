@@ -15,49 +15,50 @@
         android:layout_weight="3"
         android:orientation="vertical"
         android:weightSum="12">
-    <LinearLayout
-        android:background="#FF6D00"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:orientation="horizontal"
-        android:weightSum="12">
         <LinearLayout
-            android:layout_weight="5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:textSize="18sp"
-                android:gravity="center"
-                android:text="Mã kho nhận"
-                android:background="@drawable/radius1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <Spinner
-                android:id="@+id/spinnerToStore"
-                android:background="@drawable/radius1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <EditText
-            android:singleLine="true"
-            android:id="@+id/commentDeliver"
-            android:textColorHint="#57FF0000"
-            android:background="@drawable/radius1"
-            android:hint="Diễn giải xuất kho"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:weightSum="12">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:text="Mã kho nhận"
+                    android:background="@drawable/radius1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <Spinner
+                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTintMode="add"
+                    android:id="@+id/spinnerToStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/commentDeliver"
+                android:textColorHint="#57FF0000"
+                android:background="@drawable/radius1"
+                android:hint="Diễn giải xuất kho"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
         <Button
             android:text="Xác nhận"
             android:layout_marginLeft="100dp"
@@ -68,114 +69,113 @@
             android:layout_weight="4"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
-</LinearLayout>
+    </LinearLayout>
     <!--Row 1-->
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/rowChosen"
         android:background="#FF6D00"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="9"
+        android:layout_weight="12"
         android:orientation="vertical"
         android:weightSum="12">
-    <LinearLayout
-        android:background="#FF6D00"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1.5"
-        android:orientation="horizontal"
-        android:weightSum="12">
         <LinearLayout
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="#092DF6"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:text="Vật tư xuất"
-                android:background="@drawable/radius1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="12">
+            <LinearLayout
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="#092DF6"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:text="Vật tư xuất"
+                    android:background="@drawable/radius1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <Spinner
+                    android:id="@+id/spinnerItem1"
+                    android:backgroundTintMode="add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <EditText
+                    android:textSize="12sp"
+                    android:hint="Số lượng"
+                    android:inputType="number"
+                    android:id="@+id/item1"
+                    android:background="@drawable/radius1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <Spinner
-                android:id="@+id/spinnerItem1"
-                android:background="@drawable/radius1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <EditText
-                android:textSize="12sp"
-                android:hint="Số lượng"
-                android:inputType="number"
-                android:id="@+id/item1"
-                android:background="@drawable/radius1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </LinearLayout>
-    <Button
-        android:id="@+id/btnAddItem"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/radius1"
-        android:text="Thêm vật tư"
-        android:layout_marginRight="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_weight="1.5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <!-- End Row 1-->
-    <!--Chosen 1-->
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/radius1"
+            android:text="Thêm vật tư"
+            android:layout_marginRight="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <!-- End Row 1-->
+        <!--Chosen 1-->
 
-    <LinearLayout
-        android:id="@+id/row1Chosen"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1.5"
-        android:orientation="horizontal"
-        android:weightSum="12">
-        <TextView
-            android:background="#74F4D7"
-            android:layout_marginRight="1dp"
-            android:text="Tên vật tư xuất kho"
-            android:gravity="center"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="8.0"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:background="#74F4D7"
-            android:text="Số lượng"
-            android:gravity="center"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
-    <!--Chosen 2-->
         <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/row2Chosen"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="12">
+            <TextView
+                android:background="#74F4D7"
+                android:layout_marginRight="1dp"
+                android:text="Tên vật tư xuất kho"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_weight="8.0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:background="#74F4D7"
+                android:text="Số lượng"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <!--Chosen 2-->
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/row1Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="12">
             <TextView
@@ -202,11 +202,11 @@
         </LinearLayout>
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/row3Chosen"
+            android:id="@+id/row2Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="12">
             <TextView
@@ -233,11 +233,11 @@
         </LinearLayout>
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/row4Chosen"
+            android:id="@+id/row3Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="12">
             <TextView
@@ -264,11 +264,11 @@
         </LinearLayout>
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/row5Chosen"
+            android:id="@+id/row4Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="12">
             <TextView
@@ -295,11 +295,11 @@
         </LinearLayout>
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/row6Chosen"
+            android:id="@+id/row5Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="12">
             <TextView
@@ -324,36 +324,36 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
-    <LinearLayout
-        android:layout_weight="0.3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="12"
-        android:layout_weight="1.5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
         <LinearLayout
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="12"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <Button
-            android:id="@+id/btnDeliver"
-            android:text="Xuất kho"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <LinearLayout
-            android:layout_weight="2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <Button
-            android:id="@+id/btnCancelDeliver"
-            android:text="Hủy bỏ"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/btnDeliver"
+                android:text="Xuất kho"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/btnCancelDeliver"
+                android:text="Hủy bỏ"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>
