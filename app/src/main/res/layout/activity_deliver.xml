@@ -72,7 +72,7 @@
     </LinearLayout>
     <!--Row 1-->
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/rowChosen"
         android:background="#FF6D00"
         android:layout_width="match_parent"
@@ -170,7 +170,7 @@
         </LinearLayout>
         <!--Chosen 2-->
         <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/row1Chosen"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"

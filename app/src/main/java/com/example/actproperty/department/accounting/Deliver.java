@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -71,7 +72,6 @@ public class Deliver extends AppCompatActivity {
     private void getStoreDeliver(){
         final Spinner spinnerToStore = (Spinner)findViewById(R.id.spinnerToStore);
         List<String> listToStore = new ArrayList<>();
-        listToStore.add("Mã kho nhận");
         listToStore.add("BTE");
         listToStore.add("LAN");
         listToStore.add("TVH");
@@ -102,7 +102,6 @@ public class Deliver extends AppCompatActivity {
     }
     private void Deliver(){
         List<String> listItem = new ArrayList<>();
-        listItem.add("Vật tư xuất kho");
         listItem.add("Cáp quang treo 6Fo");
         listItem.add("Cáp quang treo 12Fo");
         listItem.add("Cáp quang treo 24Fo");
@@ -133,11 +132,51 @@ public class Deliver extends AppCompatActivity {
                 btnAddItem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(item1Value.getText().toString().trim().length()>0){
+                        if(Integer.parseInt(item1.getText().toString().trim())==0){
                             Toast.makeText(Deliver.this, "Vui lòng nhập số lượng "+
                                     spinnerItem1.getSelectedItem().toString()+" xuất.", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(Deliver.this, "AAA"+row1Chosen.getVisibility(), Toast.LENGTH_SHORT).show();
+                            if(row1Chosen.getVisibility() == View.VISIBLE &&
+                                row2Chosen.getVisibility() == View.VISIBLE &&
+                                row3Chosen.getVisibility()==View.VISIBLE&&
+                                row4Chosen.getVisibility()==View.VISIBLE&&
+                                row5Chosen.getVisibility()==View.VISIBLE){
+                                Toast.makeText(Deliver.this, "Thêm tối đa 5 chủng loại vật tư!", Toast.LENGTH_SHORT).show();
+                            }else if(row1Chosen.getVisibility() == View.VISIBLE &&
+                                    row2Chosen.getVisibility() == View.VISIBLE &&
+                                    row3Chosen.getVisibility() == View.VISIBLE&&
+                                    row4Chosen.getVisibility() == View.VISIBLE){
+                                if(spinnerItem1.getSelectedItem().toString().equals(item1Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item2Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item3Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item4Chosen.getText().toString())){
+                                    Toast.makeText(Deliver.this, "Vật tư này đã được chọn, hãy chọn lại",
+                                            Toast.LENGTH_SHORT).show();
+                                     }else {
+                                    row5Chosen.setVisibility(View.VISIBLE);
+                                    item5Chosen.setText(spinnerItem1.getSelectedItem().toString());
+                                    item5Value.setText(item1.getText().toString());
+                                }
+                            }else if(row1Chosen.getVisibility() == View.VISIBLE &&
+                                    row2Chosen.getVisibility() == View.VISIBLE &&
+                                    row3Chosen.getVisibility() == View.VISIBLE){
+                                row4Chosen.setVisibility(View.VISIBLE);
+                                item4Chosen.setText(spinnerItem1.getSelectedItem().toString());
+                                item4Value.setText(item1.getText().toString());
+                            }else if(row1Chosen.getVisibility() == View.VISIBLE &&
+                                    row2Chosen.getVisibility() == View.VISIBLE){
+                                row3Chosen.setVisibility(View.VISIBLE);
+                                item3Chosen.setText(spinnerItem1.getSelectedItem().toString());
+                                item3Value.setText(item1.getText().toString());
+                            }else if(row1Chosen.getVisibility() == View.VISIBLE){
+                                row2Chosen.setVisibility(View.VISIBLE);
+                                item2Chosen.setText(spinnerItem1.getSelectedItem().toString());
+                                item2Value.setText(item1.getText().toString());
+                            }else{
+                                row1Chosen.setVisibility(View.VISIBLE);
+                                item1Chosen.setText(spinnerItem1.getSelectedItem().toString());
+                                item1Value.setText(item1.getText().toString());
+                            }
                         }
                     }
                 });
@@ -152,7 +191,12 @@ public class Deliver extends AppCompatActivity {
         btnDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(Deliver.this, item1Chosen.getText()+": "+item1Value.getText()+" - "+
+                                item2Chosen.getText()+": "+item2Value.getText()+" - "+
+                                item3Chosen.getText()+": "+item3Value.getText()+" - "+
+                                item4Chosen.getText()+": "+item4Value.getText()+" - "+
+                                item5Chosen.getText()+": "+item5Value.getText()+" - "
+                        , Toast.LENGTH_SHORT).show();
             }
         });
     }
