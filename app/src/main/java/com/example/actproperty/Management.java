@@ -351,6 +351,12 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     public void onClick(int position) {
         ShowMoreDetail(position);
     }
+
+    @Override
+    public void onClick1(int position) {
+
+    }
+
     private void ShowMoreDetail(final int position){
         final Dialog dialog = new Dialog(this);
         dialog.setTitle(listShow.get(position).getCableId());
@@ -1615,4 +1621,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         requestQueue.add(jsonArrayRequest);
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

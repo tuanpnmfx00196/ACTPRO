@@ -1,67 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="#AFAEB1"
     android:orientation="vertical"
-    android:weightSum="2.1"
-    android:layout_height="80dp"
+    android:weightSum="4.0"
+    android:layout_height="130dp"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:orientation="horizontal"
         android:weightSum="12"
+        android:background="#FFFFFF"
+        android:layout_marginTop="2dp"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
-            android:layout_margin="1dp"
-            android:textColor="#FFF"
-            android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:background="#570091EA"
-            android:id="@+id/storeDeliver"
-            android:layout_weight="3"
+            android:id="@+id/txtTimeDeliver"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </TextView>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="12"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btnAcceptDeliver"
+                android:backgroundTint="#4EBC46"
+                android:background="@drawable/radius2"
+                android:textSize="10sp"
+                android:text="Xác Nhận"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnIgnoreDeliver"
+                android:backgroundTint="#BC9546"
+                android:background="@drawable/radius2"
+                android:textSize="10sp"
+                android:text="Từ chối"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="12"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <TextView
+            android:id="@+id/txtCodeDeliver"
+            android:layout_weight="6"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </TextView>
         <TextView
-            android:layout_margin="1dp"
-            android:textColor="#FFF"
-            android:textSize="14sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:background="#570091EA"
-            android:id="@+id/userDeliver"
-            android:layout_weight="4"
+            android:id="@+id/codeStoreDeliver"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="12"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <TextView
+            android:text="Người xuất kho:"
+            android:layout_weight="6"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </TextView>
         <TextView
-            android:layout_margin="1dp"
-            android:textColor="#FFF"
-            android:textSize="14sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:background="#570091EA"
-            android:id="@+id/timeDeliver"
-            android:layout_weight="5"
+            android:id="@+id/txtUserDeliver"
+            android:layout_weight="6"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </TextView>
     </LinearLayout>
     <TextView
-        android:layout_margin="0.3dp"
-        android:textColor="#FFF"
-        android:textSize="14sp"
-        android:textAlignment="textStart"
-        android:gravity="center"
-        android:background="#570091EA"
-        android:id="@+id/commentDeliver"
+        android:id="@+id/detailsDeliver"
+        android:background="#FFFFFF"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <LinearLayout
-        android:background="#F19B06"
-        android:layout_weight="0.1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"></LinearLayout>
+        android:layout_height="0dp">
+    </TextView>
 </LinearLayout>

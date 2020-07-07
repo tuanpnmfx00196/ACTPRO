@@ -104,4 +104,14 @@ public class Admin extends AppCompatActivity implements OnItemClickRecyclerView 
     public void onClick(int position) {
         Toast.makeText(this, listHistory.get(position).getCableId(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onClick1(int position) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

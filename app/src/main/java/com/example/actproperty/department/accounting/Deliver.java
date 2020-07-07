@@ -15,19 +15,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.actproperty.R;
+import com.example.actproperty.inventory.TempDeliver;
 import com.example.actproperty.passport.Passport;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Deliver extends AppCompatActivity {
     ArrayList<Passport>listUser;
     LinearLayout rowChosen, rowLock;
     EditText commentDeliver;
     Button btnLock;
-    String codeStore, comment;
+    String codeStore, comment,user, time;
+    TempDeliver tempDeliver;
+    private int id, hanging6fo, hanging12fo, hanging24fo, odf6fo, odf12fo, odf24fo, closure6fo,
+            closure12fo, closure24fo, bl300, bl400, clamp, sc_lc5, sc_lc10, flag;
     TextView item1Chosen, item2Chosen,item3Chosen,item4Chosen,item5Chosen, item1Value,
             item2Value,item3Value,item4Value,item5Value;
     LinearLayout row1Chosen,row2Chosen,row3Chosen,row4Chosen,row5Chosen;
@@ -37,6 +50,26 @@ public class Deliver extends AppCompatActivity {
         setContentView(R.layout.activity_deliver);
         codeStore = "";
         comment = "";
+        user = "";
+        time = "";
+        id = 0;
+        hanging6fo = 0;
+        hanging12fo = 0;
+        hanging24fo = 0;
+        odf6fo = 0;
+        odf12fo = 0;
+        odf24fo = 0;
+        closure6fo = 0;
+        closure12fo = 0;
+        closure24fo = 0;
+        bl300 = 0;
+        bl400 = 0;
+        clamp = 0;
+        sc_lc5 = 0;
+        sc_lc10 = 0;
+        flag = 1;
+        tempDeliver = new TempDeliver(id,codeStore, hanging6fo,hanging12fo,hanging24fo,odf6fo,odf12fo,odf24fo,
+                closure6fo,closure12fo,closure24fo,bl300,bl400,clamp,sc_lc5,sc_lc10,user,time,comment,flag);
         getUser();
         getStoreDeliver();
         item1Chosen = (TextView)findViewById(R.id.item1Chosen);
@@ -61,10 +94,15 @@ public class Deliver extends AppCompatActivity {
         btnLock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Deliver();
-                rowLock.setVisibility(View.GONE);
-                rowChosen.setVisibility(View.VISIBLE);
-                comment = commentDeliver.getText().toString();
+                if(commentDeliver.getText().toString().trim().length()>20) {
+                    Deliver();
+                    rowLock.setVisibility(View.GONE);
+                    rowChosen.setVisibility(View.VISIBLE);
+                    comment = commentDeliver.getText().toString();
+                    tempDeliver.setCommentDeliver(comment);
+                }else{
+                    Toast.makeText(Deliver.this, "Vui lòng diễn giải rõ xuất kho", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -92,6 +130,7 @@ public class Deliver extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 codeStore = spinnerToStore.getSelectedItem().toString();
+                tempDeliver.setStoreCode(codeStore);
             }
 
             @Override
@@ -156,26 +195,49 @@ public class Deliver extends AppCompatActivity {
                                     row5Chosen.setVisibility(View.VISIBLE);
                                     item5Chosen.setText(spinnerItem1.getSelectedItem().toString());
                                     item5Value.setText(item1.getText().toString());
+                                    getTempDeliver(spinnerItem1.getSelectedItem().toString(),Integer.parseInt(item1.getText().toString()));
                                 }
                             }else if(row1Chosen.getVisibility() == View.VISIBLE &&
                                     row2Chosen.getVisibility() == View.VISIBLE &&
                                     row3Chosen.getVisibility() == View.VISIBLE){
+                                if(spinnerItem1.getSelectedItem().toString().equals(item1Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item2Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item3Chosen.getText().toString())){
+                                    Toast.makeText(Deliver.this, "Vật tư này đã được chọn, hãy chọn lại",
+                                            Toast.LENGTH_SHORT).show();
+                                    }else{
                                 row4Chosen.setVisibility(View.VISIBLE);
                                 item4Chosen.setText(spinnerItem1.getSelectedItem().toString());
                                 item4Value.setText(item1.getText().toString());
+                                getTempDeliver(spinnerItem1.getSelectedItem().toString(),Integer.parseInt(item1.getText().toString()));
+                                }
                             }else if(row1Chosen.getVisibility() == View.VISIBLE &&
                                     row2Chosen.getVisibility() == View.VISIBLE){
+                                if(spinnerItem1.getSelectedItem().toString().equals(item1Chosen.getText().toString()) ||
+                                        spinnerItem1.getSelectedItem().toString().equals(item2Chosen.getText().toString())){
+                                    Toast.makeText(Deliver.this, "Vật tư này đã được chọn, hãy chọn lại",
+                                            Toast.LENGTH_SHORT).show();
+                                }else{
                                 row3Chosen.setVisibility(View.VISIBLE);
                                 item3Chosen.setText(spinnerItem1.getSelectedItem().toString());
                                 item3Value.setText(item1.getText().toString());
+                                getTempDeliver(spinnerItem1.getSelectedItem().toString(),Integer.parseInt(item1.getText().toString()));
+                                }
                             }else if(row1Chosen.getVisibility() == View.VISIBLE){
+                                if(spinnerItem1.getSelectedItem().toString().equals(item1Chosen.getText().toString())){
+                                    Toast.makeText(Deliver.this, "Vật tư này đã được chọn, hãy chọn lại",
+                                            Toast.LENGTH_SHORT).show();
+                                }else{
                                 row2Chosen.setVisibility(View.VISIBLE);
                                 item2Chosen.setText(spinnerItem1.getSelectedItem().toString());
                                 item2Value.setText(item1.getText().toString());
+                                getTempDeliver(spinnerItem1.getSelectedItem().toString(),Integer.parseInt(item1.getText().toString()));
+                                }
                             }else{
                                 row1Chosen.setVisibility(View.VISIBLE);
                                 item1Chosen.setText(spinnerItem1.getSelectedItem().toString());
                                 item1Value.setText(item1.getText().toString());
+                                getTempDeliver(spinnerItem1.getSelectedItem().toString(),Integer.parseInt(item1.getText().toString()));
                             }
                         }
                     }
@@ -191,12 +253,9 @@ public class Deliver extends AppCompatActivity {
         btnDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Deliver.this, item1Chosen.getText()+": "+item1Value.getText()+" - "+
-                                item2Chosen.getText()+": "+item2Value.getText()+" - "+
-                                item3Chosen.getText()+": "+item3Value.getText()+" - "+
-                                item4Chosen.getText()+": "+item4Value.getText()+" - "+
-                                item5Chosen.getText()+": "+item5Value.getText()+" - "
-                        , Toast.LENGTH_SHORT).show();
+              InsertDeliver("https://sqlandroid2812.000webhostapp.com/insertdeliver.php",codeStore,hanging6fo,hanging12fo,hanging24fo,
+                      odf6fo,odf12fo,odf24fo,closure6fo,closure12fo,closure24fo,bl300,bl400,clamp,sc_lc5,sc_lc10,user,
+                      "07/07/2020",comment,flag);
             }
         });
     }
@@ -204,5 +263,96 @@ public class Deliver extends AppCompatActivity {
     private void getUser(){
         Intent intent = getIntent();
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
+        user = listUser.get(0).getUser();
+    }
+    private void InsertDeliver(String url, final String codeStore, final int hanging6fo, final int hanging12fo, final int hanging24fo,
+                               final int odf6fo, final int odf12fo, final int odf24fo, final int mx6fo, final int mx12fo, final int mx24fo, final int bl300,
+                               final int bl400, final int clamp, final int sc_lc5, final int sc_lc10, final String user, final String time, final String comment,final int flag){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        )
+            {
+                @Override
+                protected Map<String,String> getParams() throws AuthFailureError{
+                    Map<String, String> params = new HashMap<>();
+                    params.put("Codestore",codeStore);
+                    params.put("Deliverhanging6fo",String.valueOf(hanging6fo));
+                    params.put("Deliverhanging12fo",String.valueOf(hanging12fo));
+                    params.put("Deliverhanging24fo",String.valueOf(hanging24fo));
+                    params.put("Deliverodf6fo",String.valueOf(odf6fo));
+                    params.put("Deliverodf12fo",String.valueOf(odf12fo));
+                    params.put("Deliverodf24fo",String.valueOf(odf24fo));
+                    params.put("Deliverclosure6fo",String.valueOf(mx6fo));
+                    params.put("Deliverclosure12fo",String.valueOf(mx12fo));
+                    params.put("Deliverclosure24fo",String.valueOf(mx24fo));
+                    params.put("Deliverbuloongti300",String.valueOf(bl300));
+                    params.put("Deliverbuloongti400",String.valueOf(bl400));
+                    params.put("Deliverclamp",String.valueOf(clamp));
+                    params.put("Deliversc_lc5",String.valueOf(sc_lc5));
+                    params.put("Deliversc_lc10",String.valueOf(sc_lc10));
+                    params.put("Deliveruser",user);
+                    params.put("Delivertime",time);
+                    params.put("Delivercomment",comment);
+                    params.put("Deliverflag",String.valueOf(flag));
+                    return params;
+                }
+            };
+        requestQueue.add(stringRequest);
+    }
+    private void getTempDeliver (String item, int value){
+        switch(item){
+            case "Cáp quang treo 6Fo":
+                hanging6fo = value;
+                break;
+            case "Cáp quang treo 12Fo":
+                hanging12fo = value;
+                break;
+            case "Cáp quang treo 24Fo":
+                hanging24fo = value;
+                break;
+            case "ODF 6fo":
+                odf6fo = value;
+                break;
+            case "ODF 12fo":
+                odf12fo = value;
+                break;
+            case "ODF 24fo":
+                odf24fo = value;
+                break;
+            case "Măng xông 6fo":
+                closure6fo = value;
+                break;
+            case "Măng xông 12fo":
+                closure12fo = value;
+                break;
+            case "Măng xông 24fo":
+                closure24fo = value;
+                break;
+            case "Buloong ti 300":
+                bl300 = value;
+                break;
+            case "Buloong ti 400":
+                bl400 = value;
+                break;
+            case "Kẹp cáp":
+                clamp = value;
+                break;
+            case "Dây nhảy Sc/LC 5m":
+                sc_lc5 = value;
+                break;
+            case "Dây nhảy Sc/LC 10m":
+                sc_lc10 = value;
+                break;
+        }
     }
 }

@@ -14,23 +14,28 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.Management;
 import com.example.actproperty.R;
+import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Inventory extends AppCompatActivity {
+public class Inventory extends AppCompatActivity implements OnItemClickRecyclerView {
     ArrayList<Passport> listUser;
     String storecode;
     ArrayList<MaterialsInventory> listInventory;
@@ -337,8 +342,209 @@ public class Inventory extends AppCompatActivity {
             deliver.setVisibility(View.GONE);
         } else {
             listDeliver.setVisibility(View.VISIBLE);
-            TempDeliverAdapter deliverAdapter = new TempDeliverAdapter(listTempDeliverPermission);
+            TempDeliverAdapter deliverAdapter = new TempDeliverAdapter(listTempDeliverPermission,
+                    this,getApplicationContext());
             listDeliver.setAdapter(deliverAdapter);
         }
     }
+    /*===========================================================================================*/
+    /*=========================================INTERFACE=========================================*/
+    @Override
+    public void onClick(int position) {
+       switch (listTempDeliverPermission.get(position).getStoreCode()) {
+           case "BTE":
+               UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
+                       1,
+                       listTempDeliverPermission.get(position).getHanging6fo(),
+                       listTempDeliverPermission.get(position).getHanging12fo(),
+                       listTempDeliverPermission.get(position).getHanging24fo(),
+                       listTempDeliverPermission.get(position).getOdf6fo(),
+                       listTempDeliverPermission.get(position).getOdf12fo(),
+                       listTempDeliverPermission.get(position).getOdf24fo(),
+                       listTempDeliverPermission.get(position).getClosure6fo(),
+                       listTempDeliverPermission.get(position).getClosure12fo(),
+                       listTempDeliverPermission.get(position).getClosure24fo(),
+                       listTempDeliverPermission.get(position).getBl300(),
+                       listTempDeliverPermission.get(position).getBl400(),
+                       listTempDeliverPermission.get(position).getClamp(),
+                       listTempDeliverPermission.get(position).getSc_lc5(),
+                       listTempDeliverPermission.get(position).getSc_lc10()
+               );
+               UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                       listTempDeliverPermission.get(position).getId(),2);
+               break;
+           case "LAN":
+               UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
+                       2,
+                       listTempDeliverPermission.get(position).getHanging6fo(),
+                       listTempDeliverPermission.get(position).getHanging12fo(),
+                       listTempDeliverPermission.get(position).getHanging24fo(),
+                       listTempDeliverPermission.get(position).getOdf6fo(),
+                       listTempDeliverPermission.get(position).getOdf12fo(),
+                       listTempDeliverPermission.get(position).getOdf24fo(),
+                       listTempDeliverPermission.get(position).getClosure6fo(),
+                       listTempDeliverPermission.get(position).getClosure12fo(),
+                       listTempDeliverPermission.get(position).getClosure24fo(),
+                       listTempDeliverPermission.get(position).getBl300(),
+                       listTempDeliverPermission.get(position).getBl400(),
+                       listTempDeliverPermission.get(position).getClamp(),
+                       listTempDeliverPermission.get(position).getSc_lc5(),
+                       listTempDeliverPermission.get(position).getSc_lc10()
+               );
+               UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                       listTempDeliverPermission.get(position).getId(),2);
+               break;
+           case "TVH":
+               UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
+                       3,
+                       listTempDeliverPermission.get(position).getHanging6fo(),
+                       listTempDeliverPermission.get(position).getHanging12fo(),
+                       listTempDeliverPermission.get(position).getHanging24fo(),
+                       listTempDeliverPermission.get(position).getOdf6fo(),
+                       listTempDeliverPermission.get(position).getOdf12fo(),
+                       listTempDeliverPermission.get(position).getOdf24fo(),
+                       listTempDeliverPermission.get(position).getClosure6fo(),
+                       listTempDeliverPermission.get(position).getClosure12fo(),
+                       listTempDeliverPermission.get(position).getClosure24fo(),
+                       listTempDeliverPermission.get(position).getBl300(),
+                       listTempDeliverPermission.get(position).getBl400(),
+                       listTempDeliverPermission.get(position).getClamp(),
+                       listTempDeliverPermission.get(position).getSc_lc5(),
+                       listTempDeliverPermission.get(position).getSc_lc10()
+               );
+               UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                       listTempDeliverPermission.get(position).getId(),2);
+               break;
+           case "BDG":
+               UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
+                       4,
+                       listTempDeliverPermission.get(position).getHanging6fo(),
+                       listTempDeliverPermission.get(position).getHanging12fo(),
+                       listTempDeliverPermission.get(position).getHanging24fo(),
+                       listTempDeliverPermission.get(position).getOdf6fo(),
+                       listTempDeliverPermission.get(position).getOdf12fo(),
+                       listTempDeliverPermission.get(position).getOdf24fo(),
+                       listTempDeliverPermission.get(position).getClosure6fo(),
+                       listTempDeliverPermission.get(position).getClosure12fo(),
+                       listTempDeliverPermission.get(position).getClosure24fo(),
+                       listTempDeliverPermission.get(position).getBl300(),
+                       listTempDeliverPermission.get(position).getBl400(),
+                       listTempDeliverPermission.get(position).getClamp(),
+                       listTempDeliverPermission.get(position).getSc_lc5(),
+                       listTempDeliverPermission.get(position).getSc_lc10()
+               );
+               UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                       listTempDeliverPermission.get(position).getId(),2);
+               break;
+           case "KGG":
+               UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
+                       5,
+                       listTempDeliverPermission.get(position).getHanging6fo(),
+                       listTempDeliverPermission.get(position).getHanging12fo(),
+                       listTempDeliverPermission.get(position).getHanging24fo(),
+                       listTempDeliverPermission.get(position).getOdf6fo(),
+                       listTempDeliverPermission.get(position).getOdf12fo(),
+                       listTempDeliverPermission.get(position).getOdf24fo(),
+                       listTempDeliverPermission.get(position).getClosure6fo(),
+                       listTempDeliverPermission.get(position).getClosure12fo(),
+                       listTempDeliverPermission.get(position).getClosure24fo(),
+                       listTempDeliverPermission.get(position).getBl300(),
+                       listTempDeliverPermission.get(position).getBl400(),
+                       listTempDeliverPermission.get(position).getClamp(),
+                       listTempDeliverPermission.get(position).getSc_lc5(),
+                       listTempDeliverPermission.get(position).getSc_lc10()
+               );
+               UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                       listTempDeliverPermission.get(position).getId(),2);
+               break;
+
+       }
+
+    }
+
+    @Override
+    public void onClick1(int position) {
+        UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
+                listTempDeliverPermission.get(position).getId(),3);
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+    /*=========================================END INTERFACE=====================================*/
+
+
+    private void UpdateInventory(String url, final int id, final int hanging6fo,
+                                 final int hanging12fo , final int hanging24fo, final int odf6fo, final int odf12fo,
+                                 final int odf24fo, final int closure6fo, final int closure12fo, final int closure24fo,
+                                 final int buloong300, final int buloong400, final int clamp, final int sc_lc5, final int sc_lc10) {
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Inventory.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map <String, String> params = new HashMap<>();
+                //Get id inventory
+                params.put("updateID",String.valueOf(id));
+                params.put("updateHanging6fo", String.valueOf(listInventory.get(id-1).getHanging6fo()+hanging6fo));
+                params.put("updateHanging12fo", String.valueOf(listInventory.get(id-1).getHanging12fo()+hanging12fo));
+                params.put("updateHanging24fo", String.valueOf(listInventory.get(id-1).getHanging24fo()+hanging24fo));
+                params.put("updateOdf6fo", String.valueOf(listInventory.get(id-1).getOdf6fo()+odf6fo));
+                params.put("updateOdf12fo", String.valueOf(listInventory.get(id-1).getOdf12fo()+odf12fo));
+                params.put("updateOdf24fo", String.valueOf(listInventory.get(id-1).getOdf24fo()+odf24fo));
+                params.put("updateClosure6fo", String.valueOf(listInventory.get(id-1).getClosure6fo()+closure6fo));
+                params.put("updateClosure12fo", String.valueOf(listInventory.get(id-1).getClosure12fo()+closure12fo));
+                params.put("updateClosure24fo", String.valueOf(listInventory.get(id-1).getClosure24fo()+closure24fo));
+                params.put("updateBuloong300", String.valueOf(listInventory.get(id-1).getBl300()+buloong300));
+                params.put("updateBuloong400", String.valueOf(listInventory.get(id-1).getBl400()+buloong400));
+                params.put("updateClamp", String.valueOf(listInventory.get(id-1).getClamp()+clamp));
+                params.put("updateSc_lc5", String.valueOf(listInventory.get(id-1).getSc_lc5()+sc_lc5));
+                params.put("updateSc_lc10", String.valueOf(listInventory.get(id-1).getSc_lc10()+sc_lc10));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private void UpdateDeliver(String url, final int id, final int flag) {
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Inventory.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map <String, String> params = new HashMap<>();
+                //Get id inventory
+                params.put("updateID",String.valueOf(id));
+                params.put("updateFlag", String.valueOf(flag));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
 }

@@ -8,9 +8,9 @@ public class TempDeliver implements Serializable {
             closure12fo, closure24fo, bl300, bl400, clamp, sc_lc5, sc_lc10, flag;
     private String userDeliver, timeDeliver, commentDeliver;
 
-    public TempDeliver(int id,String storeCode, int hanging6fo, int hanging12fo, int hanging24fo, int odf6fo, int odf12fo, int odf24fo, int closure6fo, int closure12fo, int closure24fo, int bl300, int bl400, int clamp, int sc_lc5, int sc_lc10, String userDeliver, String timeDeliver, String commentDeliver,int flag) {
-        this.storeCode = storeCode;
+    public TempDeliver(int id, String storeCode, int hanging6fo, int hanging12fo, int hanging24fo, int odf6fo, int odf12fo, int odf24fo, int closure6fo, int closure12fo, int closure24fo, int bl300, int bl400, int clamp, int sc_lc5, int sc_lc10, String userDeliver, String timeDeliver, String commentDeliver,int flag) {
         this.id = id;
+        this.storeCode = storeCode;
         this.hanging6fo = hanging6fo;
         this.hanging12fo = hanging12fo;
         this.hanging24fo = hanging24fo;
@@ -31,20 +31,20 @@ public class TempDeliver implements Serializable {
         this.commentDeliver = commentDeliver;
     }
 
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStoreCode() {
+        return storeCode;
+    }
+
+    public void setStoreCode(String storeCode) {
+        this.storeCode = storeCode;
     }
 
     public int getHanging6fo() {
