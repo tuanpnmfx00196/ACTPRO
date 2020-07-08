@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.actproperty.itemclick.OnItemClickRecyclerView;
@@ -39,6 +40,18 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
                 clickRecyclerView.onClick(viewHolder.getAdapterPosition());
             }
         });
+        viewHolder.crNoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickRecyclerView.onClick1(viewHolder.getAdapterPosition());
+            }
+        });
+        viewHolder.createCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickRecyclerView.onClick2(viewHolder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -47,11 +60,15 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
     }
 
     public class ViewHolder extends  RecyclerView.ViewHolder {
-        TextView txtLocal, idRoute;
+        TextView txtLocal, idRoute, statusCR;
+        Button crNoc, createCR;
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
             idRoute = (TextView)itemView.findViewById(R.id.idRoute);
+            crNoc = (Button)itemView.findViewById(R.id.crNoc);
+            statusCR = (TextView)itemView.findViewById(R.id.statusCR);
+            createCR = (Button)itemView.findViewById(R.id.createCR);
         }
     }
 

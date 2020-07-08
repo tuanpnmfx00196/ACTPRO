@@ -469,6 +469,11 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
     }
 
     @Override
+    public void onClick2(int position) {
+
+    }
+
+    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }

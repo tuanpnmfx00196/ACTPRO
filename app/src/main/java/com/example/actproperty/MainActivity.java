@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                                       jsonObject.getString("FULLNAME"),
                                       jsonObject.getString("MOBILE"),
                                       jsonObject.getInt("ADMIN"),
+                                        jsonObject.getInt("NOC"),
+                                        jsonObject.getInt("ACCOUNTANT"),
                                       jsonObject.getInt("BDG"),
                                       jsonObject.getInt("HCM_BCH"),
                                       jsonObject.getInt("HCM_BTN"),

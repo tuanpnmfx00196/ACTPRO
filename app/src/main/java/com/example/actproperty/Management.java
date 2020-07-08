@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.actproperty.department.noc.CRNOC;
 import com.example.actproperty.inventory.MaterialsInventory;
 import com.example.actproperty.itemclick.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
@@ -42,7 +43,7 @@ import java.util.Map;
 
 /* pass database cable --->>> |aSGl2|vqrg/EfWh */
 public class Management extends AppCompatActivity implements OnItemClickRecyclerView {
-    Button btnSearch;
+    Button btnSearch, checkCR;
     EditText searchLocal, searchCableId;
     ArrayList<MaterialsInventory> listInventory;
     ArrayList<Passport>listUser;
@@ -50,6 +51,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     ArrayList<CableId> list;
     ArrayList<CableId> listSearch;
     ArrayList<CableId> listShow;
+    ArrayList<CRNOC>listCR;
     CableIdAdapter adapter;
     FrameLayout frameContain;
     FragmentTransaction fragmentTransaction;
@@ -64,6 +66,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listShow = new ArrayList<>();
         listUser = new ArrayList<>();
         listInventory = new ArrayList<>();
+        listCR = new ArrayList<>();
         GetAccount();
         list = new ArrayList<>();
         listSearch = new ArrayList<>();
@@ -106,6 +109,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 }
             }
         });
+        getCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
     }
     /*=========================== Read Json ===============================*/
         public void ReadJson(String url){
@@ -149,6 +153,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 }
                 Permission();
                     adapter.notifyDataSetChanged();
+                    checkCR = (Button)findViewById(R.id.checkCR);
+                    checkCR.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            getCheckCR(listShow);
+                            Toast.makeText(Management.this, "Check CR "+listShow.size(), Toast.LENGTH_SHORT).show();
+                            initView();
+                        }
+                    });
                     initView();
             }
         },
@@ -240,6 +253,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                             }
 
                             GetSearch(listSearch);
+                        checkCR = (Button)findViewById(R.id.checkCR);
+                        checkCR.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                getCheckCR(listShow);
+                                Toast.makeText(Management.this, "Fragment Search "+listShow.size(), Toast.LENGTH_SHORT).show();
+                                initViewSearch();
+                            }
+                        });
 
                         //End search ================================>>>>>>>>>>>>>>
                         adapter.notifyDataSetChanged();
@@ -290,7 +312,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
     public void Permission(){
-        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2||listUser.get(0).getNoc()==1){
             for(int i=0;i<listCable.size();i++){
                 listShow.add(listCable.get(i));
             }
@@ -319,7 +341,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     }
     private void GetSearch(ArrayList<CableId> arrayList){
         listShow.clear();
-        if(listUser.get(0).getAdmin()==1){
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
             for(int i=0;i<arrayList.size();i++){
                 listShow.add(arrayList.get(i));
             }
@@ -345,8 +367,50 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 }
             }
         }
+        if(listUser.get(0).getTvh()==1|| listUser.get(0).getTvh()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Trà Vinh")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getBte()==1|| listUser.get(0).getBte()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Bến Tre")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getLan()==1|| listUser.get(0).getLan()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Long An")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getDni()==1|| listUser.get(0).getDni()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getProvince().equals("Đồng Nai")){
+                    listShow.add(arrayList.get(i));
+                }
+            }
+        }
     }
-
+    private ArrayList<CableId> getCheckCR(ArrayList<CableId>arrayList){
+        ArrayList<CableId>listTempCable = new ArrayList<>();
+        listTempCable.addAll(arrayList);
+        arrayList.clear();
+        for(int i=0; i<listCR.size(); i++){
+            if(listCR.get(i).getStatuscr()==1){
+                for(int j=0; j<listTempCable.size();j++){
+                    if(listTempCable.get(j).getCableId().equals(listCR.get(i).getCableidcr())){
+                        arrayList.add(listTempCable.get(j));
+                    }
+                }
+            }
+        }
+        return arrayList;
+    }
     @Override
     public void onClick(int position) {
         ShowMoreDetail(position);
@@ -354,7 +418,12 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick1(int position) {
+        Toast.makeText(this, listShow.get(position).getCableId() +"size CR"+ listCR.size(), Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onClick2(int position) {
+        CheckNoc();
     }
 
     private void ShowMoreDetail(final int position){
@@ -1624,5 +1693,42 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+    public void getCR(String url){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0; i<response.length(); i++){
+                    try{
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listCR.add(new CRNOC(
+                           jsonObject.getInt("IDcr"),
+                           jsonObject.getString("Cableidcr"),
+                           jsonObject.getString("Codecr"),
+                           jsonObject.getString("Commentcr"),
+                           jsonObject.getString("Datetimecr"),
+                           jsonObject.getInt("Statuscr")
+                        ));
+                    }catch(Exception e){
+
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
+    private void CheckNoc(){
+        if(listUser.get(0).getNoc()==1){
+            Toast.makeText(this, "chuyển đến activity NOC", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này", Toast.LENGTH_SHORT).show();
+        }
     }
 }

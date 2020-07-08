@@ -111,6 +111,11 @@ public class Admin extends AppCompatActivity implements OnItemClickRecyclerView 
     }
 
     @Override
+    public void onClick2(int position) {
+
+    }
+
+    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
