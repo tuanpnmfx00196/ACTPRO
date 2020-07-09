@@ -341,7 +341,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     }
     private void GetSearch(ArrayList<CableId> arrayList){
         listShow.clear();
-        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2){
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2||listUser.get(0).getNoc()==1){
             for(int i=0;i<arrayList.size();i++){
                 listShow.add(arrayList.get(i));
             }
@@ -424,6 +424,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     @Override
     public void onClick2(int position) {
         CheckNoc();
+        Toast.makeText(this, "Cableid create CR "+listShow.get(position).getCableId(), Toast.LENGTH_SHORT).show();
     }
 
     private void ShowMoreDetail(final int position){
@@ -1726,9 +1727,42 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     }
     private void CheckNoc(){
         if(listUser.get(0).getNoc()==1){
-            Toast.makeText(this, "chuyển đến activity NOC", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "CREATE CR", Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này", Toast.LENGTH_SHORT).show();
         }
     }
+    private void InsertNOC(String url, final String cableid, final String codecr, final String commentcr, final String datetimecr){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        })
+        {
+            @Override
+            protected Map <String, String> getParams() throws AuthFailureError {
+            Map <String, String> params = new HashMap<>();
+                params.put("Cableidcr",cableid);
+                params.put("Codecr",codecr);
+                params.put("Commentcr",commentcr);
+                params.put("Datetimecr",datetimecr);
+            return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    private void DialogCR(){
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.show_more);
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
+        dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+
 }

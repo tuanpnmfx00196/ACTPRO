@@ -40,11 +40,9 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         CheckPassport();
         //Toast.makeText(this, "Size "+listPassport.size()+"--"+listPassport.get(0).getUser(), Toast.LENGTH_SHORT).show();
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (CheckPassport()) {
                     Intent intent = new Intent(MainActivity.this, DashBoard.class);
                     intent.putExtra("USERNAME",edtUser.getText().toString());
@@ -117,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        listUser.clear();
         for(int i=0; i<listPassport.size();i++){
             if(listPassport.get(i).getUser().equals(user)){
                 if(listPassport.get(i).getPassword().equals(pass)){

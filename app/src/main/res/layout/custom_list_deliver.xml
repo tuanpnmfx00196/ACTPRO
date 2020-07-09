@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
+            android:paddingLeft="10dp"
             android:id="@+id/txtTimeDeliver"
             android:layout_weight="6"
             android:layout_width="0dp"
@@ -58,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
+            android:paddingLeft="10dp"
             android:id="@+id/txtCodeDeliver"
             android:layout_weight="6"
             android:layout_width="0dp"
@@ -78,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
+            android:paddingLeft="10dp"
             android:text="Người xuất kho:"
             android:layout_weight="6"
             android:layout_width="0dp"
@@ -91,6 +94,7 @@
         </TextView>
     </LinearLayout>
     <TextView
+        android:paddingLeft="10dp"
         android:id="@+id/detailsDeliver"
         android:background="#FFFFFF"
         android:layout_weight="1"
