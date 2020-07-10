@@ -112,7 +112,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         getCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
     }
     /*=========================== Read Json ===============================*/
-        public void ReadJson(String url){
+    public void ReadJson(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -144,8 +144,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 jsonObject.getInt("Ironpole6"),
                                 jsonObject.getInt("Sc_lc5"),
                                 jsonObject.getInt("Sc_lc10"),
-                                jsonObject.getInt("Sc_sc5")
-
+                                jsonObject.getInt("Sc_sc5"),
+                                jsonObject.getInt("Cr")
                         ));
                     }catch(Exception e){
                         Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -157,8 +157,9 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     checkCR.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            getCheckCR(listShow);
-                            Toast.makeText(Management.this, "Check CR "+listShow.size(), Toast.LENGTH_SHORT).show();
+                            ArrayList<CableId>listTemp = new ArrayList<>();
+                            listTemp.addAll(listShow);
+                            GetCheckCR(listTemp);
                             initView();
                         }
                     });
@@ -168,7 +169,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                 Toast.makeText(Management.this, "Connection error", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(Management.this, "Lỗi read JSON", Toast.LENGTH_SHORT).show();
                             }
                         }
      );
@@ -212,10 +213,11 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                         jsonObject.getInt("Ironpole6"),
                                         jsonObject.getInt("Sc_lc5"),
                                         jsonObject.getInt("Sc_lc10"),
-                                        jsonObject.getInt("Sc_sc5")
+                                        jsonObject.getInt("Sc_sc5"),
+                                        jsonObject.getInt("Cr")
                                 ));
                             }catch(Exception e){
-                                Toast.makeText(Management.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Management.this, "Lỗi read JSON search", Toast.LENGTH_SHORT).show();
 
                             }
                         }
@@ -252,13 +254,14 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                                 }
                             }
 
-                            GetSearch(listSearch);
+                        GetSearch(listSearch);
                         checkCR = (Button)findViewById(R.id.checkCR);
                         checkCR.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                getCheckCR(listShow);
-                                Toast.makeText(Management.this, "Fragment Search "+listShow.size(), Toast.LENGTH_SHORT).show();
+                                ArrayList<CableId>listTemp = new ArrayList<>();
+                                listTemp.addAll(listShow);
+                                GetCheckCR(listTemp);
                                 initViewSearch();
                             }
                         });
@@ -311,6 +314,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         Intent intent = getIntent();
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
+
     public void Permission(){
         if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2||listUser.get(0).getNoc()==1){
             for(int i=0;i<listCable.size();i++){
@@ -396,20 +400,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             }
         }
     }
-    private ArrayList<CableId> getCheckCR(ArrayList<CableId>arrayList){
-        ArrayList<CableId>listTempCable = new ArrayList<>();
-        listTempCable.addAll(arrayList);
-        arrayList.clear();
-        for(int i=0; i<listCR.size(); i++){
-            if(listCR.get(i).getStatuscr()==1){
-                for(int j=0; j<listTempCable.size();j++){
-                    if(listTempCable.get(j).getCableId().equals(listCR.get(i).getCableidcr())){
-                        arrayList.add(listTempCable.get(j));
-                    }
-                }
+    private void GetCheckCR(ArrayList<CableId>arrayList){
+        listShow.clear();
+        for(int i=0; i<arrayList.size();i++){
+            if(arrayList.get(i).getCr()==1){
+                listShow.add(arrayList.get(i));
             }
         }
-        return arrayList;
     }
     @Override
     public void onClick(int position) {
@@ -418,13 +415,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick1(int position) {
-        Toast.makeText(this, listShow.get(position).getCableId() +"size CR"+ listCR.size(), Toast.LENGTH_SHORT).show();
+        ShowMoreDetail(position);
     }
 
     @Override
     public void onClick2(int position) {
-        CheckNoc();
-        Toast.makeText(this, "Cableid create CR "+listShow.get(position).getCableId(), Toast.LENGTH_SHORT).show();
+        CheckNoc(listShow.get(position).getCableId(),listUser.get(0).getUser());
+        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
     }
 
     private void ShowMoreDetail(final int position){
@@ -832,21 +829,27 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             rowsc_sc5m_update.setVisibility(View.GONE);
         }
         //Access modifier account
-        if(listUser.get(0).getAdmin()==1){
-            btnUpdate.setEnabled(true);
-        }else if(listUser.get(0).getAdmin()==2){
-
-            btnUpdate.setEnabled(false);
-        } else{
-            if(listUser.get(0).getBte()==1||listUser.get(0).getLan()==1||listUser.get(0).getBdg()==1||
-               listUser.get(0).getHcm_bch()==1||listUser.get(0).getDni()==1||listUser.get(0).getHcm_btn()==1||
-               listUser.get(0).getHcm_cci()==1||listUser.get(0).getHcm_gvp()==1||listUser.get(0).getHcm_hmn()==1||
-               listUser.get(0).getHcm_q12()==1||listUser.get(0).getKgg()==1||listUser.get(0).getTvh()==1){
+        //BLOCK SET ENABLE BTN UPDATE
+        if(listShow.get(position).getCr()==1) {
+            if (listUser.get(0).getAdmin() == 1) {
                 btnUpdate.setEnabled(true);
-            }else{
+            } else if (listUser.get(0).getAdmin() == 2) {
                 btnUpdate.setEnabled(false);
+            } else {
+                if (listUser.get(0).getBte() == 1 || listUser.get(0).getLan() == 1 || listUser.get(0).getBdg() == 1 ||
+                        listUser.get(0).getHcm_bch() == 1 || listUser.get(0).getDni() == 1 || listUser.get(0).getHcm_btn() == 1 ||
+                        listUser.get(0).getHcm_cci() == 1 || listUser.get(0).getHcm_gvp() == 1 || listUser.get(0).getHcm_hmn() == 1 ||
+                        listUser.get(0).getHcm_q12() == 1 || listUser.get(0).getKgg() == 1 || listUser.get(0).getTvh() == 1) {
+                    btnUpdate.setEnabled(true);
+                } else {
+                    btnUpdate.setEnabled(false);
+                }
             }
+            //END SET ENABLE
+        }else{
+            btnUpdate.setEnabled(false);
         }
+
 
         dialog.show();
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -1137,6 +1140,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
                         edtsclc10, edtscsc5
                        );
+                UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,0);
                 int idInventory =0;
                 if(listShow.get(position).getProvince().equals("Bình Dương")){
                     idInventory=4;
@@ -1183,7 +1187,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Management.this, "Lỗi UpdateSQL", Toast.LENGTH_SHORT).show();
             }
         }
         )
@@ -1293,6 +1297,58 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     params.put("Sc_sc5", String.valueOf(0));
                 }
                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    private void UpdateCRSQL(String url, final int position, final int cr
+    ){
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Management.this, "Lỗi Update SQL CR", Toast.LENGTH_SHORT).show();
+            }
+        }
+        )
+        {
+            @Override
+            protected Map <String, String> getParams() throws AuthFailureError{
+                Map <String, String> params = new HashMap<>();
+                params.put("ID",String.valueOf(listShow.get(position).getId()));
+                params.put("Cr",String.valueOf(cr));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    private void UpdateNOC(String url, final int position, final int statuscr
+    ){
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        )
+        {
+            @Override
+            protected Map <String, String> getParams() throws AuthFailureError{
+                Map <String, String> params = new HashMap<>();
+                params.put("IDcr",String.valueOf(listShow.get(position).getId()));
+                params.put("Statuscr",String.valueOf(statuscr));
+                return params;
             }
         };
         requestQueue.add(stringRequest);
@@ -1619,7 +1675,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Management.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Management.this, "Lỗi update Kho", Toast.LENGTH_SHORT).show();
             }
         }
         )
@@ -1725,14 +1781,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         );
         requestQueue.add(jsonArrayRequest);
     }
-    private void CheckNoc(){
+    private void CheckNoc(String cableidcr, String user){
         if(listUser.get(0).getNoc()==1){
             Toast.makeText(this, "CREATE CR", Toast.LENGTH_SHORT).show();
+            DialogCR(cableidcr,user);
         } else{
             Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này", Toast.LENGTH_SHORT).show();
         }
     }
-    private void InsertNOC(String url, final String cableid, final String codecr, final String commentcr, final String datetimecr){
+    private void InsertNOC(String url, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -1753,16 +1810,49 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 params.put("Codecr",codecr);
                 params.put("Commentcr",commentcr);
                 params.put("Datetimecr",datetimecr);
+                params.put("Usercreatecr",usercreatecr);
             return params;
             }
         };
         requestQueue.add(stringRequest);
     }
-    private void DialogCR(){
+    private void DialogCR(final String cableid, final String usercreatecr){
         final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.show_more);
+        dialog.setContentView(R.layout.create_cr);
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final TextView codeCR = (TextView)dialog.findViewById(R.id.codeCR);
+        TextView cableidCR = (TextView)dialog.findViewById(R.id.cableidCR);
+        TextView dateCR = (TextView)dialog.findViewById(R.id.dateCR);
+        final EditText commentCR = (EditText)dialog.findViewById(R.id.commentCR);
+        Button btnCreateCR = (Button)dialog.findViewById(R.id.btnCreateCR);
+        Button btnCancelCR = (Button)dialog.findViewById(R.id.btnCancelCR);
+        cableidCR.setText("Mã tuyến cáp: "+cableid);
+        btnCancelCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        btnCreateCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(codeCR.getText().toString().trim().length()<15||
+                commentCR.getText().toString().length()<20){
+                    Toast.makeText(Management.this, "Vui lòng nhập đầy đủ thông tin mã CR hoặc nội dung CR", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                    String dateCreateCR = sdf.format(new Date());
+                    InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php", cableid,
+                            codeCR.getText().toString().trim(),
+                            commentCR.getText().toString().trim(),dateCreateCR,usercreatecr);
+                    dialog.cancel();
+                }
+            }
+        });
+        dialog.show();
     }
 
 }
+//https://sqlandroid2812.000webhostapp.com/updatenoc.php

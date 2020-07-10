@@ -7,9 +7,9 @@ public class CableId {
     private int hanging12fo;
     private int hanging4fo, hanging6fo, hanging24fo, du12fo, odf6fo, odf12fo, odf24fo, odf96fo,
     closure6fo, closure12fo, closure24fo, buloong300, buloong400, clamp, poleu8, ironpole6, sc_lc5, sc_lc10,
-    sc_sc5;
+    sc_sc5, cr;
 
-    public CableId(int id, String province, String cableId, int hanging4fo, int hanging6fo, int hanging12fo, int hanging24fo, int du12fo, int odf6fo, int odf12fo, int odf24fo, int odf96fo, int closure6fo, int closure12fo, int closure24fo, int buloong300, int buloong400, int clamp, int poleu8, int ironpole6, int sc_lc5, int sc_lc10, int sc_sc5) {
+    public CableId(int id, String province, String cableId, int hanging4fo, int hanging6fo, int hanging12fo, int hanging24fo, int du12fo, int odf6fo, int odf12fo, int odf24fo, int odf96fo, int closure6fo, int closure12fo, int closure24fo, int buloong300, int buloong400, int clamp, int poleu8, int ironpole6, int sc_lc5, int sc_lc10, int sc_sc5, int cr) {
         this.id = id;
         this.province = province;
         this.cableId = cableId;
@@ -33,6 +33,10 @@ public class CableId {
         this.sc_lc5 = sc_lc5;
         this.sc_lc10 = sc_lc10;
         this.sc_sc5 = sc_sc5;
+        this.cr = cr;
+    }
+
+    public CableId(int id, String province, String cableId, int hanging4fo, int hanging6fo, int hanging12fo, int hanging24fo, int du12fo, int odf6fo, int odf12fo, int odf24fo, int odf96fo, int closure6fo, int closure12fo, int closure24fo, int buloong300, int buloong400, int clamp, int poleu8, int ironpole6, int sc_lc5, int sc_lc10, int sc_sc5) {
     }
 
     public int getId() {
@@ -217,5 +221,13 @@ public class CableId {
 
     public void setSc_sc5(int sc_sc5) {
         this.sc_sc5 = sc_sc5;
+    }
+
+    public int getCr() {
+        return cr;
+    }
+
+    public void setCr(int cr) {
+        this.cr = cr;
     }
 }
