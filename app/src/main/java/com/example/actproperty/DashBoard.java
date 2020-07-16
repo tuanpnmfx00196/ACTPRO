@@ -39,12 +39,9 @@ import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
+import java.io.FileNotFoundException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +54,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class DashBoard extends AppCompatActivity {
-    Button btnCableId, btnInventory, btnAdmin;
+    Button btnCableId, btnInventory, btnAdmin, btnReport;
     ImageButton btnImgCableId, imgBtnInventory;
     ArrayList<Passport> listUser;
 
@@ -108,6 +105,13 @@ public class DashBoard extends AppCompatActivity {
                 Intent intent = new Intent(DashBoard.this, DashboardAdmin.class);
                 intent.putExtra("Account",listUser);
                 startActivity(intent);
+            }
+        });
+        btnReport = (Button)findViewById(R.id.btnReport);
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
@@ -211,43 +215,5 @@ public class DashBoard extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-//    private void saveFilexxls() {
-//        HSSFWorkbook workbook = new HSSFWorkbook();
-//        HSSFSheet sheet = workbook.createSheet("Sheet 1");
-//        HSSFRow rowA = sheet.createRow(0);
-//        HSSFCell cellA = rowA.createCell(0);
-//        cellA.setCellValue(new HSSFRichTextString("Sheet1"));
-//        FileOutputStream fos = null;
-//        try {
-//            String str_path = Environment.getExternalStorageDirectory().getAbsolutePath().toString();
-//            File file;
-//            file = new File(str_path, getString(R.string.app_name) + ".xls");
-//            fos = new FileOutputStream(file);
-//            workbook.write(fos);
-//            workbook.close();
-//            fos.close();
-//        } catch (IOException e) {
-//            Toast.makeText(this, "try 1" + e.toString(), Toast.LENGTH_SHORT).show();
-//        } finally {
-//            if (fos != null) {
-//                try {
-//                    fos.flush();
-//                    fos.close();
-//                } catch (IOException e) {
-//                    Toast.makeText(this, "Finally" + e.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }
-//    }
-
-//    private void checkPermision() {
-//        if (ContextCompat.checkSelfPermission(DashBoard.this,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED) {
-//
-//            ActivityCompat.requestPermissions(DashBoard.this,
-//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    1);
-//        }
     }
 
