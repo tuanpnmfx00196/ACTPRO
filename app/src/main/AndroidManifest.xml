@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".department.accounting.Deliver"></activity>
+        <activity android:name=".department.accounting.ShowDeliverHistory"></activity>
+        <activity android:name=".department.accounting.Deliver" />
         <activity android:name=".department.accounting.AccountingDepartment" />
         <activity android:name=".admin.DashboardAdmin" />
         <activity

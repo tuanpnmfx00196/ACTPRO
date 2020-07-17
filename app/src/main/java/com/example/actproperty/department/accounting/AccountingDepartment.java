@@ -128,7 +128,10 @@ ArrayList<DeliverObject>listDeliver;
         btnSearchIO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                        ExportDeliver(getFromDateIO.getText().toString(),
+                                      getToDateIO.getText().toString(),
+                                      spinnerCodeStore.getSelectedItem().toString(),
+                                        listDeliver).size();
             }
         });
         dialog.show();
@@ -210,17 +213,39 @@ ArrayList<DeliverObject>listDeliver;
     }
     private ArrayList<DeliverObject> ExportDeliver(String fromDate, String toDate, String codeStore,
                                                    ArrayList<DeliverObject> arrayList){
+        Date from = null;
+        Date to = null;
         ArrayList<DeliverObject> listDeliverSearch = new ArrayList<>();
         try {
-            Date from = new SimpleDateFormat("dd/MM/yyyy").parse(fromDate);
+            from = new SimpleDateFormat("dd/MM/yyyy").parse(fromDate);
         } catch (ParseException e) {
             Toast.makeText(this, "Lỗi ngày bắt đầu", Toast.LENGTH_SHORT).show();
         }
         try {
-            Date to = new SimpleDateFormat("dd/MM/yyyy").parse(toDate);
+            to = new SimpleDateFormat("dd/MM/yyyy").parse(toDate);
         } catch (ParseException e) {
             Toast.makeText(this, "Lỗi ngày kết thúc", Toast.LENGTH_SHORT).show();
         }
+        for(int i=0; i<listDeliver.size();i++){
+            Date dateDeliver=null;
+            try {
+                dateDeliver = new SimpleDateFormat("dd/MM/yyyy").parse(listDeliver.get(i).getTimedeliver());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(codeStore.equals("All")){
+                if(dateDeliver.compareTo(from)>=0 &&dateDeliver.compareTo(to)<=0){
+                    listDeliverSearch.add(listDeliver.get(i));
+                }
+            }else{
+                if(listDeliver.get(i).getCodeStore().equals(codeStore)) {
+                    if (dateDeliver.compareTo(from) >= 0 && dateDeliver.compareTo(to) <= 0) {
+                        listDeliverSearch.add(listDeliver.get(i));
+                    }
+                }
+            }
+        }
+        Toast.makeText(this, from.toString()+"---"+to.toString(), Toast.LENGTH_SHORT).show();
         return listDeliverSearch;
     }
 
