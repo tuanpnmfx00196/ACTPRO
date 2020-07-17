@@ -315,87 +315,152 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
 
-    public void Permission(){
-        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2||listUser.get(0).getNoc()==1){
-            for(int i=0;i<listCable.size();i++){
+    public void Permission() {
+        if (listUser.get(0).getAdmin() == 1 || listUser.get(0).getAdmin() == 2 || listUser.get(0).getNoc() == 1) {
+            for (int i = 0; i < listCable.size(); i++) {
                 listShow.add(listCable.get(i));
             }
-        }
-        if(listUser.get(0).getHcm_bch()==1){
-            for(int i=0;i<listCable.size();i++){
-                if(listCable.get(i).getProvince().equals("HCM_Bình Chánh")){
-                    listShow.add(listCable.get(i));
+        } else {
+            if (listUser.get(0).getHcm_bch() == 1 || listUser.get(0).getHcm_bch() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Bình Chánh")) {
+                        listShow.add(listCable.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getBdg()==1){
-            for(int i=0;i<listCable.size();i++){
-                if(listCable.get(i).getProvince().equals("Bình Dương")){
-                    listShow.add(listCable.get(i));
+            if (listUser.get(0).getHcm_btn() == 1 || listUser.get(0).getHcm_btn() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Bình Tân")) {
+                        listShow.add(listCable.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getKgg()==1|| listUser.get(0).getKgg()==2){
-            for(int i=0;i<listCable.size();i++){
-                if(listCable.get(i).getProvince().equals("Kiên Giang")){
-                    listShow.add(listCable.get(i));
+            if (listUser.get(0).getHcm_cci() == 1 || listUser.get(0).getHcm_cci() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Củ Chi")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_gvp() == 1 || listUser.get(0).getHcm_gvp() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Gò Vấp")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_q12() == 1 || listUser.get(0).getHcm_q12() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Quận 12")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_hmn() == 1 || listUser.get(0).getHcm_hmn() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("HCM_Hóc Môn")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getBdg() == 1 || listUser.get(0).getBdg() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Bình Dương")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getKgg() == 1 || listUser.get(0).getKgg() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Kiên Giang")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getBte() == 1 || listUser.get(0).getKgg() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Bến Tre")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getTvh() == 1 || listUser.get(0).getTvh() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Trà Vinh")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getDni() == 1 || listUser.get(0).getDni() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Đồng Nai")) {
+                        listShow.add(listCable.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getLan() == 1 || listUser.get(0).getLan() == 2) {
+                for (int i = 0; i < listCable.size(); i++) {
+                    if (listCable.get(i).getProvince().equals("Long An")) {
+                        listShow.add(listCable.get(i));
+                    }
                 }
             }
         }
     }
-    private void GetSearch(ArrayList<CableId> arrayList){
+    private void GetSearch(ArrayList<CableId> arrayList) {
         listShow.clear();
-        if(listUser.get(0).getAdmin()==1||listUser.get(0).getAdmin()==2||listUser.get(0).getNoc()==1){
-            for(int i=0;i<arrayList.size();i++){
+        if (listUser.get(0).getAdmin() == 1 || listUser.get(0).getAdmin() == 2 || listUser.get(0).getNoc() == 1) {
+            for (int i = 0; i < arrayList.size(); i++) {
                 listShow.add(arrayList.get(i));
             }
-        }
-        if(listUser.get(0).getHcm_bch()==1){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("HCM_Bình Chánh")){
-                    listShow.add(arrayList.get(i));
+        } else {
+            if (listUser.get(0).getHcm_bch() == 1) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("HCM_Bình Chánh")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getBdg()==1){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Bình Dương")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getBdg() == 1) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Bình Dương")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getKgg()==1|| listUser.get(0).getKgg()==2){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Kiên Giang")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getKgg() == 1 || listUser.get(0).getKgg() == 2) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Kiên Giang")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getTvh()==1|| listUser.get(0).getTvh()==2){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Trà Vinh")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getTvh() == 1 || listUser.get(0).getTvh() == 2) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Trà Vinh")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getBte()==1|| listUser.get(0).getBte()==2){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Bến Tre")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getBte() == 1 || listUser.get(0).getBte() == 2) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Bến Tre")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getLan()==1|| listUser.get(0).getLan()==2){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Long An")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getLan() == 1 || listUser.get(0).getLan() == 2) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Long An")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
-        }
-        if(listUser.get(0).getDni()==1|| listUser.get(0).getDni()==2){
-            for(int i=0;i<arrayList.size();i++){
-                if(arrayList.get(i).getProvince().equals("Đồng Nai")){
-                    listShow.add(arrayList.get(i));
+            if (listUser.get(0).getDni() == 1 || listUser.get(0).getDni() == 2) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getProvince().equals("Đồng Nai")) {
+                        listShow.add(arrayList.get(i));
+                    }
                 }
             }
         }
