@@ -1,7 +1,10 @@
 package com.example.actproperty.department.accounting;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +38,20 @@ public class DeliverHistoryAdapter extends RecyclerView.Adapter<DeliverHistoryAd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        viewHolder.codeDeliver.setText("PXK_TCKT_"+List.get(i).getTimedeliver());
-        viewHolder.userDeliver.setText(List.get(i).getUserdeliver());
-        viewHolder.dateDeliver.setText(List.get(i).getTimedeliver());
+        viewHolder.codeDeliver.setText("Mã phiếu xuất: PXK_TCKT_"+List.get(i).getTimedeliver());
+        viewHolder.userDeliver.setText("Người xuất: "+List.get(i).getUserdeliver());
+        viewHolder.dateDeliver.setText("Ngày xuất: "+List.get(i).getTimedeliver());
+        viewHolder.store.setText("Kho nhận: "+List.get(i).getCodeStore());
+        if(List.get(i).getFlag()==1){
+            viewHolder.statusDeliver.setText("Đang chuyển");
+            viewHolder.statusDeliver.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E8AC31")));
+        }else if(List.get(i).getFlag()==2){
+            viewHolder.statusDeliver.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#31E2E8")));
+            viewHolder.statusDeliver.setText("Đã nhập");
+        }else{
+            viewHolder.statusDeliver.setText("Đã từ chối");
+            viewHolder.statusDeliver.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FF5722")));
+        }
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,12 +66,14 @@ public class DeliverHistoryAdapter extends RecyclerView.Adapter<DeliverHistoryAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView codeDeliver, userDeliver, dateDeliver;
+        TextView codeDeliver, userDeliver, dateDeliver, store, statusDeliver;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             codeDeliver = (TextView)itemView.findViewById(R.id.codeDeliver);
             userDeliver = (TextView)itemView.findViewById(R.id.userDeliver);
             dateDeliver = (TextView)itemView.findViewById(R.id.dateDeliver);
+            store = (TextView)itemView.findViewById(R.id.store);
+            statusDeliver = (TextView)itemView.findViewById(R.id.statusDeliver);
         }
     }
 }

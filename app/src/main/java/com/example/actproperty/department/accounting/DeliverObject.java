@@ -5,18 +5,18 @@ import java.io.Serializable;
 public class DeliverObject implements Serializable {
     private int id;
     private String codeStore;
-    private int hanging6fo, hanging12fo, hanging24fo, odf6do, odf12fo, odf24fo, mx6fo,mx12fo, mx24fo,
+    private int hanging6fo, hanging12fo, hanging24fo, odf6fo, odf12fo, odf24fo, mx6fo,mx12fo, mx24fo,
                 bl300, bl400, clamp, sc_lc5, sc_lc10;
     private String userdeliver, timedeliver, commentdeliver;
     private int flag;
 
-    public DeliverObject(int id, String codeStore, int hanging6fo, int hanging12fo, int hanging24fo, int odf6do, int odf12fo, int odf24fo, int mx6fo, int mx12fo, int mx24fo, int bl300, int bl400, int clamp, int sc_lc5, int sc_lc10, String userdeliver, String timedeliver, String commentdeliver, int flag) {
+    public DeliverObject(int id, String codeStore, int hanging6fo, int hanging12fo, int hanging24fo, int odf6fo, int odf12fo, int odf24fo, int mx6fo, int mx12fo, int mx24fo, int bl300, int bl400, int clamp, int sc_lc5, int sc_lc10, String userdeliver, String timedeliver, String commentdeliver, int flag) {
         this.id = id;
         this.codeStore = codeStore;
         this.hanging6fo = hanging6fo;
         this.hanging12fo = hanging12fo;
         this.hanging24fo = hanging24fo;
-        this.odf6do = odf6do;
+        this.odf6fo = odf6fo;
         this.odf12fo = odf12fo;
         this.odf24fo = odf24fo;
         this.mx6fo = mx6fo;
@@ -73,12 +73,12 @@ public class DeliverObject implements Serializable {
         this.hanging24fo = hanging24fo;
     }
 
-    public int getOdf6do() {
-        return odf6do;
+    public int getOdf6fo() {
+        return odf6fo;
     }
 
-    public void setOdf6do(int odf6do) {
-        this.odf6do = odf6do;
+    public void setOdf6fo(int odf6fo) {
+        this.odf6fo = odf6fo;
     }
 
     public int getOdf12fo() {

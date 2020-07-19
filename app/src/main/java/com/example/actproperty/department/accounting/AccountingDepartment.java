@@ -42,12 +42,14 @@ TextView getFromDateIO, getToDateIO;
 Spinner spinnerCodeStore;
 ArrayList<Passport>listUser;
 ArrayList<DeliverObject>listDeliver;
+ArrayList<DeliverObject>listDeliverShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounting_department);
         listUser = new ArrayList<>();
         listDeliver = new ArrayList<>();
+        listDeliverShow= new ArrayList<>();
         getAccount();
         Map();
         GetDataDeliver("https://sqlandroid2812.000webhostapp.com/gettempdeliver.php");
@@ -128,10 +130,15 @@ ArrayList<DeliverObject>listDeliver;
         btnSearchIO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        ExportDeliver(getFromDateIO.getText().toString(),
+                        listDeliverShow.addAll(ExportDeliver(getFromDateIO.getText().toString(),
                                       getToDateIO.getText().toString(),
                                       spinnerCodeStore.getSelectedItem().toString(),
-                                        listDeliver).size();
+                                        listDeliver));
+                        Intent intent = new Intent(AccountingDepartment.this, ShowDeliverHistory.class);
+                        intent.putExtra("listDeliverShow",listDeliverShow);
+                        intent.putExtra("dateFrom",getFromDateIO.getText().toString());
+                        intent.putExtra("dateTo",getToDateIO.getText().toString());
+                        startActivity(intent);
             }
         });
         dialog.show();
@@ -168,6 +175,7 @@ ArrayList<DeliverObject>listDeliver;
         datePickerDialog.show();
     }
     private void GetDataDeliver(String url){
+        listDeliver.clear();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -213,9 +221,11 @@ ArrayList<DeliverObject>listDeliver;
     }
     private ArrayList<DeliverObject> ExportDeliver(String fromDate, String toDate, String codeStore,
                                                    ArrayList<DeliverObject> arrayList){
+
         Date from = null;
         Date to = null;
         ArrayList<DeliverObject> listDeliverSearch = new ArrayList<>();
+        listDeliverSearch.clear();
         try {
             from = new SimpleDateFormat("dd/MM/yyyy").parse(fromDate);
         } catch (ParseException e) {
@@ -226,7 +236,7 @@ ArrayList<DeliverObject>listDeliver;
         } catch (ParseException e) {
             Toast.makeText(this, "Lỗi ngày kết thúc", Toast.LENGTH_SHORT).show();
         }
-        for(int i=0; i<listDeliver.size();i++){
+        for(int i=0; i<arrayList.size();i++){
             Date dateDeliver=null;
             try {
                 dateDeliver = new SimpleDateFormat("dd/MM/yyyy").parse(listDeliver.get(i).getTimedeliver());
@@ -235,17 +245,16 @@ ArrayList<DeliverObject>listDeliver;
             }
             if(codeStore.equals("All")){
                 if(dateDeliver.compareTo(from)>=0 &&dateDeliver.compareTo(to)<=0){
-                    listDeliverSearch.add(listDeliver.get(i));
+                    listDeliverSearch.add(arrayList.get(i));
                 }
             }else{
                 if(listDeliver.get(i).getCodeStore().equals(codeStore)) {
                     if (dateDeliver.compareTo(from) >= 0 && dateDeliver.compareTo(to) <= 0) {
-                        listDeliverSearch.add(listDeliver.get(i));
+                        listDeliverSearch.add(arrayList.get(i));
                     }
                 }
             }
         }
-        Toast.makeText(this, from.toString()+"---"+to.toString(), Toast.LENGTH_SHORT).show();
         return listDeliverSearch;
     }
 

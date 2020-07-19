@@ -10,7 +10,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:weightSum="2"
-        android:layout_weight="2"
+        android:layout_weight="1.2"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <LinearLayout
@@ -34,9 +34,8 @@
                 android:id="@+id/statusDateTime"
                 android:background="#FFF"
                 android:textColor="#2196F3"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:gravity="center"
-                android:text="Từ ngày __/__/____ đến ngày __/__/____"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -44,7 +43,7 @@
     <LinearLayout
         android:background="#fff"
         android:layout_marginTop="5dp"
-        android:layout_weight="9.5"
+        android:layout_weight="10.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <android.support.v7.widget.RecyclerView

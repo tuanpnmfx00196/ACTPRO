@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:backgroundTint="#802196F3"
+    android:background="@drawable/radius2"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<TextView
+    android:textColor="#FF5722"
+    android:textSize="18dp"
+    android:paddingLeft="10dp"
+    android:id="@+id/title_Code"
+    android:maxLines="1"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+<TextView
+    android:paddingLeft="10dp"
+    android:id="@+id/details"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+    <Button
+        android:text="Trở về"
+        android:id="@+id/btnCancelDialogDetailDeliver"
+        android:backgroundTint="#B6AE7E"
+        android:layout_marginRight="120dp"
+        android:layout_marginLeft="120dp"
+        android:background="@drawable/radius2"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+</LinearLayout>
