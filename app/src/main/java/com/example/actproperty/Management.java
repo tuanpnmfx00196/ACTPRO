@@ -486,7 +486,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     @Override
     public void onClick2(int position) {
         CheckNoc(listShow.get(position).getCableId(),listUser.get(0).getUser());
-        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
+//        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
     }
 
     private void ShowMoreDetail(final int position){
@@ -1206,6 +1206,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtsclc10, edtscsc5
                        );
                 UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,0);
+                UpdateNOC("https://sqlandroid2812.000webhostapp.com/updatenoc.php",position,2);
                 int idInventory =0;
                 if(listShow.get(position).getProvince().equals("Bình Dương")){
                     idInventory=4;
@@ -1411,7 +1412,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map <String, String> getParams() throws AuthFailureError{
                 Map <String, String> params = new HashMap<>();
-                params.put("IDcr",String.valueOf(listShow.get(position).getId()));
+                params.put("IDcr",String.valueOf(listCR.get(position).getId()));
                 params.put("Statuscr",String.valueOf(statuscr));
                 return params;
             }
@@ -1740,7 +1741,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Management.this, "Lỗi update Kho", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Management.this, "Lỗi update Kho "+error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         )

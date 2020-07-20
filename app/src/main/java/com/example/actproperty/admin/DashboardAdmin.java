@@ -37,6 +37,12 @@ public class DashboardAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnNOC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

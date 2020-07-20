@@ -107,7 +107,7 @@ ArrayList<DeliverObject>listDeliverShow;
         spinnerCodeStore.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AccountingDepartment.this,spinnerCodeStore.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -130,6 +130,7 @@ ArrayList<DeliverObject>listDeliverShow;
         btnSearchIO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listDeliverShow.clear();
                         listDeliverShow.addAll(ExportDeliver(getFromDateIO.getText().toString(),
                                       getToDateIO.getText().toString(),
                                       spinnerCodeStore.getSelectedItem().toString(),
