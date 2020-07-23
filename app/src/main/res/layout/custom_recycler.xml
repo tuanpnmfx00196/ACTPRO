@@ -56,7 +56,7 @@
             android:gravity="center_vertical"
             android:text="Không có CR"
             android:id="@+id/statusCR"
-            android:layout_weight="6"
+            android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
@@ -67,16 +67,28 @@
             android:textColor="#FFFFFF"
             android:text="Tạo CR"
             android:id="@+id/createCR"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+            android:textColor="#FFF"
             android:layout_margin="5dp"
             android:backgroundTint="@color/colorAccent"
             android:background="@drawable/radius2"
             android:textSize="10sp"
-            android:text="Thực hiện CR"
+            android:text="Thực hiện"
             android:id="@+id/crNoc"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:textColor="#FFF"
+            android:layout_margin="5dp"
+            android:backgroundTint="#FF9800"
+            android:background="@drawable/radius2"
+            android:textSize="10sp"
+            android:text="Từ chối CR"   
+            android:id="@+id/cancelCr"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>

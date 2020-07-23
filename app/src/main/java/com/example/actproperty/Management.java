@@ -1894,6 +1894,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         Button btnCreateCR = (Button)dialog.findViewById(R.id.btnCreateCR);
         Button btnCancelCR = (Button)dialog.findViewById(R.id.btnCancelCR);
         cableidCR.setText("Mã tuyến cáp: "+cableid);
+        codeCR.setText("CR_PVHKT_NOC_");
+        commentCR.setText("[Đơn vị] liên hệ kho Công ty nhận ... UCTT tuyến "+cableid);
         btnCancelCR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1903,8 +1905,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         btnCreateCR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(codeCR.getText().toString().trim().length()<15||
-                commentCR.getText().toString().length()<20){
+                if(codeCR.getText().toString().trim().length()<17||
+                commentCR.getText().toString().length()<60){
                     Toast.makeText(Management.this, "Vui lòng nhập đầy đủ thông tin mã CR hoặc nội dung CR", Toast.LENGTH_SHORT).show();
                 }
                 else{
