@@ -485,8 +485,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick2(int position) {
-        CheckNoc(listShow.get(position).getCableId(),listUser.get(0).getUser());
-//        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
+        CheckNoc(listShow.get(position).getId(),listShow.get(position).getCableId(),listUser.get(0).getUser());
+      UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
+    }
+
+    @Override
+    public void onClick3(int position) {
+        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,3);
     }
 
     private void ShowMoreDetail(final int position){
@@ -1826,6 +1831,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     try{
                         JSONObject jsonObject = response.getJSONObject(i);
                         listCR.add(new CRNOC(
+                           jsonObject.getInt("Idorigin"),
                            jsonObject.getInt("IDcr"),
                            jsonObject.getString("Cableidcr"),
                            jsonObject.getString("Codecr"),
@@ -1847,15 +1853,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         );
         requestQueue.add(jsonArrayRequest);
     }
-    private void CheckNoc(String cableidcr, String user){
+    private void CheckNoc(int id_origin, String cableidcr, String user){
         if(listUser.get(0).getNoc()==1){
             Toast.makeText(this, "CREATE CR", Toast.LENGTH_SHORT).show();
-            DialogCR(cableidcr,user);
+            DialogCR(id_origin, cableidcr,user);
         } else{
             Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này", Toast.LENGTH_SHORT).show();
         }
     }
-    private void InsertNOC(String url, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
+    private void InsertNOC(String url,final int id_origin, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -1872,6 +1878,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map <String, String> getParams() throws AuthFailureError {
             Map <String, String> params = new HashMap<>();
+                params.put("Idorigin",String.valueOf(id_origin));
                 params.put("Cableidcr",cableid);
                 params.put("Codecr",codecr);
                 params.put("Commentcr",commentcr);
@@ -1882,7 +1889,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
-    private void DialogCR(final String cableid, final String usercreatecr){
+    private void DialogCR(final int id_origin, final String cableid, final String usercreatecr){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.create_cr);
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
@@ -1912,7 +1919,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 else{
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
                     String dateCreateCR = sdf.format(new Date());
-                    InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php", cableid,
+                    InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php",id_origin, cableid,
                             codeCR.getText().toString().trim(),
                             commentCR.getText().toString().trim(),dateCreateCR,usercreatecr);
                     dialog.cancel();

@@ -34,6 +34,9 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.txtLocal.setText(List.get(i).getProvince());
         viewHolder.idRoute.setText(List.get(i).getCableId());
+        if(List.get(i).getCr()!=1){
+            viewHolder.cancelCR.setEnabled(false);
+        }
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +55,12 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
                 clickRecyclerView.onClick2(viewHolder.getAdapterPosition());
             }
         });
+        viewHolder.cancelCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickRecyclerView.onClick3(viewHolder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -61,7 +70,7 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
 
     public class ViewHolder extends  RecyclerView.ViewHolder {
         TextView txtLocal, idRoute, statusCR;
-        Button crNoc, createCR;
+        Button crNoc, createCR, cancelCR;
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtLocal = (TextView)itemView.findViewById(R.id.txtLocal);
@@ -69,6 +78,7 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
             crNoc = (Button)itemView.findViewById(R.id.crNoc);
             statusCR = (TextView)itemView.findViewById(R.id.statusCR);
             createCR = (Button)itemView.findViewById(R.id.createCR);
+            cancelCR = (Button)itemView.findViewById(R.id.cancelCr);
         }
     }
 

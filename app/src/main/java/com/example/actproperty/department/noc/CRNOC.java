@@ -1,12 +1,13 @@
 package com.example.actproperty.department.noc;
 
 public class CRNOC {
-    private int id;
+    private int id, id_origin;
     private String cableidcr, codecr, commentcr, datetimecr;
     private int statuscr;
 
-    public CRNOC(int id, String cableidcr, String codecr, String commentcr, String datetimecr, int statuscr) {
+    public CRNOC(int id, int id_origin, String cableidcr, String codecr, String commentcr, String datetimecr, int statuscr) {
         this.id = id;
+        this.id_origin = id_origin;
         this.cableidcr = cableidcr;
         this.codecr = codecr;
         this.commentcr = commentcr;
@@ -16,6 +17,14 @@ public class CRNOC {
 
     public int getId() {
         return id;
+    }
+
+    public int getId_origin() {
+        return id_origin;
+    }
+
+    public void setId_origin(int id_origin) {
+        this.id_origin = id_origin;
     }
 
     public void setId(int id) {

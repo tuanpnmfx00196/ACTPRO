@@ -51,10 +51,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <TextView
+            android:textStyle="bold"
             android:textColor="#304FFE"
             android:paddingLeft="10sp"
             android:gravity="center_vertical"
-            android:text="Không có CR"
+            android:text="Quản lý CR"
             android:id="@+id/statusCR"
             android:layout_weight="4"
             android:layout_width="0dp"
@@ -67,7 +68,7 @@
             android:textColor="#FFFFFF"
             android:text="Tạo CR"
             android:id="@+id/createCR"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
@@ -78,7 +79,7 @@
             android:textSize="10sp"
             android:text="Thực hiện"
             android:id="@+id/crNoc"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
@@ -87,9 +88,9 @@
             android:backgroundTint="#FF9800"
             android:background="@drawable/radius2"
             android:textSize="10sp"
-            android:text="Từ chối CR"   
+            android:text="Từ chối"
             android:id="@+id/cancelCr"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
     </LinearLayout>

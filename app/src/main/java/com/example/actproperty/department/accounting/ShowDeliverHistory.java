@@ -64,6 +64,12 @@ public class ShowDeliverHistory extends AppCompatActivity implements OnItemClick
     public void onClick2(int position) {
 
     }
+
+    @Override
+    public void onClick3(int position) {
+
+    }
+
     private void ShowDetailDeliver(int position){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(dialog_detail_deliver);
