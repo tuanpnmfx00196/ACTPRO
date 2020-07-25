@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,9 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.actproperty.Management;
 import com.example.actproperty.R;
-import com.example.actproperty.itemclick.OnItemClickRecyclerView;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;
@@ -32,7 +30,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Inventory extends AppCompatActivity implements OnItemClickRecyclerView {

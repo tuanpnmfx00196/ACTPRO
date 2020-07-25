@@ -28,7 +28,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.department.noc.CRNOC;
 import com.example.actproperty.inventory.MaterialsInventory;
-import com.example.actproperty.itemclick.OnItemClickRecyclerView;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;

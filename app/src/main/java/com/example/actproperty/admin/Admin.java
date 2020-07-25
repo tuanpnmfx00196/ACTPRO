@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.actproperty.R;
 import com.example.actproperty.history.History;
 import com.example.actproperty.history.HistoryAdapter;
-import com.example.actproperty.itemclick.OnItemClickRecyclerView;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

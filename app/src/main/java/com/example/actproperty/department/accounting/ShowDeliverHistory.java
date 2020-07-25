@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.actproperty.R;
-import com.example.actproperty.itemclick.OnItemClickRecyclerView;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 
 import java.util.ArrayList;
 

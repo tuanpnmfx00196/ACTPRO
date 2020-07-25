@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.actproperty.itemclick.OnItemClickRecyclerView;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 
 import java.util.ArrayList;
 

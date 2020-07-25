@@ -1,4 +1,4 @@
-package com.example.actproperty.itemclick;
+package com.example.actproperty.itemclick_Interface;
 
 public interface OnItemClickRecyclerView {
     void onClick (int position);
