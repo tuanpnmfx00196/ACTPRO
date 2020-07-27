@@ -485,13 +485,24 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick2(int position) {
+        //Toast.makeText(this, "Listshow "+listShow.get(position).getId()+", listcable "+listCable.get(position).getId(), Toast.LENGTH_SHORT).show();
         CheckNoc(listShow.get(position).getId(),listShow.get(position).getCableId(),listUser.get(0).getUser());
-      UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,1);
+
     }
 
     @Override
     public void onClick3(int position) {
-        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,3);
+        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,0);
+        int idCR=0;
+        for(int i=0; i<listCR.size();i++){
+            if(listCR.get(i).getId_origin()==(listShow.get(position).getId())&&listCR.get(i).getStatuscr()==1){
+                idCR=i+1;
+            }
+        }
+        UpdateNOC("https://sqlandroid2812.000webhostapp.com/updatenoc.php",idCR,3);
+        Intent intent = new Intent(Management.this, DashBoard.class);
+        intent.putExtra("Account",listUser);
+        startActivity(intent);
     }
 
     private void ShowMoreDetail(final int position){
@@ -919,8 +930,6 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }else{
             btnUpdate.setEnabled(false);
         }
-
-
         dialog.show();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1193,7 +1202,6 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     usedsc_sc5 = Integer.parseInt(sc_sc5_used.getText().toString());
                 }
 
-
                 InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
                         add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
                         addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
@@ -1208,10 +1216,15 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edt4fo,edt6fo,edt12fo,edt24fo,edt12du,edtodf6fo,edtodf12fo,edtodf24fo,
                         edtodf96fo,edtmx6,edtmx12,edtmx24,
                         edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
-                        edtsclc10, edtscsc5
+                        edtsclc10, edtscsc5,0
                        );
-                UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,0);
-                UpdateNOC("https://sqlandroid2812.000webhostapp.com/updatenoc.php",position,2);
+                int idCR=0;
+                for(int i=0; i<listCR.size();i++){
+                    if(listCR.get(i).getId_origin()==listShow.get(position).getId()&&listCR.get(i).getStatuscr()==1){
+                        idCR=i+1;
+                    }
+                }
+                UpdateNOC("https://sqlandroid2812.000webhostapp.com/updatenoc.php",idCR,2);
                 int idInventory =0;
                 if(listShow.get(position).getProvince().equals("Bình Dương")){
                     idInventory=4;
@@ -1247,7 +1260,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                            final int hanging12fo , final int hanging24fo, final int du12fo, final int odf6fo, final int odf12fo,
                            final int odf24fo, final int odf96fo, final int closure6fo, final int closure12fo, final int closure24fo,
                            final int buloong300, final int buloong400, final int clamp, final int poleu8, final int ironpole6,
-                           final int sc_lc5, final int sc_lc10, final int sc_sc5
+                           final int sc_lc5, final int sc_lc10, final int sc_sc5, final int statuscr
                            ){
          final RequestQueue requestQueue = Volley.newRequestQueue(this);
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -1367,6 +1380,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 }else{
                     params.put("Sc_sc5", String.valueOf(0));
                 }
+                    params.put("Statuscr",String.valueOf(statuscr));
                return params;
             }
         };
@@ -1398,7 +1412,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
-    private void UpdateNOC(String url, final int position, final int statuscr
+    private void UpdateNOC(String url, final int idcr, final int statuscr
     ){
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -1417,7 +1431,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map <String, String> getParams() throws AuthFailureError{
                 Map <String, String> params = new HashMap<>();
-                params.put("IDcr",String.valueOf(listCR.get(position).getId()));
+                params.put("Idcr",String.valueOf(idcr));
                 params.put("Statuscr",String.valueOf(statuscr));
                 return params;
             }
@@ -1435,7 +1449,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Toast.makeText(Management.this, "Insert history", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -1588,7 +1602,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Toast.makeText(Management.this, "Insert used", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -1741,7 +1755,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Toast.makeText(Management.this, "Update Inventory", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -1831,8 +1845,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     try{
                         JSONObject jsonObject = response.getJSONObject(i);
                         listCR.add(new CRNOC(
-                           jsonObject.getInt("Idorigin"),
                            jsonObject.getInt("IDcr"),
+                           jsonObject.getInt("Idorigin"),
                            jsonObject.getString("Cableidcr"),
                            jsonObject.getString("Codecr"),
                            jsonObject.getString("Commentcr"),
@@ -1854,11 +1868,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         requestQueue.add(jsonArrayRequest);
     }
     private void CheckNoc(int id_origin, String cableidcr, String user){
-        if(listUser.get(0).getNoc()==1){
-            Toast.makeText(this, "CREATE CR", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+listCable.get(id_origin-1).getId(), Toast.LENGTH_SHORT).show();
+        if(listUser.get(0).getNoc()==1 && listCable.get(id_origin-1).getCr() !=1){
             DialogCR(id_origin, cableidcr,user);
-        } else{
-            Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này", Toast.LENGTH_SHORT).show();
+        } else if (listCable.get(id_origin-1).getCr() ==1){
+            Toast.makeText(this, "Mã tuyến này đang có CR chưa hoàn thành!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này!", Toast.LENGTH_SHORT).show();
         }
     }
     private void InsertNOC(String url,final int id_origin, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
@@ -1878,7 +1894,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map <String, String> getParams() throws AuthFailureError {
             Map <String, String> params = new HashMap<>();
-                params.put("Idorigin",String.valueOf(id_origin));
+                params.put("Id_origin",String.valueOf(id_origin));
                 params.put("Cableidcr",cableid);
                 params.put("Codecr",codecr);
                 params.put("Commentcr",commentcr);
@@ -1922,6 +1938,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php",id_origin, cableid,
                             codeCR.getText().toString().trim(),
                             commentCR.getText().toString().trim(),dateCreateCR,usercreatecr);
+                    UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",id_origin-1,1);
                     dialog.cancel();
                 }
             }
