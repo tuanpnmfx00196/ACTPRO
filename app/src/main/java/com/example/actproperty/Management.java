@@ -1836,6 +1836,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    /*============================ GET CR NOC=================================*/
     public void getCR(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
