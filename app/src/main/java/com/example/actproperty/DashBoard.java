@@ -63,7 +63,7 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         listUser = new ArrayList<>();
-//        checkPermision();
+//        checkPermision(); cancel
         getUser();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello " + listUser.get(0).getUser());
