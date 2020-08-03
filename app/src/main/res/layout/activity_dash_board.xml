@@ -96,7 +96,7 @@
             android:textColor="#032EAE"
             android:id="@+id/btnNotify"
             android:textAllCaps="false"
-            android:text="Thông báo"
+            android:text="Tin ACT"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.actproperty.R;
 import com.example.actproperty.department.accounting.AccountingDepartment;
+import com.example.actproperty.department.noc.NocDepartment;
 import com.example.actproperty.passport.Passport;
 
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class DashboardAdmin extends AppCompatActivity {
         btnNOC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(DashboardAdmin.this, NocDepartment.class);
+                startActivity(intent);
             }
         });
     }

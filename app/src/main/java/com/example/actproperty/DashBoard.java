@@ -38,6 +38,7 @@ import com.example.actproperty.admin.DashboardAdmin;
 import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.Inventory;
 import com.example.actproperty.passport.Passport;
+import com.example.actproperty.webact.WebACT;
 
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
@@ -54,8 +55,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class DashBoard extends AppCompatActivity {
-    Button btnCableId, btnInventory, btnAdmin, btnReport;
-    ImageButton btnImgCableId, imgBtnInventory;
+    Button btnCableId, btnInventory, btnAdmin, btnReport, btnNotify;
+    ImageButton btnImgCableId, imgBtnInventory, imgBtnNotify;
     ArrayList<Passport> listUser;
 
     @Override
@@ -75,6 +76,7 @@ public class DashBoard extends AppCompatActivity {
         btnInventory = (Button) findViewById(R.id.btnInventory);
         imgBtnInventory = (ImageButton) findViewById(R.id.imgBtnInventory);
         btnImgCableId = (ImageButton) findViewById(R.id.imgBtnCableId);
+        btnNotify = (Button)findViewById(R.id.btnNotify);
         btnCableId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +114,20 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        btnNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashBoard.this, WebACT.class);
+                startActivity(intent);
+            }
+        });
+        imgBtnNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashBoard.this, WebACT.class);
+                startActivity(intent);
             }
         });
 
