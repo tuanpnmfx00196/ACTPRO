@@ -1,6 +1,7 @@
 package com.example.actproperty.department.noc;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.actproperty.R;
+import com.example.actproperty.passport.Passport;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,18 +21,24 @@ import java.util.Calendar;
 import java.util.List;
 
 public class NocDepartment extends AppCompatActivity {
-    TextView timeStartSearchCR, timeToSearchCR;
-    Spinner localSearchCR;
+    TextView timeStartSearchCR, timeToSearchCR, localSearchCR;
+    Spinner spnLocalSearchCR;
     Button btnSearchCR, btnBackCR;
+    ArrayList<CRNOC>listCrSearch;
+    ArrayList<Passport>listUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noc_department);
         timeStartSearchCR = (TextView)findViewById(R.id.timeStartSearchCR);
         timeToSearchCR = (TextView)findViewById(R.id.timeToSearchCR);
-        localSearchCR = (Spinner)findViewById(R.id.localSearchCR);
+        spnLocalSearchCR = (Spinner)findViewById(R.id.spnLocalSearchCR);
         btnSearchCR = (Button)findViewById(R.id.btnSearchCR);
         btnBackCR = (Button)findViewById(R.id.btnBackCR);
+        localSearchCR = (TextView)findViewById(R.id.localSearchCR);
+        listUser = new ArrayList<>();
+        getUser();
+
     }
     private void getStartTimeSearchCR(){
         final Calendar calendar = Calendar.getInstance();
@@ -79,12 +87,11 @@ public class NocDepartment extends AppCompatActivity {
         ArrayAdapter<String> localAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,listLocal);
         localAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        localSearchCR.setAdapter(localAdapter);
-        localSearchCR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnLocalSearchCR.setAdapter(localAdapter);
+        spnLocalSearchCR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                codeStore = spinnerToStore.getSelectedItem().toString();
-                tempDeliver.setStoreCode(codeStore);
+                localSearchCR.setText(spnLocalSearchCR.getSelectedItem().toString());
             }
 
             @Override
@@ -93,4 +100,9 @@ public class NocDepartment extends AppCompatActivity {
             }
         });
     }
+    public void getUser() {
+        Intent intent = getIntent();
+        listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
+    }
+
 }

@@ -42,6 +42,7 @@ public class DashboardAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardAdmin.this, NocDepartment.class);
+                intent.putExtra("Account",listUser);
                 startActivity(intent);
             }
         });

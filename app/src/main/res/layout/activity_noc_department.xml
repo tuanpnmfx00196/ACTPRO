@@ -77,12 +77,17 @@
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/localSearchCR"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
             <Spinner
                 android:backgroundTintMode="add"
-                android:id="@+id/localSearchCR"
+                android:id="@+id/spnLocalSearchCR"
                 android:textSize="16dp"
                 android:gravity="center"
-                android:layout_weight="8"
+                android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
