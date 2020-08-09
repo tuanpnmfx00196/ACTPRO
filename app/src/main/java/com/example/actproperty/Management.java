@@ -486,7 +486,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
     @Override
     public void onClick2(int position) {
         //Toast.makeText(this, "Listshow "+listShow.get(position).getId()+", listcable "+listCable.get(position).getId(), Toast.LENGTH_SHORT).show();
-        CheckNoc(listShow.get(position).getId(),listShow.get(position).getCableId(),listUser.get(0).getUser());
+        CheckNoc(listShow.get(position).getId(),listShow.get(position).getProvince(),listShow.get(position).getCableId(),listUser.get(0).getUser());
 
     }
 
@@ -1848,6 +1848,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         listCR.add(new CRNOC(
                            jsonObject.getInt("IDcr"),
                            jsonObject.getInt("Idorigin"),
+                           jsonObject.getString("Local"),
                            jsonObject.getString("Cableidcr"),
                            jsonObject.getString("Codecr"),
                            jsonObject.getString("Commentcr"),
@@ -1868,17 +1869,17 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         );
         requestQueue.add(jsonArrayRequest);
     }
-    private void CheckNoc(int id_origin, String cableidcr, String user){
+    private void CheckNoc(int id_origin, String local, String cableidcr, String user){
         Toast.makeText(this, ""+listCable.get(id_origin-1).getId(), Toast.LENGTH_SHORT).show();
         if(listUser.get(0).getNoc()==1 && listCable.get(id_origin-1).getCr() !=1){
-            DialogCR(id_origin, cableidcr,user);
+            DialogCR(id_origin, local, cableidcr,user);
         } else if (listCable.get(id_origin-1).getCr() ==1){
             Toast.makeText(this, "Mã tuyến này đang có CR chưa hoàn thành!", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Bạn không có quyền sử dụng chức năng này!", Toast.LENGTH_SHORT).show();
         }
     }
-    private void InsertNOC(String url,final int id_origin, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
+    private void InsertNOC(String url,final int id_origin, final String local, final String cableid, final String codecr, final String commentcr, final String datetimecr, final String usercreatecr){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -1888,7 +1889,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(Management.this, "Lỗi Insert NOC + "+error, Toast.LENGTH_SHORT).show();
             }
         })
         {
@@ -1896,6 +1897,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             protected Map <String, String> getParams() throws AuthFailureError {
             Map <String, String> params = new HashMap<>();
                 params.put("Id_origin",String.valueOf(id_origin));
+                params.put("Local",local);
                 params.put("Cableidcr",cableid);
                 params.put("Codecr",codecr);
                 params.put("Commentcr",commentcr);
@@ -1906,7 +1908,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
-    private void DialogCR(final int id_origin, final String cableid, final String usercreatecr){
+    private void DialogCR(final int id_origin, final String local, final String cableid, final String usercreatecr){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.create_cr);
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.97);
@@ -1936,7 +1938,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 else{
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
                     String dateCreateCR = sdf.format(new Date());
-                    InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php",id_origin, cableid,
+                    InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php",id_origin,local, cableid,
                             codeCR.getText().toString().trim(),
                             commentCR.getText().toString().trim(),dateCreateCR,usercreatecr);
                     UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",id_origin-1,1);

@@ -78,6 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <TextView
+                android:gravity="center"
                 android:id="@+id/localSearchCR"
                 android:layout_weight="5"
                 android:layout_width="0dp"
@@ -120,8 +121,13 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="8.5"
+        android:id="@+id/frameLinearLayoutRecyclerviewListCR"
+        android:layout_weight="7.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewListCR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </LinearLayout>

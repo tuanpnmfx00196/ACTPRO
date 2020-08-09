@@ -123,6 +123,7 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        imgBtnNotify = (ImageButton)findViewById(R.id.imgBtnNotify);
         imgBtnNotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

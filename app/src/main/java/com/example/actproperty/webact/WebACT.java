@@ -18,5 +18,6 @@ WebView webact;
         WebSettings webSettings = webact.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webact.loadUrl("http://vienthongact.vn/");
+
     }
 }
