@@ -68,6 +68,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         listInventory = new ArrayList<>();
         listCR = new ArrayList<>();
         GetAccount();
+        getInventory("https://sqlandroid2812.000webhostapp.com/getinventory.php");
         list = new ArrayList<>();
         listSearch = new ArrayList<>();
         frameContain = (FrameLayout) findViewById(R.id.frameContain);
@@ -85,7 +86,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 searchCableId.clearFocus();
                 searchLocal.clearFocus();
                 ReadJsonSeach("https://sqlandroid2812.000webhostapp.com/getdata.php");
-                getInventory("https://sqlandroid2812.000webhostapp.com/getinventory.php");
+                //getInventory("https://sqlandroid2812.000webhostapp.com/getinventory.php");
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 FragmentSearch fragmentSearch = new FragmentSearch();
@@ -492,7 +493,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
 
     @Override
     public void onClick3(int position) {
-        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",position,0);
+        UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",listShow.get(position).getId(),0);
         int idCR=0;
         for(int i=0; i<listCR.size();i++){
             if(listCR.get(i).getId_origin()==(listShow.get(position).getId())&&listCR.get(i).getStatuscr()==1){
@@ -1234,7 +1235,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     idInventory=3;
                 }else if(listShow.get(position).getProvince().equals("Kiên Giang")){
                     idInventory=5;
-                }else if(listShow.get(position).getProvince().equals("Long An")){
+                }else {
                     idInventory=2;
                 }
                 UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",idInventory,used6fo,used12fo,used24fo,
@@ -1386,7 +1387,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
-    private void UpdateCRSQL(String url, final int position, final int cr
+    private void UpdateCRSQL(String url, final int id, final int cr
     ){
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -1405,7 +1406,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             @Override
             protected Map <String, String> getParams() throws AuthFailureError{
                 Map <String, String> params = new HashMap<>();
-                params.put("ID",String.valueOf(listShow.get(position).getId()));
+                params.put("ID",String.valueOf(id));
                 params.put("Cr",String.valueOf(cr));
                 return params;
             }
@@ -1790,7 +1791,6 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         requestQueue.add(stringRequest);
     }
     private void getInventory(String url){
-        listInventory = new ArrayList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -1941,7 +1941,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                     InsertNOC("https://sqlandroid2812.000webhostapp.com/insertnoc.php",id_origin,local, cableid,
                             codeCR.getText().toString().trim(),
                             commentCR.getText().toString().trim(),dateCreateCR,usercreatecr);
-                    UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",id_origin-1,1);
+                    UpdateCRSQL("https://sqlandroid2812.000webhostapp.com/updatecrdata.php",id_origin,1);
                     dialog.cancel();
                 }
             }

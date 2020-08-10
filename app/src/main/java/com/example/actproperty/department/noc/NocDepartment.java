@@ -73,8 +73,10 @@ public class NocDepartment extends AppCompatActivity {
         btnSearchCR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listCrSearch.clear();
                 getListCRSearch(timeStartSearchCR.getText().toString(),timeToSearchCR.getText().toString(),
                         localSearchCR.getText().toString());
+                CheckPermissionSearch(listCrSearch);
                 Toast.makeText(NocDepartment.this, listCrSearch.size()+"", Toast.LENGTH_SHORT).show();
             }
         });
@@ -122,8 +124,9 @@ public class NocDepartment extends AppCompatActivity {
         listLocal.add("HCM_BTN");
         listLocal.add("HCM_BCH");
         listLocal.add("HCM_CCI");
-        listLocal.add("HCM_TCH");
-        listLocal.add("HCM_GDH");
+        listLocal.add("HCM_HMN");
+        listLocal.add("HCM_Q12");
+        listLocal.add("HCM_GVP");
         ArrayAdapter<String> localAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,listLocal);
         localAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
@@ -131,7 +134,47 @@ public class NocDepartment extends AppCompatActivity {
         spnLocalSearchCR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                localSearchCR.setText(spnLocalSearchCR.getSelectedItem().toString());
+                switch (spnLocalSearchCR.getSelectedItem().toString()){
+                    case "All":
+                        localSearchCR.setText("Tất cả");
+                        break;
+                    case "BTE":
+                        localSearchCR.setText("Bến Tre");
+                        break;
+                    case "LAN":
+                        localSearchCR.setText("Long An");
+                        break;
+                    case "TVH":
+                        localSearchCR.setText("Trà Vinh");
+                        break;
+                    case "KGG":
+                        localSearchCR.setText("Kiên Giang");
+                        break;
+                    case "BDG":
+                        localSearchCR.setText("Bình Dương");
+                        break;
+                    case "DNI":
+                        localSearchCR.setText("Đồng Nai");
+                        break;
+                    case "HCM_BCH":
+                        localSearchCR.setText("HCM_Bình Chánh");
+                        break;
+                    case "HCM_BTN":
+                        localSearchCR.setText("HCM_Bình Tân");
+                        break;
+                    case "HCM_CCI":
+                        localSearchCR.setText("HCM_Củ Chi");
+                        break;
+                    case "HCM_GVP":
+                        localSearchCR.setText("HCM_Gò Vấp");
+                        break;
+                    case "HCM_HMN":
+                        localSearchCR.setText("HCM_Hóc Môn");
+                        break;
+                    case "HCM_Q12":
+                        localSearchCR.setText("HCM_Quận 12");
+                        break;
+                }
             }
 
             @Override
@@ -208,7 +251,97 @@ public class NocDepartment extends AppCompatActivity {
                 }
             }
         }
-
     }
-//OK
+    private void CheckPermissionSearch(ArrayList<CRNOC>arrayList){
+        ArrayList<CRNOC> listCRTemp = new ArrayList<>();
+        if(listUser.get(0).getHcm_btn()==1 || listUser.get(0).getHcm_btn()==2){
+            for(int i=0; i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Bình Tân")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getBte()==1||listUser.get(0).getBte()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Bến Tre")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getKgg()==1||listUser.get(0).getKgg()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Kiên Giang")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getTvh()==1||listUser.get(0).getTvh()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Trà Vinh")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getDni()==1||listUser.get(0).getDni()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Đồng Nai")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getLan()==1||listUser.get(0).getLan()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Long An")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getBdg()==1||listUser.get(0).getBdg()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("Bình Dương")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getHcm_bch()==1||listUser.get(0).getHcm_bch()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Bình Chánh")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getHcm_cci()==1||listUser.get(0).getHcm_cci()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Củ Chi")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getHcm_gvp()==1||listUser.get(0).getHcm_gvp()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Gò Vấp")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getHcm_hmn()==1||listUser.get(0).getHcm_hmn()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Hóc Môn")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getHcm_q12()==1||listUser.get(0).getHcm_q12()==2){
+            for(int i=0;i<arrayList.size();i++){
+                if(arrayList.get(i).getLocal().equals("HCM_Q12")){
+                    listCRTemp.add(arrayList.get(i));
+                }
+            }
+        }
+        if(listUser.get(0).getAdmin()==1||listUser.get(0).getNoc()==1||listUser.get(0).getAdmin()==2){
+            listCRTemp.addAll(arrayList);
+        }
+    listCrSearch.clear();
+    listCrSearch.addAll(listCRTemp);
+    }
 }

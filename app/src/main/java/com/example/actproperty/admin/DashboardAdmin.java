@@ -30,6 +30,9 @@ public class DashboardAdmin extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello " + listUser.get(0).getUser());
         Map();
+        if(listUser.get(0).getAccountant()==1){
+            btnAccounting.setEnabled(true);
+        }
         btnAccounting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

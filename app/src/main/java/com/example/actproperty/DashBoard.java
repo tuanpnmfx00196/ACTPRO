@@ -69,9 +69,8 @@ public class DashBoard extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hello " + listUser.get(0).getUser());
         btnAdmin = (Button) findViewById(R.id.btnAdmin);
-        if (listUser.get(0).getAdmin() == 1 || listUser.get(0).getAdmin() == 2) {
-            btnAdmin.setVisibility(View.VISIBLE);
-        }
+        btnAdmin.setVisibility(View.VISIBLE);
+
         btnCableId = (Button) findViewById(R.id.btnCableId);
         btnInventory = (Button) findViewById(R.id.btnInventory);
         imgBtnInventory = (ImageButton) findViewById(R.id.imgBtnInventory);

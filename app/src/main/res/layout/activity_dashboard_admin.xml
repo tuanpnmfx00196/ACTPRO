@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <Button
+        android:enabled="false"
         android:id="@+id/btnAccounting"
         android:textColor="#FFF"
         android:textStyle="bold"
