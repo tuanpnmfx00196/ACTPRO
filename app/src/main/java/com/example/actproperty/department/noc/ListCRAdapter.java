@@ -35,16 +35,16 @@ public class ListCRAdapter extends RecyclerView.Adapter<ListCRAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.recyclerViewCodeCr.setText(List.get(i).getCodecr());
+        viewHolder.recyclerViewCodeCr.setText(List.get(i).getCodecr().toString());
         switch (List.get(i).getStatuscr()){
             case 1:
-                viewHolder.recyclerViewStatusCr.setText("Chưa thực hiện");
+                viewHolder.recyclerViewStatusCr.setText(List.get(i).getLocal()+"\n"+"Chưa thực hiện");
                 break;
             case 2:
-                viewHolder.recyclerViewStatusCr.setText("Đã thực hiện");
+                viewHolder.recyclerViewStatusCr.setText(List.get(i).getLocal()+"\n"+"Đã thực hiện");
                 break;
             case 3:
-                viewHolder.recyclerViewStatusCr.setText("Đã từ chối");
+                viewHolder.recyclerViewStatusCr.setText(List.get(i).getLocal()+"\n"+"Đã từ chối");
                 break;
         }
     }

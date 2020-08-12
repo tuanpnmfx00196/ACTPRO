@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android" >
         <TextView
-            android:textColor="#E4E4E4"
+            android:textSize="14sp"
+            android:textColor="#2196F3"
             android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
             android:id="@+id/recyclerViewCodeCr"
@@ -21,7 +22,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
-            android:textColor="#E4E4E4"
+            android:textSize="14sp"
+            android:textColor="#03A9F4"
             android:gravity="center_vertical"
             android:id="@+id/recyclerViewStatusCr"
             android:layout_weight="4"

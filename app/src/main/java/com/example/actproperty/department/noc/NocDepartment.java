@@ -38,10 +38,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.actproperty.R.id.checkbox;
 import static com.example.actproperty.R.id.recyclerViewStatusCr;
 
 public class NocDepartment extends AppCompatActivity implements OnItemClickRecyclerView {
-    TextView timeStartSearchCR, timeToSearchCR, localSearchCR;
+    TextView timeStartSearchCR, timeToSearchCR, localSearchCR, reportCRSearch;
     Spinner spnLocalSearchCR;
     Button btnSearchCR, btnBackCR;
     ArrayList<CRNOC>listCrSearch, listCR;
@@ -53,6 +54,7 @@ public class NocDepartment extends AppCompatActivity implements OnItemClickRecyc
         setContentView(R.layout.activity_noc_department);
         timeStartSearchCR = (TextView)findViewById(R.id.timeStartSearchCR);
         timeToSearchCR = (TextView)findViewById(R.id.timeToSearchCR);
+        reportCRSearch = (TextView)findViewById(R.id.reportCRSearch);
         spnLocalSearchCR = (Spinner)findViewById(R.id.spnLocalSearchCR);
         btnSearchCR = (Button)findViewById(R.id.btnSearchCR);
         btnBackCR = (Button)findViewById(R.id.btnBackCR);
@@ -84,7 +86,25 @@ public class NocDepartment extends AppCompatActivity implements OnItemClickRecyc
                         localSearchCR.getText().toString());
                 CheckPermissionSearch(listCrSearch);
                 if(listCrSearch.size()>0){
+                    frameLinearLayoutRecyclerviewListCR.setVisibility(View.VISIBLE);
                     initView();
+                    int x=0;
+                    int y=0;
+                    int z=0;
+                    for(int i=0; i<listCrSearch.size();i++){
+                        if(listCrSearch.get(i).getStatuscr()==1){
+                            y++;
+                        } else if(listCrSearch.get(i).getStatuscr()==2){
+                            x++;
+                        } else if (listCrSearch.get(i).getStatuscr()==3){
+                            z++;
+                        }
+                    }
+                    reportCRSearch.setText("Tổng CR là: "+listCrSearch.size()+", trong đó CR đã thực hiện là: "+x+
+                            ", CR chưa thực hiện là: "+y+", CR bị từ chối không thực hiện là: "+z);
+                }else{
+                    frameLinearLayoutRecyclerviewListCR.setVisibility(View.GONE);
+                    reportCRSearch.setText("Không có CR phù hợp với các điều kiện tìm kiếm hiện tại");
                 }
             }
         });

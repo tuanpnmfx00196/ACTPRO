@@ -123,7 +123,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/frameLinearLayoutRecyclerviewListCR"
-        android:layout_weight="7.5"
+        android:layout_weight="7"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <android.support.v7.widget.RecyclerView
@@ -131,4 +131,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
+    <TextView
+        android:textColor="#0641D6"
+        android:textSize="14sp"
+        android:paddingLeft="5dp"
+        android:id="@+id/reportCRSearch"
+        android:layout_weight="1.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </LinearLayout>
