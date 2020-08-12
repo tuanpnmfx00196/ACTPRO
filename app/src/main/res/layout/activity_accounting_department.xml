@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:textColor="#FFF"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:text="Thống kê nhập xuất"
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:textColor="#FFF"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:text="Tra cứu tồn kho"
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:textColor="#FFF"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:text="Xuất kho"
             android:layout_width="match_parent"

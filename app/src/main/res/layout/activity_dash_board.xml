@@ -22,15 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:textColor="#032EAE"
+            android:background="@drawable/btn_quanlytuyencap"
             android:id="@+id/btnCableId"
-            android:textAllCaps="false"
-            android:text="Quản lý tuyến cáp"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </Button>
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:id="@+id/imgBtnCableId"
             android:background="@drawable/tuyencap"
             android:layout_weight="9"
@@ -47,15 +46,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:textColor="#032EAE"
+            android:background="@drawable/btn_quanlytonkho"
             android:id="@+id/btnInventory"
-            android:textAllCaps="false"
-            android:text="Quản lý tồn kho"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </Button>
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:id="@+id/imgBtnInventory"
             android:background="@drawable/inventory"
             android:layout_weight="9"
@@ -70,15 +68,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:textColor="#032EAE"
+            android:background="@drawable/btn_bao_cao"
             android:id="@+id/btnReport"
-            android:textAllCaps="false"
-            android:text="Báo cáo"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </Button>
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:id="@+id/imgBtnReport"
             android:background="@drawable/report"
             android:layout_weight="9"
@@ -93,15 +90,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:textColor="#032EAE"
+            android:background="@drawable/btn_tinact"
             android:id="@+id/btnNotify"
-            android:textAllCaps="false"
-            android:text="Tin ACT"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </Button>
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:id="@+id/imgBtnNotify"
             android:background="@drawable/notify"
             android:layout_weight="9"

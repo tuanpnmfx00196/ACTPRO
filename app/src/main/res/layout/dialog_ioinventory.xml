@@ -22,7 +22,7 @@
          android:layout_width="0dp"
          android:layout_height="match_parent">
          <TextView
-             android:textSize="18sp"
+             android:textSize="15sp"
              android:gravity="center"
              android:text="Mã kho"
              android:background="@drawable/radius1"
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <TextView
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:gravity="center"
                 android:text="Từ ngày"
                 android:background="@drawable/radius1"
@@ -89,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <TextView
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:gravity="center"
                 android:text="Đến ngày"
                 android:background="@drawable/radius1"
@@ -123,6 +123,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+            android:textSize="10sp"
             android:id="@+id/btnSearchIO"
             android:text="Tìm kiếm"
             android:layout_weight="4"
@@ -133,6 +134,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+            android:textSize="10sp"
             android:id="@+id/btnBackIO"
             android:text="Quay về"
             android:layout_weight="4"

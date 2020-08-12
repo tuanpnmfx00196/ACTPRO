@@ -925,6 +925,7 @@
         android:background="@drawable/radius1"
         android:id="@+id/btnUpdate"
         android:textAllCaps="false"
+        android:textSize="12sp"
         android:text="Update"
         android:layout_weight="3"
         android:layout_width="0dp"
@@ -935,6 +936,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <Button
+        android:textSize="12sp"
         android:backgroundTint="@color/colorAccent"
         android:background="@drawable/radius1"
         android:id="@+id/btnBack"

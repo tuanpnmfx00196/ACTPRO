@@ -22,7 +22,7 @@
             android:layout_height="0dp">
             <TextView
                 android:paddingLeft="10dp"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:gravity="center_vertical"
                 android:textColor="#0729E6"
                 android:text="Thời gian từ:"
@@ -32,7 +32,7 @@
             <TextView
                 android:background="@drawable/radius2"
                 android:id="@+id/timeStartSearchCR"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:gravity="center"
                 android:textColorHint="#8D0729E6"
                 android:hint="dd/mm/yyyy"
@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"/>
             <TextView
                 android:textColor="#0729E6"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:gravity="center"
                 android:textColorHint="#8D0729E6"
                 android:text="đến"
@@ -51,7 +51,7 @@
             <TextView
                 android:background="@drawable/radius2"
                 android:id="@+id/timeToSearchCR"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:gravity="center"
                 android:textColorHint="#8D0729E6"
                 android:hint="dd/mm/yyyy"
@@ -70,7 +70,7 @@
             <TextView
                 android:background="#DAD9D9"
                 android:paddingLeft="10dp"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:gravity="center_vertical"
                 android:textColor="#0729E6"
                 android:text="Chọn khu vực:"
@@ -83,14 +83,15 @@
                 android:layout_weight="5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
+
             <Spinner
-                android:backgroundTintMode="add"
                 android:id="@+id/spnLocalSearchCR"
-                android:textSize="16dp"
-                android:gravity="center"
-                android:layout_weight="3"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:backgroundTintMode="add"
+                android:gravity="center"
+                android:textSize="14sp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1.5"

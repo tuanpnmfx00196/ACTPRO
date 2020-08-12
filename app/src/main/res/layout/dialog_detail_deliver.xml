@@ -22,6 +22,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" />
     <Button
+        android:textSize="12sp"
         android:text="Trở về"
         android:id="@+id/btnCancelDialogDetailDeliver"
         android:backgroundTint="#B6AE7E"
