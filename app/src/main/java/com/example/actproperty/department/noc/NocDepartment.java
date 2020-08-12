@@ -1,10 +1,13 @@
 package com.example.actproperty.department.noc;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.R;
+import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
 
 import org.json.JSONArray;
@@ -34,7 +38,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class NocDepartment extends AppCompatActivity {
+import static com.example.actproperty.R.id.recyclerViewStatusCr;
+
+public class NocDepartment extends AppCompatActivity implements OnItemClickRecyclerView {
     TextView timeStartSearchCR, timeToSearchCR, localSearchCR;
     Spinner spnLocalSearchCR;
     Button btnSearchCR, btnBackCR;
@@ -77,7 +83,9 @@ public class NocDepartment extends AppCompatActivity {
                 getListCRSearch(timeStartSearchCR.getText().toString(),timeToSearchCR.getText().toString(),
                         localSearchCR.getText().toString());
                 CheckPermissionSearch(listCrSearch);
-                Toast.makeText(NocDepartment.this, listCrSearch.size()+"", Toast.LENGTH_SHORT).show();
+                if(listCrSearch.size()>0){
+                    initView();
+                }
             }
         });
         getLocalSearchCR();
@@ -343,5 +351,33 @@ public class NocDepartment extends AppCompatActivity {
         }
     listCrSearch.clear();
     listCrSearch.addAll(listCRTemp);
+    }
+    private void initView(){
+        RecyclerView recyclerViewListCR = (RecyclerView)findViewById(R.id.recyclerViewListCR);
+        recyclerViewListCR.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        recyclerViewListCR.setLayoutManager(linearLayoutManager);
+        ListCRAdapter adapter = new ListCRAdapter(listCrSearch, getApplicationContext(),this);
+        recyclerViewListCR.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(int position) {
+
+    }
+
+    @Override
+    public void onClick1(int position) {
+
+    }
+
+    @Override
+    public void onClick2(int position) {
+
+    }
+
+    @Override
+    public void onClick3(int position) {
+
     }
 }
