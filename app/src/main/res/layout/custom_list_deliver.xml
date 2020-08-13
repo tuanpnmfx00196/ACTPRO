@@ -28,9 +28,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <Button
+                android:textColor="#FFF"
                 android:id="@+id/btnAcceptDeliver"
-                android:backgroundTint="#4EBC46"
-                android:background="@drawable/radius2"
+                android:background="@drawable/btn_xanhla"
                 android:textSize="8sp"
                 android:text="Xác Nhận"
                 android:layout_marginRight="10dp"
@@ -39,9 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <Button
+                android:textColor="#FFF"
                 android:id="@+id/btnIgnoreDeliver"
-                android:backgroundTint="#BC9546"
-                android:background="@drawable/radius2"
+                android:background="@drawable/btn_red"
                 android:textSize="8sp"
                 android:text="Từ chối"
                 android:layout_marginRight="5dp"

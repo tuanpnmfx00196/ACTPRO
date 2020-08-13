@@ -52,14 +52,15 @@
         </Button>
     </LinearLayout>
         <Button
+            android:textColor="#673AB7"
+            android:textSize="15sp"
             android:id="@+id/checkCR"
-            android:backgroundTint="#DDFFAB00"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="100dp"
             android:layout_marginLeft="100dp"
             android:text="Kiểm tra CR tồn"
-            android:background="@drawable/radius2"
+            android:background="@drawable/btn_cam"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>

@@ -916,6 +916,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
             if (listUser.get(0).getAdmin() == 1) {
                 btnUpdate.setEnabled(true);
             } else if (listUser.get(0).getAdmin() == 2) {
+                btnUpdate.setAlpha(.5f);
                 btnUpdate.setEnabled(false);
             } else {
                 if (listUser.get(0).getBte() == 1 || listUser.get(0).getLan() == 1 || listUser.get(0).getBdg() == 1 ||
@@ -924,11 +925,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         listUser.get(0).getHcm_q12() == 1 || listUser.get(0).getKgg() == 1 || listUser.get(0).getTvh() == 1) {
                     btnUpdate.setEnabled(true);
                 } else {
+                    btnUpdate.setAlpha(.5f);
                     btnUpdate.setEnabled(false);
                 }
             }
             //END SET ENABLE
         }else{
+            btnUpdate.setAlpha(.5f);
             btnUpdate.setEnabled(false);
         }
         dialog.show();

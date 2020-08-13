@@ -92,10 +92,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+             android:textColor="#FFF"
             android:id="@+id/btnCreateCR"
             android:textSize="12sp"
             android:text="Xác nhận"
-            android:background="@drawable/radius2"
+            android:background="@drawable/btn_blue"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
@@ -104,10 +105,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+            android:textColor="#FFF"
             android:textSize="12sp"
             android:id="@+id/btnCancelCR"
             android:text="Từ chối"
-            android:background="@drawable/radius2"
+            android:background="@drawable/btn_blue"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>

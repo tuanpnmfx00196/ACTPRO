@@ -922,7 +922,7 @@
         android:layout_height="match_parent"/>
     <Button
         android:textColor="#FFF"
-        android:background="@drawable/btn_xanhduong"
+        android:background="@drawable/btn_blue"
         android:id="@+id/btnUpdate"
         android:textAllCaps="false"
         android:textSize="12sp"
@@ -938,7 +938,7 @@
     <Button
         android:textColor="#FFF"
         android:textSize="12sp"
-        android:background="@drawable/btn_xanhduong"
+        android:background="@drawable/btn_blue"
         android:id="@+id/btnBack"
         android:textAllCaps="false"
         android:text="Back"
