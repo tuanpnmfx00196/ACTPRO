@@ -56,7 +56,6 @@ import java.io.InputStreamReader;
 
 public class DashBoard extends AppCompatActivity {
     Button btnCableId, btnInventory, btnAdmin, btnReport, btnNotify;
-    ImageButton btnImgCableId, imgBtnInventory, imgBtnNotify;
     ArrayList<Passport> listUser;
 
     @Override
@@ -73,8 +72,6 @@ public class DashBoard extends AppCompatActivity {
 
         btnCableId = (Button) findViewById(R.id.btnCableId);
         btnInventory = (Button) findViewById(R.id.btnInventory);
-        imgBtnInventory = (ImageButton) findViewById(R.id.imgBtnInventory);
-        btnImgCableId = (ImageButton) findViewById(R.id.imgBtnCableId);
         btnNotify = (Button)findViewById(R.id.btnNotify);
         btnCableId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,19 +79,7 @@ public class DashBoard extends AppCompatActivity {
                 toManagement();
             }
         });
-        btnImgCableId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toManagement();
-            }
-        });
         btnInventory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toInventory();
-            }
-        });
-        imgBtnInventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toInventory();
@@ -122,15 +107,6 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        imgBtnNotify = (ImageButton)findViewById(R.id.imgBtnNotify);
-        imgBtnNotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DashBoard.this, WebACT.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void toManagement() {

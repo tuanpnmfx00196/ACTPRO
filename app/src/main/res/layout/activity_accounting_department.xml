@@ -6,42 +6,31 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <LinearLayout
-        android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="3"></LinearLayout>
+
     <LinearLayout
-        android:backgroundTint="#E9FF6D00"
-        android:background="@drawable/radius1"
-        android:weightSum="12"
-        android:orientation="horizontal"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <ImageButton
+        <Button
+            android:textColor="#2962FF"
+            android:textSize="15sp"
+            android:text="Báo cáo nhập xuất kho"
             android:id="@+id/imgBtnIO"
-            android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:text="Thống kê nhập xuất"
+            android:background="@drawable/btn_xanhla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
 
-
     <LinearLayout
-        android:backgroundTint="#E9FF6D00"
-        android:background="@drawable/radius1"
         android:weightSum="12"
         android:orientation="horizontal"
         android:layout_marginRight="30dp"
@@ -50,26 +39,19 @@
         android:layout_weight="1.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <ImageButton
+        <Button
+            android:textColor="#2962FF"
+            android:textSize="15sp"
+            android:text="Quản lý tồn kho"
             android:id="@+id/imgBtnShowInventory"
-            android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/more"
+            android:background="@drawable/btn_xanhla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:text="Tra cứu tồn kho"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </LinearLayout>
 
 
     <LinearLayout
-        android:backgroundTint="#E9FF6D00"
-        android:background="@drawable/radius1"
         android:weightSum="12"
         android:orientation="horizontal"
         android:layout_marginRight="30dp"
@@ -78,19 +60,13 @@
         android:layout_weight="1.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <ImageButton
+        <Button
+            android:textColor="#2962FF"
+            android:textSize="15sp"
+            android:text="Xuất kho"
             android:id="@+id/imgBtnDeliver"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/more"
+            android:background="@drawable/btn_xanhla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:text="Xuất kho"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </LinearLayout>
 </LinearLayout>

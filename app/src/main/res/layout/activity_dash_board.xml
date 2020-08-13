@@ -15,106 +15,90 @@
     <!--LOCAL-->
     <LinearLayout
         android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:weightSum="12"
-        android:background="@drawable/radius"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:background="@drawable/btn_quanlytuyencap"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:text="Quản lý tuyến cáp"
+            android:background="@drawable/btn_cam"
             android:id="@+id/btnCableId"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
         </Button>
-        <ImageButton
-            android:layout_marginLeft="5dp"
-            android:id="@+id/imgBtnCableId"
-            android:background="@drawable/tuyencap"
-            android:layout_weight="9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-        </ImageButton>
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="12"
         android:layout_margin="5dp"
-        android:background="@drawable/radius"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:background="@drawable/btn_quanlytonkho"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:text="Quản lý tồn kho"
+            android:background="@drawable/btn_cam"
             android:id="@+id/btnInventory"
-            android:layout_weight="3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
         </Button>
-        <ImageButton
-            android:layout_marginLeft="5dp"
-            android:id="@+id/imgBtnInventory"
-            android:background="@drawable/inventory"
-            android:layout_weight="9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-        </ImageButton>
     </LinearLayout>
     <LinearLayout
         android:layout_margin="5dp"
-        android:background="@drawable/radius"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:background="@drawable/btn_bao_cao"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:text="Báo cáo tài sản"
+            android:background="@drawable/btn_cam"
             android:id="@+id/btnReport"
             android:layout_weight="3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
         </Button>
-        <ImageButton
-            android:layout_marginLeft="5dp"
-            android:id="@+id/imgBtnReport"
-            android:background="@drawable/report"
-            android:layout_weight="9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-        </ImageButton>
     </LinearLayout>
     <LinearLayout
         android:layout_margin="5dp"
-        android:background="@drawable/radius"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <Button
-            android:background="@drawable/btn_tinact"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:text="Tin tức ACT"
+            android:background="@drawable/btn_cam"
             android:id="@+id/btnNotify"
-            android:layout_weight="3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
         </Button>
-        <ImageButton
-            android:layout_marginLeft="5dp"
-            android:id="@+id/imgBtnNotify"
-            android:background="@drawable/notify"
-            android:layout_weight="9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-        </ImageButton>
     </LinearLayout>
         <Button
-            android:layout_margin="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#FFF"
             android:visibility="gone"
-            android:background="@drawable/radius1"
-            android:textSize="24sp"
-            android:textColor="#032EAE"
+            android:background="@drawable/btn_xanhla"
             android:id="@+id/btnAdmin"
             android:textAllCaps="false"
             android:text="Department ACT"
-            android:layout_weight="1.5"
+            android:layout_weight="1.3"
             android:layout_width="match_parent"
             android:layout_height="0dp">
         </Button>

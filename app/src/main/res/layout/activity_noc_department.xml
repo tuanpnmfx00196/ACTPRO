@@ -104,6 +104,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp">
             <Button
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFF"
+                android:background="@drawable/btn_xanhduong"
                 android:id="@+id/btnSearchCR"
                 android:text="Tìm kiếm"
                 android:layout_marginRight="50dp"
@@ -112,6 +116,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <Button
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFF"
+                android:background="@drawable/btn_xanhduong"
                 android:id="@+id/btnBackCR"
                 android:text="Trở về"
                 android:layout_marginRight="20dp"

@@ -911,34 +911,34 @@
         android:layout_height="match_parent"/>
 </LinearLayout>
 <LinearLayout
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="5dp"
     android:orientation="horizontal"
     android:weightSum="12"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="40dp">
     <LinearLayout
         android:layout_weight="2"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <Button
-        android:backgroundTint="@color/colorAccent"
-        android:background="@drawable/radius1"
+        android:textColor="#FFF"
+        android:background="@drawable/btn_xanhduong"
         android:id="@+id/btnUpdate"
         android:textAllCaps="false"
         android:textSize="12sp"
         android:text="Update"
         android:layout_weight="3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     </Button>
     <LinearLayout
         android:layout_weight="2"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <Button
+        android:textColor="#FFF"
         android:textSize="12sp"
-        android:backgroundTint="@color/colorAccent"
-        android:background="@drawable/radius1"
+        android:background="@drawable/btn_xanhduong"
         android:id="@+id/btnBack"
         android:textAllCaps="false"
         android:text="Back"

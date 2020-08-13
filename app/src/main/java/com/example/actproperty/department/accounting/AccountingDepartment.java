@@ -37,7 +37,8 @@ import java.util.Date;
 import java.util.List;
 
 public class AccountingDepartment extends AppCompatActivity {
-ImageButton imgBtnIO, imgBtnShowInventory, imgBtnDeliver;
+Button imgBtnDeliver;
+Button imgBtnIO,imgBtnShowInventory;
 TextView getFromDateIO, getToDateIO;
 Spinner spinnerCodeStore;
 ArrayList<Passport>listUser;
@@ -69,9 +70,9 @@ ArrayList<DeliverObject>listDeliverShow;
         });
     }
     private void Map(){
-        imgBtnIO = (ImageButton)findViewById(R.id.imgBtnIO);
-        imgBtnShowInventory = (ImageButton)findViewById(R.id.imgBtnShowInventory);
-        imgBtnDeliver = (ImageButton)findViewById(R.id.imgBtnDeliver);
+        imgBtnIO = (Button)findViewById(R.id.imgBtnIO);
+        imgBtnShowInventory = (Button)findViewById(R.id.imgBtnShowInventory);
+        imgBtnDeliver = (Button)findViewById(R.id.imgBtnDeliver);
     }
     private void getAccount(){
         Intent intent = getIntent();
