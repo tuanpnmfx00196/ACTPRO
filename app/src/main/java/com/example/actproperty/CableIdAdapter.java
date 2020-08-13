@@ -35,7 +35,10 @@ public class CableIdAdapter extends RecyclerView.Adapter<CableIdAdapter.ViewHold
         viewHolder.txtLocal.setText(List.get(i).getProvince());
         viewHolder.idRoute.setText(List.get(i).getCableId());
         if(List.get(i).getCr()!=1){
+            viewHolder.cancelCR.setAlpha(.3f);
             viewHolder.cancelCR.setEnabled(false);
+            viewHolder.crNoc.setAlpha(.3f);
+            viewHolder.crNoc.setEnabled(false);
         }
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

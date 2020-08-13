@@ -277,7 +277,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Management.this, "Connection error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Management.this, "Connection SQL error", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -947,6 +947,13 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 showmore.setVisibility(View.GONE);
                 dialogTitle_update.setText(listShow.get(position).getCableId());
                 showUpdate.setVisibility(View.VISIBLE);
+                String x="";
+                for(int i=0;i<listCR.size();i++){
+                    if(listCR.get(i).getId_origin()==listShow.get(position).getId()&&listCR.get(i).getStatuscr()==1){
+                        x=listCR.get(i).getCommentcr();
+                    }
+                }
+                commentEdit.setText(x);
             }
         });
         btnSaveUpdate.setOnClickListener(new View.OnClickListener() {
@@ -1924,7 +1931,8 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         Button btnCancelCR = (Button)dialog.findViewById(R.id.btnCancelCR);
         cableidCR.setText("Mã tuyến cáp: "+cableid);
         codeCR.setText("CR_PVHKT_NOC_");
-        commentCR.setText("[Đơn vị] liên hệ kho Công ty nhận ... UCTT tuyến "+cableid);
+        commentCR.setText("["+listCable.get(id_origin).getProvince().toUpperCase()+
+                "] liên hệ kho Công ty nhận ... UCTT tuyến "+cableid);
         btnCancelCR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
