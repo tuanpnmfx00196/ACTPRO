@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Property;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.actproperty.R;
 import com.example.actproperty.department.accounting.AccountingDepartment;
 import com.example.actproperty.department.noc.NocDepartment;
+import com.example.actproperty.department.property.Main_Property;
 import com.example.actproperty.passport.Passport;
 
 import java.util.ArrayList;
@@ -45,6 +47,14 @@ public class DashboardAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardAdmin.this, NocDepartment.class);
+                intent.putExtra("Account",listUser);
+                startActivity(intent);
+            }
+        });
+        btnProperty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardAdmin.this, Main_Property.class);
                 intent.putExtra("Account",listUser);
                 startActivity(intent);
             }
