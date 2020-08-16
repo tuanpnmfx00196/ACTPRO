@@ -99,12 +99,8 @@ public class Main_Property extends AppCompatActivity {
                 GetToDateIO();
             }
         });
-        spinner_donviquyettoan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                getLocalForControl();
-            }
-        });
+        getLocalForControl();
+
     }
     private void GetFromDateSearchHistoryUsed(){
         final Calendar calendar = Calendar.getInstance();
