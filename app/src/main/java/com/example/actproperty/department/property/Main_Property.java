@@ -34,12 +34,12 @@ public class Main_Property extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_property);
-        listUser = new ArrayList();
+        listUser = new ArrayList<>();
         listLocal = new ArrayList<>();
-        CreateListLocal();
         Map();
         getUser();
-        btn_doisoat.setOnClickListener(new View.OnClickListener() {
+        CreateListLocal();
+        btn_forControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 layout_doisoat.setVisibility(View.VISIBLE);
@@ -47,7 +47,7 @@ public class Main_Property extends AppCompatActivity {
                 layout_history_used.setVisibility(View.GONE);
             }
         });
-        btn_nhapxuatton.setOnClickListener(new View.OnClickListener() {
+        btn_ioinventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 layout_doisoat.setVisibility(View.GONE);
@@ -55,7 +55,7 @@ public class Main_Property extends AppCompatActivity {
                 layout_history_used.setVisibility(View.GONE);
             }
         });
-        btn_history_used.setOnClickListener(new View.OnClickListener() {
+        btn_used.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 layout_doisoat.setVisibility(View.GONE);
