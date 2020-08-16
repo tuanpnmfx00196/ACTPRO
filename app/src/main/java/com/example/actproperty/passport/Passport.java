@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class Passport implements Serializable {
     private int id;
     private String user, password, fullname, mobile;
-    private int admin,noc, accountant, bdg, hcm_bch, hcm_btn, hcm_cci, hcm_q12, hcm_hmn, hcm_gvp, dni, lan, bte, tvh, kgg;
+    private int admin,property, noc, accountant, bdg, hcm_bch, hcm_btn, hcm_cci, hcm_q12, hcm_hmn, hcm_gvp, dni, lan, bte, tvh, kgg;
 
-    public Passport(int id, String user, String password, String fullname, String mobile, int admin, int noc, int accountant,
+    public Passport(int id, String user, String password, String fullname, String mobile, int admin,int property, int noc, int accountant,
                     int bdg, int hcm_bch, int hcm_btn, int hcm_cci, int hcm_q12, int hcm_hmn,
                     int hcm_gvp, int dni, int lan, int bte, int tvh, int kgg) {
         this.id = id;
@@ -16,6 +16,7 @@ public class Passport implements Serializable {
         this.fullname = fullname;
         this.mobile = mobile;
         this.admin = admin;
+        this.property = property;
         this.noc = noc;
         this.accountant = accountant;
         this.bdg = bdg;
@@ -30,6 +31,14 @@ public class Passport implements Serializable {
         this.bte = bte;
         this.tvh = tvh;
         this.kgg = kgg;
+    }
+
+    public int getProperty() {
+        return property;
+    }
+
+    public void setProperty(int property) {
+        this.property = property;
     }
 
     public int getNoc() {

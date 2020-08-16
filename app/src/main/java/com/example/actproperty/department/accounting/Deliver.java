@@ -110,17 +110,18 @@ public class Deliver extends AppCompatActivity {
     private void getStoreDeliver(){
         final Spinner spinnerToStore = (Spinner)findViewById(R.id.spinnerToStore);
         List<String> listToStore = new ArrayList<>();
-        listToStore.add("BTE");
-        listToStore.add("LAN");
-        listToStore.add("TVH");
-        listToStore.add("KGG");
-        listToStore.add("BDG");
-        listToStore.add("DNI");
-        listToStore.add("HCM_BTN");
-        listToStore.add("HCM_BCH");
-        listToStore.add("HCM_CCI");
-        listToStore.add("HCM_TCH");
-        listToStore.add("HCM_GDH");
+        listToStore.add("Bến Tre");
+        listToStore.add("Long An");
+        listToStore.add("Trà Vinh");
+        listToStore.add("Kiên Giang");
+        listToStore.add("Bình Dương");
+        listToStore.add("Đồng Nai");
+        listToStore.add("HCM_Bình Tân");
+        listToStore.add("HCM_Bình Chánh");
+        listToStore.add("HCM_Củ Chi");
+        listToStore.add("HCM_Hóc Môn");
+        listToStore.add("HCM_Quận 12");
+        listToStore.add("HCM_Gò Vấp");
         /*======================= CHOICE STORE==========================*/
         ArrayAdapter<String> adapterToStore = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,listToStore);

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                                       jsonObject.getString("FULLNAME"),
                                       jsonObject.getString("MOBILE"),
                                       jsonObject.getInt("ADMIN"),
+                                        jsonObject.getInt("PROPERTY"),
                                         jsonObject.getInt("NOC"),
                                         jsonObject.getInt("ACCOUNTANT"),
                                       jsonObject.getInt("BDG"),
