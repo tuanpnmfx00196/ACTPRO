@@ -99,6 +99,12 @@ public class Main_Property extends AppCompatActivity {
                 GetToDateIO();
             }
         });
+        spinner_donviquyettoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLocalForControl();
+            }
+        });
     }
     private void GetFromDateSearchHistoryUsed(){
         final Calendar calendar = Calendar.getInstance();
@@ -227,9 +233,9 @@ public class Main_Property extends AppCompatActivity {
         from_dateIO = (TextView)findViewById(R.id.from_dateIO);
         to_dateIO = (TextView)findViewById(R.id.to_dateIO);
     }
-    private void CreateListLocal(){
-        if(listUser.get(0).getProperty()==1||listUser.get(0).getAdmin()==1||
-        listUser.get(0).getAdmin()==2){
+    private void CreateListLocal() {
+        if (listUser.get(0).getProperty() == 1 || listUser.get(0).getAdmin() == 1 ||
+                listUser.get(0).getAdmin() == 2) {
             listLocal.add("All");
             listLocal.add("HCM_Bình Chánh");
             listLocal.add("HCM_Bình Tân");
@@ -243,30 +249,43 @@ public class Main_Property extends AppCompatActivity {
             listLocal.add("Trà Vinh");
             listLocal.add("Bến Tre");
             listLocal.add("Long An");
-        }else if(listUser.get(0).getHcm_q12()==1||listUser.get(0).getHcm_q12()==2){
-            listLocal.add("HCM_Quận 12");
-        }else if(listUser.get(0).getHcm_bch()==1||listUser.get(0).getHcm_bch()==2){
-            listLocal.add("HCM_Bình Chánh");
-        }else if(listUser.get(0).getHcm_btn()==1||listUser.get(0).getHcm_btn()==2){
-            listLocal.add("HCM_Bình Tân");
-        }else if(listUser.get(0).getHcm_cci()==1||listUser.get(0).getHcm_cci()==2){
-            listLocal.add("HCM_Củ Chi");
-        }else if(listUser.get(0).getHcm_hmn()==1||listUser.get(0).getHcm_hmn()==2){
-            listLocal.add("HCM_Hóc Môn");
-        }else if(listUser.get(0).getHcm_gvp()==1||listUser.get(0).getHcm_gvp()==2){
-            listLocal.add("HCM_Gò Vấp");
-        }else if(listUser.get(0).getBdg()==1||listUser.get(0).getBdg()==2){
-            listLocal.add("Bình Dương");
-        }else if(listUser.get(0).getKgg()==1||listUser.get(0).getKgg()==2){
-            listLocal.add("Kiên Giang");
-        }else if(listUser.get(0).getDni()==1||listUser.get(0).getDni()==2){
-            listLocal.add("Đồng Nai");
-        }else if(listUser.get(0).getLan()==1||listUser.get(0).getLan()==2){
-            listLocal.add("Long An");
-        }else if(listUser.get(0).getTvh()==1||listUser.get(0).getTvh()==2){
-            listLocal.add("Trà Vinh");
-        }else if(listUser.get(0).getBte()==1||listUser.get(0).getBte()==2){
-            listLocal.add("Bến Tre");
+        } else {
+            if (listUser.get(0).getHcm_q12() == 1 || listUser.get(0).getHcm_q12() == 2) {
+                listLocal.add("HCM_Quận 12");
+            }
+            if (listUser.get(0).getHcm_bch() == 1 || listUser.get(0).getHcm_bch() == 2) {
+                listLocal.add("HCM_Bình Chánh");
+            }
+            if (listUser.get(0).getHcm_btn() == 1 || listUser.get(0).getHcm_btn() == 2) {
+                listLocal.add("HCM_Bình Tân");
+            }
+            if (listUser.get(0).getHcm_cci() == 1 || listUser.get(0).getHcm_cci() == 2) {
+                listLocal.add("HCM_Củ Chi");
+            }
+            if (listUser.get(0).getHcm_hmn() == 1 || listUser.get(0).getHcm_hmn() == 2) {
+                listLocal.add("HCM_Hóc Môn");
+            }
+            if (listUser.get(0).getHcm_gvp() == 1 || listUser.get(0).getHcm_gvp() == 2) {
+                listLocal.add("HCM_Gò Vấp");
+            }
+            if (listUser.get(0).getBdg() == 1 || listUser.get(0).getBdg() == 2) {
+                listLocal.add("Bình Dương");
+            }
+            if (listUser.get(0).getKgg() == 1 || listUser.get(0).getKgg() == 2) {
+                listLocal.add("Kiên Giang");
+            }
+            if (listUser.get(0).getDni() == 1 || listUser.get(0).getDni() == 2) {
+                listLocal.add("Đồng Nai");
+            }
+            if (listUser.get(0).getLan() == 1 || listUser.get(0).getLan() == 2) {
+                listLocal.add("Long An");
+            }
+            if (listUser.get(0).getTvh() == 1 || listUser.get(0).getTvh() == 2) {
+                listLocal.add("Trà Vinh");
+            }
+            if (listUser.get(0).getBte() == 1 || listUser.get(0).getBte() == 2) {
+                listLocal.add("Bến Tre");
+            }
         }
     }
     private void getUser(){
