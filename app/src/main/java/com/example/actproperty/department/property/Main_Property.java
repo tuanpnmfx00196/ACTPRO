@@ -99,9 +99,9 @@ public class Main_Property extends AppCompatActivity {
                 GetToDateIO();
             }
         });
-        spinner_donviquyettoan.setOnClickListener(new View.OnClickListener() {
+        spinner_donviquyettoan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onFocusChange(View view, boolean b) {
                 getLocalForControl();
             }
         });
