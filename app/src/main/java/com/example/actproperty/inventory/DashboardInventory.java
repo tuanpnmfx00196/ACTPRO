@@ -32,73 +32,73 @@ public class DashboardInventory extends AppCompatActivity {
         btnACT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"ACT");
+                toInventory(listUser,"Kho ACT");
             }
         });
         btnBCH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"BCH");
+                toInventory(listUser,"HCM_Bình Chánh");
             }
         });
         btnBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"BTN");
+                toInventory(listUser,"HCM_Bình Tân");
             }
         });
         btnCCI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"CCI");
+                toInventory(listUser,"HCM_Củ Chi");
             }
         });
         btnTCH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"TCH");
+                toInventory(listUser,"HCM_Hóc Môn");
             }
         });
         btnGDH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"GDH");
+                toInventory(listUser,"HCM_Gò Vấp");
             }
         });
         btnBDG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"BDG");
+                toInventory(listUser,"Bình Dương");
             }
         });
         btnKGG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"KGG");
+                toInventory(listUser,"Kiên Giang");
             }
         });
         btnBTE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"BTE");
+                toInventory(listUser,"Bến Tre");
             }
         });
         btnTVH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"TVH");
+                toInventory(listUser,"Trà Vinh");
             }
         });
         btnDNI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"DNI");
+                toInventory(listUser,"Đồng Nai");
             }
         });
         btnLAN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toInventory(listUser,"LAN");
+                toInventory(listUser,"Long An");
             }
         });
     }

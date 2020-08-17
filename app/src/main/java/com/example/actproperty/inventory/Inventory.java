@@ -291,42 +291,84 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
         } else {
             if (listUser.get(0).getBdg() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("BDG")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Bình Dương")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getKgg() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("KGG")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Kiên Giang")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getBte() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("BTE")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Bến Tre")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getTvh() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("TVH")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Trà Vinh")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getLan() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("LAN")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Long An")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
             }
             if (listUser.get(0).getDni() == 1) {
                 for (int i = 0; i < listTempDeliver.size(); i++) {
-                    if (listTempDeliver.get(i).getStoreCode().equals("DNI")&&listTempDeliver.get(i).getFlag()==1) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("Đồng Nai")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_gvp() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Gò Vấp")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_q12() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Quận 12")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_hmn() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Hóc Môn")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_cci() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Củ Chi")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_btn() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Bình Tân")&&listTempDeliver.get(i).getFlag()==1) {
+                        listTempDeliverPermission.add(listTempDeliver.get(i));
+                    }
+                }
+            }
+            if (listUser.get(0).getHcm_bch() == 1) {
+                for (int i = 0; i < listTempDeliver.size(); i++) {
+                    if (listTempDeliver.get(i).getStoreCode().equals("HCM_Bình Chánh")&&listTempDeliver.get(i).getFlag()==1) {
                         listTempDeliverPermission.add(listTempDeliver.get(i));
                     }
                 }
@@ -349,7 +391,7 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
     @Override
     public void onClick(int position) {
        switch (listTempDeliverPermission.get(position).getStoreCode()) {
-           case "BTE":
+           case "Bến Tre":
                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
                        1,
                        listTempDeliverPermission.get(position).getHanging6fo(),
@@ -370,7 +412,7 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
                UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
                        listTempDeliverPermission.get(position).getId(),2);
                break;
-           case "LAN":
+           case "Long An":
                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
                        2,
                        listTempDeliverPermission.get(position).getHanging6fo(),
@@ -391,7 +433,7 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
                UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
                        listTempDeliverPermission.get(position).getId(),2);
                break;
-           case "TVH":
+           case "Trà Vinh":
                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
                        3,
                        listTempDeliverPermission.get(position).getHanging6fo(),
@@ -412,7 +454,7 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
                UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
                        listTempDeliverPermission.get(position).getId(),2);
                break;
-           case "BDG":
+           case "Bình Dương":
                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
                        4,
                        listTempDeliverPermission.get(position).getHanging6fo(),
@@ -433,7 +475,7 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
                UpdateDeliver("https://sqlandroid2812.000webhostapp.com/updatedeliver.php",
                        listTempDeliverPermission.get(position).getId(),2);
                break;
-           case "KGG":
+           case "Kiên Giang":
                UpdateInventory("https://sqlandroid2812.000webhostapp.com/updateinventory.php",
                        5,
                        listTempDeliverPermission.get(position).getHanging6fo(),
