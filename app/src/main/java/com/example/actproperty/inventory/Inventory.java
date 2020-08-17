@@ -268,7 +268,6 @@ public class Inventory extends AppCompatActivity implements OnItemClickRecyclerV
                         Toast.makeText(Inventory.this, e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
-                Toast.makeText(Inventory.this, listTempDeliver.size()+"", Toast.LENGTH_SHORT).show();
                 showTemp();
             }
         }, new Response.ErrorListener() {
