@@ -14,13 +14,27 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.actproperty.R;
+import com.example.actproperty.department.noc.CRNOC;
+import com.example.actproperty.department.noc.NocDepartment;
 import com.example.actproperty.passport.Passport;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Main_Property extends AppCompatActivity {
@@ -31,13 +45,17 @@ public class Main_Property extends AppCompatActivity {
     Spinner spinner_donviquyettoan, spinner_khonhapxuat,spinner_donvisudung;
     ArrayList<Passport> listUser;
     List<String>listLocal;
+    ArrayList<CRNOC>listCR, listCrSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_property);
         listUser = new ArrayList<>();
         listLocal = new ArrayList<>();
+        listCR = new ArrayList<>();
+        listCrSearch = new ArrayList<>();
         Map();
+        getListCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
         getUser();
         CreateListLocal();
         btn_forControl.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +119,15 @@ public class Main_Property extends AppCompatActivity {
             }
         });
         getLocalForControl();
+        btn_doisoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Đối soát quyết toán
+                getListCRSearch(from_dateForControl.getText().toString(), to_dateForControl.getText().toString(),
+                        spinner_donviquyettoan.getSelectedItem().toString());
+                Toast.makeText(Main_Property.this, ""+listCrSearch.size(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     private void GetFromDateSearchHistoryUsed(){
@@ -289,5 +316,70 @@ public class Main_Property extends AppCompatActivity {
     private void getUser(){
         Intent intent = getIntent();
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
+    }
+    private void getListCRSearch(String fromTime, String toTime, String local){
+        Date from = null;
+        Date to = null;
+        try {
+            from = new SimpleDateFormat("dd/MM/yyyy").parse(fromTime);
+        } catch (ParseException e) {
+            Toast.makeText(this, "Định dạng thời gian bị sai", Toast.LENGTH_SHORT).show();
+        }
+        try {
+            to = new SimpleDateFormat("dd/MM/yyyy").parse(toTime);
+        } catch (ParseException e) {
+            Toast.makeText(this, "Định dạng thời gian bị sai", Toast.LENGTH_SHORT).show();
+        }
+        ArrayList<CRNOC>listCrTemp = new ArrayList<>();
+        listCrTemp.addAll(listCR);
+        for(int i = 0; i<listCrTemp.size();i++){
+            Date dateCR = null;
+            try{
+                dateCR = new SimpleDateFormat("dd/MM/yyyy").parse(listCrTemp.get(i).getDatetimecr());
+            }catch (Exception e){
+            }
+            if(local.equals("Tất cả")){
+                if(dateCR.compareTo(from)>=0 && dateCR.compareTo(to)<=0){
+                    listCrSearch.add(listCrTemp.get(i));
+                }
+            }else{
+                if(dateCR.compareTo(from)>=0 && dateCR.compareTo(to)<=0&&listCrTemp.get(i).getLocal().equals(local)){
+                    listCrSearch.add(listCrTemp.get(i));
+                }
+            }
+        }
+    }
+    private void getListCR(String url){
+        listCR.clear();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i=0; i<response.length();i++){
+                    try{
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listCR.add(new CRNOC(
+                                jsonObject.getInt("IDcr"),
+                                jsonObject.getInt("Idorigin"),
+                                jsonObject.getString("Local"),
+                                jsonObject.getString("Cableidcr"),
+                                jsonObject.getString("Codecr"),
+                                jsonObject.getString("Commentcr"),
+                                jsonObject.getString("Datetimecr"),
+                                jsonObject.getInt("Statuscr")
+                        ));
+                    }catch(Exception e){
+                        Toast.makeText(Main_Property.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        requestQueue.add(jsonArrayRequest);
     }
 }
