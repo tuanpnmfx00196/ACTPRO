@@ -318,6 +318,7 @@ public class Main_Property extends AppCompatActivity {
         listUser = (ArrayList<Passport>) intent.getSerializableExtra("Account");
     }
     private void getListCRSearch(String fromTime, String toTime, String local){
+        listCrSearch.clear();
         Date from = null;
         Date to = null;
         try {
@@ -338,7 +339,7 @@ public class Main_Property extends AppCompatActivity {
                 dateCR = new SimpleDateFormat("dd/MM/yyyy").parse(listCrTemp.get(i).getDatetimecr());
             }catch (Exception e){
             }
-            if(local.equals("Tất cả")){
+            if(local.equals("All")){
                 if(dateCR.compareTo(from)>=0 && dateCR.compareTo(to)<=0){
                     listCrSearch.add(listCrTemp.get(i));
                 }
