@@ -1212,13 +1212,24 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 } else{
                     usedsc_sc5 = Integer.parseInt(sc_sc5_used.getText().toString());
                 }
-
+                int idCR=0;
+                for(int i=0; i<listCR.size();i++){
+                    if(listCR.get(i).getId_origin()==listShow.get(position).getId()&&listCR.get(i).getStatuscr()==1){
+                        idCR=listCR.get(i).getId();
+                    }
+                }
+                String codecr = "";
+                for(int i=0; i<listCR.size();i++){
+                    if(listCR.get(i).getId()==idCR){
+                        codecr = listCR.get(i).getCodecr().toString();
+                    }
+                }
                 InsertHistory("https://sqlandroid2812.000webhostapp.com/inserthistory.php",position,add4fo,add6fo,
                         add12fo,add24fo,adddu12,addodf6fo,addodf12fo,addodf24fo,addodf96fo,addclosure6fo,addclosure12fo,
                         addclosure24fo,addbuloong300,addbuloong400,addclamp,addpoleu8, addironpole6,addsc_lc5, addsc_lc10, addsc_sc5,
                         datechange,comment,userchange
                         );
-                InsertUsedHistory("https://sqlandroid2812.000webhostapp.com/insertused.php",position,used4fo,used6fo,
+                InsertUsedHistory("https://sqlandroid2812.000webhostapp.com/insertused.php",position,codecr,used4fo,used6fo,
                         used12fo,used24fo,useddu12,usedodf6fo,usedodf12fo,usedodf24fo,usedodf96fo,usedclosure6fo,usedclosure12fo,
                         usedclosure24fo,usedbuloong300,usedbuloong400,usedclamp,usedpoleu8, usedironpole6,usedsc_lc5, usedsc_lc10, usedsc_sc5,
                         datechange,comment,userchange
@@ -1229,12 +1240,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                         edtbl300,edtbl400,edtclamp,edtpoleu8,edtironpole6,edtsclc5,
                         edtsclc10, edtscsc5,0
                        );
-                int idCR=0;
-                for(int i=0; i<listCR.size();i++){
-                    if(listCR.get(i).getId_origin()==listShow.get(position).getId()&&listCR.get(i).getStatuscr()==1){
-                        idCR=i+1;
-                    }
-                }
+
                 UpdateNOC("https://sqlandroid2812.000webhostapp.com/updatenoc.php",idCR,2);
                 int idInventory =0;
                 if(listShow.get(position).getProvince().equals("Bình Dương")){
@@ -1602,7 +1608,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         };
         requestQueue.add(stringRequest);
     }
-    private void InsertUsedHistory(String url, final int position, final int used4fo, final int used6fo,
+    private void InsertUsedHistory(String url, final int position,final String codecr, final int used4fo, final int used6fo,
                                final int used12fo , final int used24fo, final int useddu12, final int usedodf6fo, final int usedodf12fo,
                                final int usedodf24fo, final int usedodf96fo, final int usedclosure6fo, final int usedclosure12fo, final int usedclosure24fo,
                                final int usedbuloong300, final int usedbuloong400, final int usedclamp, final int usedpoleu8, final int usedironpole6,
@@ -1629,6 +1635,7 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
                 params.put("Addoldid",String.valueOf(listShow.get(position).getId()));
                 params.put("Addcableid",String.valueOf(listShow.get(position).getCableId()));
                 params.put("Addprovince",String.valueOf(listShow.get(position).getProvince()));
+                params.put("Addcodecr",codecr);
                 if (used4fo > 0){
                     params.put("Usedhanging4fo", String.valueOf(used4fo));
                 }else{
