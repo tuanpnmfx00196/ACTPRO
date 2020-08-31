@@ -47,6 +47,7 @@ public class Main_Property extends AppCompatActivity {
     List<String>listLocal;
     ArrayList<CRNOC>listCR, listCrSearch;
     ArrayList<ItemUsed>listItemUsed;
+    ArrayList<ItemUsed>listItemUsedTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +57,10 @@ public class Main_Property extends AppCompatActivity {
         listCR = new ArrayList<>();
         listCrSearch = new ArrayList<>();
         listItemUsed = new ArrayList<>();
+        listItemUsedTemp = new ArrayList<>();
         Map();
         getListCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
-        getItemUsed("https://sqlandroid2812.000webhostapp.com/getitemused.php");
+        getItemUsedTemp("https://sqlandroid2812.000webhostapp.com/getitemused.php");
         getUser();
         CreateListLocal();
         btn_forControl.setOnClickListener(new View.OnClickListener() {
@@ -389,16 +391,16 @@ public class Main_Property extends AppCompatActivity {
         );
         requestQueue.add(jsonArrayRequest);
     }
-    private void getItemUsed(String url){
-        listItemUsed.clear();
+    public void getItemUsedTemp(String url){
+        listItemUsedTemp.clear();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 for(int i=0;i<response.length();i++){
                     try{
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listItemUsed.add( new ItemUsed(
+                        listItemUsedTemp.add(new ItemUsed(
                                 jsonObject.getInt("ID"),
                                 jsonObject.getInt("Oldid"),
                                 jsonObject.getString("Cableid"),
@@ -412,11 +414,11 @@ public class Main_Property extends AppCompatActivity {
                                 jsonObject.getInt("Odf6fo"),
                                 jsonObject.getInt("Odf12fo"),
                                 jsonObject.getInt("Odf24fo"),
-                                jsonObject.getInt("Mx6fo"),
-                                jsonObject.getInt("Mx12fo"),
-                                jsonObject.getInt("Mx24fo"),
-                                jsonObject.getInt("Bl300"),
-                                jsonObject.getInt("Bl400"),
+                                jsonObject.getInt("Closure6fo"),
+                                jsonObject.getInt("Closure12fo"),
+                                jsonObject.getInt("Closure24fo"),
+                                jsonObject.getInt("Buloong300"),
+                                jsonObject.getInt("Buloong400"),
                                 jsonObject.getInt("Clamp"),
                                 jsonObject.getInt("Poleu8"),
                                 jsonObject.getInt("Ironpole6"),
@@ -439,13 +441,14 @@ public class Main_Property extends AppCompatActivity {
             }
         }
         );
-        requestQueue.add(request);
+        requestQueue.add(jsonArrayRequest);
     }
     private void HandlingData(){
-        for (int i=0; i<listItemUsed.size();i++){
+        listItemUsed.clear();
+        for (int i=0; i<listItemUsedTemp.size();i++){
             for(int j=0;j<listCrSearch.size();j++){
-                if(listCrSearch.get(i).getCodecr().equals(listCrSearch.get(j).getCodecr())){
-                    listItemUsed.remove(i);
+                if(listItemUsedTemp.get(i).getCodecr().equals(listCrSearch.get(j).getCodecr())){
+                    listItemUsed.add(listItemUsedTemp.get(i));
                 }
             }
         }
