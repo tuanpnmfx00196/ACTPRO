@@ -46,6 +46,7 @@ public class Main_Property extends AppCompatActivity {
     ArrayList<Passport> listUser;
     List<String>listLocal;
     ArrayList<CRNOC>listCR, listCrSearch;
+    ArrayList<ItemUsed>listItemUsed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +55,10 @@ public class Main_Property extends AppCompatActivity {
         listLocal = new ArrayList<>();
         listCR = new ArrayList<>();
         listCrSearch = new ArrayList<>();
+        listItemUsed = new ArrayList<>();
         Map();
         getListCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
+        getItemUsed("https://sqlandroid2812.000webhostapp.com/getitemused.php");
         getUser();
         CreateListLocal();
         btn_forControl.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +128,10 @@ public class Main_Property extends AppCompatActivity {
                 //Đối soát quyết toán
                 getListCRSearch(from_dateForControl.getText().toString(), to_dateForControl.getText().toString(),
                         spinner_donviquyettoan.getSelectedItem().toString());
-                Toast.makeText(Main_Property.this, ""+listCrSearch.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main_Property.this, "Tổng CR quyết toán trong kỳ là "
+                        +listCrSearch.size(), Toast.LENGTH_SHORT).show();
+                HandlingData();
+
             }
         });
 
@@ -382,5 +388,141 @@ public class Main_Property extends AppCompatActivity {
         }
         );
         requestQueue.add(jsonArrayRequest);
+    }
+    private void getItemUsed(String url){
+        listItemUsed.clear();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0;i<response.length();i++){
+                    try{
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listItemUsed.add( new ItemUsed(
+                                jsonObject.getInt("ID"),
+                                jsonObject.getInt("Oldid"),
+                                jsonObject.getString("Cableid"),
+                                jsonObject.getString("Province"),
+                                jsonObject.getString("Codecr"),
+                                jsonObject.getInt("Hanging4fo"),
+                                jsonObject.getInt("Hanging6fo"),
+                                jsonObject.getInt("Hanging12fo"),
+                                jsonObject.getInt("Hanging24fo"),
+                                jsonObject.getInt("Du12fo"),
+                                jsonObject.getInt("Odf6fo"),
+                                jsonObject.getInt("Odf12fo"),
+                                jsonObject.getInt("Odf24fo"),
+                                jsonObject.getInt("Mx6fo"),
+                                jsonObject.getInt("Mx12fo"),
+                                jsonObject.getInt("Mx24fo"),
+                                jsonObject.getInt("Bl300"),
+                                jsonObject.getInt("Bl400"),
+                                jsonObject.getInt("Clamp"),
+                                jsonObject.getInt("Poleu8"),
+                                jsonObject.getInt("Ironpole6"),
+                                jsonObject.getInt("Sc_lc5"),
+                                jsonObject.getInt("Sc_lc10"),
+                                jsonObject.getInt("Sc_sc5"),
+                                jsonObject.getString("Datechange"),
+                                jsonObject.getString("Comment"),
+                                jsonObject.getString("Userchange")
+                        ));
+                    }catch (Exception e){
+                        Toast.makeText(Main_Property.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        requestQueue.add(request);
+    }
+    private void HandlingData(){
+        for (int i=0; i<listItemUsed.size();i++){
+            for(int j=0;j<listCrSearch.size();j++){
+                if(listCrSearch.get(i).getCodecr().equals(listCrSearch.get(j).getCodecr())){
+                    listItemUsed.remove(i);
+                }
+            }
+        }
+        int hanging4fo =0;
+        int hanging6fo =0;
+        int hanging12fo =0;
+        int hanging24fo =0;
+        int du12fo =0;
+        int odf6fo =0;
+        int odf12fo=0;
+        int odf24fo=0;
+        int mx6fo=0;
+        int mx12fo=0;
+        int mx24fo=0;
+        int bl300=0;
+        int bl400=0;
+        int clamp=0;
+        int poleu8=0;
+        int ironpole6=0;
+        int sc_lc5=0;
+        int sc_lc10=0;
+        int sc_sc5=0;
+        for(int i=0; i<listItemUsed.size();i++){
+            hanging4fo +=listItemUsed.get(i).getHanging4fo();
+            hanging6fo +=listItemUsed.get(i).getHanging6fo();
+            hanging12fo +=listItemUsed.get(i).getHanging12fo();
+            hanging24fo +=listItemUsed.get(i).getHanging24fo();
+            du12fo +=listItemUsed.get(i).getDu12fo();
+            odf6fo +=listItemUsed.get(i).getOdf6fo();
+            odf12fo +=listItemUsed.get(i).getOdf12fo();
+            odf24fo +=listItemUsed.get(i).getOdf24fo();
+            mx6fo +=listItemUsed.get(i).getMx6fo();
+            mx12fo+=listItemUsed.get(i).getMx12fo();
+            mx24fo+=listItemUsed.get(i).getMx24fo();
+            bl300+=listItemUsed.get(i).getBl300();
+            bl400+=listItemUsed.get(i).getBl400();
+            clamp+=listItemUsed.get(i).getClamp();
+            poleu8+=listItemUsed.get(i).getPoleu8();
+            ironpole6+=listItemUsed.get(i).getIronpole6();
+            sc_lc5+=listItemUsed.get(i).getSc_lc5();
+            sc_lc10+=listItemUsed.get(i).getSc_lc10();
+            sc_sc5+=listItemUsed.get(i).getSc_sc5();
+        }
+        String showMessage = "Tổng vật tư quyết toán trong kỳ là: ";
+        if(hanging4fo>0){
+            showMessage+="Cáp quang treo 4fo: "+hanging4fo+" mét"+"\n";
+        }
+        if(hanging6fo>0){
+            showMessage+="Cáp quang treo 6fo: "+hanging6fo+" mét"+"\n";
+        }
+        if(hanging12fo>0){
+            showMessage+="Cáp quang treo 12fo: "+hanging12fo+" mét"+"\n";
+        }
+        if(hanging24fo>0){
+            showMessage+="Cáp quang treo 24fo: "+hanging24fo+" mét"+"\n";
+        }
+        if(du12fo>0){
+            showMessage+="Cáp quang luồn cống 212fo: "+du12fo+" mét"+"\n";
+        }
+        if(odf6fo>0){
+            showMessage+="ODF 6fo: "+odf6fo+" bộ"+"\n";
+        }
+        if(odf12fo>0){
+            showMessage+="ODF 12fo: "+odf12fo+" bộ"+"\n";
+        }
+        if(odf24fo>0){
+            showMessage+="ODF 24fo: "+odf24fo+" bộ"+"\n";
+        }
+        if(mx6fo>0){
+            showMessage+="Măng xông 6fo: "+mx6fo+" bộ"+"\n";
+        }
+        if(mx12fo>0){
+            showMessage+="Măng xông 12fo: "+mx12fo+" bộ"+"\n";
+        }
+        if(mx24fo>0){
+            showMessage+="Măng xông 24fo: "+mx24fo+" bộ"+"\n";
+        }
+        Toast.makeText(this, showMessage, Toast.LENGTH_SHORT).show();
     }
 }
