@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ import java.util.List;
 public class Main_Property extends AppCompatActivity {
     Button btn_forControl,btn_ioinventory,btn_used; //Button Menu
     Button btn_doisoat, btn_nhapxuatton,btn_history_used; //Button action listener
-    LinearLayout layout_doisoat, layout_nhapxuatton, layout_history_used; // 3 layout hide, waiting action
+    LinearLayout layout_doisoat, layout_nhapxuatton, layout_history_used, layoutDetailsControl; // 3 layout hide, waiting action
     TextView fromDateHistoryUsed, toDateHistoryUsed, from_dateForControl, to_dateForControl,from_dateIO,to_dateIO; //datePicker
     Spinner spinner_donviquyettoan, spinner_khonhapxuat,spinner_donvisudung;
     ArrayList<Passport> listUser;
@@ -48,6 +49,8 @@ public class Main_Property extends AppCompatActivity {
     ArrayList<CRNOC>listCR, listCrSearch;
     ArrayList<ItemUsed>listItemUsed;
     ArrayList<ItemUsed>listItemUsedTemp;
+    TextView generalControl;
+    Button btnShowDetailsControl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,11 +131,16 @@ public class Main_Property extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Đối soát quyết toán
+                layoutDetailsControl.setVisibility(View.VISIBLE);
                 getListCRSearch(from_dateForControl.getText().toString(), to_dateForControl.getText().toString(),
                         spinner_donviquyettoan.getSelectedItem().toString());
-                Toast.makeText(Main_Property.this, "Tổng CR quyết toán trong kỳ là "
-                        +listCrSearch.size(), Toast.LENGTH_SHORT).show();
                 HandlingData();
+            }
+        });
+        btnShowDetailsControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
 
             }
         });
@@ -265,6 +273,9 @@ public class Main_Property extends AppCompatActivity {
         to_dateForControl = (TextView)findViewById(R.id.to_dateForControl);
         from_dateIO = (TextView)findViewById(R.id.from_dateIO);
         to_dateIO = (TextView)findViewById(R.id.to_dateIO);
+        generalControl = (TextView)findViewById(R.id.generalControl);
+        btnShowDetailsControl = (Button)findViewById(R.id.btnShowDetailsControl);
+        layoutDetailsControl = (LinearLayout)findViewById(R.id.layoutDetailsControl);
     }
     private void CreateListLocal() {
         if (listUser.get(0).getProperty() == 1 || listUser.get(0).getAdmin() == 1 ||
@@ -492,7 +503,7 @@ public class Main_Property extends AppCompatActivity {
             sc_lc10+=listItemUsed.get(i).getSc_lc10();
             sc_sc5+=listItemUsed.get(i).getSc_sc5();
         }
-        String showMessage = "Tổng vật tư quyết toán trong kỳ là: ";
+        String showMessage = "Tổng vật tư quyết toán trong kỳ là: "+"\n";
         if(hanging4fo>0){
             showMessage+="Cáp quang treo 4fo: "+hanging4fo+" mét"+"\n";
         }
@@ -526,6 +537,31 @@ public class Main_Property extends AppCompatActivity {
         if(mx24fo>0){
             showMessage+="Măng xông 24fo: "+mx24fo+" bộ"+"\n";
         }
-        Toast.makeText(this, showMessage, Toast.LENGTH_SHORT).show();
+        if(bl300>0){
+            showMessage+="Buloong ti 300: "+bl300+" bộ"+"\n";
+        }
+        if(bl400>0){
+            showMessage+="Buloong ti 400: "+bl400+" bộ"+"\n";
+        }
+        if(clamp>0){
+            showMessage+="Kẹp cáp 2 rãnh 3 lỗ: "+clamp+" bộ"+"\n";
+        }
+        if(poleu8>0){
+            showMessage+="Cột điện dưới 8m: "+poleu8+" cột"+"\n";
+        }
+        if(ironpole6>0){
+            showMessage+="Cột sắt 6 mét: "+ironpole6+" cột"+"\n";
+        }
+        if(sc_lc5>0){
+            showMessage+="Dây nhảy quang Sc/lc 5m: "+sc_lc5+" sợi"+"\n";
+        }
+        if(sc_lc10>0){
+            showMessage+="Dây nhảy quang Sc/lc 10m: "+sc_lc10+" sợi"+"\n";
+        }
+        if(sc_sc5>0){
+            showMessage+="Dây nhảy quang Sc/sc 5m: "+sc_sc5+" sợi"+"\n";
+        }
+        generalControl.setText(showMessage);
+
     }
 }
