@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:layout_gravity="center"
-        android:text="ACT PRO APP"
+        android:text="Đối soát quyết toán"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
