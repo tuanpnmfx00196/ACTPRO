@@ -140,8 +140,8 @@ public class Main_Property extends AppCompatActivity {
         btnShowDetailsControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
-
+                Intent intent = new Intent(Main_Property.this, ShowDetailsControl.class);
+                startActivity(intent);
             }
         });
 

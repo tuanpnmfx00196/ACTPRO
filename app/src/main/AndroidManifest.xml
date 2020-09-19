@@ -14,13 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".department.property.Main_Property"></activity>
-        <activity android:name=".webact.WebACT" />
-        <activity android:name=".department.noc.NocDepartment" />
-        <activity android:name=".department.accounting.ShowDeliverHistory" />
-        <activity android:name=".department.accounting.Deliver" />
-        <activity android:name=".department.accounting.AccountingDepartment" />
-        <activity android:name=".admin.DashboardAdmin" />
+        <activity android:name=".department.property.ShowDetailsControl"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".department.property.Main_Property"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".webact.WebACT"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".department.noc.NocDepartment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".department.accounting.ShowDeliverHistory"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".department.accounting.Deliver"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".department.accounting.AccountingDepartment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".admin.DashboardAdmin"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".admin.Admin"
             android:screenOrientation="portrait" />
