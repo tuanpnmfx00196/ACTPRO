@@ -1,6 +1,8 @@
 package com.example.actproperty.department.property;
 
-public class ItemUsed {
+import java.io.Serializable;
+
+public class ItemUsed implements Serializable {
     private int id, oldid;
     private String cableid, province, codecr;
     private int hanging4fo, hanging6fo, hanging12fo, hanging24fo, du12fo, odf6fo, odf12fo, odf24fo,
