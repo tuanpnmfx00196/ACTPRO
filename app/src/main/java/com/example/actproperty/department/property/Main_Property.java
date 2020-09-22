@@ -141,8 +141,9 @@ public class Main_Property extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Main_Property.this, ShowDetailsControl.class);
-                intent.putExtra("ListItemUsed",listItemUsed);
+//                intent.putExtra("ListItemUsed",listItemUsed);
                 startActivity(intent);
+
             }
         });
 
