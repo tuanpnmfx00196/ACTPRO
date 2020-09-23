@@ -30,10 +30,8 @@ public class ShowDetailsControl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_details_control);
         listItemUsed = new ArrayList<>();
-        webDetailsControl = (WebView)findViewById(R.id.webDetailsControl);
-        WebSettings webSettings = webDetailsControl.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webDetailsControl.loadUrl("https://sqlandroid2812.000webhostapp.com/showdetailscontrol.php");
+        pushProvide("https://sqlandroid2812.000webhostapp.com/showdetailscontrol.php");
+
 //        getListItemUsed();
     }
 //    private void getListItemUsed(){
@@ -62,11 +60,17 @@ private void pushProvide(String url) {
         protected Map<String, String> getParams() throws AuthFailureError {
             Map <String, String> params = new HashMap<>();
             //Get id inventory
-            params.put("provide",String.valueOf("Bình Dương"));
+            params.put("provide","Bình Dương");
             return params;
         }
     };
     requestQueue.add(stringRequest);
+    showWeb();
 }
-
+    private void showWeb(){
+        webDetailsControl = (WebView)findViewById(R.id.webDetailsControl);
+        WebSettings webSettings = webDetailsControl.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webDetailsControl.loadUrl("https://sqlandroid2812.000webhostapp.com/showdetailscontrol.php");
+    }
 }
