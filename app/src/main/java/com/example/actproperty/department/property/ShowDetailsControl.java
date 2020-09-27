@@ -27,6 +27,7 @@ public class ShowDetailsControl extends AppCompatActivity {
         Map();
         listItemUsed = new ArrayList<>();
         getListItemUsed();
+        CreateTable();
     }
     private void getListItemUsed(){
         Intent intent = getIntent();
