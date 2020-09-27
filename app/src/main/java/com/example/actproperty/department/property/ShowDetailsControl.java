@@ -96,7 +96,7 @@ public class ShowDetailsControl extends AppCompatActivity {
             sc_sc5+=listItemUsed.get(i).getSc_sc5();
 
             TextView tvStt = new TextView(this);
-            tvStt.setText(""+i+1);
+            tvStt.setText(String.valueOf(i+1));
             tvStt.setGravity(Gravity.CENTER);
             tr.addView(tvStt);
 
