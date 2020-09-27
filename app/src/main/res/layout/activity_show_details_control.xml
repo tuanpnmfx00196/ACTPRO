@@ -4,8 +4,132 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <WebView
-        android:id="@+id/webDetailsControl"
+    <TableLayout
+        android:background="#FF9800"
+        android:id="@+id/tblShow"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+        <TableRow
+            android:background="#FFF"
+            android:layout_margin="0.5dp"
+            android:id="@+id/rowTitle"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <TextView
+                android:text="Stt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/stt"/>
+            <TextView
+                android:text="Mã CR"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/CRcontrol"/>
+            <TextView
+                android:text="Cáp 4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_4fo"/>
+            <TextView
+                android:text="Cáp 6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_6fo"/>
+            <TextView
+                android:text="Cáp 12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_12fo"/>
+            <TextView
+                android:text="Cáp 24"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_24fo"/>
+            <TextView
+                android:text="Cáp chôn 12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_12du"/>
+            <TextView
+                android:text="Odf 6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_odf6"/>
+            <TextView
+                android:text="Odf 12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_odf12"/>
+            <TextView
+                android:text="Odf 24"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_odf24"/>
+            <TextView
+                android:text="Măng xông 6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_mx6"/>
+            <TextView
+                android:text="Măng xông 12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_mx12"/>
+            <TextView
+                android:text="Măng xông 24"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_mx24"/>
+            <TextView
+                android:text="Bulong ti 300"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_bl300"/>
+            <TextView
+                android:text="Buloong ti 400"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_bl400"/>
+            <TextView
+                android:text="Kẹp cáp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_clamp"/>
+            <TextView
+                android:text="Dây nhảy sc_lc5m"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_sc_lc5"/>
+            <TextView
+                android:text="Dây nhảy sc_lc10m"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_sc_lc10"/>
+            <TextView
+                android:text="Dây nhảy sc_sc5m"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".08"
+                android:id="@+id/settlement_sc_sc5"/>
+        </TableRow>
+    </TableLayout>
 </LinearLayout>
