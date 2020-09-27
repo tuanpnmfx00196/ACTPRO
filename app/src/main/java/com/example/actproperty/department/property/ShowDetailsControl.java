@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -289,6 +290,9 @@ public class ShowDetailsControl extends AppCompatActivity {
                 tvSc_sc5.setText(listItemUsed.get(i).getSc_sc5()+"");
                 tvSc_sc5.setGravity(Gravity.CENTER);
                 tr.addView(tvSc_sc5);
+            }
+            if(tr.getParent() != null) {
+                ((ViewGroup)tr.getParent()).removeView(tr); // <- fix
             }
            tblShow.addView(tr);
         }
