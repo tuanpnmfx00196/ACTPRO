@@ -1,6 +1,7 @@
 package com.example.actproperty.department.property;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class ShowDetailsControl extends AppCompatActivity {
         listItemUsed = new ArrayList<>();
         getListItemUsed();
         CreateTable();
+        SetTableLayout();
     }
     private void getListItemUsed(){
         Intent intent = getIntent();
@@ -77,270 +79,24 @@ public class ShowDetailsControl extends AppCompatActivity {
         int sc_lc5=0;
         int sc_lc10=0;
         int sc_sc5=0;
-        for(int i=0; i<listItemUsed.size();i++){
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT));
-            LinearLayout.LayoutParams stt = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
-            LinearLayout.LayoutParams all = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
-            stt.weight = 2;
-            all.weight = 8;
-            hanging4fo +=listItemUsed.get(i).getHanging4fo();
-            hanging6fo +=listItemUsed.get(i).getHanging6fo();
-            hanging12fo +=listItemUsed.get(i).getHanging12fo();
-            hanging24fo +=listItemUsed.get(i).getHanging24fo();
-            du12fo +=listItemUsed.get(i).getDu12fo();
-            odf6fo +=listItemUsed.get(i).getOdf6fo();
-            odf12fo +=listItemUsed.get(i).getOdf12fo();
-            odf24fo +=listItemUsed.get(i).getOdf24fo();
-            mx6fo +=listItemUsed.get(i).getMx6fo();
-            mx12fo+=listItemUsed.get(i).getMx12fo();
-            mx24fo+=listItemUsed.get(i).getMx24fo();
-            bl300+=listItemUsed.get(i).getBl300();
-            bl400+=listItemUsed.get(i).getBl400();
-            clamp+=listItemUsed.get(i).getClamp();
-            sc_lc5+=listItemUsed.get(i).getSc_lc5();
-            sc_lc10+=listItemUsed.get(i).getSc_lc10();
-            sc_sc5+=listItemUsed.get(i).getSc_sc5();
-
-            TextView tvStt = new TextView(this);
-            tvStt.setText(String.valueOf(i+1));
-            tvStt.setGravity(Gravity.CENTER);
-            tvStt.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-            tvStt.setLayoutParams(stt);
-            tr.addView(tvStt);
-
-            TextView tvCr = new TextView(this);
-            tvCr.setText(listItemUsed.get(i).getCodecr());
-            tvCr.setGravity(Gravity.CENTER);
-            tvCr.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-            tvCr.setLayoutParams(all);
-            tr.addView(tvCr);
-
-            TextView tv4fo = new TextView(this);
-            if(listItemUsed.get(i).getHanging4fo()==0){
-//                tv4fo.setText("0");
-//                tv4fo.setVisibility(View.GONE);
-//                tr.addView(tv4fo);
-            }else{
-                tv4fo.setText(listItemUsed.get(i).getHanging4fo()+"");
-                tv4fo.setGravity(Gravity.CENTER);
-                tv4fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tv4fo.setLayoutParams(all);
-                tr.addView(tv4fo);
-            }
-
-            TextView tv6fo = new TextView(this);
-            if(listItemUsed.get(i).getHanging6fo()==0){
-//                tv6fo.setText("0");
-//                tv6fo.setVisibility(View.GONE);
-//                tr.addView(tv6fo);
-            }else{
-                tv6fo.setText(listItemUsed.get(i).getHanging6fo()+"");
-                tv6fo.setGravity(Gravity.CENTER);
-                tv6fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tv6fo.setLayoutParams(all);
-                tr.addView(tv6fo);
-            }
-
-            TextView tv12fo = new TextView(this);
-            if(listItemUsed.get(i).getHanging12fo()==0){
-//                tv12fo.setText("0");
-//                tv12fo.setVisibility(View.GONE);
-//                tr.addView(tv12fo);
-            }else{
-                tv12fo.setText(listItemUsed.get(i).getHanging12fo()+"");
-                tv12fo.setGravity(Gravity.CENTER);
-                tv12fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tv12fo.setLayoutParams(all);
-                tr.addView(tv12fo);
-            }
-
-            TextView tv24fo = new TextView(this);
-            if(listItemUsed.get(i).getHanging24fo()==0){
-//                tv24fo.setText("0");
-//                tv24fo.setVisibility(View.GONE);
-//                tr.addView(tv24fo);
-            }else{
-                tv24fo.setText(listItemUsed.get(i).getHanging24fo()+"");
-                tv24fo.setGravity(Gravity.CENTER);
-                tv24fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tv24fo.setLayoutParams(all);
-                tr.addView(tv24fo);
-            }
-
-            TextView tv12du = new TextView(this);
-            if(listItemUsed.get(i).getDu12fo()==0){
-//                tv12du.setText("0");
-//                tv12du.setVisibility(View.GONE);
-//                tr.addView(tv12du);
-            }else{
-                tv12du.setText(listItemUsed.get(i).getDu12fo()+"");
-                tv12du.setGravity(Gravity.CENTER);
-                tv12du.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tv12du.setLayoutParams(all);
-                tr.addView(tv12du);
-            }
-
-            TextView tvOdf6 = new TextView(this);
-            if(listItemUsed.get(i).getOdf6fo()==0){
-//                tvOdf6.setText("0");
-//                tvOdf6.setVisibility(View.GONE);
-//                tr.addView(tvOdf6);
-            }else{
-                tvOdf6.setText(listItemUsed.get(i).getOdf6fo()+"");
-                tvOdf6.setGravity(Gravity.CENTER);
-                tvOdf6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvOdf6.setLayoutParams(all);
-                tr.addView(tvOdf6);
-            }
-
-            TextView tvOdf12 = new TextView(this);
-            if(listItemUsed.get(i).getOdf12fo()==0){
-//                tvOdf12.setText("0");
-//                tvOdf12.setVisibility(View.GONE);
-//                tr.addView(tvOdf12);
-            }else{
-                tvOdf12.setText(listItemUsed.get(i).getOdf12fo()+"");
-                tvOdf12.setGravity(Gravity.CENTER);
-                tvOdf12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvOdf12.setLayoutParams(all);
-                tr.addView(tvOdf12);
-            }
-
-            TextView tvOdf24 = new TextView(this);
-            if(listItemUsed.get(i).getOdf24fo()==0){
-//                tvOdf24.setText("0");
-//                tvOdf24.setVisibility(View.GONE);
-//                tr.addView(tvOdf24);
-            }else{
-                tvOdf24.setText(listItemUsed.get(i).getOdf24fo()+"");
-                tvOdf24.setGravity(Gravity.CENTER);
-                tvOdf24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvOdf24.setLayoutParams(all);
-                tr.addView(tvOdf24);
-            }
-
-            TextView tvMx6 = new TextView(this);
-            if(listItemUsed.get(i).getMx6fo()==0){
-//                tvMx6.setText("0");
-//                tvMx6.setVisibility(View.GONE);
-//                tr.addView(tvMx6);
-            }else{
-                tvMx6.setText(listItemUsed.get(i).getMx6fo()+"");
-                tvMx6.setGravity(Gravity.CENTER);
-                tvMx6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvMx6.setLayoutParams(all);
-                tr.addView(tvMx6);
-            }
-
-            TextView tvMx12 = new TextView(this);
-            if(listItemUsed.get(i).getMx12fo()==0){
-//                tvMx12.setText("0");
-//                tvMx12.setVisibility(View.GONE);
-//                tr.addView(tvMx12);
-            }else{
-                tvMx12.setText(listItemUsed.get(i).getMx12fo()+"");
-                tvMx12.setGravity(Gravity.CENTER);
-                tvMx12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvMx12.setLayoutParams(all);
-                tr.addView(tvMx12);
-            }
-
-            TextView tvMx24 = new TextView(this);
-            if(listItemUsed.get(i).getMx24fo()==0){
-//                tvMx24.setText("0");
-//                tvMx6.setVisibility(View.GONE);
-//                tr.addView(tvMx24);
-            }else{
-                tvMx24.setText(listItemUsed.get(i).getMx24fo()+"");
-                tvMx24.setGravity(Gravity.CENTER);
-                tvMx24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvMx24.setLayoutParams(all);
-                tr.addView(tvMx24);
-            }
-
-            TextView tvBl300 = new TextView(this);
-            if(listItemUsed.get(i).getBl300()==0){
-//                tvBl300.setText("0");
-//                tvBl300.setVisibility(View.GONE);
-//                tr.addView(tvBl300);
-            }else{
-                tvBl300.setText(listItemUsed.get(i).getBl300()+"");
-                tvBl300.setGravity(Gravity.CENTER);
-                tvBl300.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvBl300.setLayoutParams(all);
-                tr.addView(tvBl300);
-            }
-
-            TextView tvBl400 = new TextView(this);
-            if(listItemUsed.get(i).getBl400()==0){
-//                tvBl400.setText("0");
-//                tvBl400.setVisibility(View.GONE);
-//                tr.addView(tvBl400);
-            }else{
-                tvBl400.setText(listItemUsed.get(i).getBl400()+"");
-                tvBl400.setGravity(Gravity.CENTER);
-                tvBl400.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvBl400.setLayoutParams(all);
-                tr.addView(tvBl400);
-            }
-
-            TextView tvClamp = new TextView(this);
-            if(listItemUsed.get(i).getClamp()==0){
-//                tvClamp.setText("0");
-//                tvClamp.setVisibility(View.GONE);
-//                tr.addView(tvClamp);
-            }else{
-                tvClamp.setText(listItemUsed.get(i).getClamp()+"");
-                tvClamp.setGravity(Gravity.CENTER);
-                tvClamp.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvClamp.setLayoutParams(all);
-                tr.addView(tvClamp);
-            }
-
-            TextView tvSc_lc5 = new TextView(this);
-            if(listItemUsed.get(i).getSc_lc5()==0){
-//                tvSc_lc5.setText("0");
-//                tvSc_lc5.setVisibility(View.GONE);
-//                tr.addView(tvSc_lc5);
-            }else{
-                tvSc_lc5.setText(listItemUsed.get(i).getSc_lc5()+"");
-                tvSc_lc5.setGravity(Gravity.CENTER);
-                tvSc_lc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvSc_lc5.setLayoutParams(all);
-                tr.addView(tvSc_lc5);
-            }
-
-            TextView tvSc_lc10 = new TextView(this);
-            if(listItemUsed.get(i).getSc_lc10()==0){
-//                tvSc_lc10.setText("0");
-//                tvSc_lc10.setVisibility(View.GONE);
-//                tr.addView(tvSc_lc10);
-            }else{
-                tvSc_lc10.setText(listItemUsed.get(i).getSc_lc10()+"");
-                tvSc_lc10.setGravity(Gravity.CENTER);
-                tvSc_lc10.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvSc_lc10.setLayoutParams(all);
-                tr.addView(tvSc_lc10);
-            }
-
-            TextView tvSc_sc5 = new TextView(this);
-            if(listItemUsed.get(i).getSc_sc5()==0){
-//                tvSc_sc5.setText("0");
-//                tvSc_sc5.setVisibility(View.GONE);
-//                tr.addView(tvSc_sc5);
-            }else{
-                tvSc_sc5.setText(listItemUsed.get(i).getSc_sc5()+"");
-                tvSc_sc5.setGravity(Gravity.CENTER);
-                tvSc_sc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
-                tvSc_sc5.setLayoutParams(all);
-                tr.addView(tvSc_sc5);
-            }
-            if(tr.getParent() != null) {
-                ((ViewGroup)tr.getParent()).removeView(tr);
-            }
-           tblShow.addView(tr);
+        for(int i=0; i<listItemUsed.size();i++) {
+            hanging4fo += listItemUsed.get(i).getHanging4fo();
+            hanging6fo += listItemUsed.get(i).getHanging6fo();
+            hanging12fo += listItemUsed.get(i).getHanging12fo();
+            hanging24fo += listItemUsed.get(i).getHanging24fo();
+            du12fo += listItemUsed.get(i).getDu12fo();
+            odf6fo += listItemUsed.get(i).getOdf6fo();
+            odf12fo += listItemUsed.get(i).getOdf12fo();
+            odf24fo += listItemUsed.get(i).getOdf24fo();
+            mx6fo += listItemUsed.get(i).getMx6fo();
+            mx12fo += listItemUsed.get(i).getMx12fo();
+            mx24fo += listItemUsed.get(i).getMx24fo();
+            bl300 += listItemUsed.get(i).getBl300();
+            bl400 += listItemUsed.get(i).getBl400();
+            clamp += listItemUsed.get(i).getClamp();
+            sc_lc5 += listItemUsed.get(i).getSc_lc5();
+            sc_lc10 += listItemUsed.get(i).getSc_lc10();
+            sc_sc5 += listItemUsed.get(i).getSc_sc5();
         }
         if(hanging4fo==0){
             settlement_4fo.setVisibility(View.GONE);
@@ -394,5 +150,317 @@ public class ShowDetailsControl extends AppCompatActivity {
             settlement_sc_sc5.setVisibility(View.GONE);
         }
 
+    }
+    private void SetTableLayout(){
+        for(int i=0; i<listItemUsed.size();i++){
+            TableRow tr = new TableRow(this);
+            TextView tvStt = new TextView(this);
+            tvStt.setText(String.valueOf(i+1));
+            tvStt.setGravity(Gravity.CENTER);
+            tvStt.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+            tvStt.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,2f));
+            tvStt.setTextColor(Color.BLUE);
+            tr.addView(tvStt);
+
+            TextView tvCr = new TextView(this);
+            tvCr.setText(listItemUsed.get(i).getCodecr());
+            tvCr.setGravity(Gravity.CENTER);
+            tvCr.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+            tvCr.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+            tr.addView(tvCr);
+
+            TextView tv4fo = new TextView(this);
+            if(listItemUsed.get(i).getHanging4fo()==0){
+                if(settlement_4fo.getVisibility() != View.GONE){
+                    tv4fo.setText("0");
+                    tv4fo.setGravity(Gravity.CENTER);
+                    tv4fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv4fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tv4fo);
+                }
+            }else{
+                tv4fo.setText(listItemUsed.get(i).getHanging4fo()+"");
+                tv4fo.setGravity(Gravity.CENTER);
+                tv4fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv4fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tv4fo);
+            }
+
+            TextView tv6fo = new TextView(this);
+            if(listItemUsed.get(i).getHanging6fo()==0){
+                if(settlement_6fo.getVisibility() !=View.GONE){
+                    tv6fo.setText("0");
+                    tv6fo.setGravity(Gravity.CENTER);
+                    tv6fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv6fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tv6fo);
+                }
+            }else{
+                tv6fo.setText(listItemUsed.get(i).getHanging6fo()+"");
+                tv6fo.setGravity(Gravity.CENTER);
+                tv6fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv6fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tv6fo);
+            }
+
+            TextView tv12fo = new TextView(this);
+            if(listItemUsed.get(i).getHanging12fo()==0){
+                if(settlement_12fo.getVisibility()!=View.GONE){
+                    tv12fo.setText("0");
+                    tv12fo.setGravity(Gravity.CENTER);
+                    tv12fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv12fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tv12fo);
+                }
+            }else{
+                tv12fo.setText(listItemUsed.get(i).getHanging12fo()+"");
+                tv12fo.setGravity(Gravity.CENTER);
+                tv12fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv12fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tv12fo);
+            }
+
+            TextView tv24fo = new TextView(this);
+            if(listItemUsed.get(i).getHanging24fo()==0){
+                if(settlement_24fo.getVisibility()!=View.GONE){
+                    tv24fo.setText("0");
+                    tv24fo.setGravity(Gravity.CENTER);
+                    tv24fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv24fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tv24fo);
+                }
+            }else{
+                tv24fo.setText(listItemUsed.get(i).getHanging24fo()+"");
+                tv24fo.setGravity(Gravity.CENTER);
+                tv24fo.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv24fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tv24fo);
+            }
+
+            TextView tv12du = new TextView(this);
+            if(listItemUsed.get(i).getDu12fo()==0){
+                if(settlement_du12.getVisibility()!=View.GONE){
+                    tv12du.setText("0");
+                    tv12du.setGravity(Gravity.CENTER);
+                    tv12du.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv12du.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tv12du);
+                }
+            }else{
+                tv12du.setText(listItemUsed.get(i).getDu12fo()+"");
+                tv12du.setGravity(Gravity.CENTER);
+                tv12du.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv12du.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tv12du);
+            }
+
+            TextView tvOdf6 = new TextView(this);
+            if(listItemUsed.get(i).getOdf6fo()==0){
+                if(settlement_odf6.getVisibility()!=View.GONE){
+                    tvOdf6.setText("0");
+                    tvOdf6.setGravity(Gravity.CENTER);
+                    tvOdf6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvOdf6.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvOdf6);
+                }
+            }else{
+                tvOdf6.setText(listItemUsed.get(i).getOdf6fo()+"");
+                tvOdf6.setGravity(Gravity.CENTER);
+                tvOdf6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvOdf6.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvOdf6);
+            }
+
+            TextView tvOdf12 = new TextView(this);
+            if(listItemUsed.get(i).getOdf12fo()==0){
+                if(settlement_odf12.getVisibility()!=View.GONE){
+                    tvOdf12.setText("0");
+                    tvOdf12.setGravity(Gravity.CENTER);
+                    tvOdf12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv12fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvOdf12);
+                }
+            }else{
+                tvOdf12.setText(listItemUsed.get(i).getOdf12fo()+"");
+                tvOdf12.setGravity(Gravity.CENTER);
+                tvOdf12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv12fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvOdf12);
+            }
+
+            TextView tvOdf24 = new TextView(this);
+            if(listItemUsed.get(i).getOdf24fo()==0){
+                if(settlement_odf24.getVisibility()!=View.GONE){
+                    tvOdf24.setText("0");
+                    tvOdf24.setGravity(Gravity.CENTER);
+                    tvOdf24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tv24fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvOdf24);
+                }
+            }else{
+                tvOdf24.setText(listItemUsed.get(i).getOdf24fo()+"");
+                tvOdf24.setGravity(Gravity.CENTER);
+                tvOdf24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tv24fo.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvOdf24);
+            }
+
+            TextView tvMx6 = new TextView(this);
+            if(listItemUsed.get(i).getMx6fo()==0){
+                if(settlement_mx6.getVisibility()!=View.GONE){
+                    tvMx6.setText("0");
+                    tvMx6.setGravity(Gravity.CENTER);
+                    tvMx6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvMx6.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvMx6);
+                }
+            }else{
+                tvMx6.setText(listItemUsed.get(i).getMx6fo()+"");
+                tvMx6.setGravity(Gravity.CENTER);
+                tvMx6.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvMx6.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvMx6);
+            }
+
+            TextView tvMx12 = new TextView(this);
+            if(listItemUsed.get(i).getMx12fo()==0){
+                if(settlement_mx12.getVisibility()!=View.GONE){
+                    tvMx12.setText("0");
+                    tvMx12.setGravity(Gravity.CENTER);
+                    tvMx12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvMx12.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvMx12);
+                }
+            }else{
+                tvMx12.setText(listItemUsed.get(i).getMx12fo()+"");
+                tvMx12.setGravity(Gravity.CENTER);
+                tvMx12.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvMx12.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvMx12);
+            }
+
+            TextView tvMx24 = new TextView(this);
+            if(listItemUsed.get(i).getMx24fo()==0){
+                if(settlement_mx24.getVisibility()!=View.GONE){
+                    tvMx24.setText("0");
+                    tvMx24.setGravity(Gravity.CENTER);
+                    tvMx24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvMx24.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvMx24);
+                }
+            }else{
+                tvMx24.setText(listItemUsed.get(i).getMx24fo()+"");
+                tvMx24.setGravity(Gravity.CENTER);
+                tvMx24.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvMx24.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvMx24);
+            }
+
+            TextView tvBl300 = new TextView(this);
+            if(listItemUsed.get(i).getBl300()==0){
+                if(settlement_bl300.getVisibility()!=View.GONE){
+                    tvBl300.setText("0");
+                    tvBl300.setGravity(Gravity.CENTER);
+                    tvBl300.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvBl300.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvBl300);
+                }
+            }else{
+                tvBl300.setText(listItemUsed.get(i).getBl300()+"");
+                tvBl300.setGravity(Gravity.CENTER);
+                tvBl300.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvBl300.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvBl300);
+            }
+
+            TextView tvBl400 = new TextView(this);
+            if(listItemUsed.get(i).getBl400()==0){
+                if(settlement_bl400.getVisibility()!=View.GONE){
+                    tvBl400.setText("0");
+                    tvBl400.setGravity(Gravity.CENTER);
+                    tvBl400.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvBl400.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvBl400);
+                }
+            }else{
+                tvBl400.setText(listItemUsed.get(i).getBl400()+"");
+                tvBl400.setGravity(Gravity.CENTER);
+                tvBl400.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvBl400.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvBl400);
+            }
+
+            TextView tvClamp = new TextView(this);
+            if(listItemUsed.get(i).getClamp()==0){
+                if(settlement_clamp.getVisibility()!=View.GONE){
+                    tvClamp.setText("0");
+                    tvClamp.setGravity(Gravity.CENTER);
+                    tvClamp.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvClamp.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvClamp);
+                }
+            }else{
+                tvClamp.setText(listItemUsed.get(i).getClamp()+"");
+                tvClamp.setGravity(Gravity.CENTER);
+                tvClamp.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvClamp.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvClamp);
+            }
+
+            TextView tvSc_lc5 = new TextView(this);
+            if(listItemUsed.get(i).getSc_lc5()==0){
+                if(settlement_sc_lc5.getVisibility()!=View.GONE){
+                    tvSc_lc5.setText("0");
+                    tvSc_lc5.setGravity(Gravity.CENTER);
+                    tvSc_lc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvSc_lc5.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvSc_lc5);
+                }
+            }else{
+                tvSc_lc5.setText(listItemUsed.get(i).getSc_lc5()+"");
+                tvSc_lc5.setGravity(Gravity.CENTER);
+                tvSc_lc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvSc_lc5.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvSc_lc5);
+            }
+
+            TextView tvSc_lc10 = new TextView(this);
+            if(listItemUsed.get(i).getSc_lc10()==0){
+                if(settlement_sc_lc10.getVisibility()!=View.GONE){
+                    tvSc_lc10.setText("0");
+                    tvSc_lc10.setGravity(Gravity.CENTER);
+                    tvSc_lc10.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvSc_lc10.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvSc_lc10);
+                }
+            }else{
+                tvSc_lc10.setText(listItemUsed.get(i).getSc_lc10()+"");
+                tvSc_lc10.setGravity(Gravity.CENTER);
+                tvSc_lc10.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvSc_lc10.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvSc_lc10);
+            }
+
+            TextView tvSc_sc5 = new TextView(this);
+            if(listItemUsed.get(i).getSc_sc5()==0){
+                if(settlement_sc_sc5.getVisibility()!=View.GONE){
+                    tvSc_sc5.setText("0");
+                    tvSc_sc5.setGravity(Gravity.CENTER);
+                    tvSc_sc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                    tvSc_sc5.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                    tr.addView(tvSc_sc5);
+                }
+            }else{
+                tvSc_sc5.setText(listItemUsed.get(i).getSc_sc5()+"");
+                tvSc_sc5.setGravity(Gravity.CENTER);
+                tvSc_sc5.setBackground(ContextCompat.getDrawable(this,R.drawable.border_table));
+                tvSc_sc5.setLayoutParams(new TableRow.LayoutParams(0,TableRow.LayoutParams.MATCH_PARENT,8f));
+                tr.addView(tvSc_sc5);
+            }
+            if(tr.getParent() != null) {
+                ((ViewGroup)tr.getParent()).removeView(tr);
+            }
+            tblShow.addView(tr);
+        }
     }
 }
