@@ -30,7 +30,7 @@
                 android:text="Stt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:id="@+id/stt"/>
             <TextView
                 android:textColor="#2962FF"
@@ -50,7 +50,7 @@
                 android:text="Cáp 4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_4fo"/>
             <TextView
                 android:textColor="#2962FF"
@@ -60,7 +60,7 @@
                 android:text="Cáp 6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_6fo"/>
             <TextView
                 android:textColor="#2962FF"
@@ -70,7 +70,7 @@
                 android:text="Cáp 12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_12fo"/>
             <TextView
                 android:textColor="#2962FF"
@@ -80,7 +80,7 @@
                 android:text="Cáp 24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_24fo"/>
             <TextView
                 android:textColor="#2962FF"
@@ -90,7 +90,7 @@
                 android:text="Cáp chôn 12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_12du"/>
             <TextView
                 android:textColor="#2962FF"
@@ -100,7 +100,7 @@
                 android:text="Odf 6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_odf6"/>
             <TextView
                 android:textColor="#2962FF"
@@ -110,7 +110,7 @@
                 android:text="Odf 12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_odf12"/>
             <TextView
                 android:textColor="#2962FF"
@@ -120,7 +120,7 @@
                 android:text="Odf 24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_odf24"/>
             <TextView
                 android:textColor="#2962FF"
@@ -130,7 +130,7 @@
                 android:text="Măng xông 6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_mx6"/>
             <TextView
                 android:textColor="#2962FF"
@@ -140,7 +140,7 @@
                 android:text="Măng xông 12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_mx12"/>
             <TextView
                 android:textColor="#2962FF"
@@ -150,7 +150,7 @@
                 android:text="Măng xông 24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_mx24"/>
             <TextView
                 android:textColor="#2962FF"
@@ -160,7 +160,7 @@
                 android:text="Bulong ti 300"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_bl300"/>
             <TextView
                 android:textColor="#2962FF"
@@ -170,7 +170,7 @@
                 android:text="Buloong ti 400"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_bl400"/>
             <TextView
                 android:textColor="#2962FF"
@@ -180,7 +180,7 @@
                 android:text="Kẹp cáp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_clamp"/>
             <TextView
                 android:textColor="#2962FF"
@@ -190,7 +190,7 @@
                 android:text="Dây nhảy sc_lc5m"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_sc_lc5"/>
             <TextView
                 android:textColor="#2962FF"
@@ -200,7 +200,7 @@
                 android:text="Dây nhảy sc_lc10m"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_sc_lc10"/>
             <TextView
                 android:textColor="#2962FF"
@@ -210,7 +210,7 @@
                 android:text="Dây nhảy sc_sc5m"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="5"
                 android:id="@+id/settlement_sc_sc5"/>
         </TableRow>
     </TableLayout>
