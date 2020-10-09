@@ -27,6 +27,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.department.noc.CRNOC;
+import com.example.actproperty.inventory.DashboardInventory;
 import com.example.actproperty.inventory.MaterialsInventory;
 import com.example.actproperty.itemclick_Interface.OnItemClickRecyclerView;
 import com.example.actproperty.passport.Passport;
@@ -1967,5 +1968,12 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         dialog.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Management.this, DashBoard.class);
+        intent.putExtra("Account", listUser);
+        startActivity(intent);
+    }
 }
 //https://sqlandroid2812.000webhostapp.com/updatenoc.php

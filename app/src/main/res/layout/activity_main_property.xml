@@ -53,7 +53,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:weightSum="12"
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/layout_doisoat"
         android:layout_marginTop="5dp"
         android:layout_weight="10"

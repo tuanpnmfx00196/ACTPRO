@@ -41,6 +41,7 @@ Button imgBtnDeliver;
 Button imgBtnIO,imgBtnShowInventory;
 TextView getFromDateIO, getToDateIO;
 Spinner spinnerCodeStore;
+List<String> listStore;
 ArrayList<Passport>listUser;
 ArrayList<DeliverObject>listDeliver;
 ArrayList<DeliverObject>listDeliverShow;
@@ -51,8 +52,10 @@ ArrayList<DeliverObject>listDeliverShow;
         listUser = new ArrayList<>();
         listDeliver = new ArrayList<>();
         listDeliverShow= new ArrayList<>();
+        listStore = new ArrayList<>();
         getAccount();
         Map();
+        CreateListStore();
         GetDataDeliver("https://sqlandroid2812.000webhostapp.com/gettempdeliver.php");
         imgBtnIO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +66,14 @@ ArrayList<DeliverObject>listDeliverShow;
         imgBtnDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AccountingDepartment.this, Deliver.class);
-                intent.putExtra("Account", listUser);
-                startActivity(intent);
+                if(listUser.get(0).getAdmin()!=1 && listUser.get(0).getAdmin()!=2 && listUser.get(0).getAccountant()!=1 ){
+                    Toast.makeText(AccountingDepartment.this, "You do not have permission to access!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(AccountingDepartment.this, Deliver.class);
+                    intent.putExtra("Account", listUser);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -89,20 +97,6 @@ ArrayList<DeliverObject>listDeliverShow;
         Button btnSearchIO = (Button)dialog.findViewById(R.id.btnSearchIO);
         Button btnBackIO = (Button)dialog.findViewById(R.id.btnBackIO);
         spinnerCodeStore = (Spinner)dialog.findViewById(R.id.spinnerCodeStore);
-        List<String> listStore = new ArrayList<>();
-        listStore.add("All");
-        listStore.add("Bến Tre");
-        listStore.add("Long An");
-        listStore.add("Trà Vinh");
-        listStore.add("Kiên Giang");
-        listStore.add("Bình Dương");
-        listStore.add("Đồng Nai");
-        listStore.add("HCM_Bình Tân");
-        listStore.add("HCM_Bình Chánh");
-        listStore.add("HCM_Củ Chi");
-        listStore.add("HCM_Hóc Môn");
-        listStore.add("HCM_Quận 12");
-        listStore.add("HCM_Gò Vấp");
         ArrayAdapter<String>adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listStore);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinnerCodeStore.setAdapter(adapter);
@@ -115,6 +109,12 @@ ArrayList<DeliverObject>listDeliverShow;
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        btnBackIO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
             }
         });
         getFromDateIO.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +259,61 @@ ArrayList<DeliverObject>listDeliverShow;
             }
         }
         return listDeliverSearch;
+    }
+    private void CreateListStore() {
+        if (listUser.get(0).getProperty() == 1 || listUser.get(0).getAdmin() == 1 ||
+                listUser.get(0).getAdmin() == 2) {
+            listStore.add("All");
+            listStore.add("HCM_Bình Chánh");
+            listStore.add("HCM_Bình Tân");
+            listStore.add("HCM_Củ Chi");
+            listStore.add("HCM_Hóc Môn");
+            listStore.add("HCM_Quận 12");
+            listStore.add("HCM_Gò Vấp");
+            listStore.add("Bình Dương");
+            listStore.add("Kiên Giang");
+            listStore.add("Đồng Nai");
+            listStore.add("Trà Vinh");
+            listStore.add("Bến Tre");
+            listStore.add("Long An");
+        } else {
+            if (listUser.get(0).getHcm_q12() == 1 || listUser.get(0).getHcm_q12() == 2) {
+                listStore.add("HCM_Quận 12");
+            }
+            if (listUser.get(0).getHcm_bch() == 1 || listUser.get(0).getHcm_bch() == 2) {
+                listStore.add("HCM_Bình Chánh");
+            }
+            if (listUser.get(0).getHcm_btn() == 1 || listUser.get(0).getHcm_btn() == 2) {
+                listStore.add("HCM_Bình Tân");
+            }
+            if (listUser.get(0).getHcm_cci() == 1 || listUser.get(0).getHcm_cci() == 2) {
+                listStore.add("HCM_Củ Chi");
+            }
+            if (listUser.get(0).getHcm_hmn() == 1 || listUser.get(0).getHcm_hmn() == 2) {
+                listStore.add("HCM_Hóc Môn");
+            }
+            if (listUser.get(0).getHcm_gvp() == 1 || listUser.get(0).getHcm_gvp() == 2) {
+                listStore.add("HCM_Gò Vấp");
+            }
+            if (listUser.get(0).getBdg() == 1 || listUser.get(0).getBdg() == 2) {
+                listStore.add("Bình Dương");
+            }
+            if (listUser.get(0).getKgg() == 1 || listUser.get(0).getKgg() == 2) {
+                listStore.add("Kiên Giang");
+            }
+            if (listUser.get(0).getDni() == 1 || listUser.get(0).getDni() == 2) {
+                listStore.add("Đồng Nai");
+            }
+            if (listUser.get(0).getLan() == 1 || listUser.get(0).getLan() == 2) {
+                listStore.add("Long An");
+            }
+            if (listUser.get(0).getTvh() == 1 || listUser.get(0).getTvh() == 2) {
+                listStore.add("Trà Vinh");
+            }
+            if (listUser.get(0).getBte() == 1 || listUser.get(0).getBte() == 2) {
+                listStore.add("Bến Tre");
+            }
+        }
     }
 
 

@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.actproperty.R;
+import com.example.actproperty.department.accounting.AccountingDepartment;
 import com.example.actproperty.department.noc.CRNOC;
 import com.example.actproperty.department.noc.NocDepartment;
 import com.example.actproperty.passport.Passport;
@@ -77,9 +78,10 @@ public class Main_Property extends AppCompatActivity {
         btn_ioinventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                layout_doisoat.setVisibility(View.GONE);
-                layout_nhapxuatton.setVisibility(View.VISIBLE);
-                layout_history_used.setVisibility(View.GONE);
+                Intent intent = new Intent(Main_Property.this, AccountingDepartment.class);
+                intent.putExtra("Account", listUser);
+                startActivity(intent);
+
             }
         });
         btn_used.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +128,10 @@ public class Main_Property extends AppCompatActivity {
                 GetToDateIO();
             }
         });
+        /*================= GET LOCAL SPINNER ========================*/
         getLocalForControl();
+        getLocalIOInventory();
+
         btn_doisoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +142,15 @@ public class Main_Property extends AppCompatActivity {
                 HandlingData();
             }
         });
+
+        /*================== Xuất nhập Tồn=======================*/
+        btn_nhapxuatton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         btnShowDetailsControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -243,6 +257,24 @@ public class Main_Property extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner_donviquyettoan.setAdapter(adapter);
         spinner_donviquyettoan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
+                ((TextView) parent.getChildAt(0)).setTextSize(10);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+    private void getLocalIOInventory(){
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listLocal);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinner_khonhapxuat.setAdapter(adapter);
+        spinner_khonhapxuat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
@@ -564,6 +596,6 @@ public class Main_Property extends AppCompatActivity {
             showMessage+="Dây nhảy quang Sc/sc 5m: "+sc_sc5+" sợi"+"\n";
         }
         generalControl.setText(showMessage);
-
     }
+
 }

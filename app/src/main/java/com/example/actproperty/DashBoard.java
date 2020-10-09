@@ -207,5 +207,11 @@ public class DashBoard extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DashBoard.this, MainActivity.class);
+        startActivity(intent);
     }
+}
 
