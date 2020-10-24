@@ -89,9 +89,29 @@ public class Main_Property extends AppCompatActivity {
         btn_used.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_followLocal.setVisibility(View.VISIBLE);
+                spinner_followLocal.setVisibility(View.VISIBLE);
                 layout_doisoat.setVisibility(View.GONE);
                 layout_nhapxuatton.setVisibility(View.GONE);
                 layout_history_used.setVisibility(View.VISIBLE);
+            }
+        });
+        btn_followLocal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_followLocal.setVisibility(View.GONE);
+                btn_follow_codeCable.setVisibility(View.VISIBLE);
+                spinner_followLocal.setVisibility(View.GONE);
+                edt_follow_codeCable.setVisibility(View.VISIBLE);
+            }
+        });
+        btn_follow_codeCable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_follow_codeCable.setVisibility(View.GONE);
+                btn_followLocal.setVisibility(View.VISIBLE);
+                spinner_followLocal.setVisibility(View.VISIBLE);
+                edt_follow_codeCable.setVisibility(View.GONE);
             }
         });
         fromDateHistoryUsed.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +172,20 @@ public class Main_Property extends AppCompatActivity {
 
             }
         });
-
+        btn_history_used.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btn_followLocal.getVisibility()==View.VISIBLE) {
+                    layoutDetailsControl.setVisibility(View.VISIBLE);
+                    getListCRSearch(from_dateForControl.getText().toString(), to_dateForControl.getText().toString(),
+                            spinner_followLocal.getSelectedItem().toString());
+                    HandlingData();
+                }
+                else{
+                    Toast.makeText(Main_Property.this, "TO DO MAKE SEARCH CODE CABLE", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         btnShowDetailsControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -615,5 +648,6 @@ public class Main_Property extends AppCompatActivity {
         }
         generalControl.setText(showMessage);
     }
+
 
 }

@@ -38,16 +38,17 @@
             android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
+
         <Button
             android:id="@+id/btn_used"
-            android:textColor="#FFF"
-            android:textSize="10sp"
-            android:textAllCaps="false"
-            android:text="Vật tư sử dụng"
-            android:background="@drawable/btn_xanhduong"
-            android:layout_weight="4"
             android:layout_width="0dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/btn_xanhduong"
+            android:text="Vật tư sử dụng"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="10sp" />
     </LinearLayout>
     <!--Đối soát-->
     <LinearLayout
@@ -349,6 +350,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp">
                     <Button
+                        android:visibility="gone"
                         android:id="@+id/btn_followLocal"
                         android:background="@drawable/btn_blue"
                         android:textColor="#FFF"
@@ -372,6 +374,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"/>
                     <Spinner
+                        android:visibility="gone"
                         android:id="@+id/spinner_followLocal"
                         android:gravity="center"
                         android:textColor="#0241FD"
