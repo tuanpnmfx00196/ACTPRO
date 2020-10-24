@@ -42,9 +42,11 @@ import java.util.List;
 public class Main_Property extends AppCompatActivity {
     Button btn_forControl,btn_ioinventory,btn_used; //Button Menu
     Button btn_doisoat, btn_nhapxuatton,btn_history_used; //Button action listener
+    Button btn_followLocal, btn_follow_codeCable;
+    EditText edt_follow_codeCable;
     LinearLayout layout_doisoat, layout_nhapxuatton, layout_history_used, layoutDetailsControl; // 3 layout hide, waiting action
     TextView fromDateHistoryUsed, toDateHistoryUsed, from_dateForControl, to_dateForControl,from_dateIO,to_dateIO; //datePicker
-    Spinner spinner_donviquyettoan, spinner_khonhapxuat,spinner_donvisudung;
+    Spinner spinner_donviquyettoan, spinner_khonhapxuat,spinner_followLocal;
     ArrayList<Passport> listUser;
     List<String>listLocal;
     ArrayList<CRNOC>listCR, listCrSearch;
@@ -129,7 +131,7 @@ public class Main_Property extends AppCompatActivity {
             }
         });
         /*================= GET LOCAL SPINNER ========================*/
-        getLocalForControl();
+        getLocalSpinner();
         getLocalIOInventory();
 
         btn_doisoat.setOnClickListener(new View.OnClickListener() {
@@ -252,11 +254,24 @@ public class Main_Property extends AppCompatActivity {
         },_year, _month, _date);
         datePickerDialog.show();
     }
-    private void getLocalForControl(){
+    private void getLocalSpinner(){
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listLocal);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner_donviquyettoan.setAdapter(adapter);
         spinner_donviquyettoan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
+                ((TextView) parent.getChildAt(0)).setTextSize(10);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner_followLocal.setAdapter(adapter);
+        spinner_followLocal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
@@ -295,6 +310,9 @@ public class Main_Property extends AppCompatActivity {
         btn_doisoat = (Button)findViewById(R.id.btn_doisoat);
         btn_nhapxuatton = (Button)findViewById(R.id.btn_nhapxuatton);
         btn_history_used = (Button)findViewById(R.id.btn_history_used);
+        btn_followLocal = (Button)findViewById(R.id.btn_followLocal);
+        btn_follow_codeCable = (Button)findViewById(R.id.btn_follow_codeCable);
+        edt_follow_codeCable = (EditText)findViewById(R.id.edt_follow_codeCable);
         layout_doisoat = (LinearLayout)findViewById(R.id.layout_doisoat);
         layout_nhapxuatton = (LinearLayout)findViewById(R.id.layout_nhapxuatton);
         layout_history_used = (LinearLayout)findViewById(R.id.layout_history_used);
@@ -302,7 +320,7 @@ public class Main_Property extends AppCompatActivity {
         toDateHistoryUsed = (TextView)findViewById(R.id.toDateHistoryUsed);
         spinner_donviquyettoan = (Spinner)findViewById(R.id.spinner_donviquyettoan);
         spinner_khonhapxuat = (Spinner)findViewById(R.id.spinner_khonhapxuat);
-        spinner_donvisudung = (Spinner)findViewById(R.id.spinner_donvisudung);
+        spinner_followLocal = (Spinner)findViewById(R.id.spinner_followLocal);
         from_dateForControl = (TextView)findViewById(R.id.from_dateForControl);
         to_dateForControl = (TextView)findViewById(R.id.to_dateForControl);
         from_dateIO = (TextView)findViewById(R.id.from_dateIO);
