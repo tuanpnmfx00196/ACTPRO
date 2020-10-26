@@ -725,19 +725,30 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         if(listShow.get(position).getClosure6fo()!=0){
             mx6.setText(listShow.get(position).getClosure6fo()+"");
             rowmx6.setVisibility(View.VISIBLE);
+        } else if(listShow.get(position).getHanging6fo()!=0){
+            mx6.setText("0");
+            rowmx6.setVisibility(View.VISIBLE);
         } else{
             rowmx6.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure12fo()!=0){
             mx12.setText(listShow.get(position).getClosure12fo()+"");
             rowmx12.setVisibility(View.VISIBLE);
-        } else{
+        } else if (listShow.get(position).getHanging12fo()!=0){
+            mx12.setText("0");
+            rowmx12.setVisibility(View.VISIBLE);
+        }
+        else{
             rowmx12.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure24fo()!=0){
             mx24.setText(listShow.get(position).getClosure24fo()+"");
             rowmx24.setVisibility(View.VISIBLE);
-        } else{
+        } else if(listShow.get(position).getHanging24fo()!=0){
+            mx24.setText("0");
+            rowmx24.setVisibility(View.VISIBLE);
+        }
+        else{
             rowmx24.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong300()!=0){
@@ -790,123 +801,154 @@ public class Management extends AppCompatActivity implements OnItemClickRecycler
         }
 
         /*====================== DIALOG UPDATE ========================*/
-
         if(listShow.get(position).getHanging4fo()!=0){
             cable4fo_origin.setText(listShow.get(position).getHanging4fo()+"");
+            cable4fo_update.setText(listShow.get(position).getHanging4fo()+"");
             row4fo_update.setVisibility(View.VISIBLE);
         } else{
             row4fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging6fo()!=0){
             cable6fo_origin.setText(listShow.get(position).getHanging6fo()+"");
+            cable6fo_update.setText(listShow.get(position).getHanging6fo()+"");
             row6fo_update.setVisibility(View.VISIBLE);
         } else{
             row6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging12fo()!=0){
             cable12fo_origin.setText(listShow.get(position).getHanging12fo()+"");
+            cable12fo_update.setText(listShow.get(position).getHanging12fo()+"");
             row12fo_update.setVisibility(View.VISIBLE);
         } else{
             row12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getHanging24fo()!=0){
             cable24fo_origin.setText(listShow.get(position).getHanging24fo()+"");
+            cable24fo_update.setText(listShow.get(position).getHanging24fo()+"");
             row24fo_update.setVisibility(View.VISIBLE);
         } else{
             row24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getDu12fo()!=0){
             cable12du_origin.setText(listShow.get(position).getDu12fo()+"");
+            cable12du_update.setText(listShow.get(position).getDu12fo()+"");
             rowdu12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowdu12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf6fo()!=0){
             odf6_origin.setText(listShow.get(position).getOdf6fo()+"");
+            odf6fo_update.setText(listShow.get(position).getOdf6fo()+"");
             rowodf6fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf6fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf12fo()!=0){
             odf12_origin.setText(listShow.get(position).getOdf12fo()+"");
+            odf12fo_update.setText(listShow.get(position).getOdf12fo()+"");
             rowodf12fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf12fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf24fo()!=0){
             odf24_origin.setText(listShow.get(position).getOdf24fo()+"");
+            odf24fo_update.setText(listShow.get(position).getOdf24fo()+"");
             rowodf24fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getOdf96fo()!=0){
             odf96_origin.setText(listShow.get(position).getOdf96fo()+"");
+            odf96fo_update.setText(listShow.get(position).getOdf96fo()+"");
             rowodf96fo_update.setVisibility(View.VISIBLE);
         } else{
             rowodf24fo_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure6fo()!=0){
             mx6_origin.setText(listShow.get(position).getClosure6fo()+"");
+            mx6_update.setText(listShow.get(position).getClosure6fo()+"");
             rowmx6_update.setVisibility(View.VISIBLE);
-        } else{
+        } else if(listShow.get(position).getHanging6fo()!=0){
+            mx6_origin.setText("0");
+            rowmx6_update.setVisibility(View.VISIBLE);
+        }
+        else{
             rowmx6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure12fo()!=0){
             mx12_origin.setText(listShow.get(position).getClosure12fo()+"");
+            mx12_update.setText(listShow.get(position).getClosure12fo()+"");
             rowmx12_update.setVisibility(View.VISIBLE);
-        } else{
+        } else if(listShow.get(position).getHanging12fo()!=0){
+            mx12_origin.setText("0");
+            rowmx12_update.setVisibility(View.VISIBLE);
+        }
+        else{
             rowmx12_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClosure24fo()!=0){
             mx24_origin.setText(listShow.get(position).getClosure24fo()+"");
+            mx24_update.setText(listShow.get(position).getClosure24fo()+"");
             rowmx24_update.setVisibility(View.VISIBLE);
-        } else{
+        } else if(listShow.get(position).getHanging24fo()!=0){
+            mx24_origin.setText("0");
+            rowmx24_update.setVisibility(View.VISIBLE);
+        }
+        else{
             rowmx24_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong300()!=0){
             buloongti300_origin.setText(listShow.get(position).getBuloong300()+"");
+            buloong300_update.setText(listShow.get(position).getBuloong300()+"");
             rowbuloongti300_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti300_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getBuloong400()!=0){
             buloongti400_origin.setText(listShow.get(position).getBuloong400()+"");
+            buloong400_update.setText(listShow.get(position).getBuloong400()+"");
             rowbuloongti400_update.setVisibility(View.VISIBLE);
         } else{
             rowbuloongti400_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getClamp()!=0){
             clamp_origin.setText(listShow.get(position).getClamp()+"");
+            clamp_update.setText(listShow.get(position).getClamp()+"");
             rowclamp_update.setVisibility(View.VISIBLE);
         } else{
             rowclamp_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getPoleu8()!=0){
             poleu8_origin.setText(listShow.get(position).getPoleu8()+"");
+            poleu8_update.setText(listShow.get(position).getPoleu8()+"");
             rowpoleu8_update.setVisibility(View.VISIBLE);
         } else{
             rowpoleu8_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getIronpole6()!=0){
             ironpole6_origin.setText(listShow.get(position).getIronpole6()+"");
+            ironpole6_update.setText(listShow.get(position).getIronpole6()+"");
             rowironpole6_update.setVisibility(View.VISIBLE);
         } else{
             rowironpole6_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc5()!=0){
             sc_lc5m_origin.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc5_update.setText(listShow.get(position).getSc_lc5()+"");
             rowsc_lc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc5m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_lc10()!=0){
-            sc_lc10m_origin.setText(listShow.get(position).getSc_lc5()+"");
+            sc_lc10m_origin.setText(listShow.get(position).getSc_lc10()+"");
+            sc_lc10_update.setText(listShow.get(position).getSc_lc10()+"");
             rowsc_lc10m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_lc10m_update.setVisibility(View.GONE);
         }
         if(listShow.get(position).getSc_sc5()!=0){
             sc_sc5m_origin.setText(listShow.get(position).getSc_sc5()+"");
+            sc_sc5_update.setText(listShow.get(position).getSc_sc5()+"");
             rowsc_sc5m_update.setVisibility(View.VISIBLE);
         } else{
             rowsc_sc5m_update.setVisibility(View.GONE);

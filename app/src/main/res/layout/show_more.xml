@@ -1084,6 +1084,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1155,6 +1156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1226,6 +1228,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1296,6 +1299,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1367,6 +1371,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1437,6 +1442,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1507,6 +1513,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1577,6 +1584,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1647,6 +1655,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1717,20 +1726,21 @@
                 android:id="@+id/mx6_origin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
-            <EditText
-            android:textSize="13sp"
-            android:inputType="number"
-            android:layout_margin="1dp"
-            android:padding="3dp"
-            android:id="@+id/mx6_used"
-            android:textColor="#FFF"
-            android:background="#0091EA"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:layout_weight="2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-            <EditText
+                <EditText
+                android:text="0"
+                android:textSize="13sp"
+                android:inputType="number"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:id="@+id/mx6_used"
+                android:textColor="#FFF"
+                android:background="#0091EA"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+                <EditText
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1789,6 +1799,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1860,6 +1871,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -1930,6 +1942,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2001,6 +2014,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2072,6 +2086,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2143,6 +2158,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2214,6 +2230,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2285,6 +2302,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2355,6 +2373,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
@@ -2427,6 +2446,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:text="0"
                 android:textSize="13sp"
                 android:inputType="number"
                 android:layout_margin="1dp"
