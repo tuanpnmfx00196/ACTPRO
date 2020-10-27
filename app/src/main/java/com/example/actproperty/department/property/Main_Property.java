@@ -42,18 +42,17 @@ import java.util.List;
 public class Main_Property extends AppCompatActivity {
     Button btn_forControl,btn_ioinventory,btn_used; //Button Menu
     Button btn_doisoat, btn_nhapxuatton,btn_history_used; //Button action listener
-    Button btn_followLocal, btn_follow_codeCable;
-    EditText edt_follow_codeCable;
     LinearLayout layout_doisoat, layout_nhapxuatton, layout_history_used, layoutDetailsControl; // 3 layout hide, waiting action
     TextView fromDateHistoryUsed, toDateHistoryUsed, from_dateForControl, to_dateForControl,from_dateIO,to_dateIO; //datePicker
-    Spinner spinner_donviquyettoan, spinner_khonhapxuat,spinner_followLocal;
+    Spinner spinner_donviquyettoan, spinner_khonhapxuat;
     ArrayList<Passport> listUser;
     List<String>listLocal;
     ArrayList<CRNOC>listCR, listCrSearch;
     ArrayList<ItemUsed>listItemUsed;
-    ArrayList<ItemUsed>listItemUsedTemp;
+    ArrayList<ItemUsed>listItemUsedTemp, listItemUsedForIdCable;
     TextView generalControl;
     Button btnShowDetailsControl;
+    EditText searchForCodeCable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +63,7 @@ public class Main_Property extends AppCompatActivity {
         listCrSearch = new ArrayList<>();
         listItemUsed = new ArrayList<>();
         listItemUsedTemp = new ArrayList<>();
+        listItemUsedForIdCable = new ArrayList<>();
         Map();
         getListCR("https://sqlandroid2812.000webhostapp.com/getnoc.php");
         getItemUsedTemp("https://sqlandroid2812.000webhostapp.com/getitemused.php");
@@ -77,6 +77,14 @@ public class Main_Property extends AppCompatActivity {
                 layout_history_used.setVisibility(View.GONE);
             }
         });
+        btn_used.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_doisoat.setVisibility(View.GONE);
+                layout_nhapxuatton.setVisibility(View.GONE);
+                layout_history_used.setVisibility(View.VISIBLE);
+            }
+        });
         btn_ioinventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,34 +92,6 @@ public class Main_Property extends AppCompatActivity {
                 intent.putExtra("Account", listUser);
                 startActivity(intent);
 
-            }
-        });
-        btn_used.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_followLocal.setVisibility(View.VISIBLE);
-                spinner_followLocal.setVisibility(View.VISIBLE);
-                layout_doisoat.setVisibility(View.GONE);
-                layout_nhapxuatton.setVisibility(View.GONE);
-                layout_history_used.setVisibility(View.VISIBLE);
-            }
-        });
-        btn_followLocal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn_followLocal.setVisibility(View.GONE);
-                btn_follow_codeCable.setVisibility(View.VISIBLE);
-                spinner_followLocal.setVisibility(View.GONE);
-                edt_follow_codeCable.setVisibility(View.VISIBLE);
-            }
-        });
-        btn_follow_codeCable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn_follow_codeCable.setVisibility(View.GONE);
-                btn_followLocal.setVisibility(View.VISIBLE);
-                spinner_followLocal.setVisibility(View.VISIBLE);
-                edt_follow_codeCable.setVisibility(View.GONE);
             }
         });
         fromDateHistoryUsed.setOnClickListener(new View.OnClickListener() {
@@ -175,15 +155,7 @@ public class Main_Property extends AppCompatActivity {
         btn_history_used.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btn_followLocal.getVisibility()==View.VISIBLE) {
-                    layoutDetailsControl.setVisibility(View.VISIBLE);
-                    getListCRSearch(from_dateForControl.getText().toString(), to_dateForControl.getText().toString(),
-                            spinner_followLocal.getSelectedItem().toString());
-                    HandlingData();
-                }
-                else{
-                    Toast.makeText(Main_Property.this, "TO DO MAKE SEARCH CODE CABLE", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
         btnShowDetailsControl.setOnClickListener(new View.OnClickListener() {
@@ -195,7 +167,39 @@ public class Main_Property extends AppCompatActivity {
 
             }
         });
-
+        btn_history_used.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createListItemUsedForIdCable(searchForCodeCable.getText().toString(),fromDateHistoryUsed.getText().toString(),
+                        toDateHistoryUsed.getText().toString());
+                Intent intent = new Intent(Main_Property.this, History_for_IdCable.class);
+                intent.putExtra("listInfoHistory",listItemUsedForIdCable);
+                startActivity(intent);
+            }
+        });
+    }
+    private void Map(){
+        btn_forControl= (Button)findViewById(R.id.btn_forControl);
+        btn_ioinventory = (Button)findViewById(R.id.btn_ioinventory);
+        btn_used = (Button)findViewById(R.id.btn_used);
+        btn_doisoat = (Button)findViewById(R.id.btn_doisoat);
+        btn_nhapxuatton = (Button)findViewById(R.id.btn_nhapxuatton);
+        btn_history_used = (Button)findViewById(R.id.btn_history_used);
+        layout_doisoat = (LinearLayout)findViewById(R.id.layout_doisoat);
+        layout_nhapxuatton = (LinearLayout)findViewById(R.id.layout_nhapxuatton);
+        layout_history_used = (LinearLayout)findViewById(R.id.layout_history_used);
+        fromDateHistoryUsed = (TextView)findViewById(R.id.fromDateHistoryUsed);
+        toDateHistoryUsed = (TextView)findViewById(R.id.toDateHistoryUsed);
+        spinner_donviquyettoan = (Spinner)findViewById(R.id.spinner_donviquyettoan);
+        spinner_khonhapxuat = (Spinner)findViewById(R.id.spinner_khonhapxuat);
+        from_dateForControl = (TextView)findViewById(R.id.from_dateForControl);
+        to_dateForControl = (TextView)findViewById(R.id.to_dateForControl);
+        from_dateIO = (TextView)findViewById(R.id.from_dateIO);
+        to_dateIO = (TextView)findViewById(R.id.to_dateIO);
+        generalControl = (TextView)findViewById(R.id.generalControl);
+        btnShowDetailsControl = (Button)findViewById(R.id.btnShowDetailsControl);
+        layoutDetailsControl = (LinearLayout)findViewById(R.id.layoutDetailsControl);
+        searchForCodeCable = (EditText)findViewById(R.id.searchForCodeCable);
     }
     private void GetFromDateSearchHistoryUsed(){
         final Calendar calendar = Calendar.getInstance();
@@ -303,20 +307,6 @@ public class Main_Property extends AppCompatActivity {
 
             }
         });
-        spinner_followLocal.setAdapter(adapter);
-        spinner_followLocal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
-                ((TextView) parent.getChildAt(0)).setTextSize(10);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
     }
     private void getLocalIOInventory(){
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listLocal);
@@ -334,33 +324,6 @@ public class Main_Property extends AppCompatActivity {
 
             }
         });
-
-    }
-    private void Map(){
-        btn_forControl= (Button)findViewById(R.id.btn_forControl);
-        btn_ioinventory = (Button)findViewById(R.id.btn_ioinventory);
-        btn_used = (Button)findViewById(R.id.btn_used);
-        btn_doisoat = (Button)findViewById(R.id.btn_doisoat);
-        btn_nhapxuatton = (Button)findViewById(R.id.btn_nhapxuatton);
-        btn_history_used = (Button)findViewById(R.id.btn_history_used);
-        btn_followLocal = (Button)findViewById(R.id.btn_followLocal);
-        btn_follow_codeCable = (Button)findViewById(R.id.btn_follow_codeCable);
-        edt_follow_codeCable = (EditText)findViewById(R.id.edt_follow_codeCable);
-        layout_doisoat = (LinearLayout)findViewById(R.id.layout_doisoat);
-        layout_nhapxuatton = (LinearLayout)findViewById(R.id.layout_nhapxuatton);
-        layout_history_used = (LinearLayout)findViewById(R.id.layout_history_used);
-        fromDateHistoryUsed = (TextView)findViewById(R.id.fromDateHistoryUsed);
-        toDateHistoryUsed = (TextView)findViewById(R.id.toDateHistoryUsed);
-        spinner_donviquyettoan = (Spinner)findViewById(R.id.spinner_donviquyettoan);
-        spinner_khonhapxuat = (Spinner)findViewById(R.id.spinner_khonhapxuat);
-        spinner_followLocal = (Spinner)findViewById(R.id.spinner_followLocal);
-        from_dateForControl = (TextView)findViewById(R.id.from_dateForControl);
-        to_dateForControl = (TextView)findViewById(R.id.to_dateForControl);
-        from_dateIO = (TextView)findViewById(R.id.from_dateIO);
-        to_dateIO = (TextView)findViewById(R.id.to_dateIO);
-        generalControl = (TextView)findViewById(R.id.generalControl);
-        btnShowDetailsControl = (Button)findViewById(R.id.btnShowDetailsControl);
-        layoutDetailsControl = (LinearLayout)findViewById(R.id.layoutDetailsControl);
     }
     private void CreateListLocal() {
         if (listUser.get(0).getProperty() == 1 || listUser.get(0).getAdmin() == 1 ||
@@ -648,6 +611,27 @@ public class Main_Property extends AppCompatActivity {
         }
         generalControl.setText(showMessage);
     }
-
-
+    private void createListItemUsedForIdCable(String code,String fromTime, String toTime){
+        Date from = null;
+        Date to = null;
+        Date dateUse = null;
+        try {
+            from = new SimpleDateFormat("dd/MM/yyyy").parse(fromTime);
+            to = new SimpleDateFormat("dd/MM/yyyy").parse(toTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        listItemUsedForIdCable.clear();
+        for(int i=0;i<listItemUsedTemp.size(); i++){
+            try {
+                dateUse = new SimpleDateFormat("dd/MM/yyyy").parse(listItemUsedTemp.get(i).getDatechange());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(listItemUsedTemp.get(i).getCableid().toLowerCase().contains(code.toLowerCase())&& dateUse.compareTo(from)>=0
+            && dateUse.compareTo(to)<=0){
+                listItemUsedForIdCable.add(listItemUsedTemp.get(i));
+            }
+        }
+    }
 }
