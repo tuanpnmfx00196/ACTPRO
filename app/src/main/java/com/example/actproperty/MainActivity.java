@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CheckPassport();
                 if (CheckPassport()) {
                     Intent intent = new Intent(MainActivity.this, DashBoard.class);
                     intent.putExtra("USERNAME",edtUser.getText().toString());
